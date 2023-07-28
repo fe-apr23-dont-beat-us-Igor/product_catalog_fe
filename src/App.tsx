@@ -1,16 +1,15 @@
 import { FC } from 'react';
 import './App.css';
-import { Header } from './components/Header';
+import { Header } from './components/Header/Header';
+import Slider from './components/slider/Slider';
 
 const App: FC = () => {
   return (
     <div className="App">
         <Header />
+        <Slider />
     </div>
   );
-}
-const App: React.FC = () => {
-  return <div className="App"></div>;
 };
 
 export default App;
