@@ -59,28 +59,34 @@ const Slider: FC = () => {
 
   return (
     <div className="slider">
-      <button
-        className="slider__button slider__button--prev"
-        onClick={() => changeSlide(-1)}
-      >
-        <img src="ui/arrowLeft.svg" alt="" />
-      </button>
-      <div className="slider__content">
-        {/* <img src='ui/Banner.png' alt="" /> */}
-        {items.map(slide => (
-            <div 
-                className='slider__slide' 
-            >
-                <img className='slide__img' src={slide} alt="" />
+      <div className="slider__body">
+        <button
+          className="slider__button slider__button--prev"
+          onClick={() => changeSlide(-1)}
+        >
+          <img src="ui/arrowLeft.svg" alt="" />
+        </button>
+        <div className="slider__content">
+          {/* <img src='ui/Banner.png' alt="" /> */}
+          {items.map((slide) => (
+            <div className="slider__slide">
+              <img className="slide__img" src={slide} alt="" />
             </div>
-        ))}
+          ))}
+        </div>
+        <button
+          className="slider__button slider__button--next"
+          onClick={() => changeSlide(1)}
+        >
+          <img src={sliderData.arrowRight} alt="" />
+        </button>
       </div>
-      <button
-        className="slider__button slider__button--next"
-        onClick={() => changeSlide(1)}
-      >
-        <img src={sliderData.arrowRight} alt="" />
-      </button>
+
+      <div className="slider__dots">
+        <button className="slider__dot"></button>
+        <button className="slider__dot"></button>
+        <button className="slider__dot slider__dot--active"></button>
+      </div>
     </div>
   );
 };
