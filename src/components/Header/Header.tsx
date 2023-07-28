@@ -1,4 +1,4 @@
-import './Header.css';
+import './Header.scss';
 
 const pages = ['HOME', 'PHONES', 'TABLETS', 'ACCESSORIES'];
 
