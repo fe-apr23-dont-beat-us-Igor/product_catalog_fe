@@ -1,0 +1,20 @@
+{
+  "extends": ["react-app", "react-app/jest", "prettier"],
+  "rules": {
+    "react/prop-types": "off",
+    "no-use-before-define": "warn",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "max-len": [
+      "warn",
+      {
+        "code": 80,
+        "ignoreTemplateLiterals": true,
+        "ignoreComments": true
+      }
+    ],
+    "semi": "warn",
+    "max-params": ["warn", 4],
+    "no-unused-vars": "warn",
+    "object-curly-spacing": ["warn", "always"]
+  }
+}
