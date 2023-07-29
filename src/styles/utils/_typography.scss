@@ -1,0 +1,74 @@
+@mixin h1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  
+    @include onPortable {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+  
+  @mixin h2 {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 31px;
+    letter-spacing: -0.01em;
+  
+    @include onPortable {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+  @mixin h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0em;
+    @include onPortable {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 31px;
+    }
+  }
+  @mixin h4 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+  
+    @include onPortable {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 26px;
+    }
+  }
+  
+  @mixin uppercase {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0em;
+  }
+  
+  @mixin buttonTypo {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0em;
+  }
+  
+  @mixin text {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0em;
+  }
+  
+  @mixin smallText {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0em;
+  }

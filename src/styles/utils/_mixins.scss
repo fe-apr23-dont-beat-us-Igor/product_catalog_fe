@@ -1,0 +1,31 @@
+@mixin onDesktop {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin onPortable {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin draw-Circle($w, $h) {
+  width: $w;
+  height: $h;
+  border-radius: 100%;
+}
+
+@mixin bg-svg( $w, $h) {
+  // background-size: 100% 100%;
+}

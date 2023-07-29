@@ -143,7 +143,7 @@ h1 {
       border-radius: 48px;
       border: 1px solid #b4bdc3;
       text-decoration: none;
-      background-image: url("../../../public/ui/heart.svg");
+      background-image: url("./Favourites (Heart Like).svg");
       background-repeat: no-repeat;
       background-position: center;
 
@@ -153,7 +153,7 @@ h1 {
       }
 
       &:active {
-        background-image: url("../../../public/ui/fullHeart.svg");
+        background-image: url("./Favourites (Heart Like).svg");
       }
     }
   }

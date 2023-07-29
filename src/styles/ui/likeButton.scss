@@ -1,0 +1,27 @@
+$like: url('../../images/Like.svg');
+$filled-like: url('../../images/FilledLike.svg');
+
+.likeButton {
+  @include flex-center;
+  @include draw-Circle(40px, 40px);
+  border: 1px solid $elements-color;
+  transform: all 0.5 ease;
+  cursor: pointer;
+
+  background-image: $like;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+  &--selected {
+    background-image: $filled-like;
+    &:hover {
+      border: 1px solid $elements-color;
+    }
+  }
+}
+
+/* <div className="likeButton likeButton--selected"></div> */
+
