@@ -1,13 +1,19 @@
 import React, { FC } from 'react';
+import { useSliderContext } from './SliderContext';
 
 type Props = {
-  isActive: boolean;
+  index: number;
 };
 
-const Dot: FC<Props> = ({ isActive }) => {
+const Dot: FC<Props> = ({ index }) => {
+  const { goToSlide, currentSlide} = useSliderContext();
+
+  const isActive = index === currentSlide;
+
   return (
     <button
       className={`slider__dot ${isActive && 'slider__dot--active'}`}
+      onClick={() => goToSlide(index)}
     ></button>
   );
 };
