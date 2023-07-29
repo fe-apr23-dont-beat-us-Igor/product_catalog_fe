@@ -50,6 +50,7 @@
     "style-loader": "^3.3.3",
     "eslint-config-prettier": "^8.9.0",
     "eslint-plugin-react": "^7.33.0",
-    "prettier": "3.0.0"
+    "prettier": "3.0.0",
+    "sass": "^1.64.1"
   }
 }
