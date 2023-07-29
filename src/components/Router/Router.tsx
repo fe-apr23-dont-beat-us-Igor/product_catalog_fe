@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../../App";
 import Slider from "../slider/Slider";
+import { Phones } from "../Phones/Phones";
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/phones",
-        element: <></>,
+        element: <Phones/>,
       },
       {
         path: "tablets",
