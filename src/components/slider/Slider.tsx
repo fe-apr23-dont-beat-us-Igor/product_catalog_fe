@@ -4,7 +4,6 @@ import { sliderData } from '../../data/slider';
 import { SliderProvider, useSliderContext } from './SliderContext';
 import DotList from './DotList';
 import SliderButton from './SliderButton';
-import Slide from './Slide';
 import SlideList from './SlideList';
 
 const SliderContent: FC = () => {
@@ -13,7 +12,6 @@ const SliderContent: FC = () => {
     handleTouchMove,
   } = useSliderContext();
   
-  console.log('render')
   return (
     <div
       className="slider"
