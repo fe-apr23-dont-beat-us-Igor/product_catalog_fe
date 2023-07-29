@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
 const pages = ['HOME', 'PHONES', 'TABLETS', 'ACCESSORIES'];
@@ -6,21 +7,21 @@ export const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="nav-and-logo">
-        <a href="#" className="logo">
+        <Link to='/home' className="logo">
           <img
             src="/ui/Logo.svg"
             alt="Nice Gadgets logo"
             className="logo-img"
           />
-        </a>
+        </Link>
 
         <nav className="nav">
           <ul className="nav__list">
             {pages.map(page => (
               <li className='nav__item' key={page}>
-                <a className='nav__link' href="#">
+                <Link className='nav__link' to={page.toLowerCase()}>
                   {page}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
