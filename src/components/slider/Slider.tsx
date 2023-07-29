@@ -1,63 +1,17 @@
-import { FC, TouchEventHandler, useEffect, useState } from 'react';
 import './index.scss';
-
+import { FC } from 'react';
 import { sliderData } from '../../data/slider';
-import Dot from './Dot';
+import { SliderProvider, useSliderContext } from './SliderContext';
 
-const mockSlide = ['red', 'green', 'blue', 'black', 'orange', 'red'];
-
-const Slider: FC = () => {
-  const [items] = useState<string[]>(mockSlide);
-  const [slide, setSlide] = useState<number>(0);
-  const [touchPosition, setTouchPosition] = useState<number | null>(null);
-  const [autoPlay] = useState<boolean>(true);
-
-  const changeSlide = (direction: number = 1): void => {
-    let slideNumber = (slide + direction) % items.length;
-
-    if (slideNumber < 0) {
-      slideNumber = items.length - 1;
-    }
-
-    setSlide(slideNumber);
-  };
-
-  const goToSlide = (number: number): void => {
-    setSlide(number % items.length);
-  };
-
-  const handleTouchStart :TouchEventHandler<HTMLDivElement> = (event): void => {
-    const touchDown = event.touches[0].clientX;
-
-    setTouchPosition(touchDown);
-  };
-
-  const handleTouchMove: TouchEventHandler<HTMLDivElement> = (event): void => {
-    if (!touchPosition) return;
-
-    const currentPosition = event.touches[0].clientX;
-    const direction = touchPosition - currentPosition;
-
-    if (direction > 10) {
-      changeSlide(1);
-    }
-
-    if (direction < -10) {
-      changeSlide(-1);
-    }
-
-    setTouchPosition(null);
-  };
-
-  useEffect(() => {
-    let interval: any;
-
-    if (autoPlay) {
-      interval = setInterval(() => changeSlide(1), 5000);
-    }
-
-    return () => clearInterval(interval);
-  }, [items.length, slide, autoPlay]);
+const SliderContent: FC = () => {
+  const {
+    slides,
+    currentSlide,
+    changeSlide,
+    goToSlide,
+    handleTouchStart,
+    handleTouchMove,
+  } = useSliderContext();
 
   return (
     <div
@@ -74,13 +28,13 @@ const Slider: FC = () => {
         </button>
 
         <div className="slider__slides">
-          {items.map((color) => (
+          {slides.map((slide) => (
             <div
-              key={color}
+              key={slide}
               className="slider__slide"
               style={{
-                backgroundColor: color,
-                transform: `translateX(-${slide * 100}%)`,
+                backgroundColor: slide,
+                transform: `translateX(-${currentSlide * 100}%)`,
               }}
             ></div>
           ))}
@@ -95,17 +49,25 @@ const Slider: FC = () => {
       </div>
 
       <div className="slider__dots">
-        {items.map((item, index) => (
+        {slides.map((slide, index) => (
           <button
-            key={item}
+            key={slide}
             className={`slider__dot ${
-              index === slide ? 'slider__dot--active' : ''
+              index === currentSlide ? 'slider__dot--active' : ''
             }`}
             onClick={() => goToSlide(index)}
           ></button>
         ))}
       </div>
     </div>
+  );
+};
+
+export const Slider: FC = () => {
+  return (
+    <SliderProvider>
+      <SliderContent />
+    </SliderProvider>
   );
 };
 
