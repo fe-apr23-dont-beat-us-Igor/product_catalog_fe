@@ -8,7 +8,7 @@ export const Footer: FC = () => {
         <div className='footer__content'>
           <a href='/' className='footer__logo'>
             <img 
-              src="/images/logo.svg"
+              src="/images/Logo.svg"
               alt='NiceGadgets'
               className='footer__logo-pic'
             />
