@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import Dot from './Dot';
 import { useSliderContext } from './SliderContext';
 
 type Props = {

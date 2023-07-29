@@ -1,0 +1,46 @@
+body {
+  @include montserrat;
+}
+
+h1 {
+  @include h1;
+}
+
+h2 {
+  @include h2;
+}
+
+h3 {
+  @include h3;
+}
+
+h4 {
+  @include h4;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0;
+
+  @include onPortable {
+    max-width: 600px;
+  }
+
+  @include onDesktop {
+    max-width: 1140px;
+  }
+}
+
+.section {
+  padding: 0 16px;
+  margin-top: 56px;
+
+  @include onPortable {
+    padding: 0;
+    margin-top: 64px;
+  }
+  @include onDesktop {
+    margin-top: 80px;
+  }
+}

@@ -3,7 +3,7 @@ import './Footer.scss';
 
 export const Footer: FC = () => {
   return (
-    <footer className='page__section footer'>
+    <footer className='page__section footer section'>
       <div className='container'>
         <div className='footer__content'>
           <a href='/' className='footer__logo'>
