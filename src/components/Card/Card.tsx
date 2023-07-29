@@ -6,7 +6,7 @@ export const Card: React.FC = () => {
     <article className="card" data-qa="card">
       <img
         className="card__image"
-        src="./image.png"
+        src="./images/image 2.png"
         alt="APPLE A1419 iMac 27"
       />
       <h1 className="card__name">

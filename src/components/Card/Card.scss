@@ -117,7 +117,7 @@ h1 {
       height: 40px;
       background-color: #323542;
       text-decoration: none;
-      background-image: url("../../../public/ui/heart.svg");
+      background-image: url("./Favourites (Heart Like).svg");
       background-repeat: no-repeat;
       background-position: center;
 
@@ -126,7 +126,7 @@ h1 {
       }
 
       &:active {
-        background-image: url("../../../public/ui/fullHeart.svg");
+        background-image: url("./Favourites (Heart Like).svg");
       }
     }
   }
