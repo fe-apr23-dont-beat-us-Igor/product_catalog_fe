@@ -3,11 +3,30 @@ h1 {
   margin: 0;
 }
 
+@font-face {
+  font-family: Mont;
+  src: url(./fonts/Mont-Regular.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: bold;
+  src: url(./fonts/Mont-Bold.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  src: url(./fonts/Mont-SemiBold.otf);
+}
+
 .card {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background-color: #161827;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #E2E6E9;
   padding: 32px;
   width: 272px;
   height: 506px;
@@ -21,7 +40,7 @@ h1 {
   &__name {
     font-weight: 600;
     font-size: 14px;
-    color: #f1f2f9;
+    color: #0f0f11;
     display: flex;
     line-height: 21px;
   }
@@ -36,7 +55,7 @@ h1 {
       font-weight: 800;
       font-size: 22px;
       line-height: 140%;
-      color: #f1f2f9;
+      color: #0f0f11;
     }
 
     &-old {
@@ -45,7 +64,7 @@ h1 {
       font-size: 22px;
       line-height: 28px;
       text-decoration-line: line-through;
-      color: #75767f;
+      color: #89939a;
     }
   }
 
@@ -53,7 +72,8 @@ h1 {
     box-sizing: border-box;
     width: 208px;
     height: 0;
-    border: 0.5px solid #3b3e4a;
+    border: 1px solid #e2e6e9;
+    border-radius: 8px;
   }
 
   &__characteristics {
@@ -75,14 +95,14 @@ h1 {
       font-weight: 700;
       font-size: 12px;
       line-height: 15px;
-      color: #75767f;
+      color: #89939a;
     }
 
     &-number {
       font-weight: 700;
       font-size: 12px;
       line-height: 15px;
-      color: #f1f2f9;
+      color: #0f0f11;
     }
   }
 
@@ -96,16 +116,20 @@ h1 {
       align-items: center;
       width: 160px;
       height: 40px;
-      background-color: #905bff;
-      color: #f1f2f9;
+      background-color: #4219d0;
+      border-radius: 48px;
+      color: #fff;
       text-decoration: none;
 
       &:hover {
-        background-color: #a378ff;
+        background-color: #4219d0;
+        box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.40);
       }
 
       &:active {
-        background-color: #323542;
+        background-color: #e2e6e9;
+        color: #4219d0;
+        border: 1px solid #E2E6E9;
       }
     }
 
@@ -115,14 +139,17 @@ h1 {
       align-items: center;
       width: 40px;
       height: 40px;
-      background-color: #323542;
+      background-color: #fff;
+      border-radius: 48px;
+      border: 1px solid #b4bdc3;
       text-decoration: none;
       background-image: url("../../../public/ui/heart.svg");
       background-repeat: no-repeat;
       background-position: center;
 
       &:hover {
-        background-color: #4a4d58;
+        background-color: #fff;
+        border: 1px solid #0f0f11;
       }
 
       &:active {
