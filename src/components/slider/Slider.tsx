@@ -1,24 +1,22 @@
-import { FC, useEffect, useState } from 'react';
-import './index.css';
+import { FC, TouchEventHandler, useEffect, useState } from 'react';
+import './index.scss';
 
 import { sliderData } from '../../data/slider';
+import Dot from './Dot';
 
-// import Banner from '../../../public/ui/Banner.png';
-const mockSlide = ['ui/Banner.png', 'ui/Banner.png', 'ui/Banner.png'];
+const mockSlide = ['red', 'green', 'blue', 'black', 'orange', 'red'];
 
 const Slider: FC = () => {
-  const [items, setItems] = useState<string[]>(mockSlide);
+  const [items] = useState<string[]>(mockSlide);
   const [slide, setSlide] = useState<number>(0);
   const [touchPosition, setTouchPosition] = useState<number | null>(null);
-  const [autoPlay, setAutoPlay] = useState<boolean>(false);
+  const [autoPlay] = useState<boolean>(true);
 
   const changeSlide = (direction: number = 1): void => {
-    let slideNumber = 0;
+    let slideNumber = (slide + direction) % items.length;
 
-    if (slide + direction < 0) {
+    if (slideNumber < 0) {
       slideNumber = items.length - 1;
-    } else {
-      slideNumber = (slide + direction) % items.length;
     }
 
     setSlide(slideNumber);
@@ -28,13 +26,13 @@ const Slider: FC = () => {
     setSlide(number % items.length);
   };
 
-  const handleTouchStart = (event: any): void => {
+  const handleTouchStart :TouchEventHandler<HTMLDivElement> = (event): void => {
     const touchDown = event.touches[0].clientX;
 
     setTouchPosition(touchDown);
   };
 
-  const handleTochMove = (event: any): void => {
+  const handleTouchMove: TouchEventHandler<HTMLDivElement> = (event): void => {
     if (!touchPosition) return;
 
     const currentPosition = event.touches[0].clientX;
@@ -52,35 +50,61 @@ const Slider: FC = () => {
   };
 
   useEffect(() => {
-    let interval: any = setInterval(() => changeSlide(1), 5000);
+    let interval: any;
+
+    if (autoPlay) {
+      interval = setInterval(() => changeSlide(1), 5000);
+    }
 
     return () => clearInterval(interval);
   }, [items.length, slide, autoPlay]);
 
   return (
-    <div className="slider">
-      <button
-        className="slider__button slider__button--prev"
-        onClick={() => changeSlide(-1)}
-      >
-        <img src="ui/arrowLeft.svg" alt="" />
-      </button>
-      <div className="slider__content">
-        {/* <img src='ui/Banner.png' alt="" /> */}
-        {items.map(slide => (
-            <div 
-                className='slider__slide' 
-            >
-                <img className='slide__img' src={slide} alt="" />
-            </div>
+    <div
+      className="slider"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+    >
+      <div className="slider__body">
+        <button
+          className="slider__button slider__button--prev"
+          onClick={() => changeSlide(-1)}
+        >
+          <img src="ui/arrowLeft.svg" alt="" />
+        </button>
+
+        <div className="slider__slides">
+          {items.map((color) => (
+            <div
+              key={color}
+              className="slider__slide"
+              style={{
+                backgroundColor: color,
+                transform: `translateX(-${slide * 100}%)`,
+              }}
+            ></div>
+          ))}
+        </div>
+
+        <button
+          className="slider__button slider__button--next"
+          onClick={() => changeSlide(1)}
+        >
+          <img src={sliderData.arrowRight} alt="" />
+        </button>
+      </div>
+
+      <div className="slider__dots">
+        {items.map((item, index) => (
+          <button
+            key={item}
+            className={`slider__dot ${
+              index === slide ? 'slider__dot--active' : ''
+            }`}
+            onClick={() => goToSlide(index)}
+          ></button>
         ))}
       </div>
-      <button
-        className="slider__button slider__button--next"
-        onClick={() => changeSlide(1)}
-      >
-        <img src={sliderData.arrowRight} alt="" />
-      </button>
     </div>
   );
 };
