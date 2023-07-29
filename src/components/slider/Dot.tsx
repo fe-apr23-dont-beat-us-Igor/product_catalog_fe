@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { FC } from 'react';
 
-const Dot = () => {
+type Props = {
+  isActive: boolean;
+};
+
+const Dot: FC<Props> = ({ isActive }) => {
   return (
-    <div>Dot</div>
-  )
-}
+    <button
+      className={`slider__dot ${isActive && 'slider__dot--active'}`}
+    ></button>
+  );
+};
 
 export default Dot;
