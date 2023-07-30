@@ -14,7 +14,7 @@ const App: FC = () => {
         <Outlet />
       </div>
       <Footer />
-
+    <Dropdown />
     </div>
   );
 };
