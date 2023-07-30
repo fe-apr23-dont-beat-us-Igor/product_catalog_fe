@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
       <div className="nav-and-logo">
         <Link to='/home' className="logo">
           <img
-            src="/images/logo.svg"
+            src="/images/Logo.svg"
             alt="Nice Gadgets logo"
             className="logo-img"
           />

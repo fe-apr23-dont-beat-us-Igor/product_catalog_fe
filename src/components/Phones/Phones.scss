@@ -24,8 +24,23 @@ $gray-secondary: #89939A;
   font-style: normal;
   font-weight: 600;
   line-height: 21px;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
   display: block;
+}
+
+.dropdown-container {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  &__text {
+    color: #89939A;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
 }
 
 .phones-list {

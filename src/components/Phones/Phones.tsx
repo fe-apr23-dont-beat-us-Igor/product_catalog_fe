@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import './Phones.scss';
 import { Card } from "../Card";
 import { Link } from "react-router-dom";
+import Dropdown from "../Dropdown/Dropdown";
 
 export interface Phone {
   age: number,
@@ -52,6 +53,20 @@ export const Phones: React.FC = () => {
         <span className="phones-count">
           {phonesFromServer.length} models
         </span>
+        <div className="dropdown-container">
+          <div className="dropdown-container__sortBy">
+            <span className="dropdown-container__text">
+              Sort By
+            </span>
+            <Dropdown />
+          </div>
+          <div className="dropdown-container__itemsOnPage">
+            <span className="dropdown-container__text">
+              Items On Page
+            </span>
+            <Dropdown />
+          </div>
+        </div>
         <div className="phones-list">
           {phonesFromServer.map(phone => (
             <Card key={phone.id} phone={phone} />
