@@ -31,7 +31,7 @@ export const Footer: FC = () => {
               Back to top
               <a href='#' className='back-to-top__button'>
                 <img 
-                  src='/images/arrow-up.svg' 
+                  src="/images/arrow-up.svg"
                   alt='Move Top' 
                   className='back-to-top__pic'
                 />
