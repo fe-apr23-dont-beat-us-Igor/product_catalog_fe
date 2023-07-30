@@ -43,7 +43,8 @@ $gray-secondary: #89939A;
     }
 
     @media screen and (min-width: 1440px) {
-      margin-left: 64px;
+      margin-left: 48px;
+      line-height: 64px;
     }
   }
 
@@ -73,6 +74,14 @@ $gray-secondary: #89939A;
       left: 0;
       height: 3px;
       border-radius: 8px;
+    
+      @media screen and (min-width: 600px) {
+        bottom: -8px;
+      }
+
+      @media screen and (min-width: 1440px) {
+        bottom: 0px;
+      }
     }
   }
 }
@@ -89,6 +98,11 @@ $gray-secondary: #89939A;
   align-items: center;
   box-shadow: -1px 0px 0px 0px #E2E6E9;
 
+  @media screen and (min-width: 600px) {
+    width: 64px;
+    height: 64px;
+  }
+  
   &--cart {
     display: none;
   

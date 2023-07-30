@@ -30,9 +30,9 @@ $gray-secondary: #89939A;
 
 .dropdown-container {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   margin-bottom: 24px;
-
+  
   &__text {
     color: #89939A;
     font-family: Montserrat;
@@ -40,6 +40,10 @@ $gray-secondary: #89939A;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+  }
+
+  &__item {
+    width: 140px;
   }
 }
 

@@ -54,13 +54,13 @@ export const Phones: React.FC = () => {
           {phonesFromServer.length} models
         </span>
         <div className="dropdown-container">
-          <div className="dropdown-container__sortBy">
+          <div className="dropdown-container__item">
             <span className="dropdown-container__text">
               Sort By
             </span>
             <Dropdown />
           </div>
-          <div className="dropdown-container__itemsOnPage">
+          <div className="dropdown-container__item">
             <span className="dropdown-container__text">
               Items On Page
             </span>
