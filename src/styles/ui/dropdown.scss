@@ -1,0 +1,46 @@
+.dropdown {
+  @include buttonTypo;
+  width: 140px;
+  height: 40px;
+  top: 19px;
+  border: 1px solid $elements-color;
+  border-radius: 10px;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px 12px;
+  border: 1px solid $elements-color;
+  border-radius: 4px;
+  background-color: $white;
+
+  background-image: $arrow-down-icon;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  outline: none;
+
+  &--active {
+    background-image: $arrow-up-icon;
+  }
+
+  &--focus {
+    outline: 2px solid $secondary-color;
+  }
+
+  &__item {
+    display: block;
+    padding: 10px 12px;
+
+    color: $secondary-color;
+    background-color: $white;
+    padding: 10px 12px;
+  }
+
+  &__text {
+    margin: 10px 12px;
+  }
+
+  @include onPortable {
+    width: 180px;
+  }
+}
