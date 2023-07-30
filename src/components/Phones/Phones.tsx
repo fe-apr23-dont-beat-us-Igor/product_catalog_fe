@@ -3,7 +3,7 @@ import './Phones.scss';
 import { Card } from "../Card";
 import { Link } from "react-router-dom";
 
-interface Phone {
+export interface Phone {
   age: number,
   type: string,
   id: string,
@@ -29,32 +29,35 @@ export const Phones: React.FC = () => {
   return (
     <>
       <div className="phones-container">
-        <div className="tracking">
+        <div className="breadcrumbs">
           <Link to='/home'>
             <img
               src="/images/Home.svg"
               alt="home-icon"
-              className="tracking__home-icon"
+              className="breadcrumbs__home-icon"
             />
           </Link>
           <img
-            src="/images/Chevron (Arrow Right).svg"
+            src="/images/arrow-right.svg"
             alt="arrow-icon"
-            className="tracking__arrow"
+            className="breadcrumbs__arrow"
           />
           <Link to='/phones'>
-            <span className="tracking__text">Phones</span>
+            <span className="breadcrumbs__text">Phones</span>
           </Link>
         </div>
         <h1 className="catalog-title">
           Mobile phones
         </h1>
+        <span className="phones-count">
+          {phonesFromServer.length} models
+        </span>
         <div className="phones-list">
           {phonesFromServer.map(phone => (
-            <Card />
+            <Card key={phone.id} phone={phone} />
           ))}
         </div>
       </div>
     </>
   );
-}
+};
