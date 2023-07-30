@@ -10,7 +10,7 @@ const options = [
   'option6',
 ];
 
-const Dropdown: FC = () => {
+export const Dropdown: FC = () => {
   const [selectedOption, setSelectedOption] = useState('Option 0');
   const [isActive, setIsActive] = useState<boolean>(false);
 
