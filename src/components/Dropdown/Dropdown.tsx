@@ -1,4 +1,6 @@
 import { FC, MouseEventHandler, useState } from 'react';
+import classnames from 'classnames';
+
 import './dropdown.scss';
 
 const options = [
@@ -37,7 +39,10 @@ export const Dropdown: FC = () => {
         </a>
       </div>
       <div
-        className={`select__content select__content${isActive ? '--active' : '--hidden'}`}
+        className={classnames(`select__content`, {
+          'select__content--active': isActive,
+          'select__content--hidden': !isActive,
+        })}
       >
         {options.map((option) => (
           <a
