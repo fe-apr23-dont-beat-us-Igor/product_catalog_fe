@@ -1,26 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Montserrat:wght@400;600;700&display=swap');
+
+
 p,
 h1 {
   margin: 0;
 }
 
-@font-face {
-  font-family: Mont;
-  // src: url(./fonts/Mont-Regular.otf);
-}
-
-@font-face {
-  font-family: Mont;
-  font-weight: bold;
-  // src: url(./fonts/Mont-Bold.otf);
-}
-
-@font-face {
-  font-family: Mont;
-  font-weight: 600;
-  // src: url(./fonts/Mont-SemiBold.otf);
-}
-
 .card {
+  font-family: Montserrat;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

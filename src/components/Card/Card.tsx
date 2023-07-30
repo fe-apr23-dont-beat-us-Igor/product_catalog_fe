@@ -1,7 +1,23 @@
 import React from 'react';
 import './Card.scss';
 
-export const Card: React.FC = () => {
+import { Phone } from '../Phones/Phones';
+
+interface Props {
+  phone: Phone;
+}
+
+
+export const Card: React.FC<Props> = ({ phone }) => {
+  const {
+    name,
+    price,
+    capacity,
+    ram,
+    discount,
+    screen,
+  } = phone;
+  
   return (
     <article className="card" data-qa="card">
       <img
@@ -10,16 +26,16 @@ export const Card: React.FC = () => {
         alt="APPLE A1419 iMac 27"
       />
       <h1 className="card__name">
-        Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+        {name}
       </h1>
 
       <div className="card__price">
         <p className="card__price-new">
-          $799
+          {price}$
         </p>
 
         <p className="card__price-old">
-          $999
+          {discount}
         </p>
       </div>
 
@@ -32,7 +48,7 @@ export const Card: React.FC = () => {
           </p>
 
           <p className="card__char-number">
-            6.5” OLED
+            {screen}
           </p>
         </div>
 
@@ -42,7 +58,7 @@ export const Card: React.FC = () => {
           </p>
 
           <p className="card__char-number">
-            64 GB
+            {capacity}
           </p>
         </div>
 
@@ -52,7 +68,7 @@ export const Card: React.FC = () => {
           </p>
 
           <p className="card__char-number">
-            4 GB
+            {ram}
           </p>
         </div>
       </div>
