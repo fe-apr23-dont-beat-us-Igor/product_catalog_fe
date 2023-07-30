@@ -22,7 +22,7 @@ export const Phones: React.FC = () => {
   const [phonesFromServer, setPhonesFromServer] = useState<Phone[]>([]);
 
   useEffect(() => {
-    fetch('https://mate-academy.github.io/react_phone-catalog/api/products.json')
+    fetch('https://product-catalog-be-1l77.onrender.com/products')
       .then(res => res.json())
       .then(phones => setPhonesFromServer(phones));
   }, []);
