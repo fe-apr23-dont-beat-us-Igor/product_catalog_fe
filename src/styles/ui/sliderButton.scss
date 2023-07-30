@@ -1,5 +1,3 @@
-$arrow: url('../../images/arrowRight.svg');
-
 .sliderButton {
   @include flex-center;
   @include draw-Circle(32px, 32px);
@@ -8,7 +6,7 @@ $arrow: url('../../images/arrowRight.svg');
   cursor: pointer;
   position: relative;
 
-  background-image: $arrow;
+  background-image: $arrow-right-icon;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
