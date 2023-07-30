@@ -38,7 +38,7 @@ export const Phones: React.FC = () => {
             />
           </Link>
           <img
-            src="/images/Chevron (Arrow Right).svg"
+            src="/images/arrow-right.svg"
             alt="arrow-icon"
             className="tracking__arrow"
           />
@@ -57,4 +57,4 @@ export const Phones: React.FC = () => {
       </div>
     </>
   );
-}
+};
