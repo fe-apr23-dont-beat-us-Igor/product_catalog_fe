@@ -8,8 +8,8 @@ export const Footer: FC = () => {
         <div className='footer__content'>
           <a href='/' className='footer__logo'>
             <img 
-              src="/images/Logo.svg"
-              alt='NiceGadgets'
+              src="/images/logo.svg"
+              alt="Nice Gadgets logo"
               className='footer__logo-pic'
             />
           </a>
@@ -31,7 +31,7 @@ export const Footer: FC = () => {
               Back to top
               <a href='#' className='back-to-top__button'>
                 <img 
-                  src='/images/Chevron (Arrow Up).svg' 
+                  src='/images/arrow-up.svg' 
                   alt='Move Top' 
                   className='back-to-top__pic'
                 />

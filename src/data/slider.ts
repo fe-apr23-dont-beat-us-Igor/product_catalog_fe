@@ -1,5 +1,5 @@
 export const sliderData = {
-    arrowRight: 'ui/arrowRight.svg',
-    arrowLeft: 'ui/arrowLeft.svg',
-    banner: 'ui/Banner.png',
+    arrowRight: '/images/arrowRightSlider.svg',
+    arrowLeft: '/images/arrowLeftSlider.svg',
+    banner: '/images/photos/Banner.png',
 };
