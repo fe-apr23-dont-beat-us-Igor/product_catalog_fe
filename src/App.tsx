@@ -13,6 +13,8 @@ const App: FC = () => {
         <Outlet />
       </div>
       <Footer />
+
+      <div className="likeButton "></div>
     </div>
   );
 };
