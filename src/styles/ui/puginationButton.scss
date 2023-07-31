@@ -1,9 +1,10 @@
-.pugButton {
+.puginationButton {
   @include flex-center;
   @include draw-Circle(32px, 32px);
   border: 1px solid $elements-color;
   transform: all 0.5 ease;
   cursor: pointer;
+  background-color: transparent;
 
   &:hover {
     border: 1px solid $primary-color;
@@ -13,10 +14,9 @@
     color: $white;
     border: none;
     &:hover {
-        border: none;
+      border: none;
     }
   }
 }
 
-
-//<div className="pugButton pugButton--selected"><p className="text">1</p></div> 
+// <div className="puginationButton puginationButton--selected"><p className="text">1</p></div>

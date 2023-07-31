@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
-const BASE_URL = '';
+const BASE_URL = 'https://product-catalog-be-1l77.onrender.com';
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
@@ -12,7 +12,7 @@ function request<T>(
   const config: AxiosRequestConfig = {
     url: BASE_URL + url,
     method,
-    withCredentials: true,
+    // withCredentials: true,
   };
 
   if (data) {
