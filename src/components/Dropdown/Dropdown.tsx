@@ -4,16 +4,22 @@ import classnames from 'classnames';
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
   options: string[];
+  setValue: (value: string) => void;
 }
 
-export const Dropdown: FC<Props> = ({ label, options }) => {
-  const [dropdownedOption, setdropdownedOption] = useState('Option 0');
+export const Dropdown: FC<Props> = ({ label, options, setValue}) => {
+  const [currentOptionId, setcurrentOptionId] = useState(0);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [perPage, setPerPage] = useState(16);
 
-  const handleOptionChange = (event: any, option: string) => {
+  const controleDropdownValue = (value: string) => {
+    setValue(value);
+  };
+
+  const handleOptionChange = (event: any, option: number) => {
     event.preventDefault();
-    setdropdownedOption(option);
+    setcurrentOptionId(option);
+    controleDropdownValue(options[currentOptionId]);
     setIsActive(false);
   };
 
@@ -23,7 +29,7 @@ export const Dropdown: FC<Props> = ({ label, options }) => {
   };
 
   return (
-    <div>
+    <div style={{ display: 'inline-block' }} >
       <p className="small-text dropdown__label">{label}</p>
       <article
         className={classnames('dropdown', {
@@ -36,7 +42,7 @@ export const Dropdown: FC<Props> = ({ label, options }) => {
             data-default="Option 0"
             onClick={openDropDown}
           >
-            <p>{dropdownedOption}</p>
+            <p>{options[currentOptionId]}</p>
           </a>
         </div>
         <div
@@ -45,11 +51,11 @@ export const Dropdown: FC<Props> = ({ label, options }) => {
             'dropdown__content--hidden': !isActive,
           })}
         >
-          {options.map((option) => (
+          {options.map((option, index) => (
             <a
               href=""
               className="dropdown--link dropdown__item"
-              onClick={(event) => handleOptionChange(event, option)}
+              onClick={(event) => handleOptionChange(event, index)}
             >
               {option}
             </a>
