@@ -1,13 +1,9 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import logo from '../../images/logo.svg';
-import like from '../../images/Like.svg';
-import cart from '../../images/Cart.svg';
-import burger from '../../images/Menu.svg';
+import { img } from '../../images/images';
 
 const pages = ['HOME', 'PHONES', 'TABLETS', 'ACCESSORIES'];
-
 
 export const Header: FC = () => {
   return (
@@ -15,8 +11,7 @@ export const Header: FC = () => {
       <div className="nav-and-logo">
         <Link to="/home" className="logo">
           <img
-            // src="/images/Logo.svg"
-            src={logo}
+            src={img.logo}
             alt="Nice Gadgets logo"
             className="logo-img"
           />
@@ -38,17 +33,17 @@ export const Header: FC = () => {
       <div className="side-buttons">
         <div className="side-button side-button--burger">
           <a href="#">
-            <img src={burger} alt="burger-icon" />
+            <img src={img.menu} alt="burger-icon" />
           </a>
         </div>
         <div className="side-button side-button--favourites">
           <a href="#">
-            <img src={like} alt="favourites-icon" />
+            <img src={img.like} alt="favourites-icon" />
           </a>
         </div>
         <div className="side-button side-button--cart">
           <a href="#">
-            <img src={cart} alt="cart-icon" />
+            <img src={img.cart} alt="cart-icon" />
           </a>
         </div>
       </div>

@@ -5,6 +5,7 @@ import Dropdown from '../Dropdown/Dropdown';
 import Card from '../Card/Card';
 import { Pagination } from '../Pagination/Pagination';
 import { getPhones } from '../../api/api';
+import { img } from '../../images/images';
 
 const options = [
   'option1',
@@ -42,13 +43,13 @@ export const Catalog: React.FC = () => {
         <div className="breadcrumbs">
           <Link to="/home">
             <img
-              src="/images/Home.svg"
+              src={img.home}
               alt="home-icon"
               className="breadcrumbs__home-icon"
             />
           </Link>
           <img
-            src="/images/arrow-right.svg"
+            src={img.arrowRight}
             alt="arrow-icon"
             className="breadcrumbs__arrow"
           />

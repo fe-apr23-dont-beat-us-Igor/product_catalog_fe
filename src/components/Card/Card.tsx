@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Phone } from '../Catalog/Catalog';
 import Button from '../UI/Button';
 import LikeButton from '../UI/LikeButton';
+import { img } from '../../images/images';
 
 interface Props {
   phone: Phone | any;
@@ -21,7 +22,7 @@ export const Card: FC<Props> = ({ phone }) => {
     <article className="card" data-qa="card">
       <img
         className="card__image"
-        src="./images/image 2.png"
+        src={img.phone}
         alt="APPLE A1419 iMac 27"
       />
       <p className="card__name">{name}</p>

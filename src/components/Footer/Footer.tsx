@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import logo from '../../images/logo.svg';
+import { img } from '../../images/images';
 
 export const Footer: FC = () => {
   return (
@@ -7,7 +7,7 @@ export const Footer: FC = () => {
       <div className='footer__content container'>
         <a href='/' className='footer__logo'>
           <img 
-            src={logo}
+            src={img.logo}
             alt="Nice Gadgets logo"
             className='footer__logo-pic'
           />
@@ -30,8 +30,8 @@ export const Footer: FC = () => {
             Back to top
             <a href='#' className='back-to-top__button'>
               <img 
-                src="/images/arrow-up.svg"
-                alt='Move Top' 
+                src={img.arrowUp}
+                alt='Move Top'
                 className='back-to-top__pic'
               />
             </a>
