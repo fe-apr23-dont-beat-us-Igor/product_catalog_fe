@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import './Phones.scss';
+import './Catalog.scss';
 import { Card } from "../Card";
 import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown/Dropdown";
@@ -18,7 +18,7 @@ export interface Phone {
   ram: string,
 }
 
-export const Phones: React.FC = () => {
+export const Catalog: React.FC = () => {
   const [phonesFromServer, setPhonesFromServer] = useState<Phone[]>([]);
 
   useEffect(() => {
