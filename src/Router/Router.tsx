@@ -1,9 +1,10 @@
 import { createHashRouter as CreateRouter } from "react-router-dom";
-import App from "../../App";
-import Slider from "../slider/Slider";
-import { Catalog } from "../Catalog/Catalog";
-import { NotFoundRedirect } from "../NotFoundPage/NotFoundRedirect";
-import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
+import App from "../App";
+import { Catalog } from "../components/Catalog/Catalog";
+import { NotFoundRedirect } from "../components/NotFoundPage/NotFoundRedirect";
+import { NotFoundPage } from "../components/NotFoundPage/NotFoundPage";
+import Home from "../pages/Home";
+import Leyout from "../pages/Leyout";
 
 export const router = CreateRouter([
   {
@@ -13,7 +14,7 @@ export const router = CreateRouter([
     children: [
       {
         path: "/home",
-        element: <Slider />,
+        element: <Home />
       },
       {
         path: "/phones",
