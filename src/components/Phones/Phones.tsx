@@ -4,6 +4,8 @@ import { Card } from "../Card/Card";
 import { Link } from "react-router-dom";
 import { Pagination } from "../Pagination/Pagination";
 
+import { img } from '../../images/images';
+
 interface Phone {
   age: number,
   type: string,
@@ -34,13 +36,13 @@ export const Phones: React.FC = () => {
         <div className="tracking">
           <Link to='/home'>
             <img
-              src="/images/Home.svg"
+              src={img.home}
               alt="home-icon"
               className="tracking__home-icon"
             />
           </Link>
           <img
-            src="/images/Chevron (Arrow Right).svg"
+            src={img.arrowRight}
             alt="arrow-icon"
             className="tracking__arrow"
           />
