@@ -19,7 +19,7 @@ export const Dropdown: FC<Props> = ({ label, options, setValue}) => {
   const handleOptionChange = (event: any, option: number) => {
     event.preventDefault();
     setcurrentOptionId(option);
-    controleDropdownValue(options[currentOptionId]);
+    controleDropdownValue(options[option]);
     setIsActive(false);
   };
 
