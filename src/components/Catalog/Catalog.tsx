@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import './Catalog.scss';
-import { Card } from "../Card";
 import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown/Dropdown";
+import Card from "../Card/Card";
 
 export interface Phone {
   age: number,
@@ -29,7 +29,7 @@ export const Catalog: React.FC = () => {
 
   return (
     <>
-      <div className="phones-container">
+      <div className="phones-container ">
         <div className="breadcrumbs">
           <Link to='/home'>
             <img
