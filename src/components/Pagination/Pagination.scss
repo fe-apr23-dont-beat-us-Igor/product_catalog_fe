@@ -1,0 +1,122 @@
+.pagination__container {
+    display: flex;
+    justify-content: center;
+    margin: 40px auto 80px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    &__item {
+        list-style-type: none;
+    }
+}
+
+.page__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    color:  #0f0f11;
+    border: solid 1.5px #b4bdc3;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 600;
+
+    &:hover {
+        border-color: #0f0f11;
+        cursor: pointer;
+    }
+
+    &__selected {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border: solid 1.5px #0f0f11;
+        border-radius: 50%;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        background-color: #0f0f11;
+    }
+}
+
+.arrow__left {
+  margin-right: 16px;
+  display: inline-block;
+  line-height: 34px;
+  height: 32px;
+  font-size: 16px;
+  text-align: center;
+  color: #0f0f11;
+  width: 32px;
+  border: solid 1.5px #89939a;
+  border-radius: 50%;
+  background-image: url('../../images/Chevron\ \(Arrow\ Left\).svg');
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border-color: #0f0f11;
+    cursor: pointer;
+  }
+
+  &__disabled {
+    margin-right: 16px;
+    display: inline-block;
+    line-height: 34px;
+    height: 32px;
+    font-size: 16px;
+    text-align: center;
+    color: #0f0f11;
+    width: 32px;
+    border: solid 1.5px  #e2e6e9;
+    border-radius: 50%;
+    background-image: url('../../images/Chevron\ \(Arrow\ Left\).svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.arrow__right {
+  margin-left: 16px;
+  display: inline-block;
+  line-height: 34px;
+  height: 32px;
+  font-size: 16px;
+  text-align: center;
+  color: #0f0f11;
+  width: 32px;
+  border: solid 1.5px #89939a;
+  border-radius: 50%;
+  background-image: url('../../images/Chevron\ \(Arrow\ Right\).svg');
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border-color: #0f0f11;
+    cursor: pointer;
+  }
+
+  &__disabled {
+    margin-left: 16px;
+    display: inline-block;
+    line-height: 34px;
+    height: 32px;
+    font-size: 16px;
+    text-align: center;
+    color: #0f0f11;
+    width: 32px;
+    border: solid 1.5px  #e2e6e9;
+    border-radius: 50%;
+    background-image: url('../../images/Chevron\ \(Arrow\ Right\).svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
