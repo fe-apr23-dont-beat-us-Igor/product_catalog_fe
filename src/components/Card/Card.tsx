@@ -7,7 +7,6 @@ interface Props {
   phone: Phone;
 }
 
-
 export const Card: React.FC<Props> = ({ phone }) => {
   const {
     name,
