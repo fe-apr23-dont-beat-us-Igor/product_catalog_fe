@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import './Header.scss';
 
 import logo from '../../images/logo.svg';
+import like from '../../images/Like.svg';
+import cart from '../../images/Cart.svg';
+import burger from '../../images/Menu.svg';
 
 const pages = ['HOME', 'PHONES', 'TABLETS', 'ACCESSORIES'];
 
@@ -36,17 +38,17 @@ export const Header: FC = () => {
       <div className="side-buttons">
         <div className="side-button side-button--burger">
           <a href="#">
-            <img src="/images/Menu.svg" alt="burger-icon" />
+            <img src={burger} alt="burger-icon" />
           </a>
         </div>
         <div className="side-button side-button--favourites">
           <a href="#">
-            <img src="/images/Like.svg" alt="favourites-icon" />
+            <img src={like} alt="favourites-icon" />
           </a>
         </div>
         <div className="side-button side-button--cart">
           <a href="#">
-            <img src="/images/Cart.svg" alt="cart-icon" />
+            <img src={cart} alt="cart-icon" />
           </a>
         </div>
       </div>
