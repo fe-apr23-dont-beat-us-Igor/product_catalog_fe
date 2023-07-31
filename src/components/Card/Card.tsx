@@ -4,7 +4,7 @@ import Button from '../UI/Button';
 import LikeButton from '../UI/LikeButton';
 
 interface Props {
-  phone: Phone;
+  phone: Phone | any;
 }
 
 export const Card: FC<Props> = ({ phone }) => {
