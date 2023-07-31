@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Phone } from '../Catalog/Catalog';
 import Card from '../Card/Card';
+import SliderButton from '../UI/SliderButton';
 
 const mockCard = [1, 2, 3, 4];
 
@@ -24,8 +25,8 @@ const GoodsSliderCollection: FC = () => {
       <div className="goodsSliderCollection__head">
         <h2>Brand new models</h2>
         <div className="goodsSliderCollection__buttons">
-          <div className="sliderButton sliderButton--left"></div>
-          <div className="sliderButton"></div>
+          <SliderButton left={true} />
+          <SliderButton left={false} />
         </div>
       </div>
       <div className="goodsSliderCollection__content">
@@ -33,7 +34,6 @@ const GoodsSliderCollection: FC = () => {
           <Card phone={phone} />
         ))}
       </div>
-
     </section>
   );
 };

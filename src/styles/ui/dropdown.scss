@@ -1,46 +1,76 @@
+$padding: 10px 12px;
+
 .dropdown {
   @include buttonTypo;
-  width: 140px;
-  height: 40px;
-  top: 19px;
+  // user-dropdown: none;
+  max-width: 140px;
+  max-height: 40px;
+
   border: 1px solid $elements-color;
   border-radius: 10px;
-
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  padding: 10px 12px;
-  border: 1px solid $elements-color;
-  border-radius: 4px;
   background-color: $white;
 
   background-image: $arrow-down-icon;
   background-repeat: no-repeat;
   background-position: right 12px center;
-  outline: none;
+  cursor: pointer;
 
-  &--active {
+  &--opened {
     background-image: $arrow-up-icon;
   }
 
-  &--focus {
-    outline: 2px solid $secondary-color;
+  position: relative;
+
+  &:hover,
+  &--active {
+    border: 1px solid $secondary-color;
+  }
+
+  &--link {
+    color: $primary-color;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+
+  &__label {
+    color: $secondary-color;
+    margin-bottom: 4px;
+  }
+
+  &__title {
+    padding: $padding;
+
+    &--link {
+      color: $primary-color;
+    }
   }
 
   &__item {
-    display: block;
-    padding: 10px 12px;
+    width: 140px;
+    padding: $padding;
+  }
 
-    color: $secondary-color;
+  &__content {
+    display: flex;
+    position: absolute;
+    top: 44px;
+    flex-direction: column;
+    max-width: 140px;
+    border: 1px solid $elements-color;
+    border-radius: 10px;
     background-color: $white;
-    padding: 10px 12px;
-  }
 
-  &__text {
-    margin: 10px 12px;
-  }
+    transition: opacity 0.3s ease-out;
 
-  @include onPortable {
-    width: 180px;
+    &--active {
+      opacity: 1;
+    }
+
+    &--hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 }

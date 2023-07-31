@@ -6,7 +6,7 @@ type Props = {
   step: number
 };
 
-const SliderButton: FC<Props> = ({ step }) => {
+const SliderButton1: FC<Props> = ({ step }) => {
   const { changeSlide } = useSliderContext();
 
   return (
@@ -21,4 +21,4 @@ const SliderButton: FC<Props> = ({ step }) => {
   );
 };
 
-export default SliderButton;
+export default SliderButton1;

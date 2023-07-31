@@ -4,9 +4,10 @@ interface Phone {
   id: number;
 }
 
-export const getPhones = (page: number) => {
-  return client.get<Phone[]>(`/phones?page=${page}`);
+export const getPhones = () => {
+  return client.get<any[]>(`/products`);
 };
+  // return client.get<Phone[]>(`/phones?page=${page}`);
 
 type Category = string | '';
 

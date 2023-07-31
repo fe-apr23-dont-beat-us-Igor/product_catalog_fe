@@ -1,0 +1,52 @@
+.categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    margin-bottom: 24px;
+    // align-self: flex-start;
+
+    @include onPortable {
+        align-self: flex-start;
+    }
+  }
+
+  &__content {
+    @include onPortable {
+      display: flex;
+      gap: 16px;
+    }
+  }
+}
+
+.category {
+  box-sizing: border-box;
+  padding-bottom: 32px;
+  &__img {
+    width: auto;
+    height: auto;
+
+    @include onPortable {
+      width: 187px;
+      height: 187px;
+    }
+
+    @include onDesktop {
+      width: 368px;
+      height: 368px;
+    }
+  }
+  &__text-container {
+    max-width: 288px;
+    // word-wrap: break-word;
+  }
+
+  &__heading {
+    color: $primary-color;
+  }
+  &__text {
+    color: $secondary-color;
+  }
+}

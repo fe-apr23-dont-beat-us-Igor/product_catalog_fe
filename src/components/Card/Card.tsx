@@ -4,7 +4,7 @@ import Button from '../UI/Button';
 import LikeButton from '../UI/LikeButton';
 
 interface Props {
-  phone: Phone;
+  phone: Phone | any;
 }
 
 export const Card: FC<Props> = ({ phone }) => {
@@ -61,8 +61,8 @@ export const Card: FC<Props> = ({ phone }) => {
       </div>
 
       <div className="card__buttons">
-        <Button className="button-primary button-primary--selected" />
-        <LikeButton className="likeButton likeButton--selected" />
+        <Button selected={false} onClick={() => {}} />
+        <LikeButton selected={false} />
       </div>
     </article>
   );

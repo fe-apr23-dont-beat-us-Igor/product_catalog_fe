@@ -3,15 +3,18 @@ import { FC, ButtonHTMLAttributes } from 'react';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   // implement your logic in parent component
-  selected: boolean;
+  
+  left: boolean;
 }
 
-const LikeButton: FC<Props> = ({ selected, ...atributes }) => {
-  const className = classNames('likeButton', {
-    'likeButton--selected': selected,
+const SliderButton: FC<Props> = ({ left, ...atributes }) => {
+  const className = classNames('sliderButton ', {
+    'sliderButton--left': left,
   });
 
   return <button className={className} {...atributes}></button>;
 };
 
-export default LikeButton;
+export default SliderButton;
+
+// export default SliderButton;
