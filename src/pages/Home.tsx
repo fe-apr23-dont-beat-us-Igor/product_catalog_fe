@@ -5,7 +5,7 @@ import GoodsSliderCollection from '../components/GoodsSliderCollection/GoodsSlid
 const Home: FC = () => {
   return (
     <main className="container section">
-      <h1>Welcome to Nice Gadgets store!</h1>
+      <h1 className="header-margin">Welcome to Nice Gadgets store!</h1>
       <Slider />
       <GoodsSliderCollection />
       {/* <Category /> */}

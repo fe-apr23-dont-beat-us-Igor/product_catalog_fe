@@ -6,6 +6,16 @@ h1 {
   @include h1;
 }
 
+.header-margin {
+  margin-bottom: 24px;
+  @include onPortable {
+    margin-bottom: 32px;
+  }
+  @include onDesktop {
+    margin-bottom: 56px;
+  }
+}
+
 h2 {
   @include h2;
 }
@@ -19,7 +29,7 @@ h4 {
 }
 
 .text {
-    @include text;
+  @include text;
 }
 
 .small-text {
@@ -42,13 +52,13 @@ h4 {
 
 .section {
   padding: 0 16px;
-  margin-top: 56px;
+  margin-bottom: 56px;
 
   @include onPortable {
     padding: 0;
-    margin-top: 64px;
+    margin-bottom: 64px;
   }
   @include onDesktop {
-    margin-top: 80px;
+    margin-bottom: 80px;
   }
 }

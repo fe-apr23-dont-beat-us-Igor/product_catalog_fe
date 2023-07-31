@@ -12,7 +12,7 @@ const SliderContent: FC = () => {
   
   return (
     <div
-      className="slider"
+      className="slider section"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
     >
