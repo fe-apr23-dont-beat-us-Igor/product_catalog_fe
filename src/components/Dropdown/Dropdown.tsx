@@ -19,6 +19,7 @@ const options = [
 export const Dropdown: FC = (/*{ options = mockOptions } */) => {
   const [selectedOption, setSelectedOption] = useState('Option 0');
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [perPage, setPerPage] = useState(16);
 
   const handleOptionChange = (event: any, option: string) => {
     event.preventDefault();
