@@ -32,6 +32,11 @@ export interface Phone {
 export const Catalog: React.FC = () => {
   const [phonesFromServer, setPhonesFromServer] = useState<Phone[]>([]);
 
+  /* Таким чином ти зробиш дропдаун контрольованим   */
+  const [dropdownValue, setDropdownValue] = useState('');
+  console.log(dropdownValue);
+  /* Таким чином ти зробиш дропдаун контрольованим   */
+
   useEffect(() => {
     getPhones().then(setPhonesFromServer);
   }, []);
@@ -59,8 +64,8 @@ export const Catalog: React.FC = () => {
         <h1 className="catalog-title">Mobile phones</h1>
         <span className="phones-count">{phonesFromServer.length} models</span>
         <div className="dropdown-container">
-          <Dropdown label={'Sort By'} options={options} />
-          <Dropdown label={'Items On Page'} options={options} />
+          <Dropdown label={'Sort By'} options={options} setValue={setDropdownValue}/>
+          <Dropdown label={'Items On Page'} options={options} setValue={setDropdownValue}/>
         </div>
         <div className="phones-list">
           {phonesFromServer.map((phone) => (
