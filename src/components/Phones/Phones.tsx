@@ -53,7 +53,7 @@ export const Phones: React.FC = () => {
         </h1>
         <div className="phones-list">
           {phonesFromServer.map(phone => (
-            <Card />
+            <Card phone={phone}/>
           ))}
         </div>
         <Pagination total={total} />
