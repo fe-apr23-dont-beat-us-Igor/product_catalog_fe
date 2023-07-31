@@ -1,4 +1,3 @@
-import './index.scss';
 import { FC } from 'react';
 import { sliderData } from '../../data/slider';
 import { SliderProvider, useSliderContext } from './SliderContext';
@@ -19,9 +18,9 @@ const SliderContent: FC = () => {
       onTouchMove={handleTouchMove}
     >
       <div className="slider__body">
-        <SliderButton icon={sliderData.arrowLeft} step={-1} />
+        <SliderButton step={-1} />
           <SlideList />
-        <SliderButton icon={sliderData.arrowRight} step={1} />
+        <SliderButton step={1} />
       </div>
 
       <DotList />
