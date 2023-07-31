@@ -1,29 +1,19 @@
-import { FC, MouseEventHandler, useState } from 'react';
+import { FC, MouseEventHandler, useState, SelectHTMLAttributes } from 'react';
 import classnames from 'classnames';
 
-import './dropdown.scss';
+interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
+  label: string;
+  options: string[];
+}
 
-const options = [
-  'option1',
-  'option2',
-  'option3',
-  'option4',
-  'option5',
-  'option6',
-];
-
-// type Props = {
-//   options: string[];
-// };
-
-export const Dropdown: FC = (/*{ options = mockOptions } */) => {
-  const [selectedOption, setSelectedOption] = useState('Option 0');
+export const Dropdown: FC<Props> = ({ label, options }) => {
+  const [dropdownedOption, setdropdownedOption] = useState('Option 0');
   const [isActive, setIsActive] = useState<boolean>(false);
   const [perPage, setPerPage] = useState(16);
 
   const handleOptionChange = (event: any, option: string) => {
     event.preventDefault();
-    setSelectedOption(option);
+    setdropdownedOption(option);
     setIsActive(false);
   };
 
@@ -33,36 +23,39 @@ export const Dropdown: FC = (/*{ options = mockOptions } */) => {
   };
 
   return (
-    <div
-      className={classnames('select', {
-        'select--opened': isActive,
-      })}
-    >
-      <div className="select__title">
-        <a
-          className="select__title--link"
-          data-default="Option 0"
-          onClick={openDropDown}
-        >
-          <p>{selectedOption}</p>
-        </a>
-      </div>
-      <div
-        className={classnames(`select__content`, {
-          'select__content--active': isActive,
-          'select__content--hidden': !isActive,
+    <div>
+      <p className="small-text dropdown__label">{label}</p>
+      <article
+        className={classnames('dropdown', {
+          'dropdown--opened': isActive,
         })}
       >
-        {options.map((option) => (
+        <div className="dropdown__title">
           <a
-            href=""
-            className="select--link select__item"
-            onClick={(event) => handleOptionChange(event, option)}
+            className="dropdown__title--link"
+            data-default="Option 0"
+            onClick={openDropDown}
           >
-            {option}
+            <p>{dropdownedOption}</p>
           </a>
-        ))}
-      </div>
+        </div>
+        <div
+          className={classnames(`dropdown__content`, {
+            'dropdown__content--active': isActive,
+            'dropdown__content--hidden': !isActive,
+          })}
+        >
+          {options.map((option) => (
+            <a
+              href=""
+              className="dropdown--link dropdown__item"
+              onClick={(event) => handleOptionChange(event, option)}
+            >
+              {option}
+            </a>
+          ))}
+        </div>
+      </article>
     </div>
   );
 };

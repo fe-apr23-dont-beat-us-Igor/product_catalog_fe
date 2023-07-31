@@ -30,21 +30,6 @@ $gray-secondary: #89939A;
 
 .dropdown-container {
   display: flex;
-  gap: 20px;
-  margin-bottom: 24px;
-  
-  &__text {
-    color: #89939A;
-    font-family: Montserrat;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
-
-  &__item {
-    width: 140px;
-  }
 }
 
 .phones-list {
