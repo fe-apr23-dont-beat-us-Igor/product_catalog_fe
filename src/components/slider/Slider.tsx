@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { sliderData } from '../../data/slider';
 import { SliderProvider, useSliderContext } from './SliderContext';
 import DotList from './DotList';
 import SliderButton from './SliderButton';
