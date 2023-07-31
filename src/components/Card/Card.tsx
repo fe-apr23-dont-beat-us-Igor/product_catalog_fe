@@ -29,9 +29,6 @@ export const Card: React.FC<Props> = ({ phone }) => {
 
       <div className="card__price">
 
-        <h3 className="card__price-new">{priceRegular}$</h3>
-
-        <h3 className="card__price-old">{priceDiscount}</h3>
         <p className="card__price-new">
           {priceRegular}$
         </p>
