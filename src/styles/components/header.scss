@@ -39,6 +39,7 @@
 
   &__link {
     @include uppercase;
+    color: $secondary-color;
 
     @include onPortable {
       font-size: 11px;
