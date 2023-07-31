@@ -1,7 +1,17 @@
-$card-width: 272px;
+$card-width: 212px;
+
+@include onPortable {
+  $card-width: 240px;
+}
+
+@include onDesktop {
+  $card-width: 272px;
+}
+
 $gap: 16px;
 
 .goodsSliderCollection {
+  
   &__head {
     display: flex;
     justify-content: space-between;
@@ -16,11 +26,11 @@ $gap: 16px;
   &__content {
     display: flex;
     gap: $gap;
-    max-width: $card-width * 1.5 + $gap * 1.5;
+    // max-width: $card-width * 1.5 + $gap * 1.5;
     overflow: hidden;
 
     @include onPortable {
-      max-width: $card-width * 2.5 + $gap * 2.5;
+      // max-width: $card-width * 2.5 + $gap;
     }
     @include onDesktop {
       max-width: 100%;
