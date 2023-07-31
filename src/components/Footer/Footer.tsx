@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import './Footer.scss';
 
+import logo from '../../images/logo.svg';
+
 export const Footer: FC = () => {
   return (
     <footer className='page__section footer section'>
@@ -8,7 +10,7 @@ export const Footer: FC = () => {
         <div className='footer__content'>
           <a href='/' className='footer__logo'>
             <img 
-              src="/images/Logo.svg"
+              src={logo}
               alt="Nice Gadgets logo"
               className='footer__logo-pic'
             />

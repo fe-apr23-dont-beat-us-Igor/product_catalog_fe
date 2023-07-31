@@ -1,7 +1,7 @@
 import { createHashRouter as CreateRouter } from "react-router-dom";
 import App from "../../App";
 import Slider from "../slider/Slider";
-import { Phones } from "../Phones/Phones";
+import { Catalog } from "../Catalog/Catalog";
 import { NotFoundRedirect } from "../NotFoundPage/NotFoundRedirect";
 import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
 
@@ -17,7 +17,7 @@ export const router = CreateRouter([
       },
       {
         path: "/phones",
-        element: <Phones/>,
+        element: <Catalog />,
       },
       {
         path: "tablets",

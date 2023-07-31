@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.scss';
 
-import { Phone } from '../Phones/Phones';
+import { Phone } from '../Catalog/Catalog';
 
 interface Props {
   phone: Phone;
