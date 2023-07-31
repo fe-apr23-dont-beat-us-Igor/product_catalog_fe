@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Card } from '../Card';
 import { Phone } from '../Catalog/Catalog';
+import Card from '../Card/Card';
 
 const mockCard = [1, 2, 3, 4];
 
@@ -33,6 +33,7 @@ const GoodsSliderCollection: FC = () => {
           <Card phone={phone} />
         ))}
       </div>
+
     </section>
   );
 };
