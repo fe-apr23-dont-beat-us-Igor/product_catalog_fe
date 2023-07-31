@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { Phone } from '../Catalog/Catalog';
 import Button from '../UI/Button';
 import LikeButton from '../UI/LikeButton';
@@ -7,7 +7,7 @@ interface Props {
   phone: Phone;
 }
 
-export const Card: React.FC<Props> = ({ phone }) => {
+export const Card: FC<Props> = ({ phone }) => {
   const {
     name,
     priceRegular,
