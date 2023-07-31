@@ -12,7 +12,11 @@ const options = [
   'option6',
 ];
 
-export const Dropdown: FC = () => {
+// type Props = {
+//   options: string[];
+// };
+
+export const Dropdown: FC = (/*{ options = mockOptions } */) => {
   const [selectedOption, setSelectedOption] = useState('Option 0');
   const [isActive, setIsActive] = useState<boolean>(false);
 
@@ -28,7 +32,11 @@ export const Dropdown: FC = () => {
   };
 
   return (
-    <div className="select" data-state="active">
+    <div
+      className={classnames('select', {
+        'select--opened': isActive,
+      })}
+    >
       <div className="select__title">
         <a
           className="select__title--link"

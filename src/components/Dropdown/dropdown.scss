@@ -30,6 +30,10 @@ $padding: 10px 12px;
   background-position: right 12px center;
   cursor: pointer;
 
+  &--opened {
+    background-image: $arrow-up-icon;
+  }
+
   position: relative;
 
   &:hover,
@@ -69,7 +73,7 @@ $padding: 10px 12px;
     background-color: $white;
 
     transition: opacity 0.3s ease-out;
-    
+
     &--active {
       opacity: 1;
     }

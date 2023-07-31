@@ -1,15 +1,20 @@
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
+import logo from '../../images/logo.svg';
+
 const pages = ['HOME', 'PHONES', 'TABLETS', 'ACCESSORIES'];
 
-export const Header: React.FC = () => {
+
+export const Header: FC = () => {
   return (
     <header className="header">
       <div className="nav-and-logo">
-        <Link to='/home' className="logo">
+        <Link to="/home" className="logo">
           <img
-            src="/images/Logo.svg"
+            // src="/images/Logo.svg"
+            src={logo}
             alt="Nice Gadgets logo"
             className="logo-img"
           />
@@ -17,9 +22,9 @@ export const Header: React.FC = () => {
 
         <nav className="nav">
           <ul className="nav__list">
-            {pages.map(page => (
-              <li className='nav__item' key={page}>
-                <Link className='nav__link' to={page.toLowerCase()}>
+            {pages.map((page) => (
+              <li className="nav__item" key={page}>
+                <Link className="nav__link" to={page.toLowerCase()}>
                   {page}
                 </Link>
               </li>
@@ -36,21 +41,15 @@ export const Header: React.FC = () => {
         </div>
         <div className="side-button side-button--favourites">
           <a href="#">
-            <img
-              src="/images/Like.svg"
-              alt="favourites-icon"
-            />
+            <img src="/images/Like.svg" alt="favourites-icon" />
           </a>
         </div>
         <div className="side-button side-button--cart">
           <a href="#">
-            <img
-              src="/images/Cart.svg"
-              alt="cart-icon"
-            />
+            <img src="/images/Cart.svg" alt="cart-icon" />
           </a>
         </div>
       </div>
     </header>
   );
-}
+};
