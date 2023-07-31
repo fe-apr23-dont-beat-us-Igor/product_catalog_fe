@@ -10,10 +10,10 @@ interface Props {
 export const Card: React.FC<Props> = ({ phone }) => {
   const {
     name,
-    price,
+    priceRegular,
+    priceDiscount,
     capacity,
     ram,
-    discount,
     screen,
   } = phone;
   
@@ -30,11 +30,11 @@ export const Card: React.FC<Props> = ({ phone }) => {
 
       <div className="card__price">
         <p className="card__price-new">
-          {price}$
+          {priceRegular}$
         </p>
 
         <p className="card__price-old">
-          {discount}
+          {priceDiscount}$
         </p>
       </div>
 
