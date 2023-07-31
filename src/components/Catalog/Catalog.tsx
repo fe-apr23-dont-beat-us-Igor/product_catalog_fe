@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown/Dropdown";
 import Card from "../Card/Card";
 import { Pagination } from "../Pagination/Pagination";
+import { getPhones } from "../../api/api";
 
 export interface Phone {
   age: number,
@@ -23,9 +24,7 @@ export const Catalog: React.FC = () => {
   const [phonesFromServer, setPhonesFromServer] = useState<Phone[]>([]);
 
   useEffect(() => {
-    fetch('https://product-catalog-be-1l77.onrender.com/products')
-      .then(res => res.json())
-      .then(phones => setPhonesFromServer(phones));
+    getPhones().then(setPhonesFromServer);
   }, []);
 
   return (
