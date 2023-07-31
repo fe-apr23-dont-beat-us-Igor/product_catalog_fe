@@ -1,6 +1,18 @@
-const Button = ({ ...atributes }) => {
+import classNames from 'classnames';
+import { FC, ButtonHTMLAttributes } from 'react';
+
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+  // implement your logic in parent component
+  selected: boolean;
+}
+
+const Button: FC<Props> = ({ selected, ...atributes }) => {
+  const className = classNames('button-primary', {
+    'button-primary--selected': selected,
+  });
+
   return (
-    <button  {...atributes}>
+    <button className={className} {...atributes}>
       <p className="button-primary__text text">Add to card</p>
     </button>
   );
