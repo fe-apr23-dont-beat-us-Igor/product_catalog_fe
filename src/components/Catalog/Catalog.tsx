@@ -3,6 +3,7 @@ import './Catalog.scss';
 import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown/Dropdown";
 import Card from "../Card/Card";
+import { Pagination } from "../Pagination/Pagination";
 
 export interface Phone {
   age: number,
@@ -72,6 +73,8 @@ export const Catalog: React.FC = () => {
             <Card key={phone.id} phone={phone} />
           ))}
         </div>
+
+        {/* <Pagination total={1}/> */}
       </div>
     </>
   );
