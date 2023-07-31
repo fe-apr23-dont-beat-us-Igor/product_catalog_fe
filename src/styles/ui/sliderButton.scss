@@ -11,6 +11,10 @@
   background-repeat: no-repeat;
   background-size: 16px 16px;
 
+  &--left {
+    background-image: $arrow-left-icon;
+  }
+
   &:hover {
     border: 1px solid $primary-color;
   }

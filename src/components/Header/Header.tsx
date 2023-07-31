@@ -11,7 +11,7 @@ const pages = ['HOME', 'PHONES', 'TABLETS', 'ACCESSORIES'];
 
 export const Header: FC = () => {
   return (
-    <header className="header">
+    <header className="header header-margin">
       <div className="nav-and-logo">
         <Link to="/home" className="logo">
           <img
