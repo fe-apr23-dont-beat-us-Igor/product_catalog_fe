@@ -1,19 +1,29 @@
 {
   "files": {
-    "main.css": "/product_catalog_fe/static/css/main.53d45144.css",
-    "main.js": "/product_catalog_fe/static/js/main.54f48c8d.js",
-    "static/media/Favourites (Heart Like).svg": "/product_catalog_fe/static/media/Favourites (Heart Like).64b9fa0e577222a5a523.svg",
-    "static/media/Like.svg": "/product_catalog_fe/static/media/Like.a6ae19238c42da9bf9fc.svg",
-    "static/media/like-filled.svg": "/product_catalog_fe/static/media/like-filled.8b1d65a1130966068753.svg",
-    "static/media/arrow-down.svg": "/product_catalog_fe/static/media/arrow-down.a4cfb86798aae020bea9.svg",
+    "main.css": "/product_catalog_fe/static/css/main.9f39f325.css",
+    "main.js": "/product_catalog_fe/static/js/main.6db626d2.js",
+    "static/media/Banner.png": "/product_catalog_fe/static/media/Banner.71e7e0917555f044d60b.png",
+    "static/media/Accessories.png": "/product_catalog_fe/static/media/Accessories.1cb983c26ade30cbaad2.png",
+    "static/media/Tablets.png": "/product_catalog_fe/static/media/Tablets.d9e4618ab8722b17c24b.png",
+    "static/media/Phones.png": "/product_catalog_fe/static/media/Phones.213c126ea53dc20c6eb9.png",
+    "static/media/logo.svg": "/product_catalog_fe/static/media/logo.fc2da5fb7ad0f7f26d62d1624661cd7d.svg",
+    "static/media/Cart.svg": "/product_catalog_fe/static/media/Cart.0463874fa7338ffce131c991a273a3bf.svg",
+    "static/media/Like.svg": "/product_catalog_fe/static/media/Like.a6ae19238c42da9bf9fcd2bc5d33f5c6.svg",
+    "static/media/Home.svg": "/product_catalog_fe/static/media/Home.ece12b86618651cd0151f809302fb420.svg",
+    "static/media/Search.svg": "/product_catalog_fe/static/media/Search.36aa008082391f3cbb1eef4005360e8e.svg",
+    "static/media/like-filled.svg": "/product_catalog_fe/static/media/like-filled.8b1d65a1130966068753c92958608b70.svg",
+    "static/media/Close.svg": "/product_catalog_fe/static/media/Close.6d7ba7bf99b2d90a5bbde95013328dbe.svg",
+    "static/media/Menu.svg": "/product_catalog_fe/static/media/Menu.d9749b7108ad61ee68f43d4dae073f22.svg",
+    "static/media/arrow-down.svg": "/product_catalog_fe/static/media/arrow-down.a4cfb86798aae020bea9dca4c8310918.svg",
     "index.html": "/product_catalog_fe/index.html",
     "static/media/arrow-up.svg": "/product_catalog_fe/static/media/arrow-up.301662ee1dfa8b74cad5.svg",
-    "static/media/arrow-right.svg": "/product_catalog_fe/static/media/arrow-right.43d657784c67c9d0a993.svg",
-    "main.53d45144.css.map": "/product_catalog_fe/static/css/main.53d45144.css.map",
-    "main.54f48c8d.js.map": "/product_catalog_fe/static/js/main.54f48c8d.js.map"
+    "static/media/arrow-left-large.svg": "/product_catalog_fe/static/media/arrow-left-large.3a58c5da8019cc78bea5.svg",
+    "static/media/arrow-right-large.svg": "/product_catalog_fe/static/media/arrow-right-large.43d657784c67c9d0a993.svg",
+    "main.9f39f325.css.map": "/product_catalog_fe/static/css/main.9f39f325.css.map",
+    "main.6db626d2.js.map": "/product_catalog_fe/static/js/main.6db626d2.js.map"
   },
   "entrypoints": [
-    "static/css/main.53d45144.css",
-    "static/js/main.54f48c8d.js"
+    "static/css/main.9f39f325.css",
+    "static/js/main.6db626d2.js"
   ]
 }
