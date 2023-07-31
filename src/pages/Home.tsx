@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Slider from '../components/Slider/Slider';
+import Slider from '../components/slider/Slider';
 import GoodsSliderCollection from '../components/GoodsSliderCollection/GoodsSliderCollection';
 
 const Home: FC = () => {
