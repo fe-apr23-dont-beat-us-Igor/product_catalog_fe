@@ -5,17 +5,17 @@ import { Phone } from '../Catalog/Catalog';
 const mockCard = [1, 2, 3, 4];
 
 const phone: Phone = {
-    age: 1,
-    type: 'string',
-    id: 'string',
-    imageUrl: 'string',
-    name: 'string',
-    snippet: 'string',
-    price: 1,
-    discount: 1,
-    screen: 'string',
-    capacity: 'string',
-    ram: 'string',
+  age: 1,
+  type: 'string',
+  id: 'string',
+  imageUrl: 'string',
+  name: 'string',
+  snippet: 'string',
+  price: 1,
+  discount: 1,
+  screen: 'string',
+  capacity: 'string',
+  ram: 'string',
 };
 
 const GoodsSliderCollection: FC = () => {
