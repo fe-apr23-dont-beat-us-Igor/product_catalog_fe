@@ -4,12 +4,12 @@ import DotList from './DotList';
 import SliderButton from './SliderButton';
 import SlideList from './SlideList';
 
+
+// console.log(logo);
+
 const SliderContent: FC = () => {
-  const {
-    handleTouchStart,
-    handleTouchMove,
-  } = useSliderContext();
-  
+  const { handleTouchStart, handleTouchMove } = useSliderContext();
+
   return (
     <div
       className="slider section"
@@ -18,7 +18,7 @@ const SliderContent: FC = () => {
     >
       <div className="slider__body">
         <SliderButton step={-1} />
-          <SlideList />
+        <SlideList />
         <SliderButton step={1} />
       </div>
 
