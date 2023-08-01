@@ -26,11 +26,16 @@
       @include onPortable {
         width: 125px;
         padding: 0;
+        margin-left: auto;
       }
 
       @include onDesktop {
         width: 160px;
       }
+    }
+
+    @include onPortable {
+      text-align: end;
     }
   }
 
