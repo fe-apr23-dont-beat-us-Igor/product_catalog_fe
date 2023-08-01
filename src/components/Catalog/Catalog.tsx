@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import './Catalog.scss';
 import { Link } from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import Card from '../Card/Card';
-import { Pagination } from '../Pagination/Pagination';
 import { getPhones, getSomeProducts } from '../../api/api';
 import { img } from '../../images/images';
+import Pagination from '../Pagination/Pagination';
 
 const options = [
   'option1',
@@ -107,7 +106,7 @@ export const Catalog: React.FC = () => {
   }, []);
 
   return (
-    <div className="catalog container">
+    <div className="catalog container section">
       <h1 className="catalog__title">Mobile phones</h1>
       <p className="catalog__count">{phonesFromServer.length} models</p>
       <div className="catalog__filters">
@@ -128,7 +127,7 @@ export const Catalog: React.FC = () => {
         ))}
       </div>
 
-      {/* <Pagination total={1}/> */}
+      <Pagination />
     </div>
   );
 };
