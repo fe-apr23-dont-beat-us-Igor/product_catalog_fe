@@ -38,7 +38,9 @@ export const Catalog: React.FC = () => {
   /* Таким чином ти зробиш дропдаун контрольованим   */
 
   useEffect(() => {
+    // getSomeProducts(1, 16).then(setPhonesFromServer);
     getPhones().then(setPhonesFromServer);
+
   }, []);
 
   return (
@@ -64,8 +66,16 @@ export const Catalog: React.FC = () => {
         <h1 className="catalog-title">Mobile phones</h1>
         <span className="phones-count">{phonesFromServer.length} models</span>
         <div className="dropdown-container">
-          <Dropdown label={'Sort By'} options={options} setValue={setDropdownValue}/>
-          <Dropdown label={'Items On Page'} options={options} setValue={setDropdownValue}/>
+          <Dropdown
+            label={'Sort By'}
+            options={options}
+            setValue={setDropdownValue}
+          />
+          <Dropdown
+            label={'Items On Page'}
+            options={options}
+            setValue={setDropdownValue}
+          />
         </div>
         <div className="phones-list">
           {phonesFromServer.map((phone) => (
