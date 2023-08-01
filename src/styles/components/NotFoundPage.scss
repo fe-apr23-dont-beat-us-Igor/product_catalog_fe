@@ -5,10 +5,12 @@
   &__info {
     &--h1 {
       padding-bottom: 16px;
+      color: $secondaryAccent-color;
     }
 
     &--h4 {
       padding-bottom: 24px;
+      color: $not-found-text;
     }
 
     &--button {
@@ -17,7 +19,9 @@
       align-items: center;
       width: max-content;
       padding: 0 7px;
-      margin: 0 auto;
+      background-color: $secondaryAccent-color;
+
+      @include buttonTypo;
 
       @include onPortable {
         width: 125px;
@@ -32,6 +36,14 @@
 
     &__pic {
     height: 40vh;
+
+    @include onPortable {
+      height: 50vh;
+    }
+
+    @include onDesktop {
+      height: 60vh;
+    }
   }
 
   @include onPortable {
