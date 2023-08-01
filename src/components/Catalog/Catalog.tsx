@@ -107,47 +107,48 @@ export const Catalog: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <div className="phones-container ">
-        <div className="breadcrumbs">
-          <Link to="/home">
-            <img
-              src={img.home}
-              alt="home-icon"
-              className="breadcrumbs__home-icon"
-            />
-          </Link>
-          <img
-            src={img.arrowRight}
-            alt="arrow-icon"
-            className="breadcrumbs__arrow"
-          />
-          <Link to="/phones">
-            <span className="breadcrumbs__text">Phones</span>
-          </Link>
-        </div>
-        <h1 className="catalog-title">Mobile phones</h1>
-        <span className="phones-count">{phonesFromServer.length} models</span>
-        <div className="dropdown-container">
-          <Dropdown
-            label={'Sort By'}
-            options={options}
-            setValue={setDropdownValue}
-          />
-          <Dropdown
-            label={'Items On Page'}
-            options={options}
-            setValue={setDropdownValue}
-          />
-        </div>
-        <div className="phones-list">
-          {phonesFromServer.map((phone) => (
-            <Card key={phone.id} phone={phone} />
-          ))}
-        </div>
-
-        {/* <Pagination total={1}/> */}
+    <div className="catalog container">
+      <h1 className="catalog__title">Mobile phones</h1>
+      <p className="catalog__count">{phonesFromServer.length} models</p>
+      <div className="catalog__filters">
+        <Dropdown
+          label={'Sort By'}
+          options={options}
+          setValue={setDropdownValue}
+        />
+        <Dropdown
+          label={'Items On Page'}
+          options={options}
+          setValue={setDropdownValue}
+        />
       </div>
-    </>
+      <div className="catalog__item-list">
+        {phonesFromServer.map((phone) => (
+          <Card key={phone.id} phone={phone} />
+        ))}
+      </div>
+
+      {/* <Pagination total={1}/> */}
+    </div>
   );
 };
+
+{
+  /* <div className="breadcrumbs">
+        <Link to="/home">
+          <img
+            src={img.home}
+            alt="home-icon"
+            className="breadcrumbs__home-icon"
+          />
+        </Link>
+        <img
+          src={img.arrowRight}
+          alt="arrow-icon"
+          className="breadcrumbs__arrow"
+        />
+        <Link to="/phones">
+          <span className="breadcrumbs__text">Phones</span>
+        </Link>
+      </div> */
+}

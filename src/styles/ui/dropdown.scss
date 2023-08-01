@@ -5,7 +5,7 @@ $padding: 10px 12px;
   // user-dropdown: none;
   max-width: 140px;
   max-height: 40px;
-  width: 140px;
+  width: 136px;
 
   border: 1px solid $elements-color;
   border-radius: 10px;
@@ -15,6 +15,10 @@ $padding: 10px 12px;
   background-repeat: no-repeat;
   background-position: right 12px center;
   cursor: pointer;
+
+  @include onPortable {
+    width: 150px;
+  }
 
   &--opened {
     background-image: $arrow-up-icon;
