@@ -1,13 +1,14 @@
 import { FC } from "react";
 import './NotFoundPage.scss';
+import { img } from '../../images/images';
 
 export const NotFoundPage: FC = () => {
   return (
     <article className="not-found section">
-      <h1 className="not-found__text">Page not found</h1>
       <img 
+        alt='not-found-404'
         className='not-found__pic'
-        src="https://media.tenor.com/hImJU1lihyIAAAAC/quiet-mjc.gif"
+        src={img.notFound}
       />
     </article>
   );

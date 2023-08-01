@@ -9,6 +9,7 @@ import menu from './Menu.svg';
 import search from './Search.svg';
 import close from './Close.svg';
 import likeFilled from './like-filled.svg';
+import notFound from './not-found.svg';
 
 import banner from './photos/Banner.png';
 import accessories from './photos/Accessories.png';
@@ -33,4 +34,5 @@ export const img = {
   phones,
   tablets,
   phone,
+  notFound,
 };
