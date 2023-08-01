@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import Card from '../Card/Card';
 import { Pagination } from '../Pagination/Pagination';
-import { getPhones } from '../../api/api';
+import { getPhones, getSomeProducts } from '../../api/api';
 import { img } from '../../images/images';
 
 const options = [
@@ -30,8 +30,67 @@ export interface Phone {
   ram: string;
 }
 
+const mockPhone = [
+  {
+    id: 1,
+    name: 'Apple iPhone 11 128GB Black',
+    capacity: '128GB',
+    priceRegular: '1100',
+    priceDiscount: '1050',
+  },
+  {
+    id: 2,
+    name: 'Apple iPhone 11 128GB Black',
+    capacity: '128GB',
+    priceRegular: '1100',
+    priceDiscount: '1050',
+  },
+  {
+    id: 3,
+    name: 'Apple iPhone 11 128GB Black',
+    capacity: '128GB',
+    priceRegular: '1100',
+    priceDiscount: '1050',
+  },
+  {
+    id: 4,
+    name: 'Apple iPhone 11 128GB Black',
+    capacity: '128GB',
+    priceRegular: '1100',
+    priceDiscount: '1050',
+  },
+  {
+    id: 5,
+    name: 'Apple iPhone 11 128GB Black',
+    capacity: '128GB',
+    priceRegular: '1100',
+    priceDiscount: '1050',
+  },
+  {
+    id: 6,
+    name: 'Apple iPhone 11 128GB Black',
+    capacity: '128GB',
+    priceRegular: '1100',
+    priceDiscount: '1050',
+  },
+  {
+    id: 7,
+    name: 'Apple iPhone 11 128GB Black',
+    capacity: '128GB',
+    priceRegular: '1100',
+    priceDiscount: '1050',
+  },
+  {
+    id: 8,
+    name: 'Apple iPhone 11 128GB Black',
+    capacity: '128GB',
+    priceRegular: '1100',
+    priceDiscount: '1050',
+  },
+];
+
 export const Catalog: React.FC = () => {
-  const [phonesFromServer, setPhonesFromServer] = useState<Phone[]>([]);
+  const [phonesFromServer, setPhonesFromServer] = useState<any[]>(mockPhone);
 
   /* Таким чином ти зробиш дропдаун контрольованим   */
   const [dropdownValue, setDropdownValue] = useState('');
@@ -39,9 +98,12 @@ export const Catalog: React.FC = () => {
   /* Таким чином ти зробиш дропдаун контрольованим   */
 
   useEffect(() => {
-    // getSomeProducts(1, 16).then(setPhonesFromServer);
-    getPhones().then(setPhonesFromServer);
-
+    // getSomeProducts(1, 16).then((data) => setPhonesFromServer(data));
+    // try {
+    //   getPhones().then(setPhonesFromServer);
+    // } catch {
+    //   console.log('error');
+    // }
   }, []);
 
   return (
