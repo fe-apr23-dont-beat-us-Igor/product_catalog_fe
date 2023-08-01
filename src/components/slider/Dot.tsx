@@ -6,7 +6,7 @@ type Props = {
 };
 
 const Dot: FC<Props> = ({ index }) => {
-  const { goToSlide, currentSlide} = useSliderContext();
+  const { goToSlide, currentSlide } = useSliderContext();
 
   const isActive = index === currentSlide;
 

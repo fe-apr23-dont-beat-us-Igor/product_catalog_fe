@@ -4,13 +4,9 @@ interface Phone {
   id: number;
 }
 
-export const getPhones = () => {
-  return client.get<any[]>(`/products`);
+export const getPhones = (page: number) => {
+  return client.get<Phone[]>(`/phones?page=${page}`);
 };
-
-// export const getSomeProducts = (page: any, itemsOnPage: any) => {
-//   return client.post<any[]>('/products', { page, itemsOnPage });
-// };
 
 type Category = string | '';
 

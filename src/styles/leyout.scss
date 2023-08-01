@@ -2,12 +2,6 @@ body {
   @include montserrat;
 }
 
-.App {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 h1 {
   @include h1;
 }

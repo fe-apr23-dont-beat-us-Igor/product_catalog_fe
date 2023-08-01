@@ -10,6 +10,12 @@
   }
 }
 
+@mixin onMobile {
+  @media (min-width: 320px) {
+    @content;
+  }
+}
+
 @mixin montserrat {
   font-family: 'Montserrat', sans-serif;
 }

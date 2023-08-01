@@ -1,0 +1,86 @@
+$secondary-color: #89939a;
+$elements-color: #e2e6e9;
+$white: #ffffff;
+$primary-color: #0f0f11;
+
+$arrow-up-icon: url('../../images/arrow-up.svg');
+$arrow-down-icon: url('../../images/arrow-down.svg');
+
+@mixin buttonTypo {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+}
+
+$padding: 10px 12px;
+
+.select {
+  @include buttonTypo;
+  user-select: none;
+  max-width: 140px;
+  max-height: 40px;
+
+  border: 1px solid $elements-color;
+  border-radius: 10px;
+  background-color: $white;
+
+  background-image: $arrow-down-icon;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
+
+  &--opened {
+    background-image: $arrow-up-icon;
+  }
+
+  position: relative;
+
+  &:hover,
+  &--active {
+    border: 1px solid $secondary-color;
+  }
+
+  &--link {
+    color: $primary-color;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+
+  &__title {
+    padding: $padding;
+
+    &--link {
+      color: $primary-color;
+    }
+  }
+
+  &__item {
+    width: 140px;
+    padding: $padding;
+  }
+
+  &__content {
+    display: flex;
+    position: absolute;
+    top: 44px;
+    flex-direction: column;
+    max-width: 140px;
+    border: 1px solid $elements-color;
+    border-radius: 10px;
+    background-color: $white;
+
+    transition: opacity 0.3s ease-out;
+
+    &--active {
+      opacity: 1;
+    }
+
+    &--hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}

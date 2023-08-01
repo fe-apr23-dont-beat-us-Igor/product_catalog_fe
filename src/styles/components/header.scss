@@ -39,7 +39,6 @@
 
   &__link {
     @include uppercase;
-    color: $secondary-color;
 
     @include onPortable {
       font-size: 11px;
@@ -88,7 +87,7 @@
   }
   
   &--cart {
-    display: none;
+    // display: none;
   
     @include onPortable {
       display: flex;
@@ -96,7 +95,7 @@
   }
 
   &--favourites {
-    display: none;
+    // display: none;
 
     @include onPortable {
       display: flex;

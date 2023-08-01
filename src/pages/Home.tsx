@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Slider from '../components/slider/Slider';
+// eslint-disable-next-line max-len
 import GoodsSliderCollection from '../components/GoodsSliderCollection/GoodsSliderCollection';
-import Categories from '../components/Categories/Categories';
 
 const Home: FC = () => {
   return (
@@ -9,8 +9,8 @@ const Home: FC = () => {
       <h1 className="header-margin">Welcome to Nice Gadgets store!</h1>
       <Slider />
       <GoodsSliderCollection />
-      <Categories />
-      <GoodsSliderCollection />
+      {/* <Category /> */}
+      {/* <NewPhonesCollection /> */}
     </main>
   );
 };
