@@ -1,0 +1,42 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+
+  &__info {
+    &--h1 {
+      padding-bottom: 16px;
+    }
+
+    &--h4 {
+      padding-bottom: 24px;
+    }
+
+    &--button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: max-content;
+      padding: 0 7px;
+      margin: 0 auto;
+
+      @include onPortable {
+        width: 125px;
+        padding: 0;
+      }
+
+      @include onDesktop {
+        width: 160px;
+      }
+    }
+  }
+
+    &__pic {
+    height: 40vh;
+  }
+
+  @include onPortable {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
