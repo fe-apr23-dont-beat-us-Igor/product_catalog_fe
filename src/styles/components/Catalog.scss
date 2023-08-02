@@ -1,10 +1,11 @@
 .catalog {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: flex-start;
   
     @include onPortable {
       align-items: flex-start;
+      justify-content: flex-start;
     }
   
     &__title {
@@ -24,6 +25,10 @@
       display: grid;
       grid-template-columns: repeat(1, 1fr);
       gap: 16px;
+<<<<<<< Updated upstream
+=======
+      // margin: 0 auto 40px;
+>>>>>>> Stashed changes
       margin-bottom: 40px;
   
       @include onPortable {

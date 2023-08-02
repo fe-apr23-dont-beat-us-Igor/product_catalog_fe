@@ -6,16 +6,15 @@ import { SearchLink } from '../SearchLink';
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
   options: string[];
-  setValue: (value: string) => void;
   paramKey: string;
 }
 
-export const Dropdown: FC<Props> = ({ label, options, setValue, paramKey }) => {
+export const Dropdown: FC<Props> = ({ label, options, paramKey }) => {
   const [currentOptionId, setcurrentOptionId] = useState(0);
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const controleDropdownValue = (value: string) => {
-    setValue(value);
+    // setValue(value);
   };
 
   const handleOptionChange = (event: any, option: number) => {
@@ -29,8 +28,6 @@ export const Dropdown: FC<Props> = ({ label, options, setValue, paramKey }) => {
     event.preventDefault();
     setIsActive((value) => !value);
   };
-
-  // const params = {label: option}
 
   return (
     <div style={{ display: 'inline-block' }}>
