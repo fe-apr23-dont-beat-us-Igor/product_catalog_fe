@@ -6,20 +6,21 @@ import React, {
   useState,
 } from 'react';
 import { getSomeProducts } from '../../api/api';
+import { ProductCollection } from './Catalog_Types';
 
 interface Context {
   products: any[];
   sortType: string;
   setSortType: (value: string) => void;
-  itemsPerPage: number;
-  setItemsPerPage: (value: number) => void;
+  itemsPerPage: string;
+  setItemsPerPage: (value: string) => void;
 }
 
 const initialContext: Context = {
   products: [],
   sortType: '',
   setSortType: () => {},
-  itemsPerPage: 16,
+  itemsPerPage: '16',
   setItemsPerPage: () => {},
 };
 
@@ -30,15 +31,16 @@ type Props = {
 };
 
 export const CatalogProvider: FC<Props> = ({ children }) => {
-  const [productList, setProductList] = useState<any[]>([]);
+  const [productList, setProductList] = useState<ProductCollection>([]);
   const [currentPageList, setCurrentPageList] = useState<any[]>([]);
+
   const [sortType, setSortType] = useState<string>('');
-  const [itemsPerPage, setItemsPerPage] = useState<number>(16);
+  const [itemsPerPage, setItemsPerPage] = useState<string>('16');
 
   useEffect(() => {
     try {
       getSomeProducts(1, 16).then((data) => {
-        setProductList(data.paginatedProducts);
+        setProductList(data.rows);
       });
       console.log(productList);
     } catch {

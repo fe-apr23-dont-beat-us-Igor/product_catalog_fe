@@ -14,3 +14,10 @@ export interface Product {
   }
 
 export type ProductCollection = Product[];
+
+export enum SortType {
+    
+}
+
+export const SortingOpgions = ['Newest', 'Oldest', 'Prise'];
+export const PaginationOptions: string[] = ['16', '32', '64'];
