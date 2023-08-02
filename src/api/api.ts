@@ -8,8 +8,8 @@ export const getPhones = () => {
   return client.get<any[]>(`/products`);
 };
 
-export const getSomeProducts = (page: any, itemsOnPage: any) => {
-  return client.post<any[]>('/products', { page, itemsOnPage });
+export const getSomeProducts = (page: any, count: any) => {
+  return client.get<any>(`/products?count=${count}&page=${page}`);
 };
 
 type Category = string | '';

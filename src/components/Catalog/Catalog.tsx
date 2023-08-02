@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import './Catalog.scss';
+import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import Card from '../Card/Card';
-import { Pagination } from '../Pagination/Pagination';
 import { getPhones, getSomeProducts } from '../../api/api';
 import { img } from '../../images/images';
+import Pagination from '../Pagination/Pagination';
+import { CatalogProvider, useCatalogContext } from './CatalogContext';
 
 const options = [
   'option1',
@@ -89,65 +89,67 @@ const mockPhone = [
   },
 ];
 
-export const Catalog: React.FC = () => {
-  const [phonesFromServer, setPhonesFromServer] = useState<any[]>(mockPhone);
-
+const CatalogContent: React.FC = () => {
+  const { products } = useCatalogContext();
   /* Таким чином ти зробиш дропдаун контрольованим   */
   const [dropdownValue, setDropdownValue] = useState('');
   console.log(dropdownValue);
   /* Таким чином ти зробиш дропдаун контрольованим   */
 
-  useEffect(() => {
-    // getSomeProducts(1, 16).then((data) => setPhonesFromServer(data));
-    // try {
-    //   getPhones().then(setPhonesFromServer);
-    // } catch {
-    //   console.log('error');
-    // }
-  }, []);
+  console.log(1);
+
 
   return (
-    <>
-      <div className="phones-container ">
-        <div className="breadcrumbs">
-          <Link to="/home">
-            <img
-              src={img.home}
-              alt="home-icon"
-              className="breadcrumbs__home-icon"
-            />
-          </Link>
-          <img
-            src={img.arrowRight}
-            alt="arrow-icon"
-            className="breadcrumbs__arrow"
-          />
-          <Link to="/phones">
-            <span className="breadcrumbs__text">Phones</span>
-          </Link>
-        </div>
-        <h1 className="catalog-title">Mobile phones</h1>
-        <span className="phones-count">{phonesFromServer.length} models</span>
-        <div className="dropdown-container">
-          <Dropdown
-            label={'Sort By'}
-            options={options}
-            setValue={setDropdownValue}
-          />
-          <Dropdown
-            label={'Items On Page'}
-            options={options}
-            setValue={setDropdownValue}
-          />
-        </div>
-        <div className="phones-list">
-          {phonesFromServer.map((phone) => (
-            <Card key={phone.id} phone={phone} />
-          ))}
-        </div>
-
-        {/* <Pagination total={1}/> */}
+    <div className="catalog container section">
+      <h1 className="catalog__title">Mobile phones</h1>
+      <p className="catalog__count">{products.length} models</p>
+      <div className="catalog__filters">
+        <Dropdown
+          label={'Sort By'}
+          options={options}
+          setValue={setDropdownValue}
+        />
+        <Dropdown
+          label={'Items On Page'}
+          options={options}
+          setValue={setDropdownValue}
+        />
       </div>
-    </>
+      <div className="catalog__item-list">
+        {products.map((phone) => (
+          <Card key={phone.id} phone={phone} />
+        ))}
+      </div>
+
+      <Pagination />
+    </div>
   );
 };
+
+export const Catalog: FC = () => {
+  return (
+    <CatalogProvider>
+      <CatalogContent />
+    </CatalogProvider>
+  );
+};
+
+{
+  /* <div className="breadcrumbs">
+        <Link to="/home">
+          <img
+            src={img.home}
+            alt="home-icon"
+            className="breadcrumbs__home-icon"
+          />
+        </Link>
+        <img
+          src={img.arrowRight}
+          alt="arrow-icon"
+          className="breadcrumbs__arrow"
+        />
+        <Link to="/phones">
+          <span className="breadcrumbs__text">Phones</span>
+        </Link>
+      </div> */
+}
