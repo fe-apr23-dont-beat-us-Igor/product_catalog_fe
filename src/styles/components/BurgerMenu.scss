@@ -7,9 +7,17 @@
   left: 0;
   right: 0;
   height: 100vh;
-  z-index: 1;
   background-color: $white;
+  transition: opacity 0.3s ease-out;
 
+  &--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  &--active {
+    opacity: 1;
+  }
 
   &__header {
     display: flex;

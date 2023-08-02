@@ -7,7 +7,7 @@ interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   setValue: (value: string) => void;
 }
 
-export const Dropdown: FC<Props> = ({ label, options, setValue}) => {
+export const Dropdown: FC<Props> = ({ label, options, setValue }) => {
   const [currentOptionId, setcurrentOptionId] = useState(0);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [perPage, setPerPage] = useState(16);

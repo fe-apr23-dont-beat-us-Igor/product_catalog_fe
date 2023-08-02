@@ -4,10 +4,28 @@ import logo from '../../images/logo.svg';
 import close from '../../images/Close.svg';
 import like from '../../images/Like.svg';
 import cart from '../../images/Cart.svg';
+import classNames from "classnames";
 
-export const BurgerMenu: FC = () => {
+type Props = {
+  isMenuActive: boolean;
+  setIsMenuActive: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const BurgerMenu: FC<Props> = (isMenuActive, setIsMenuActive) => {
+  const handleCloseMenu = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    console.log('menu closer clicked');
+    
+    event.preventDefault();
+    setIsMenuActive(false);
+  };
+
   return (
-    <nav className="menu">
+    <nav className={classNames('menu', {
+      'menu--hidden': isMenuActive,
+      'menu--active': !isMenuActive,
+    })}>
       <div className="container">
         <header className="menu__header">
           <div className="menu__header__container">
@@ -20,7 +38,11 @@ export const BurgerMenu: FC = () => {
             </Link>
           </div>
 
-          <Link to="/home" className="logo menu__header--close-icon">
+          <Link
+            to="/home"
+            className="logo menu__header--close-icon"
+            onClick={handleCloseMenu}
+          >
             <img
               src={close}
               alt="Nice Gadgets logo"
