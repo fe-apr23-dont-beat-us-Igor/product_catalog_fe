@@ -50,6 +50,7 @@ h4 {
   margin: 0 auto;
   width: 100%;
   padding: 0;
+  box-sizing: border-box;
 
   @include onPortable {
     max-width: 600px;
