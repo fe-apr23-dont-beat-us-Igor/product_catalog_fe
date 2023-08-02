@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { img } from '../../images/images';
+import { moveTop } from '../utils/moveTop';
 
 export const Footer: FC = () => {
   return (
@@ -28,7 +29,10 @@ export const Footer: FC = () => {
         <div className='footer__moveTop'>
           <div className='back-to-top'>
             Back to top
-            <a href='#' className='back-to-top__button'>
+            <a
+              onClick={moveTop} 
+              className='back-to-top__button'
+            >
               <img 
                 src={img.arrowUp}
                 alt='Move Top'
