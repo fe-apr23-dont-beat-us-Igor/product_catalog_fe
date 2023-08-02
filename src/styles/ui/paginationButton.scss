@@ -1,4 +1,4 @@
-.puginationButton {
+.paginationButton {
   @include flex-center;
   @include draw-Circle(32px, 32px);
   border: 1px solid $elements-color;

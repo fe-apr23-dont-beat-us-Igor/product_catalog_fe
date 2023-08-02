@@ -1,0 +1,45 @@
+.catalog {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  
+    @include onPortable {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+  
+    &__title {
+    }
+    &__count {
+      color: $secondary-color;
+      margin-bottom: 32px;
+    }
+  
+    &__filters {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+  
+    &__item-list {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 16px;
+      // margin: 0 auto 40px;
+
+      margin-bottom: 40px;
+
+  
+      @include onPortable {
+        grid-template-columns: repeat(2, 1fr)
+      }
+  
+      // @media (min-width: 1120px) {
+      //   grid-template-columns: repeat(3, 1fr)
+      // }
+      @include onDesktop {
+        grid-template-columns: repeat(4, 1fr)
+      }
+    }
+  }
+  

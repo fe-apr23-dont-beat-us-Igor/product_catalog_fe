@@ -1,0 +1,59 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+
+  &__info {
+    &--h1 {
+      padding-bottom: 16px;
+      color: $secondaryAccent-color;
+    }
+
+    &--h4 {
+      padding-bottom: 24px;
+      color: $not-found-text;
+    }
+
+    &--button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: max-content;
+      padding: 0 7px;
+      background-color: $secondaryAccent-color;
+
+      @include buttonTypo;
+
+      @include onPortable {
+        width: 125px;
+        padding: 0;
+        margin-left: auto;
+      }
+
+      @include onDesktop {
+        width: 160px;
+      }
+    }
+
+    @include onPortable {
+      text-align: end;
+    }
+  }
+
+    &__pic {
+    height: 40vh;
+
+    @include onPortable {
+      height: 50vh;
+    }
+
+    @include onDesktop {
+      height: 60vh;
+    }
+  }
+
+  @include onPortable {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}

@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import arrowDown from './arrow-down.svg';
 import arrowRight from './arrow-right.svg';
 import arrowUp from './arrow-up.svg';
+import arrowRightLarge from './arrow-right-large.svg';
+import arrowLeftLarge from './arrow-left-large.svg';
 import home from './Home.svg';
 import cart from './Cart.svg';
 import like from './Like.svg';
@@ -9,6 +11,7 @@ import menu from './Menu.svg';
 import search from './Search.svg';
 import close from './Close.svg';
 import likeFilled from './like-filled.svg';
+import notFound from './not-found.svg';
 
 import banner from './photos/Banner.png';
 import accessories from './photos/Accessories.png';
@@ -21,6 +24,8 @@ export const img = {
   arrowDown,
   arrowRight,
   arrowUp,
+  arrowRightLarge,
+  arrowLeftLarge,
   home,
   cart,
   like,
@@ -33,4 +38,5 @@ export const img = {
   phones,
   tablets,
   phone,
+  notFound,
 };
