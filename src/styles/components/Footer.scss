@@ -3,7 +3,7 @@
   width: 100%;
   color: $secondary-color;
   box-shadow: 0px -1px 0px 0px $elements-color;
-  padding: 32px 16px;
+  padding: 32px;
   box-sizing: border-box;
 
   @include onPortable {
@@ -83,15 +83,21 @@
 
     border-radius: 48px;
     border: 1px solid $icons-color;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primary-color;
+      .back-to-top__pic {
+        transform: translate(0, -5px) rotate(-90deg);
+      }
+    }
   }
 
   &__pic {
     width: 16px;
     height: 16px;
     margin: 8px;
-  }
-
-  &__pic:hover {
     transform: rotate(-90deg);
+    transition: 0.3s;
   }
 }

@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import arrowDown from './arrow-down.svg';
 import arrowRight from './arrow-right.svg';
 import arrowUp from './arrow-up.svg';
+import arrowRightLarge from './arrow-right-large.svg';
+import arrowLeftLarge from './arrow-left-large.svg';
 import home from './Home.svg';
 import cart from './Cart.svg';
 import like from './Like.svg';
@@ -22,6 +24,8 @@ export const img = {
   arrowDown,
   arrowRight,
   arrowUp,
+  arrowRightLarge,
+  arrowLeftLarge,
   home,
   cart,
   like,
