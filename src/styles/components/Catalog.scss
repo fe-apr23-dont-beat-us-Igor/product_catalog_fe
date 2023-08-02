@@ -25,11 +25,10 @@
       display: grid;
       grid-template-columns: repeat(1, 1fr);
       gap: 16px;
-<<<<<<< Updated upstream
-=======
       // margin: 0 auto 40px;
->>>>>>> Stashed changes
+
       margin-bottom: 40px;
+
   
       @include onPortable {
         grid-template-columns: repeat(2, 1fr)
