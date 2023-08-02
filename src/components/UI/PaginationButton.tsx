@@ -20,7 +20,6 @@ const PaginationButton: FC<Props> = ({
 
   const select = page === String(pageNumber);
 
-  console.log(pageNumber, page);
   const className = classNames('paginationButton ', {
     'paginationButton--selected': select,
   });

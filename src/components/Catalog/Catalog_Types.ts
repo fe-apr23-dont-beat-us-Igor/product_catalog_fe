@@ -13,7 +13,10 @@ export interface Product {
     image_id: number,
   }
 
-export type ProductCollection = Product[];
+export interface ProductCollection {
+  count: number;
+  rows: Product[];
+};
 
 export enum SortType {
     
