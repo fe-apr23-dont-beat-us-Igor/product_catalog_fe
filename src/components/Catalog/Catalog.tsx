@@ -1,11 +1,17 @@
 import { FC, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import Card from '../Card/Card';
 import { getPhones, getSomeProducts } from '../../api/api';
 import { img } from '../../images/images';
 import Pagination from '../Pagination/Pagination';
 import { CatalogProvider, useCatalogContext } from './CatalogContext';
+import {
+  PaginationOptions,
+  ProductCollection,
+  SortingOpgions,
+} from './Catalog_Types';
+import { SearchLink } from '../SearchLink';
 
 const options = [
   'option1',
@@ -90,14 +96,33 @@ const mockPhone = [
 ];
 
 const CatalogContent: React.FC = () => {
-  const { products } = useCatalogContext();
+  const { products, setItemsPerPage, setSortType } = useCatalogContext();
   /* Таким чином ти зробиш дропдаун контрольованим   */
-  const [dropdownValue, setDropdownValue] = useState('');
-  console.log(dropdownValue);
+  // const [dropdownValue, setDropdownValue] = useState('');
+  // console.log(dropdownValue);
   /* Таким чином ти зробиш дропдаун контрольованим   */
 
-  console.log(1);
+  // console.log(1);
 
+  // const [productList, setProductList] = useState<ProductCollection>([]);
+  // const [currentPageList, setCurrentPageList] = useState<any[]>([]);
+
+  // const {x} = useSearchParams();
+  // const [sortType, setSortType] = useState<string>('');
+  // const [itemsPerPage, setItemsPerPage] = useState<string>('16');
+
+  // useEffect(() => {
+  //   try {
+  //     getSomeProducts(1, 16).then((data) => {
+  //       setProductList(data.paginatedProducts);
+  //     });
+  //     console.log(productList);
+  //   } catch {
+  //     console.log('error');
+  //   }
+  // }, []);
+
+  console.log(products);
 
   return (
     <div className="catalog container section">
@@ -106,13 +131,15 @@ const CatalogContent: React.FC = () => {
       <div className="catalog__filters">
         <Dropdown
           label={'Sort By'}
-          options={options}
-          setValue={setDropdownValue}
+          options={SortingOpgions}
+          setValue={setSortType}
+          paramKey={'SortBy'}
         />
         <Dropdown
           label={'Items On Page'}
-          options={options}
-          setValue={setDropdownValue}
+          options={PaginationOptions}
+          setValue={setItemsPerPage}
+          paramKey={'count'}
         />
       </div>
       <div className="catalog__item-list">

@@ -1,16 +1,18 @@
 import { FC, MouseEventHandler, useState, SelectHTMLAttributes } from 'react';
 import classnames from 'classnames';
+import { Link, useSearchParams } from 'react-router-dom';
+import { SearchLink } from '../SearchLink';
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
   options: string[];
   setValue: (value: string) => void;
+  paramKey: string;
 }
 
-export const Dropdown: FC<Props> = ({ label, options, setValue}) => {
+export const Dropdown: FC<Props> = ({ label, options, setValue, paramKey }) => {
   const [currentOptionId, setcurrentOptionId] = useState(0);
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [perPage, setPerPage] = useState(16);
 
   const controleDropdownValue = (value: string) => {
     setValue(value);
@@ -28,8 +30,10 @@ export const Dropdown: FC<Props> = ({ label, options, setValue}) => {
     setIsActive((value) => !value);
   };
 
+  // const params = {label: option}
+
   return (
-    <div style={{ display: 'inline-block' }} >
+    <div style={{ display: 'inline-block' }}>
       <p className="small-text dropdown__label">{label}</p>
       <article
         className={classnames('dropdown', {
@@ -53,11 +57,15 @@ export const Dropdown: FC<Props> = ({ label, options, setValue}) => {
         >
           {options.map((option, index) => (
             <a
-              href=""
               className="dropdown--link dropdown__item"
               onClick={(event) => handleOptionChange(event, index)}
             >
-              {option}
+              <SearchLink
+                params={{ [paramKey]: option }}
+                style={{ textDecoration: 'none' }}
+              >
+                {option}
+              </SearchLink>
             </a>
           ))}
         </div>
