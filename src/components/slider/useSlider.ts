@@ -1,43 +1,10 @@
-import {
-  createContext,
-  FC,
-  useState,
-  useEffect,
-  useContext,
-  TouchEventHandler,
-} from 'react';
+import { TouchEventHandler, useEffect, useRef, useState } from "react";
 
-interface Context {
-  slides: string[];
-  currentSlide: number;
-  changeSlide: (value: number) => void;
-  goToSlide: (value: number) => void;
-  handleTouchStart: TouchEventHandler<HTMLDivElement>
-  handleTouchMove: TouchEventHandler<HTMLDivElement>
-}
-
-const initialContext: Context = {
-  slides: [],
-  currentSlide: 0,
-  changeSlide: () => {},
-  goToSlide: () => {},
-  handleTouchStart: () => {},
-  handleTouchMove: () => {},
-};
-
-const SliderContext = createContext<Context>(initialContext);
-
-type Props = {
-  children: React.ReactNode;
-};
-
-const mockSlides = ['red', 'green', 'blue', 'black', 'orange', 'red'];
-
-export const SliderProvider: FC<Props> = ({ children }) => {
-  const [slides] = useState<string[]>(mockSlides);
+export const useSlider = <T>(slideList: T[], autoPlay = true) => {
+  const [slides] = useState<T[]>(slideList);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [touchPosition, setTouchPosition] = useState<null | number>(null);
-  const [autoPlay] = useState<boolean>(true);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -86,20 +53,14 @@ export const SliderProvider: FC<Props> = ({ children }) => {
     setTouchPosition(null);
   };
 
-  return (
-    <SliderContext.Provider
-      value={{
-        slides,
-        currentSlide,
-        changeSlide,
-        goToSlide,
-        handleTouchStart,
-        handleTouchMove
-      }}
-    >
-      {children}
-    </SliderContext.Provider>
-  );
+  return {
+    slides,
+    currentSlide,
+    changeSlide,
+    goToSlide,
+    handleTouchStart,
+    handleTouchMove,
+  };
 };
 
-export const useSliderContext = () => useContext(SliderContext);
+
