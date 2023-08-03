@@ -1,0 +1,36 @@
+.tech {
+  &__title {
+    padding-bottom: 16px;
+  }
+
+  &__characteristics {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+    padding-top: 30px;
+    border-top: 1px solid $elements-color;
+
+    @include onPortable {
+      padding-top: 25px;
+    }  
+  }
+
+  &__char {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-text {
+      color: $secondary-color;
+      font-weight: 500;
+    }
+
+    &-number {
+      color: $primary-color;
+    }
+  }  
+}

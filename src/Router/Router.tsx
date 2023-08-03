@@ -5,6 +5,7 @@ import { NotFoundRedirect } from "../components/NotFoundPage/NotFoundRedirect";
 import { NotFoundPage } from "../components/NotFoundPage/NotFoundPage";
 import Home from "../pages/Home";
 import Leyout from "../pages/Leyout";
+import ItemPage from '../pages/ItemPage';
 
 export const router = CreateRouter([
   {
@@ -27,6 +28,10 @@ export const router = CreateRouter([
       {
         path: "accessories",
         element: <></>,
+      },
+      {
+        path: "/item",
+        element: <ItemPage/>,
       },
       {
         path: "/not-found-page",
