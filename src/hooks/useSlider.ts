@@ -1,4 +1,4 @@
-import { TouchEventHandler, useEffect, useRef, useState } from "react";
+import { TouchEventHandler, useEffect, useRef, useState } from 'react';
 
 export const useSlider = <T>(slideList: T[], autoPlay = true) => {
   const [slides] = useState<T[]>(slideList);
@@ -62,5 +62,3 @@ export const useSlider = <T>(slideList: T[], autoPlay = true) => {
     handleTouchMove,
   };
 };
-
-
