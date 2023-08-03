@@ -4,7 +4,7 @@ const ItemTechSpecs: FC = () => {
   return (
     <section className="tech">
       <h3 className="tech__title">Tech specs</h3>
-      <div className="tech__characteristics text">
+      <div className="tech__characteristics">
         <div className="tech__char">
           <p className="tech__char-text ">Screen</p>
 

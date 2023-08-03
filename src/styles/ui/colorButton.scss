@@ -1,0 +1,21 @@
+.colorButton {
+  @include flex-center;
+  @include draw-Circle(32px, 32px);
+  border: 2px solid $white;
+  outline: 1px solid $elements-color;
+  cursor: pointer;
+  background-color: #FCDBC1;
+
+  &:hover {
+    outline: 1px solid $icons-color;
+  }
+
+  &--selected {
+    @include flex-center;
+    @include draw-Circle(32px, 32px);
+    border: 2px solid $white;
+    outline: 1px solid $primary-color;
+    cursor: pointer;
+    background-color: #FCDBC1;
+  }
+}
