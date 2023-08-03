@@ -1,0 +1,163 @@
+$elements-color: #e2e6e9;
+$white: #ffffff;
+$primary-color: #0f0f11;
+$icons-color: #b4bdc3;
+@mixin onPortable {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+@mixin onDesktop {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+.cartItem {
+  display: flex;
+  flex-direction: column;
+  width: 288px;
+  border: 1px solid $elements-color;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  padding: 16px;
+  gap: 24px;
+  align-items: center;
+  
+  @include onPortable {
+    flex-direction: row;
+    width: 592px;
+    padding: 24px;
+  }
+  
+  @include onDesktop {
+    width: 752px;
+  }  
+
+  &__info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__delete {
+    padding: 5px;
+    cursor: pointer;
+    margin-right: 25px;
+    border: 1px solid transparent;
+    background-color: $white;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active {
+      transition: none;
+      border-color: $primary-color;
+    }
+  }
+
+  &__phone-image {
+    width: 66px;
+    height: auto;
+    max-width: 100%;
+    padding: 7px;
+    margin-right: 23px;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: all 0.3s;
+    }
+  }
+
+  &__content {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    padding-right: 10px;
+    color: $primary-color;
+    cursor: pointer;
+
+    @include onPortable {
+      padding-right: 34px;
+      width: 176px;
+    }
+
+    @include onDesktop {
+      padding-right: 34px;
+      width: 336px;
+    }
+  }
+
+  &__quantity_and_price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__quantity-btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__quantity-btns-minus {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 13px;
+    border: 1px solid $icons-color;
+    border-radius: 50%;
+    background-color: $white;
+    width: 32px;
+    height: 32px;
+    padding: 12px;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &:disabled {
+      cursor: auto;
+      border: 1px solid $icons-color;
+      opacity: 0.5;
+    }
+  }
+
+  &__quantity-btns-plus {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 13px;
+    border: 1px solid $icons-color;
+    border-radius: 50%;
+    background-color: $white;
+    width: 32px;
+    height: 32px;
+    padding: 12px;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &:disabled {
+      cursor: auto;
+      border: 1px solid $icons-color;
+      opacity: 0.5;
+    }
+  }
+
+  &__quantity-btns-number {
+    margin-right: 14px;
+  }
+
+  &____total-price {
+    color: $primary-color;
+    align-items: center;
+  }
+}

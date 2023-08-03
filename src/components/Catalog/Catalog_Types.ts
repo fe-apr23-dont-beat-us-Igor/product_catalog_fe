@@ -13,4 +13,14 @@ export interface Product {
     image_id: number,
   }
 
-export type ProductCollection = Product[];
+export interface ProductCollection {
+  count: number;
+  rows: Product[];
+};
+
+export enum SortType {
+    
+}
+
+export const SortingOpgions = ['Newest', 'Oldest', 'Prise'];
+export const PaginationOptions: string[] = ['16', '32', '64'];

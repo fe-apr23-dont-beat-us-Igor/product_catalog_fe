@@ -6,21 +6,15 @@ import React, {
   useState,
 } from 'react';
 import { getSomeProducts } from '../../api/api';
+import { ProductCollection } from './Catalog_Types';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 interface Context {
-  products: any[];
-  sortType: string;
-  setSortType: (value: string) => void;
-  itemsPerPage: number;
-  setItemsPerPage: (value: number) => void;
+  products: ProductCollection | null;
 }
 
 const initialContext: Context = {
-  products: [],
-  sortType: '',
-  setSortType: () => {},
-  itemsPerPage: 16,
-  setItemsPerPage: () => {},
+  products: null,
 };
 
 const CatalogContext = createContext<Context>(initialContext);
@@ -30,28 +24,26 @@ type Props = {
 };
 
 export const CatalogProvider: FC<Props> = ({ children }) => {
-  const [productList, setProductList] = useState<any[]>([]);
-  const [currentPageList, setCurrentPageList] = useState<any[]>([]);
-  const [sortType, setSortType] = useState<string>('');
-  const [itemsPerPage, setItemsPerPage] = useState<number>(16);
+  const [productList, setProductList] = useState<ProductCollection | null>(null);
+  // const [currentPageList, setCurrentPageList] = useState<any[]>([]);
 
-  useEffect(() => {
-    try {
-      getSomeProducts(1, 16).then((data) => {
-        setProductList(data.paginatedProducts);
-      });
-      console.log(productList);
-    } catch {
-      console.log('error');
-    }
-  }, []);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+
+  // useEffect(() => {
+  //   try {
+  //     getSomeProducts(1, 16, searchParams.toString()).then((data) => {
+  //       setProductList(data);
+  //     });
+  //     console.log(productList);
+  //   } catch {
+  //     console.log('error');
+  //   }
+  // }, []);
 
   const value: Context = {
     products: productList,
-    sortType,
-    setSortType,
-    itemsPerPage,
-    setItemsPerPage,
   };
 
   return (
@@ -60,4 +52,3 @@ export const CatalogProvider: FC<Props> = ({ children }) => {
 };
 
 export const useCatalogContext = () => useContext<Context>(CatalogContext);
-

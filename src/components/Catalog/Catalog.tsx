@@ -1,11 +1,17 @@
 import { FC, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import Card from '../Card/Card';
 import { getPhones, getSomeProducts } from '../../api/api';
 import { img } from '../../images/images';
 import Pagination from '../Pagination/Pagination';
 import { CatalogProvider, useCatalogContext } from './CatalogContext';
+import {
+  PaginationOptions,
+  ProductCollection,
+  SortingOpgions,
+} from './Catalog_Types';
+import { SearchLink } from '../SearchLink';
 
 const options = [
   'option1',
@@ -90,38 +96,65 @@ const mockPhone = [
 ];
 
 const CatalogContent: React.FC = () => {
-  const { products } = useCatalogContext();
-  /* Таким чином ти зробиш дропдаун контрольованим   */
-  const [dropdownValue, setDropdownValue] = useState('');
-  console.log(dropdownValue);
-  /* Таким чином ти зробиш дропдаун контрольованим   */
+  const [productList, setProductList] = useState<ProductCollection | null>(
+    null,
+  );
+  const [countOfPage, setCountOfPage] = useState<number | null>(null);
 
-  console.log(1);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const params = searchParams.toString();
+  // const page = searchParams.get('page');
+  // const limit = searchParams.get('limit');
+  // const sortBy = searchParams.get('sortBy');
+  // const sortBy = 'name';
 
+  useEffect(() => {
+    try {
+      getSomeProducts(params).then((data) => {
+        const count = Math.ceil(data.count / data.rows.length);
+        setCountOfPage(count);
+        setProductList(data);
+      });
+      console.log(productList);
+    } catch {
+      console.log('error');
+    }
+  }, [params]);
 
   return (
     <div className="catalog container section">
       <h1 className="catalog__title">Mobile phones</h1>
-      <p className="catalog__count">{products.length} models</p>
+      {productList ? (
+        <p className="catalog__count">{productList.rows.length} models</p>
+      ) : (
+        <p className="catalog__count">0 models</p>
+      )}
       <div className="catalog__filters">
         <Dropdown
           label={'Sort By'}
-          options={options}
-          setValue={setDropdownValue}
+          options={SortingOpgions}
+          paramKey={'SortBy'}
         />
         <Dropdown
           label={'Items On Page'}
-          options={options}
-          setValue={setDropdownValue}
+          options={PaginationOptions}
+          paramKey={'limit'}
         />
       </div>
-      <div className="catalog__item-list">
-        {products.map((phone) => (
-          <Card key={phone.id} phone={phone} />
-        ))}
-      </div>
+      {productList && (
+        <div className="catalog__item-list">
+          {productList?.rows.map((phone) => (
+            <Card key={phone.id} phone={phone} />
+          ))}
+        </div>
+      )}
 
-      <Pagination />
+      {countOfPage ? (
+        <Pagination count={countOfPage} />
+      ) : (
+        <Pagination count={4} />
+      )}
     </div>
   );
 };
