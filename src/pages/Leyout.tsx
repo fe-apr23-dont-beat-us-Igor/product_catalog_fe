@@ -6,7 +6,7 @@ import { Header } from '../components/Header/Header';
 const Leyout: FC = () => {
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <div className="container">
         <Outlet />
       </div>

@@ -1,20 +1,26 @@
-import { FC } from 'react';
+import { FC, MutableRefObject, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { img } from '../../images/images';
+import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 
 const pages = ['HOME', 'PHONES', 'TABLETS', 'ACCESSORIES'];
 
 export const Header: FC = () => {
+  const [isMenuActive, setIsMenuActive] = useState(false);
+  const burgerMenu = useRef<MutableRefObject<any> | null>(null);
+
+  console.log(isMenuActive);
+
+  const toggler = (event: any) => {
+    setIsMenuActive((value) => !value);
+  };
+
   return (
     <header className="header header-margin">
       <div className="nav-and-logo">
         <Link to="/home" className="logo">
-          <img
-            src={img.logo}
-            alt="Nice Gadgets logo"
-            className="logo-img"
-          />
+          <img src={img.logo} alt="Nice Gadgets logo" className="logo-img" />
         </Link>
 
         <nav className="nav">
@@ -32,7 +38,7 @@ export const Header: FC = () => {
 
       <div className="side-buttons">
         <div className="side-button side-button--burger">
-          <a href="#">
+          <a href="#" onClick={toggler}>
             <img src={img.menu} alt="burger-icon" />
           </a>
         </div>
@@ -47,6 +53,12 @@ export const Header: FC = () => {
           </Link>
         </div>
       </div>
+      {isMenuActive && (
+        <BurgerMenu
+          ref={burgerMenu}
+          toggler={toggler}
+        />
+      )}
     </header>
   );
 };

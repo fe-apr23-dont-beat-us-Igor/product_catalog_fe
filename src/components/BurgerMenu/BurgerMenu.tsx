@@ -1,13 +1,20 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
+import { FC, MutableRefObject, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import close from '../../images/Close.svg';
 import like from '../../images/Like.svg';
 import cart from '../../images/Cart.svg';
+import classNames from 'classnames';
 
-export const BurgerMenu: FC = () => {
+type Props = {
+  ref: MutableRefObject<any> | null;
+  toggler: (value: any) => void;
+};
+
+export const BurgerMenu: FC<Props> = ({ ref, toggler }) => {
+
   return (
-    <nav className="menu">
+    <nav ref={ref} className="menu">
       <div className="container">
         <header className="menu__header">
           <div className="menu__header__container">
@@ -20,14 +27,17 @@ export const BurgerMenu: FC = () => {
             </Link>
           </div>
 
-          <Link to="/home" className="logo menu__header--close-icon">
+          <Link
+            to="/home"
+            className="logo menu__header--close-icon"
+            onClick={toggler}
+          >
             <img
               src={close}
               alt="Nice Gadgets logo"
               className="logo-img logo menu__header--close-icon--img"
             />
           </Link>
-
         </header>
 
         <ul className="menu__list">
@@ -54,9 +64,7 @@ export const BurgerMenu: FC = () => {
               accessories
             </a>
           </li>
-
         </ul>
-
       </div>
 
       <footer className="menu__footer">
