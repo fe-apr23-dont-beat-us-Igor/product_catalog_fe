@@ -1,0 +1,33 @@
+.capacityButton {
+  @include text;
+
+  font-family: inherit;
+  font-weight: 500;
+  
+  display: block;
+  width: 60px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid $icons-color;
+  cursor: pointer;
+  color: $primary-color;
+
+  &:hover {
+    border-color: $primary-color; 
+  }
+  
+  &--selected {
+    @include text;
+
+    font-family: inherit;
+    font-weight: 500;
+    width: 60px;
+    height: 32px;
+    background: $primary-color;
+    border-radius: 4px;
+    border-color: transparent;
+    cursor: pointer;
+    color: $white;
+  }
+}
