@@ -6,6 +6,12 @@ $accent-color: #4219d0;
     @content;
   }
 }
+@mixin onDesktop {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
 .modal {
   &__container {
     align-items: center;
@@ -27,10 +33,14 @@ $accent-color: #4219d0;
     border-radius: 16px;
     display: block;
     text-align: center;
-    padding: 20px;
+    padding: 36px;
   
     @include onPortable {
       width: 400px;
+    }
+
+    @include onDesktop {
+      width: 600px;
     }
   }
   
@@ -62,13 +72,18 @@ $accent-color: #4219d0;
     cursor: pointer;
     border: 1px solid transparent;
     transition: box-shadow 0.5s;
+
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(21, 25, 31, 0.4);
+    }
   
     @include onPortable {
       width: 160px;
     }
+
+    @include onDesktop {
+      width: 300px;
+    }
   }
-  
-  .button:hover {
-    box-shadow: 0px 3px 13px rgba(21, 25, 31, 0.4);
-  }
+
 }

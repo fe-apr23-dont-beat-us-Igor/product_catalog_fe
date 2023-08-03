@@ -1,17 +1,31 @@
-$elements-color: #e2e6e9;
-$white: #ffffff;
-$primary-color: #0f0f11;
-$icons-color: #b4bdc3;
-@mixin onPortable {
-  @media (min-width: 640px) {
-    @content;
-  }
-}
-@mixin onDesktop {
-  @media (min-width: 1440px) {
-    @content;
-  }
-}
+// $elements-color: #e2e6e9;
+// $white: #ffffff;
+// $primary-color: #0f0f11;
+// $icons-color: #b4bdc3;
+// @mixin onPortable {
+//   @media (min-width: 640px) {
+//     @content;
+//   }
+// }
+// @mixin onDesktop {
+//   @media (min-width: 1440px) {
+//     @content;
+//   }
+// }
+// @mixin flex-center {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// @mixin draw-Circle($w, $h) {
+//   width: $w;
+//   height: $h;
+//   border-radius: 100%;
+// }
+@import '../utils/mixins.scss';
+@import '../utils/vars.scss';
+
 .cartItem {
   display: flex;
   flex-direction: column;
@@ -106,13 +120,13 @@ $icons-color: #b4bdc3;
 
   &__quantity-btns-minus {
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-right: 13px;
     border: 1px solid $icons-color;
     border-radius: 50%;
     background-color: $white;
+    background-image: $minus-icon;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 32px;
     height: 32px;
     padding: 12px;
@@ -126,17 +140,17 @@ $icons-color: #b4bdc3;
       border: 1px solid $icons-color;
       opacity: 0.5;
     }
-  }
+}
 
   &__quantity-btns-plus {
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-right: 13px;
     border: 1px solid $icons-color;
     border-radius: 50%;
     background-color: $white;
+    background-image: $plus-icon;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 32px;
     height: 32px;
     padding: 12px;
