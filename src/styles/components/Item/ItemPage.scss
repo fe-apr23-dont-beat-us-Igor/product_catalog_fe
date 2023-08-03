@@ -1,0 +1,9 @@
+.item {
+  &__name {
+    padding: 0 16px 32px;
+
+    @include onPortable {
+      padding: 0 0 40px;
+    }
+  }
+}
