@@ -20,7 +20,6 @@ $secondary-color: #89939a;
     flex-direction: column;
     align-items: center;
     width: 288px;
-    height: 190px;
     padding: 24px;
     border: 1px solid $elements-color;
     border-radius: 16px;
@@ -41,8 +40,12 @@ $secondary-color: #89939a;
   }
 
   &__text {
-    margin-bottom: 25px;
+    margin-bottom: 16px;
     color: $secondary-color;
+
+    @include onDesktop {
+      margin-bottom: 24px;
+    }
   }
 
   &__line {
@@ -65,7 +68,6 @@ $secondary-color: #89939a;
     border: 1px solid $accent-color;
     cursor: pointer;
     border-radius: 48px;
-    margin-right: 8px;
     font-weight: 700;
     font-size: 14px;
     line-height: 21px;
