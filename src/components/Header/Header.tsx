@@ -42,9 +42,9 @@ export const Header: FC = () => {
           </a>
         </div>
         <div className="side-button side-button--cart">
-          <a href="#">
+          <Link to="/cart">
             <img src={img.cart} alt="cart-icon" />
-          </a>
+          </Link>
         </div>
       </div>
     </header>
