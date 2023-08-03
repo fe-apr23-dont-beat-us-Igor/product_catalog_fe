@@ -1,31 +1,20 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
+import { FC, MutableRefObject, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import close from '../../images/Close.svg';
 import like from '../../images/Like.svg';
 import cart from '../../images/Cart.svg';
-import classNames from "classnames";
+import classNames from 'classnames';
 
 type Props = {
-  isMenuActive: boolean;
-  setIsMenuActive: React.Dispatch<React.SetStateAction<boolean>>;
+  ref: MutableRefObject<any> | null;
+  toggler: (value: any) => void;
 };
 
-export const BurgerMenu: FC<Props> = (isMenuActive, setIsMenuActive) => {
-  const handleCloseMenu = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
-    console.log('menu closer clicked');
-    
-    event.preventDefault();
-    setIsMenuActive(false);
-  };
+export const BurgerMenu: FC<Props> = ({ ref, toggler }) => {
 
   return (
-    <nav className={classNames('menu', {
-      'menu--hidden': isMenuActive,
-      'menu--active': !isMenuActive,
-    })}>
+    <nav ref={ref} className="menu">
       <div className="container">
         <header className="menu__header">
           <div className="menu__header__container">
@@ -41,7 +30,7 @@ export const BurgerMenu: FC<Props> = (isMenuActive, setIsMenuActive) => {
           <Link
             to="/home"
             className="logo menu__header--close-icon"
-            onClick={handleCloseMenu}
+            onClick={toggler}
           >
             <img
               src={close}
@@ -49,7 +38,6 @@ export const BurgerMenu: FC<Props> = (isMenuActive, setIsMenuActive) => {
               className="logo-img logo menu__header--close-icon--img"
             />
           </Link>
-
         </header>
 
         <ul className="menu__list">
@@ -76,9 +64,7 @@ export const BurgerMenu: FC<Props> = (isMenuActive, setIsMenuActive) => {
               accessories
             </a>
           </li>
-
         </ul>
-
       </div>
 
       <footer className="menu__footer">
