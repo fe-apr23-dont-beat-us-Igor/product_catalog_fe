@@ -1,4 +1,4 @@
-import { useSlider } from './useSlider';
+import { useSlider } from '../../hooks/useSlider';
 
 import { img } from '../../images/images';
 
@@ -31,7 +31,6 @@ const Slider = () => {
             <div
               className="slider__slide"
               style={{
-                // backgroundColor: slide,
                 transform: `translateX(-${currentSlide * 100}%)`,
               }}
             >

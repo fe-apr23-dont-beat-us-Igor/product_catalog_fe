@@ -3,7 +3,6 @@ import { FC, ButtonHTMLAttributes } from 'react';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   // implement your logic in parent component
-  
   left: boolean;
 }
 
