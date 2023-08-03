@@ -5,6 +5,8 @@ import { NotFoundRedirect } from "../components/NotFoundPage/NotFoundRedirect";
 import { NotFoundPage } from "../components/NotFoundPage/NotFoundPage";
 import Home from "../pages/Home";
 import Leyout from "../pages/Leyout";
+import ItemPage from '../pages/ItemPage';
+import { CartPage } from "../pages/CartPage/CartPage";
 
 export const router = CreateRouter([
   {
@@ -29,8 +31,16 @@ export const router = CreateRouter([
         element: <></>,
       },
       {
+        path: "/item",
+        element: <ItemPage/>,
+      },
+      {
         path: "/not-found-page",
         element: <NotFoundPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />   
       }
     ],
   },

@@ -24,3 +24,12 @@ export enum SortType {
 
 export const SortingOpgions = ['Newest', 'Oldest', 'Prise'];
 export const PaginationOptions: string[] = ['16', '32', '64'];
+
+export interface CartProduct {
+  id: number,
+  name: string,
+  capacity: string,
+  priceRegular: number,
+  priceDiscount: number,
+  count: number,
+}
