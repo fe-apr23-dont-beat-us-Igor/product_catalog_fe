@@ -5,8 +5,8 @@ import Categories from '../components/Categories/Categories';
 
 const Home: FC = () => {
   return (
-    <main className="container section">
-      <h1 className="header-margin">Welcome to Nice Gadgets store!</h1>
+    <main className="">
+      <h1 className="header-margin section container">Welcome to Nice Gadgets store!</h1>
       <Slider />
       <GoodsSliderCollection />
       <Categories />
