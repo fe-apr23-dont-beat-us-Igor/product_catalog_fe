@@ -13,8 +13,6 @@ export const Card: FC<Props> = ({ phone }) => {
   const { name, priceRegular, priceDiscount, capacity, ram, itemId, screen } =
     phone;
 
-  // console.log(phone);
-
   return (
     <Link to={`/products/${itemId}`} className="card" data-qa="card">
       <img className="card__image" src={img.phone} alt="APPLE A1419 iMac 27" />
