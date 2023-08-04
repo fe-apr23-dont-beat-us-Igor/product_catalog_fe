@@ -5,7 +5,23 @@ import { img } from "../../images/images";
 
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation();
-  console.log(location);
+  const paths = location.pathname.split('/').filter(path => path !== '');
+  const searchParams = location.search.toString() || '';
+  console.log(location, paths, location.search);
+
+  let secondLinkTitle = '';
+  switch (searchParams) {
+    case '?category=tablets':
+      secondLinkTitle = 'TABLETS';
+      break;
+
+    case '?category=accessories':
+      secondLinkTitle = 'ACCESSORIES';
+      break;
+
+    default:
+      secondLinkTitle = 'PHONES';
+  };
 
   return (
     <div className="breadscrumbs">
@@ -16,14 +32,22 @@ export const Breadcrumbs: React.FC = () => {
           className="breadcrumbs__home-icon"
         />
       </Link>
-      <img
-        src={img.arrowRight}
-        alt="arrow-icon"
-        className="breadcrumbs__arrow"
-      />
-      <Link to="/phones">
-        <span className="breadcrumbs__text">Phones</span>
-      </Link>
-    </div>
+      {paths.length >= 1 &&
+        <img
+          src={img.arrowRight}
+          alt="arrow-icon"
+          className="breadcrumbs__arrow"
+        />
+      }
+      {paths.length === 1
+        ? (<p>
+          {secondLinkTitle}
+        </p>
+        ) : (
+          <Link to={'/products' + searchParams}>
+            {secondLinkTitle}
+          </Link>
+        )}
+    </div >
   );
 };

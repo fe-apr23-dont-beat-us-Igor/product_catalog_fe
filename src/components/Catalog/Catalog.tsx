@@ -7,6 +7,7 @@ import Pagination from '../Pagination/Pagination';
 
 import { getSomeProducts } from '../../api/api';
 import { ProductCollection } from '../../Types/products.types';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 
 export const SortingOpgions = ['Newest', 'Oldest', 'Prise'];
