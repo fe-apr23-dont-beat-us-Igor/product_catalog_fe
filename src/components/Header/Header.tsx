@@ -17,8 +17,6 @@ export const Header: FC = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const burgerMenu = useRef<MutableRefObject<any> | null>(null);
 
-  console.log(isMenuActive);
-
   const toggler = (event: any) => {
     setIsMenuActive((value) => !value);
   };
