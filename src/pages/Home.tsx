@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import GoodsSliderCollection from '../components/GoodsSliderCollection/GoodsSliderCollection';
 import Categories from '../components/Categories/Categories';
-import Slider from '../components/slider/Slider';
+import Slider from '../components/Slider/Slider';
 
 const Home: FC = () => {
   return (
