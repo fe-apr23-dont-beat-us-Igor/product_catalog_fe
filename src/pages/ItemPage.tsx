@@ -3,6 +3,7 @@ import GoodsSliderCollection from "../components/GoodsSliderCollection/GoodsSlid
 import ItemAbout from "../components/Item/ItemAbout";
 import ItemTechSpecs from "../components/Item/ItemTechSpecs";
 import ItemCartInfo from "../components/Item/ItemCartInfo";
+import ItemGallery from "../components/Item/ItemGallery";
 
 const ItemPage: FC = () => {
   return (
@@ -10,7 +11,9 @@ const ItemPage: FC = () => {
       <h2 className="item__name">
         Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
       </h2>
-      {/* <ItemGallery/> */}
+      <div className="item__gallery container section">
+        <ItemGallery/>
+      </div>
       <div className="item__cart-info container section">
         <ItemCartInfo/>
       </div>
@@ -22,7 +25,6 @@ const ItemPage: FC = () => {
       </div>
       
       <GoodsSliderCollection/>
-
     </main>
   );
 };
