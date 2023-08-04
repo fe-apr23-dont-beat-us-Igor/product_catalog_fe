@@ -7,7 +7,7 @@ export const useLocalStorage = <T>(
   const storage = window.localStorage;
 
   const readValue = (): T => {
-    const item = storage.getItem(key);
+    const item = storage.getItem(key); 
 
     if (!item) {
       storage.setItem(key, JSON.stringify(initialValue));

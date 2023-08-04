@@ -14,6 +14,7 @@ export const SortingOpgions = ['Newest', 'Oldest', 'Prise'];
 export const PaginationOptions: string[] = ['16', '32', '64'];
 
 export const Catalog: React.FC = () => {
+
   const [productList, setProductList] = useState<ProductCollection | null>(
     null,
   );

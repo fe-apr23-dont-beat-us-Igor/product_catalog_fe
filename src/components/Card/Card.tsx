@@ -4,6 +4,7 @@ import LikeButton from '../UI/LikeButton';
 import { img } from '../../images/images';
 import { Link } from 'react-router-dom';
 import { Product } from '../../Types/products.types';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface Props {
   phone: Product | any;
@@ -12,6 +13,14 @@ interface Props {
 export const Card: FC<Props> = ({ phone }) => {
   const { name, priceRegular, priceDiscount, capacity, ram, itemId, screen } =
     phone;
+
+  const [cart, setCart] = useLocalStorage<string[]>('cart', []);
+
+  const handleAddToCart = (id: string) => {
+    const newCart = [...cart, id];
+
+    setCart(newCart);
+  };
 
   return (
     <Link to={`/products/${itemId}`} className="card" data-qa="card">
@@ -47,7 +56,7 @@ export const Card: FC<Props> = ({ phone }) => {
       </div>
 
       <div className="card__buttons">
-        <Button selected={false} onClick={() => {}} />
+        <Button selected={false} onClick={() => handleAddToCart(itemId)} />
         <LikeButton selected={false} />
       </div>
     </Link>
