@@ -11,7 +11,7 @@ const photos = [
 
 const ItemGallery: FC = () => {
   const [currentPhotoIndex, setcurrentPhotoIndex] = useState<number>(0);
-  const [autoScroll, setAutoScroll] = useState<boolean>(true);
+  const [autoScroll, setAutoScroll] = useState<boolean>(false);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -31,11 +31,6 @@ const ItemGallery: FC = () => {
 
   return (
     <section className="gallery">
-      <img 
-        src={photos[currentPhotoIndex]} 
-        className="gallery__current-photo" 
-        alt="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)" 
-      />
       <div className="gallery__item-photos">
         {photos.map(photo => 
           <img 
@@ -43,13 +38,18 @@ const ItemGallery: FC = () => {
             className={classNames(
               "gallery__item-photo",
               {"gallery__item-photo--selected": 
-                currentPhotoIndex === photos.indexOf(photo)
+              currentPhotoIndex === photos.indexOf(photo)
             })} 
             alt="pic"
             onClick={() => setcurrentPhotoIndex(photos.indexOf(photo))}
-          />
-        )}
+            />
+            )}
       </div>
+      <img 
+        src={photos[currentPhotoIndex]} 
+        className="gallery__current-photo" 
+        alt="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)" 
+      />
     </section>
   );
 };
