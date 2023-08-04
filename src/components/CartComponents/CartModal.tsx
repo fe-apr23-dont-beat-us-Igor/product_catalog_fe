@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/components/CartModal.scss';
-import { CartProduct} from '../Catalog/Catalog_Types';
+import { CartProduct } from '../../Types/cart.types';
 import { NavLink } from 'react-router-dom';
  
 type Props = {

@@ -1,4 +1,3 @@
-import { ProductCollection } from '../components/Catalog/Catalog_Types';
 import { client } from './axiosClient';
 
 interface Phone {
@@ -9,8 +8,9 @@ export const getPhones = () => {
   return client.get<any[]>(`/products`);
 };
 
-export const getSomeProducts = (params: string) => {
-  return client.get<ProductCollection>(`/products?${params}`);
+export const getSomeProducts = <T>(params: string = '') => {
+  console.log(`/products?${params}`);
+  return client.get<T>(`/products?${params}`);
 };
 
 type Category = string | '';

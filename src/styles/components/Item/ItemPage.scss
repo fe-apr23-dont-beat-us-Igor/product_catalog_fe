@@ -1,0 +1,41 @@
+.item {
+  &__name {
+    padding: 0 16px 32px;
+
+    @include onPortable {
+      padding: 0 0 40px;
+    }
+  }
+
+  &__content {
+    @include onPortable {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 17px;
+    }
+
+    @include onDesktop {
+      column-gap: 64px;
+    }
+  }
+
+  &__about {
+    @include onPortable {
+      grid-area: 2 / 1 / 2 / 4;
+    }
+
+    @include onDesktop {
+      grid-area: 2 / 1 / 2 / 2;
+    }
+  }
+
+  &__tech {
+    @include onPortable {
+      grid-area: 3 / 1 / 4 / 4;
+    }
+
+    @include onDesktop {
+      grid-area: 2 / 2 / 4 / 4;
+    }
+  }
+}

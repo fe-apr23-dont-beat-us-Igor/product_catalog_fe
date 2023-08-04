@@ -27,7 +27,7 @@ const PaginationButton: FC<Props> = ({
   return (
     <SearchLink params={{ page: `${pageNumber}` }}>
       <button className={className} {...atributes}>
-        <p className="text">{pageNumber}</p>
+        <p className="text">{pageNumber + 1}</p>
       </button>
     </SearchLink>
   );

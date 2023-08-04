@@ -1,37 +1,59 @@
-import { FC } from 'react';
-import { SliderProvider, useSliderContext } from './SliderContext';
-import DotList from './DotList';
-import SliderButton1 from './SliderButton';
-import SlideList from './SlideList';
+import { useSlider } from '../../hooks/useSlider';
 
+import { img } from '../../images/images';
 
-// console.log(logo);
+const slideList = ['1', '2', '3', '4', '5'];
 
-const SliderContent: FC = () => {
-  const { handleTouchStart, handleTouchMove } = useSliderContext();
+const Slider = () => {
+  const {
+    slides,
+    currentSlide,
+    changeSlide,
+    goToSlide,
+    handleTouchStart,
+    handleTouchMove,
+  } = useSlider<string>(slideList, true);
 
   return (
     <div
-      className="slider section"
+      className="slider"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
     >
       <div className="slider__body">
-        <SliderButton1 step={-1} />
-        <SlideList />
-        <SliderButton1 step={1} />
+        <button
+          className="slider__button slider__button--left"
+          onClick={() => changeSlide(-1)}
+        ></button>
+
+        <div className="slider__slides">
+          {slides.map((slide, index) => (
+            <div
+              className="slider__slide"
+              style={{
+                transform: `translateX(-${currentSlide * 100}%)`,
+              }}
+            >
+              <img src={img.banner} alt="" />
+            </div>
+          ))}
+        </div>
+
+        <button
+          className="slider__button slider__button--right"
+          onClick={() => changeSlide(1)}
+        ></button>
       </div>
 
-      <DotList />
+      <div className="slider__dots">
+        {slides.map((slide, index) => (
+          <button
+          className={`slider__dot ${currentSlide === index && 'slider__dot--active'}`}
+          onClick={() => goToSlide(index)}
+        ></button>
+        ))}
+      </div>
     </div>
-  );
-};
-
-export const Slider: FC = () => {
-  return (
-    <SliderProvider>
-      <SliderContent />
-    </SliderProvider>
   );
 };
 
