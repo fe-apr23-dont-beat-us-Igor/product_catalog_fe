@@ -108,7 +108,7 @@ const CatalogContent: React.FC = () => {
 
   useEffect(() => {
     try {
-      getSomeProducts<ProductCollection>(params).then((data) => {
+      getSomeProducts<ProductCollection>('').then((data) => {
         const count = Math.ceil(data.count / data.rows.length);
         setCountOfPage(count);
         setProductList(data);
@@ -119,7 +119,7 @@ const CatalogContent: React.FC = () => {
     } catch {
       console.log('error');
     }
-  }, [params]);
+  }, []);
 
   return (
     <div className="catalog container section">
