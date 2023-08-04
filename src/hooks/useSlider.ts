@@ -9,7 +9,7 @@ export const useSlider = <T>(slideList: T[], autoPlay = true) => {
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
-    if (autoPlay) {
+    if (!autoPlay) {
       interval = setInterval(() => changeSlide(1), 5000);
     }
 

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import Card from '../Card/Card';
@@ -104,17 +104,16 @@ const CatalogContent: React.FC = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const params = searchParams.toString();
-  // const page = searchParams.get('page');
-  // const limit = searchParams.get('limit');
-  // const sortBy = searchParams.get('sortBy');
-  // const sortBy = 'name';
+
 
   useEffect(() => {
     try {
-      getSomeProducts(params).then((data) => {
+      getSomeProducts<ProductCollection>(params).then((data) => {
         const count = Math.ceil(data.count / data.rows.length);
         setCountOfPage(count);
         setProductList(data);
+
+        console.log(count, data);
       });
       console.log(productList);
     } catch {
