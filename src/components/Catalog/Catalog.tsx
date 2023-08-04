@@ -1,54 +1,35 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import Card from '../Card/Card';
 
 import Pagination from '../Pagination/Pagination';
 
-import { getSomeProducts } from '../../api/api';
+import { getProducts } from '../../api/api';
 import { ProductCollection } from '../../Types/products.types';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import { useProductsAPI } from '../../hooks/useFetch';
 
 export const SortingOpgions = ['Newest', 'Oldest', 'Prise'];
 export const PaginationOptions: string[] = ['16', '32', '64'];
 
-export const Catalog: React.FC = () => {
-
-  const [productList, setProductList] = useState<ProductCollection | null>(
-    null,
+export const Catalog: FC = () => {
+  const [products, loading, error] = useProductsAPI<ProductCollection>(
+    {},
+    getProducts,
   );
-  const [countOfPage, setCountOfPage] = useState<number | null>(null);
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const params = searchParams.toString();
-  
-  const limit  = searchParams.get('limit') || '16';
+  const isRender = !loading && !error && products?.rows;
 
-  console.log(limit)
-
-  useEffect(() => {
-    try {
-      getSomeProducts<ProductCollection>(params).then((data) => {
-        const count = Math.ceil(data.count / +limit);
-        setCountOfPage(count);
-        setProductList(data);
-
-        console.log(data.count, data);
-      });
-      console.log(productList);
-    } catch {
-      console.log('error');
-    }
-  }, [params, limit]);
+  const limit = 16;
+  const count = products?.count ? Math.ceil(products?.count / limit) : 4;
 
   return (
     <div className="catalog container section">
       <Breadcrumbs />
       <h1 className="catalog__title">Mobile phones</h1>
-      {productList ? (
-        <p className="catalog__count">{productList.rows.length} models</p>
+      {products ? (
+        <p className="catalog__count">{products.count} models</p>
       ) : (
         <p className="catalog__count">0 models</p>
       )}
@@ -64,18 +45,16 @@ export const Catalog: React.FC = () => {
           paramKey={'limit'}
         />
       </div>
-      {productList && (
+      {isRender && (
         <div className="catalog__item-list">
-          {productList?.rows.map((phone) => (
+          {products.rows.map((phone) => (
             <Card key={phone.id} phone={phone} />
           ))}
         </div>
       )}
 
-      {countOfPage ? (
-        <Pagination count={countOfPage} />
-      ) : (
-        <Pagination count={4} />
+      {count && (
+        <Pagination count={count} />
       )}
     </div>
   );

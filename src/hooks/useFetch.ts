@@ -1,22 +1,31 @@
 import { useState, useEffect } from 'react';
-import { getSomeProducts } from '../api/api';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { SearchParams, getSearchWith } from '../servises/searchParam.servise';
 
-export const useProducts = <T>(limit: number, page: number) => {
+export const useProductsAPI = <T>(
+  searchParams: SearchParams,
+  callback: <T>(params: string) => Promise<T>,
+): [T | null, boolean, boolean] => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const [data, setData] = useState<T>();
+  const [data, setData] = useState<T | null>(null);
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const params = searchParams.toString();
+  const [currentParams] = useSearchParams();
+  const params = getSearchWith(currentParams, searchParams);
 
-
-  // const params = `?limit=${limit}&page=${page}`;
+  const loadData = async () => {
+    try {
+      setLoading(true);
+      callback<T>(params).then(setData);
+      setLoading(false);
+    } catch {
+      setError(true);
+    }
+  };
 
   useEffect(() => {
-
-  }, []);
+    loadData();
+  }, [params]);
 
   return [data, loading, error];
 };
