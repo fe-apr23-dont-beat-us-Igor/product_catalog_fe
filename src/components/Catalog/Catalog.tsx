@@ -8,14 +8,6 @@ import Pagination from '../Pagination/Pagination';
 import { getSomeProducts } from '../../api/api';
 import { ProductCollection } from '../../Types/products.types';
 
-const options = [
-  'option1',
-  'option2',
-  'option3',
-  'option4',
-  'option5',
-  'option6',
-];
 
 export const SortingOpgions = ['Newest', 'Oldest', 'Prise'];
 export const PaginationOptions: string[] = ['16', '32', '64'];
@@ -34,7 +26,7 @@ export const Catalog: React.FC = () => {
 
   useEffect(() => {
     try {
-      getSomeProducts<ProductCollection>('').then((data) => {
+      getSomeProducts<ProductCollection>(params).then((data) => {
         const count = Math.ceil(data.count / data.rows.length);
         setCountOfPage(count);
         setProductList(data);
@@ -45,7 +37,7 @@ export const Catalog: React.FC = () => {
     } catch {
       console.log('error');
     }
-  }, []);
+  }, [params]);
 
   return (
     <div className="catalog container section">
