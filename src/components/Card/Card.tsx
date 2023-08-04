@@ -13,7 +13,7 @@ export const Card: FC<Props> = ({ phone }) => {
   const { name, priceRegular, priceDiscount, capacity, ram, itemId, screen } =
     phone;
 
-  console.log(phone);
+  // console.log(phone);
 
   return (
     <Link to={`/phones/${itemId}`} className="card" data-qa="card">

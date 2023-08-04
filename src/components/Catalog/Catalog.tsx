@@ -12,6 +12,7 @@ import {
   SortingOpgions,
 } from './Catalog_Types';
 import { SearchLink } from '../SearchLink';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 const options = [
   'option1',
@@ -123,6 +124,7 @@ const CatalogContent: React.FC = () => {
 
   return (
     <div className="catalog container section">
+      <Breadcrumbs />
       <h1 className="catalog__title">Mobile phones</h1>
       {productList ? (
         <p className="catalog__count">{productList.rows.length} models</p>
