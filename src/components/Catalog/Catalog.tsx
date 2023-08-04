@@ -8,10 +8,8 @@ import Pagination from '../Pagination/Pagination';
 import { getSomeProducts } from '../../api/api';
 import { ProductCollection } from '../../Types/products.types';
 
-
 export const SortingOpgions = ['Newest', 'Oldest', 'Prise'];
 export const PaginationOptions: string[] = ['16', '32', '64'];
-
 
 export const Catalog: React.FC = () => {
   const [productList, setProductList] = useState<ProductCollection | null>(
@@ -22,22 +20,25 @@ export const Catalog: React.FC = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const params = searchParams.toString();
+  
+  const limit  = searchParams.get('limit') || '16';
 
+  console.log(limit)
 
   useEffect(() => {
     try {
       getSomeProducts<ProductCollection>(params).then((data) => {
-        const count = Math.ceil(data.count / data.rows.length);
+        const count = Math.ceil(data.count / +limit);
         setCountOfPage(count);
         setProductList(data);
 
-        console.log(count, data);
+        console.log(data.count, data);
       });
       console.log(productList);
     } catch {
       console.log('error');
     }
-  }, [params]);
+  }, [params, limit]);
 
   return (
     <div className="catalog container section">
