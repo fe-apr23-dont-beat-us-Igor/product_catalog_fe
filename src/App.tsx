@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import './styles/index.scss';
 
 import { Footer } from './components/Footer/Footer';

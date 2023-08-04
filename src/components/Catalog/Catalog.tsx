@@ -19,7 +19,7 @@ export const Catalog: React.FC = () => {
     null,
   );
   const [countOfPage, setCountOfPage] = useState<number | null>(null);
-
+  
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const params = searchParams.toString();
@@ -67,7 +67,9 @@ export const Catalog: React.FC = () => {
       {productList && (
         <div className="catalog__item-list">
           {productList?.rows.map((phone) => (
-            <Card key={phone.id} phone={phone} />
+            <Card 
+              key={phone.id} 
+              phone={phone} />
           ))}
         </div>
       )}

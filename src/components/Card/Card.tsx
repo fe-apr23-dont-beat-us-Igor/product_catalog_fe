@@ -11,6 +11,7 @@ interface Props {
 }
 
 export const Card: FC<Props> = ({ phone }) => {
+
   const { name, priceRegular, priceDiscount, capacity, ram, itemId, screen } =
     phone;
 

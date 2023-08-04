@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CartPage.scss';
 import { BackButton } from '../../components/UI/BackButton';
 import { CartModal } from '../../components/CartComponents/CartModal';
 import { CartItem } from '../../components/CartComponents/CartItem';
 import { CartCheckout } from '../../components/CartComponents/CartCheckout';
+import { CartProduct } from '../../components/Catalog/Catalog_Types';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const cartItems = [
@@ -47,20 +48,26 @@ export const CartPage = () => {
     <div>
       <BackButton />
       <h1 className="title">Cart</h1>
-      {/* <CartModal 
+
+        {isModalVisible && <CartModal 
+
           handleModal={handleModal} 
           cartItems={cartItems}
           isModalVisible={isModalVisible}
-        /> */}
+        /> }
       <div className="cart__page">
         <div>
           {cartItems.length > 0 ? (
             <>
               <div className="card__items">
-                {cartItems.length > 0 &&
-                  cartItems.map((product) => (
-                    <CartItem key={product.id} product={product} />
-                  ))}
+
+              {cartItems.length > 0 && (
+                cartItems.map((product) => 
+                <CartItem 
+                  key={product.id} 
+                  product={product} 
+                  cartItems={cartItems}
+                />))}
               </div>
             </>
           ) : (
