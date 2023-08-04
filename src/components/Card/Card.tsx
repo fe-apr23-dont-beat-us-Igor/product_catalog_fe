@@ -1,12 +1,12 @@
 import { FC } from 'react';
-import { Phone } from '../Catalog/Catalog';
 import Button from '../UI/Button';
 import LikeButton from '../UI/LikeButton';
 import { img } from '../../images/images';
 import { Link } from 'react-router-dom';
+import { Product } from '../../Types/products.types';
 
 interface Props {
-  phone: Phone | any;
+  phone: Product | any;
 }
 
 export const Card: FC<Props> = ({ phone }) => {
