@@ -2,16 +2,11 @@ import React, { FC, useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import Card from '../Card/Card';
-import { getPhones, getSomeProducts } from '../../api/api';
-import { img } from '../../images/images';
+
 import Pagination from '../Pagination/Pagination';
-import { CatalogProvider, useCatalogContext } from './CatalogContext';
-import {
-  PaginationOptions,
-  ProductCollection,
-  SortingOpgions,
-} from './Catalog_Types';
-import { SearchLink } from '../SearchLink';
+
+import { getSomeProducts } from '../../api/api';
+import { ProductCollection } from '../../Types/products.types';
 
 const options = [
   'option1',
@@ -22,80 +17,11 @@ const options = [
   'option6',
 ];
 
-export interface Phone {
-  age: number;
-  type: string;
-  id: string;
-  imageUrl: string;
-  name: string;
-  snippet: string;
-  priceRegular: number;
-  priceDiscount: number;
-  screen: string;
-  capacity: string;
-  ram: string;
-}
+export const SortingOpgions = ['Newest', 'Oldest', 'Prise'];
+export const PaginationOptions: string[] = ['16', '32', '64'];
 
-const mockPhone = [
-  {
-    id: 1,
-    name: 'Apple iPhone 11 128GB Black',
-    capacity: '128GB',
-    priceRegular: '1100',
-    priceDiscount: '1050',
-  },
-  {
-    id: 2,
-    name: 'Apple iPhone 11 128GB Black',
-    capacity: '128GB',
-    priceRegular: '1100',
-    priceDiscount: '1050',
-  },
-  {
-    id: 3,
-    name: 'Apple iPhone 11 128GB Black',
-    capacity: '128GB',
-    priceRegular: '1100',
-    priceDiscount: '1050',
-  },
-  {
-    id: 4,
-    name: 'Apple iPhone 11 128GB Black',
-    capacity: '128GB',
-    priceRegular: '1100',
-    priceDiscount: '1050',
-  },
-  {
-    id: 5,
-    name: 'Apple iPhone 11 128GB Black',
-    capacity: '128GB',
-    priceRegular: '1100',
-    priceDiscount: '1050',
-  },
-  {
-    id: 6,
-    name: 'Apple iPhone 11 128GB Black',
-    capacity: '128GB',
-    priceRegular: '1100',
-    priceDiscount: '1050',
-  },
-  {
-    id: 7,
-    name: 'Apple iPhone 11 128GB Black',
-    capacity: '128GB',
-    priceRegular: '1100',
-    priceDiscount: '1050',
-  },
-  {
-    id: 8,
-    name: 'Apple iPhone 11 128GB Black',
-    capacity: '128GB',
-    priceRegular: '1100',
-    priceDiscount: '1050',
-  },
-];
 
-const CatalogContent: React.FC = () => {
+export const Catalog: React.FC = () => {
   const [productList, setProductList] = useState<ProductCollection | null>(
     null,
   );
@@ -157,31 +83,3 @@ const CatalogContent: React.FC = () => {
     </div>
   );
 };
-
-export const Catalog: FC = () => {
-  return (
-    <CatalogProvider>
-      <CatalogContent />
-    </CatalogProvider>
-  );
-};
-
-{
-  /* <div className="breadcrumbs">
-        <Link to="/home">
-          <img
-            src={img.home}
-            alt="home-icon"
-            className="breadcrumbs__home-icon"
-          />
-        </Link>
-        <img
-          src={img.arrowRight}
-          alt="arrow-icon"
-          className="breadcrumbs__arrow"
-        />
-        <Link to="/phones">
-          <span className="breadcrumbs__text">Phones</span>
-        </Link>
-      </div> */
-}

@@ -1,6 +1,6 @@
 import React from "react";
 import '../../styles/components/CartCheckout.scss';
-import { CartProduct } from "../Catalog/Catalog_Types";
+import { CartProduct } from "../../Types/cart.types";
 
 interface Props {
     //totalCost: number,
