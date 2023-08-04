@@ -16,7 +16,7 @@ export const Card: FC<Props> = ({ phone }) => {
   console.log(phone);
 
   return (
-    <Link to={`/phones/${itemId}`} className="card" data-qa="card">
+    <Link to={`/products/${itemId}`} className="card" data-qa="card">
       <img className="card__image" src={img.phone} alt="APPLE A1419 iMac 27" />
       <p className="card__name">{name}</p>
 
