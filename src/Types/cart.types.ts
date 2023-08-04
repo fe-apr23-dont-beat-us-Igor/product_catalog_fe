@@ -1,4 +1,4 @@
-import { Product } from '../Catalog_Types';
+import { Product } from '../components/Catalog/Catalog_Types';
 
 export interface Cart {
   products: Product[];

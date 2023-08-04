@@ -15,12 +15,20 @@ export const router = CreateRouter([
     errorElement: <NotFoundRedirect />,
     children: [
       {
+        path: '/',
+        element: <Home />,
+      },
+      {
         path: '/home',
         element: <Home />,
       },
       {
         path: '/phones',
         element: <Catalog />,
+      },
+      {
+        path: '/phones/:itemId',
+        element: <ItemPage />,
       },
       {
         path: 'tablets',
