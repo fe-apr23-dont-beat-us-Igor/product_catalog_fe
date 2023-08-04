@@ -1,12 +1,14 @@
-import { createHashRouter as CreateRouter } from 'react-router-dom';
-import App from '../App';
-import { Catalog } from '../components/Catalog/Catalog';
-import { NotFoundRedirect } from '../components/NotFoundPage/NotFoundRedirect';
-import { NotFoundPage } from '../components/NotFoundPage/NotFoundPage';
-import Home from '../pages/Home';
-import Leyout from '../pages/Leyout';
+
+import { createHashRouter as CreateRouter } from "react-router-dom";
+import App from "../App";
+import { Catalog } from "../components/Catalog/Catalog";
+import { NotFoundRedirect } from "../components/NotFoundPage/NotFoundRedirect";
+import { NotFoundPage } from "../components/NotFoundPage/NotFoundPage";
+import Home from "../pages/Home";
+import Leyout from "../pages/Leyout";
 import ItemPage from '../pages/ItemPage';
-import { CartPage } from '../pages/CartPage/CartPage';
+import { CartPage } from "../pages/CartPage/CartPage";
+import { Favourites } from "../pages/Favourites";
 
 export const router = CreateRouter([
   {
@@ -35,9 +37,14 @@ export const router = CreateRouter([
         element: <ItemPage />,
       },
       {
-        path: '/cart',
-        element: <CartPage />,
+
+        path: "/cart",
+        element: <CartPage />   
       },
+      {
+        path: "/favourites",
+        element: <Favourites />   
+      }
     ],
   },
 ]);
