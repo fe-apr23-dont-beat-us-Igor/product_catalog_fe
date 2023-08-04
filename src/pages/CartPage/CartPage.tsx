@@ -4,7 +4,6 @@ import { BackButton } from '../../components/UI/BackButton';
 import { CartModal } from '../../components/CartComponents/CartModal';
 import { CartItem } from '../../components/CartComponents/CartItem';
 import { CartCheckout } from '../../components/CartComponents/CartCheckout';
-import { CartProduct } from '../../components/Catalog/Catalog_Types';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const cartItems = [

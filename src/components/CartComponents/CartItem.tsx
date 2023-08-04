@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { CartProduct } from '../Catalog/Catalog_Types';
 import { useNavigate } from 'react-router-dom';
+
 import '../../styles/components/CartItem.scss';
 import { img } from '../../images/images';
 import { CartProduct } from '../../Types/cart.types';
