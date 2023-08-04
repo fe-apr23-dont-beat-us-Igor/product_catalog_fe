@@ -21,6 +21,7 @@ export const Catalog: FC = () => {
 
   const isRender = !loading && !error && products?.rows;
 
+
   const limit = 16;
   const count = products?.count ? Math.ceil(products?.count / limit) : 4;
 
