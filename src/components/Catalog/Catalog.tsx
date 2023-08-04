@@ -8,6 +8,7 @@ import Pagination from '../Pagination/Pagination';
 import { getSomeProducts } from '../../api/api';
 import { ProductCollection } from '../../Types/products.types';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 export const SortingOpgions = ['Newest', 'Oldest', 'Prise'];
 export const PaginationOptions: string[] = ['16', '32', '64'];
