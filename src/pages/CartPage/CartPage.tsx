@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './CartPage.scss';
-import { Phone } from '../../components/Catalog/Catalog';
 import { BackButton } from '../../components/UI/BackButton';
 import { CartModal } from '../../components/CartComponents/CartModal';
 import { CartItem } from '../../components/CartComponents/CartItem';

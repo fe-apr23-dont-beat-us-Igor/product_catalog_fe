@@ -23,28 +23,16 @@ export const router = CreateRouter([
         element: <Home />,
       },
       {
-        path: '/phones',
+        path: '/products',
         element: <Catalog />,
       },
       {
-        path: '/phones/:itemId',
+        path: '/products/:itemId',
         element: <ItemPage />,
-      },
-      {
-        path: 'tablets',
-        element: <></>,
-      },
-      {
-        path: 'accessories',
-        element: <></>,
       },
       {
         path: '/item',
         element: <ItemPage />,
-      },
-      {
-        path: '/not-found-page',
-        element: <NotFoundPage />,
       },
       {
         path: '/cart',
