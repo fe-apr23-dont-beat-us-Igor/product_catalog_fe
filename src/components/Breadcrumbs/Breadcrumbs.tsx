@@ -7,7 +7,16 @@ export const Breadcrumbs: React.FC = () => {
   const location = useLocation();
   const paths = location.pathname.split('/').filter(path => path !== '');
   const searchParams = location.search.toString() || '';
+  
   console.log(location, paths, location.search);
+
+  const makeFirstCapitale = (inpString: string) => {
+    if (inpString.length < 2) {
+      return inpString;
+    }
+
+    return inpString.slice(0, 1).toUpperCase() + inpString.slice(1);
+  };
 
   let secondLinkTitle = '';
   switch (searchParams) {
@@ -47,7 +56,11 @@ export const Breadcrumbs: React.FC = () => {
             <li key={index} className="breadcrumbs__item">
               {separator}
               <span>
-                {path}
+                {index === 1
+                  ? (path.split('-')
+                  .map(titleWord => makeFirstCapitale(titleWord)).join(' '))
+                  : (secondLinkTitle)
+                }
               </span>
             </li>
           );
