@@ -31,7 +31,9 @@ const GoodsSliderCollection: FC = () => {
       </div>
       <div className="goodsSliderCollection__content">
         {mockCard.map(() => (
-          <Card phone={phone} />
+          <Card 
+            phone={phone}
+          />
         ))}
       </div>
     </section>

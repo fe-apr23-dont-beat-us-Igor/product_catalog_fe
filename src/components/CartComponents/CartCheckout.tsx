@@ -17,13 +17,15 @@ export const CartCheckout: React.FC<Props> = (
  }
   ) => {
   const totalItem = cartItems.reduce ((total, item) => total + item.count, 0);
+  const totalSum = cartItems.reduce ((total, item) => 
+  total + item.count * item.priceDiscount, 0);
 
   return (
     <>
       <div className="checkout__container">
         <div className="checkout__info">
           <h1 className="checkout__total-price">
-            $1598
+            {totalSum}
           </h1>
           <p className="checkout__text">
           {`Total for ${totalItem} items`} 

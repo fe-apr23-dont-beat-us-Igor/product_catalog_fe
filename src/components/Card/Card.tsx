@@ -10,6 +10,7 @@ interface Props {
 
 export const Card: FC<Props> = ({ phone }) => {
   const {
+    id,
     name,
     priceRegular,
     priceDiscount,

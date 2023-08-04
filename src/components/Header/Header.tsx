@@ -37,9 +37,9 @@ export const Header: FC = () => {
           </a>
         </div>
         <div className="side-button side-button--favourites">
-          <a href="#">
+          <Link to="/favourites">
             <img src={img.like} alt="favourites-icon" />
-          </a>
+          </Link>
         </div>
         <div className="side-button side-button--cart">
           <Link to="/cart">

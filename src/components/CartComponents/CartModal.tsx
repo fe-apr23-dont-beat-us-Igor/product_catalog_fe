@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../styles/components/CartModal.scss';
 import { CartProduct} from '../Catalog/Catalog_Types';
+import { NavLink } from 'react-router-dom';
  
 type Props = {
     handleModal: () => void,
@@ -8,7 +9,10 @@ type Props = {
     isModalVisible:boolean,
 }
 
-export const CartModal: React.FC<Props> = ({ handleModal, cartItems, isModalVisible }) => {
+export const CartModal: React.FC<Props> = ({ 
+  handleModal,
+  cartItems, 
+  isModalVisible }) => {
   
   const handleConfirm = () => {
     cartItems = [];
@@ -18,12 +22,17 @@ export const CartModal: React.FC<Props> = ({ handleModal, cartItems, isModalVisi
   return (
     <div className='modal__container'>
       <div className='modal__content'>
-        <h4 className='modal__text'>Thank you for your purchase</h4>
+        <h2 className='modal__text'>Thank you for your purchase!</h2>
         <div className='modal__line'></div>
         <div className="modal__buttons_container">
-          <button className="modal__button" onClick={handleConfirm}>
-            Return to main page
-          </button>
+          <NavLink
+            to="/home"
+          >
+            <button className="modal__button" onClick={handleConfirm}>
+              Return to main page
+            </button>
+          </NavLink>
+         
         </div>
       </div>
     </div>

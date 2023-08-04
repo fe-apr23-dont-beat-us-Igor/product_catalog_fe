@@ -6,6 +6,7 @@ import { NotFoundPage } from "../components/NotFoundPage/NotFoundPage";
 import Home from "../pages/Home";
 import Leyout from "../pages/Leyout";
 import { CartPage } from "../pages/CartPage/CartPage";
+import { Favourites } from "../pages/Favourites";
 
 export const router = CreateRouter([
   {
@@ -36,6 +37,10 @@ export const router = CreateRouter([
       {
         path: "/cart",
         element: <CartPage />   
+      },
+      {
+        path: "/favourites",
+        element: <Favourites />   
       }
     ],
   },

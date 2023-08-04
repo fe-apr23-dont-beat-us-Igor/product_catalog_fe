@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CartPage.scss';
 import { Phone } from '../../components/Catalog/Catalog';
 import { BackButton } from '../../components/UI/BackButton';
 import { CartModal } from '../../components/CartComponents/CartModal';
 import { CartItem } from '../../components/CartComponents/CartItem';
 import { CartCheckout } from '../../components/CartComponents/CartCheckout';
+import { CartProduct } from '../../components/Catalog/Catalog_Types';
 
 const cartItems = [{
   id: 1,
-  name: 'Apple iPhone 11 128GB Black',
+  name: 'Apple iPhone 10 128GB Silver',
   capacity: '128GB',
-  priceRegular: 1100,
-  priceDiscount: 1050,
+  priceRegular: 1000,
+  priceDiscount: 850,
   count: 2,
 },
 {
@@ -27,12 +28,12 @@ const cartItems = [{
   id: 3,
   name: 'Apple iPhone 12 256GB Pink',
   capacity: '128GB',
-  priceRegular: 1100,
-  priceDiscount: 1050,
+  priceRegular: 1300,
+  priceDiscount: 1250,
   count: 3,
 },];
 
-export const CartPage = () => {
+export const CartPage: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleModal = () => {
@@ -43,11 +44,11 @@ export const CartPage = () => {
     <div>
       <BackButton />
       <h1 className="title">Cart</h1>
-        {/* <CartModal 
+        {isModalVisible && <CartModal 
           handleModal={handleModal} 
           cartItems={cartItems}
           isModalVisible={isModalVisible}
-        /> */}
+        /> }
       <div className="cart__page">
         <div>
           {cartItems.length > 0 ? (
@@ -55,7 +56,11 @@ export const CartPage = () => {
               <div className="card__items">
               {cartItems.length > 0 && (
                 cartItems.map((product) => 
-                <CartItem key={product.id} product={product} />))}
+                <CartItem 
+                  key={product.id} 
+                  product={product} 
+                  cartItems={cartItems}
+                />))}
              
               </div>
             </>
