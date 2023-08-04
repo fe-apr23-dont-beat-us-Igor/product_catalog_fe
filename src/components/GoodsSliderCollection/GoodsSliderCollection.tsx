@@ -1,25 +1,25 @@
 import React, { FC } from 'react';
-import { Phone } from '../Catalog/Catalog';
 import Card from '../Card/Card';
 import SliderButton from '../UI/SliderButton';
 import { useSlider } from '../../hooks/useSlider';
 import { useProducts } from '../../hooks/useFetch';
-import { ProductCollection } from '../Catalog/Catalog_Types';
+import { Product, ProductCollection } from '../../Types/products.types';
 
 const mockCard = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
 
-const phone: Phone = {
-  age: 1,
-  type: 'string',
-  id: 'string',
-  imageUrl: 'string',
-  name: 'string',
-  snippet: 'string',
-  priceRegular: 1,
-  priceDiscount: 1,
-  screen: 'string',
-  capacity: 'string',
-  ram: 'string',
+const phone: Product = {
+  id: 1,
+    itemId: 'string',
+    category: 'string',
+    name: '',
+    capacity: 'string',
+    fullPrice: 1,
+    color: 'string',
+    price: 1,
+    screen: 'string',
+    ram: 'string',
+    year: 'string',
+    image_id: 1,
 };
 
 const GoodsSliderCollection: FC = () => {
