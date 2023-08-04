@@ -1,8 +1,10 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Phone } from '../Catalog/Catalog';
 import Card from '../Card/Card';
 import SliderButton from '../UI/SliderButton';
 import { useSlider } from '../../hooks/useSlider';
+import { useProducts } from '../../hooks/useFetch';
+import { ProductCollection } from '../Catalog/Catalog_Types';
 
 const mockCard = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -30,8 +32,16 @@ const GoodsSliderCollection: FC = () => {
     handleTouchMove,
   } = useSlider(mockCard, true);
 
+  const [products, loading, error] = useProducts<ProductCollection>(16, 1);
+
+  console.log(products);
+
   return (
-    <section className="section container goodsSliderCollection">
+    <section
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      className="section container goodsSliderCollection"
+    >
       <div className="goodsSliderCollection__head">
         <h2>Brand new models</h2>
         <div className="goodsSliderCollection__buttons">
@@ -43,8 +53,9 @@ const GoodsSliderCollection: FC = () => {
         {slides.map(() => (
           <div
             style={{
-              minWidth: '24%',
-              transform: `translateX(-${(currentSlide * 100)}%)`,
+              display: 'inline',
+              // minWidth: '24%',
+              transform: `translateX(calc(-${currentSlide} * (100% + 16px)))`,
               transition: 'transform 0.5s ease-in-out',
             }}
             className=""

@@ -9,8 +9,9 @@ export const getPhones = () => {
   return client.get<any[]>(`/products`);
 };
 
-export const getSomeProducts = (params: string) => {
-  return client.get<ProductCollection>(`/products?${params}`);
+export const getSomeProducts = <T>(params: string = '?limit=16&page=1') => {
+  console.log(`/products?${params}`);
+  return client.get<T>(`/products?${params}`);
 };
 
 type Category = string | '';
