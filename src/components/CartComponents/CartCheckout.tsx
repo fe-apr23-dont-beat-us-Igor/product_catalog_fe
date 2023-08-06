@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import '../../styles/components/CartCheckout.scss';
-import { CartProduct } from "../../Types/cart.types";
+// import { CartProduct } from "../../Types/cart.types";
 import { CartContext } from "../../context/CartContext";
 
 interface Props {
