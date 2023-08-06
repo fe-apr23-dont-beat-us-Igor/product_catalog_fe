@@ -1,46 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import '../../styles/components/CartItem.scss';
 import { img } from '../../images/images';
-import { CartProduct } from '../../Types/cart.types';
+import { Product } from '../../Types/products.types';
+import { CartContext } from '../../context/CartContext';
 
 
 type Props = {
-  product: CartProduct,
-  cartItems: CartProduct[],
+  product: Product,
+  count: number,
 }
 
-export const CartItem: React.FC<Props> = ({ product, cartItems }) => {
-  const { name, priceDiscount, id, count } = product;
+export const CartItem: React.FC<Props> = ({ product, count }) => {
+  const { name, price, id, image_id } = product;
+  const { addOne, removeOne, removeItem } = useContext(CartContext);
   const navigate = useNavigate();
-  const [itemCount, setItemCount] = useState<number>(() => {
-    const counter = localStorage.getItem(`${id}`);
-
-    return counter ? JSON.parse(counter).itemCount : 1;
-  });
-
-  const storedItem = { id, itemCount, priceDiscount };
-
-  useEffect(() => {
-    localStorage.setItem(`${id}`, JSON.stringify({ ...storedItem, itemCount }));
-  }, [itemCount]);
-
-  const addOne = () => {
-    setItemCount((prevCount) => prevCount + 1);
-  };
-
-  const removeOne = () => {
-    setItemCount((prevCount) => prevCount - 1);
-  };
-
+  
   const navigateToDetails = () => {
     navigate(`/phones/${id}`);
   };
 
-
-  // const image = imageUrl[0];
-   const totalPrice = priceDiscount * count;
+  const totalPrice = price * count;
 
   const isRemovingDisabled = count === 1;
   const isAddingDisabled = count > 9;
@@ -51,9 +32,9 @@ export const CartItem: React.FC<Props> = ({ product, cartItems }) => {
       <div className='cartItem__info'>
        <button
          className='cartItem__delete'
-        //  onClick={() => {
-        //     removeItem(id);
-        //  }}
+         onClick={() => {
+            removeItem(product.itemId);
+         }}
        >
         <img 
           className='cartItem__delete-image' 
@@ -79,7 +60,7 @@ export const CartItem: React.FC<Props> = ({ product, cartItems }) => {
            <button
             className="cartItem__quantity-btns-minus"
             onClick={() => {
-              removeOne();
+              removeOne(product.itemId);
             }}
             disabled={isRemovingDisabled}
           >
@@ -90,7 +71,7 @@ export const CartItem: React.FC<Props> = ({ product, cartItems }) => {
           <button
             className="cartItem__quantity-btns-plus"
             onClick={() => {
-              addOne();
+              addOne(product.itemId);
             }}
             disabled={isAddingDisabled}
           >

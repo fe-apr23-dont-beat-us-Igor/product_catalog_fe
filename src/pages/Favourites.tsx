@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from '../components/Card/Card';
+import { Product } from '../Types/products.types';
 import '../styles/components/Favourites.scss';
 
 export const Favourites: React.FC = () => {

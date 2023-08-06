@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './CartPage.scss';
 import { BackButton } from '../../components/UI/BackButton';
 import { CartModal } from '../../components/CartComponents/CartModal';
 import { CartItem } from '../../components/CartComponents/CartItem';
 import { CartCheckout } from '../../components/CartComponents/CartCheckout';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { CartContext } from '../../context/CartContext';
+import { Product } from '../../Types/products.types';
+import { getPhoneById } from '../../api/api';
 
 const cartItems = [
   {
@@ -33,40 +36,50 @@ const cartItems = [
   },
 ];
 
-export const CartPage = () => {
-  const [cart, setCart] = useLocalStorage('cart', []);
+export const CartPage: React.FC = () => {
+  const { cartItems, getCount } = useContext(CartContext);
+  const [products, setProducts] = useState<Product[]>([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
+
 
   const handleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
 
-  console.log(cart);
+  useEffect(() => {
+    const fetchData = async (): Promise<void> => {
+      const fetchedProducts = await Promise.all(cartItems.map((item) => 
+      getPhoneById(item.id)));
+
+      setProducts(fetchedProducts);
+    };
+
+    fetchData();
+  }, [cartItems]);
+
+  const totalCost = products.reduce((total, product) => 
+  total + product.price * getCount(product.itemId), 0);
+
 
   return (
     <div>
       <BackButton />
       <h1 className="title">Cart</h1>
 
-        {isModalVisible && <CartModal 
-
-          handleModal={handleModal} 
-          cartItems={cartItems}
-          isModalVisible={isModalVisible}
-        /> }
+        {isModalVisible && totalCost > 0 && 
+          <CartModal handleModal={handleModal} /> }
       <div className="cart__page">
         <div>
           {cartItems.length > 0 ? (
             <>
               <div className="card__items">
 
-              {cartItems.length > 0 && (
-                cartItems.map((product) => 
+              {products.map((product) => 
                 <CartItem 
                   key={product.id} 
                   product={product} 
-                  cartItems={cartItems}
-                />))}
+                  count={getCount(product.itemId)}
+                />)}
               </div>
             </>
           ) : (
@@ -75,10 +88,8 @@ export const CartPage = () => {
         </div>
 
         <CartCheckout
-          // totalCost={totalCost}
+          totalCost={totalCost}
           handleModal={handleModal}
-          cartItems={cartItems}
-          isModalVisible={isModalVisible}
         />
       </div>
     </div>
