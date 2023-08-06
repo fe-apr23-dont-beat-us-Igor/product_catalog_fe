@@ -9,18 +9,24 @@ import { getProducts } from '../../api/api';
 import { ProductCollection } from '../../Types/products.types';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { useProductsAPI } from '../../hooks/useFetch';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 export const SortingOpgions = ['Newest', 'Oldest', 'Prise'];
 export const PaginationOptions: string[] = ['16', '32', '64'];
 
 export const Catalog: FC = () => {
+  const [cart, setCart] = useLocalStorage<string[]>('cart', []);
+
+  const addProductToCart = (id: string) => setCart((prev) => {
+    const uniques: string[] = [...new Set([...prev, id])];
+    return uniques;
+  });
+
   const [products, loading, error] = useProductsAPI<ProductCollection>(
     {},
     getProducts,
   );
-
   const isRender = !loading && !error && products?.rows;
-
   const limit = 16;
   const count = products?.count ? Math.ceil(products?.count / limit) : 4;
 
@@ -48,14 +54,16 @@ export const Catalog: FC = () => {
       {isRender && (
         <div className="catalog__item-list">
           {products.rows.map((product) => (
-            <Card key={product.id} phone={product} />
+            <Card
+              key={product.id}
+              phone={product}
+              addToCart={addProductToCart}
+            />
           ))}
         </div>
       )}
 
-      {count && (
-        <Pagination count={count} />
-      )}
+      {count && <Pagination count={count} />}
     </div>
   );
 };
