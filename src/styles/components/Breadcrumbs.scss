@@ -1,0 +1,14 @@
+.breadcrumbs {
+  line-height: 12px;
+
+  &__item {
+    display: inline-block;
+    
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__arrow {
+    margin: 0 8px 0 8px;
+  }
+}
