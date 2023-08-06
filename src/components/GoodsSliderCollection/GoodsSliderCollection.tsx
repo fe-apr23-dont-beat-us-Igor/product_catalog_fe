@@ -50,7 +50,7 @@ const GoodsSliderCollection: FC = () => {
         </div>
       </div>
       <div className="goodsSliderCollection__content">
-  />
+  
         {slides.map(() => (
           <div
             style={{
