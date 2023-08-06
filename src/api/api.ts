@@ -1,24 +1,54 @@
+import {
+  Product,
+  ProductCollection,
+  ProductID,
+  ProductImgId,
+} from '../Types/products.types';
 import { client } from './axiosClient';
 
 interface Phone {
   id: number;
 }
 
-export const getPhones = () => {
-  return client.get<any[]>(`/products`);
+export const getProductImg = (imgId: string) => {
+  return client.get(`/images/${imgId}`);
 };
 
-export const getSomeProducts = <T>(params: string = '') => {
-  console.log(`/products?${params}`);
-  return client.get<T>(`/products?${params}`);
+const setImgUrl = (imgEndpoint: string) =>
+  `https://product-catalog-be-1l77.onrender.com/images/${imgEndpoint}`;
+
+export const getProducts = async (params: string = '') => {
+  try {
+    const products = await client.get<ProductCollection>(`/products?${params}`);
+
+    products.rows.map(
+      (product) => (product.image_catalog = setImgUrl(product.image_catalog)),
+    );
+
+    return products;
+  } catch {
+    throw Error();
+  }
 };
 
-type Category = string | '';
+export const getNewProducts = async (params: string = '') => {
+  try {
+    const products = await client.get<ProductCollection>(
+      `/products/new?${params}`,
+    );
 
-export const getPhonesByCategory = (page: number, category: Category) => {
-  return client.get<Phone[]>(`/phones?page=${page}&category${category}`);
+    console.log(products);
+
+    return products;
+  } catch {
+    throw Error();
+  }
 };
 
-export const getPhoneById = (id: number) => {
-  return client.get<Phone[]>(`/phones/${id}`);
+// export const getProducts = <T>(params: string = '') => {
+//   return client.get<T>(`/products?${params}`);
+// };
+
+export const getProductsById = <T>(id: ProductID) => {
+  return client.get<T>(`/products/${id}`);
 };

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Button from '../UI/Button';
+import CardButton from '../UI/Button';
 import LikeButton from '../UI/LikeButton';
 import { img } from '../../images/images';
 import { Link } from 'react-router-dom';
@@ -11,21 +11,24 @@ interface Props {
 }
 
 export const Card: FC<Props> = ({ phone }) => {
-
-  const { name, priceRegular, priceDiscount, capacity, ram, itemId, screen } =
-    phone;
-
-  const [cart, setCart] = useLocalStorage<string[]>('cart', []);
-
-  const handleAddToCart = (id: string) => {
-    const newCart = [...cart, id];
-
-    setCart(newCart);
-  };
+  const {
+    name,
+    priceRegular,
+    priceDiscount,
+    capacity,
+    ram,
+    itemId,
+    screen,
+    image_catalog,
+  } = phone;
 
   return (
     <Link to={`/products/${itemId}`} className="card" data-qa="card">
-      <img className="card__image" src={img.phone} alt="APPLE A1419 iMac 27" />
+      <img
+        className="card__image"
+        src={image_catalog}
+        alt={name}
+      />
       <p className="card__name">{name}</p>
 
       <div className="card__price">
@@ -57,7 +60,7 @@ export const Card: FC<Props> = ({ phone }) => {
       </div>
 
       <div className="card__buttons">
-        <Button selected={false} onClick={() => handleAddToCart(itemId)} />
+        <CardButton selected={false} itemId={itemId} />
         <LikeButton selected={false} />
       </div>
     </Link>
