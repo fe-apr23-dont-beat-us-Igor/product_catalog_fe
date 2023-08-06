@@ -4,7 +4,6 @@ import { useSlider } from '../../hooks/useSlider';
 import { img } from '../../images/images';
 import banner from '../../images/photos/Banner.png';
 import SliderButton from '../UI/SliderButton';
-import { url } from 'inspector';
 
 const slideList = ['black', 'blue', 'green', 'blue', 'yellow'];
 
@@ -47,7 +46,6 @@ const Slider = () => {
                 style={{
                   backgroundImage: `url(${banner})`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center',
                 }}
               >
                 {/* <img src={img.banner} alt="" /> */}

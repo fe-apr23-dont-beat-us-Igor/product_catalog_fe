@@ -14,7 +14,7 @@ export const useSlider = <T>(
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
-    if (!autoPlay) {
+    if (autoPlay) {
       interval = setInterval(() => changeSlide(1), 5000);
     }
 

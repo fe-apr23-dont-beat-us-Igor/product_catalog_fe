@@ -37,7 +37,7 @@ const GoodsSliderCollection: FC<Props> = ({ products = [] }) => {
     goToSlide,
     handleTouchStart,
     handleTouchMove,
-  } = useSlider(products, true, products.length, 16);
+  } = useSlider(products, false, products.length, 16);
 
   return (
     <section className="section container goodsSliderCollection">

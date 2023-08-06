@@ -6,7 +6,6 @@ import Slider from '../components/Slider/Slider';
 import { useProductsAPI } from '../hooks/useFetch';
 import { Product, ProductCollection } from '../Types/products.types';
 import { getNewProducts } from '../api/api';
-import Slider from '../components/slider/Slider';
 
 const Home: FC = () => {
   const [newProducts, loading, error] = useProductsAPI<ProductCollection>(
@@ -24,7 +23,7 @@ const Home: FC = () => {
       <Slider />
       {newProducts && <GoodsSliderCollection products={[...newProducts.rows, ...newProducts.rows]} />}
       <Categories />
-      {/* {newProducts && <GoodsSliderCollection products={newProducts} />} */}
+      {newProducts && <GoodsSliderCollection products={newProducts.rows} />}
     </main>
   );
 };

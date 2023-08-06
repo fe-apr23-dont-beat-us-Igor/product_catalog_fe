@@ -7,7 +7,7 @@ import { CartCheckout } from '../../components/CartComponents/CartCheckout';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { CartContext } from '../../context/CartContext';
 import { Product } from '../../Types/products.types';
-import { getPhoneById } from '../../api/api';
+import { getProductsById } from '../../api/api';
 
 const cartItems = [
   {
@@ -46,16 +46,16 @@ export const CartPage: React.FC = () => {
     setIsModalVisible(!isModalVisible);
   };
 
-  useEffect(() => {
-    const fetchData = async (): Promise<void> => {
-      const fetchedProducts = await Promise.all(cartItems.map((item) => 
-      getPhoneById(item.id)));
+  // useEffect(() => {
+  //   const fetchData = async (): Promise<void> => {
+  //     const fetchedProducts = await Promise.all(cartItems.map((item) => 
+  //     getProductsById(item.id)));
 
-      setProducts(fetchedProducts);
-    };
+  //     setProducts(fetchedProducts);
+  //   };
 
-    fetchData();
-  }, [cartItems]);
+  //   fetchData();
+  // }, [cartItems]);
 
   const totalCost = products.reduce((total, product) => 
   total + product.price * getCount(product.itemId), 0);

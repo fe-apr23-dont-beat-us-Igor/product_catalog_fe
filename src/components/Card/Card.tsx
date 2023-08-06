@@ -60,7 +60,7 @@ export const Card: FC<Props> = ({ phone }) => {
       </div>
 
       <div className="card__buttons">
-        <CardButton selected={false} itemId={itemId} />
+        <CardButton selected={false} />
         <LikeButton selected={false} />
       </div>
     </Link>

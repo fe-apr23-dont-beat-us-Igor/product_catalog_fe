@@ -37,6 +37,9 @@ export const getNewProducts = async (params: string = '') => {
       `/products/new?${params}`,
     );
 
+    products.rows.map(
+      (product) => (product.image_catalog = setImgUrl(product.image_catalog)),
+    );
     console.log(products);
 
     return products;
