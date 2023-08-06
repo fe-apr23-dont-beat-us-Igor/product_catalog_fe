@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import '../../styles/components/CartItem.scss';
 import { img } from '../../images/images';
 import { Product } from '../../Types/products.types';
