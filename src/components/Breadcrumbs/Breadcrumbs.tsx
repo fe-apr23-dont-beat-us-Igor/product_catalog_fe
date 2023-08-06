@@ -5,7 +5,6 @@ import { img } from "../../images/images";
 
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation();
-  console.log(location);
 
   return (
     <div className="breadscrumbs">
