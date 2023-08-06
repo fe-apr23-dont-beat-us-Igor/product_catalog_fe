@@ -26,24 +26,21 @@ import { Product, ProductCollection } from '../../Types/products.types';
 
 type Props = {
   products: Product[];
-}
+};
 
-const GoodsSliderCollection: FC<Props> = ({ products = []}) => {
+const GoodsSliderCollection: FC<Props> = ({ products = [] }) => {
   const {
+    slideListRef,
     slides,
     currentSlide,
     changeSlide,
     goToSlide,
     handleTouchStart,
     handleTouchMove,
-  } = useSlider(products, true);
+  } = useSlider(products, true, products.length, 16);
 
   return (
-    <section
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      className="section container goodsSliderCollection"
-    >
+    <section className="section container goodsSliderCollection">
       <div className="goodsSliderCollection__head">
         <h2>Brand new models</h2>
         <div className="goodsSliderCollection__buttons">
@@ -51,20 +48,17 @@ const GoodsSliderCollection: FC<Props> = ({ products = []}) => {
           <SliderButton left={false} onClick={() => changeSlide(1)} />
         </div>
       </div>
-      <div className="goodsSliderCollection__content">
-        {slides.map((slide) => (
-          <div
-            style={{
-              display: 'inline',
-              // minWidth: '24%',
-              transform: `translateX(calc(-${currentSlide} * (100% + 16px)))`,
-              transition: 'transform 0.5s ease-in-out',
-            }}
-            className=""
-          >
-            <Card phone={slide} />
-          </div>
-        ))}
+      <div className="goodsSliderCollection__slides-container">
+        <div
+          className="goodsSliderCollection__slides"
+          ref={slideListRef}
+        >
+          {slides.map((slide) => (
+            <div className="goodsSliderCollection__slide">
+              <Card phone={slide} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

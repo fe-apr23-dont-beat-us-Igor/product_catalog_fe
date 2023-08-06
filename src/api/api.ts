@@ -33,15 +33,17 @@ export const getProducts = async (params: string = '') => {
 
 export const getNewProducts = async (params: string = '') => {
   try {
-    const products = await client.get<Product[]>(`/products/new?${params}`);
+    const products = await client.get<ProductCollection>(
+      `/products/new?${params}`,
+    );
 
-     console.log(products);
+    console.log(products);
 
-    return  products;;
+    return products;
   } catch {
     throw Error();
   }
-}
+};
 
 // export const getProducts = <T>(params: string = '') => {
 //   return client.get<T>(`/products?${params}`);

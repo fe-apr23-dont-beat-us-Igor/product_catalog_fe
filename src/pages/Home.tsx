@@ -7,7 +7,7 @@ import { Product, ProductCollection } from '../Types/products.types';
 import { getNewProducts } from '../api/api';
 
 const Home: FC = () => {
-  const [newProducts, loading, error] = useProductsAPI<Product[]>(
+  const [newProducts, loading, error] = useProductsAPI<ProductCollection>(
     {},
     getNewProducts,
   );
@@ -20,9 +20,9 @@ const Home: FC = () => {
         Welcome to Nice Gadgets store!
       </h1>
       <Slider />
-      {newProducts && <GoodsSliderCollection products={newProducts} />}
+      {newProducts && <GoodsSliderCollection products={[...newProducts.rows, ...newProducts.rows]} />}
       <Categories />
-      {newProducts && <GoodsSliderCollection products={newProducts} />}
+      {/* {newProducts && <GoodsSliderCollection products={newProducts} />} */}
     </main>
   );
 };
