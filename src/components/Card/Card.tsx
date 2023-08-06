@@ -11,9 +11,16 @@ interface Props {
 }
 
 export const Card: FC<Props> = ({ phone }) => {
-
-  const { name, priceRegular, priceDiscount, capacity, ram, itemId, screen } =
-    phone;
+  const {
+    name,
+    priceRegular,
+    priceDiscount,
+    capacity,
+    ram,
+    itemId,
+    screen,
+    image_catalog,
+  } = phone;
 
   const [cart, setCart] = useLocalStorage<string[]>('cart', []);
 
@@ -25,7 +32,11 @@ export const Card: FC<Props> = ({ phone }) => {
 
   return (
     <Link to={`/products/${itemId}`} className="card" data-qa="card">
-      <img className="card__image" src={img.phone} alt="APPLE A1419 iMac 27" />
+      <img
+        className="card__image"
+        src={image_catalog}
+        alt={name}
+      />
       <p className="card__name">{name}</p>
 
       <div className="card__price">

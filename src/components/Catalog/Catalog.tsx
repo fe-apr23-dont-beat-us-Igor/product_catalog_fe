@@ -21,7 +21,6 @@ export const Catalog: FC = () => {
 
   const isRender = !loading && !error && products?.rows;
 
-
   const limit = 16;
   const count = products?.count ? Math.ceil(products?.count / limit) : 4;
 
@@ -48,8 +47,8 @@ export const Catalog: FC = () => {
       </div>
       {isRender && (
         <div className="catalog__item-list">
-          {products.rows.map((phone) => (
-            <Card key={phone.id} phone={phone} />
+          {products.rows.map((product) => (
+            <Card key={product.id} phone={product} />
           ))}
         </div>
       )}

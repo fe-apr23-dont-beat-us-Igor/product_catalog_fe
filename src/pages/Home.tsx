@@ -2,17 +2,27 @@ import { FC } from 'react';
 import GoodsSliderCollection from '../components/GoodsSliderCollection/GoodsSliderCollection';
 import Categories from '../components/Categories/Categories';
 import Slider from '../components/Slider/Slider';
+import { useProductsAPI } from '../hooks/useFetch';
+import { Product, ProductCollection } from '../Types/products.types';
+import { getNewProducts } from '../api/api';
 
 const Home: FC = () => {
+  const [newProducts, loading, error] = useProductsAPI<Product[]>(
+    {},
+    getNewProducts,
+  );
+
+  console.log(newProducts);
+
   return (
     <main className="">
       <h1 className="header-margin section container">
         Welcome to Nice Gadgets store!
       </h1>
       <Slider />
-      <GoodsSliderCollection />
+      {newProducts && <GoodsSliderCollection products={newProducts} />}
       <Categories />
-      <GoodsSliderCollection />
+      {newProducts && <GoodsSliderCollection products={newProducts} />}
     </main>
   );
 };

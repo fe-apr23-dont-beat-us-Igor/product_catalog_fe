@@ -26,7 +26,7 @@ const ItemPage: FC = () => {
         </div>
       </div>
       
-      <GoodsSliderCollection/>
+      <GoodsSliderCollection products={[]}/>
     </main>
   );
 };

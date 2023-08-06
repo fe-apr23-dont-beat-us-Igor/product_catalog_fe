@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { SearchParams, getSearchWith } from '../servises/searchParam.servise';
+import { getProductImg } from '../api/api';
+import { ProductImgId } from '../Types/products.types';
 
 export const useProductsAPI = <T>(
   searchParams: SearchParams,
-  callback: <T>(params: string) => Promise<T>,
+  callback: (params: string) => Promise<T>,
 ): [T | null, boolean, boolean] => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
@@ -16,10 +18,15 @@ export const useProductsAPI = <T>(
   const loadData = async () => {
     try {
       setLoading(true);
-      callback<T>(params).then(setData);
-      setLoading(false);
+      const result: T = await callback(params);
+
+      console.log(result);
+
+      setData(result);
     } catch {
       setError(true);
+    } finally {
+      setLoading(false);
     }
   };
 
