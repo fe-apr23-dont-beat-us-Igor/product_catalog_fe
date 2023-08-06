@@ -39,7 +39,7 @@ const ItemCartInfo: FC = () => {
         
         <div className="cart-info__buttons">
           <div className="cart-info__add-to-cart">
-            <Button selected={false} onClick={() => {}} />
+            <Button selected={false} />
           </div>
           <LikeButton selected={false} />
         </div>

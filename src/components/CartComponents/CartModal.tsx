@@ -1,21 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../styles/components/CartModal.scss';
-import { CartProduct } from '../../Types/cart.types';
 import { NavLink } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
  
 type Props = {
     handleModal: () => void,
-    cartItems: CartProduct[],
-    isModalVisible:boolean,
 }
 
-export const CartModal: React.FC<Props> = ({ 
-  handleModal,
-  cartItems, 
-  isModalVisible }) => {
+export const CartModal: React.FC<Props> = ({ handleModal }) => {
+  const { removeAll } = useContext(CartContext);
   
   const handleConfirm = () => {
-    cartItems = [];
+    removeAll();
     handleModal();
   };
 
