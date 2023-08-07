@@ -2,30 +2,26 @@ import { FC, MouseEventHandler, useState, SelectHTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
 import { SearchLink } from '../SearchLink';
+import { SortOption } from '../Catalog/Catalog';
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
-  options: string[];
-  paramKey: string;
+  options: SortOption[];
 }
 
-export const Dropdown: FC<Props> = ({ label, options, paramKey }) => {
-
-  const [currentOptionId, setcurrentOptionId] = useState(0);
+export const Dropdown: FC<Props> = ({ label, options }) => {
+  const [currentOption, setcurrentOption] = useState<SortOption>(options[0]);
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [title] = currentOption;
+  console.log(options);
 
-  const controleDropdownValue = (value: string) => {
-    // setValue(value);
-  };
-
-  const handleOptionChange = (event: any, option: number) => {
+  const handleOptionChange = (event: any, option: SortOption) => {
     event.preventDefault();
-    setcurrentOptionId(option);
-    controleDropdownValue(options[option]);
+    setcurrentOption(option);
     setIsActive(false);
   };
 
-  const openDropDown: MouseEventHandler<HTMLAnchorElement> = (event): void => {
+  const openDropDown: MouseEventHandler<HTMLDivElement> = (event): void => {
     event.preventDefault();
     setIsActive((value) => !value);
   };
@@ -38,14 +34,8 @@ export const Dropdown: FC<Props> = ({ label, options, paramKey }) => {
           'dropdown--opened': isActive,
         })}
       >
-        <div className="dropdown__title">
-          <a
-            className="dropdown__title--link"
-            data-default="Option 0"
-            onClick={openDropDown}
-          >
-            <p>{options[currentOptionId]}</p>
-          </a>
+        <div className="dropdown__title" onClick={openDropDown}>
+          {title}
         </div>
         <div
           className={classnames(`dropdown__content`, {
@@ -53,18 +43,21 @@ export const Dropdown: FC<Props> = ({ label, options, paramKey }) => {
             'dropdown__content--hidden': !isActive,
           })}
         >
-          {options.map((option, index) => (
-            <a
+          {options.map(([title, params]) => (
+            <div
               className="dropdown--link dropdown__item"
-              onClick={(event) => handleOptionChange(event, index)}
+              onClick={(event) => handleOptionChange(event, [title, params])}
             >
               <SearchLink
-                params={{ [paramKey]: option }}
-                style={{ textDecoration: 'none' }}
+                params={params}
+                style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+                }}
               >
-                {option}
+                <div className="dropdown__inner-option">{title}</div>
               </SearchLink>
-            </a>
+            </div>
           ))}
         </div>
       </article>
