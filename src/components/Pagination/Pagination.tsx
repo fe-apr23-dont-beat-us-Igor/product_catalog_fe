@@ -18,7 +18,7 @@ const Pagination: FC<Props> = ({ count }) => {
       <SliderButton left={true} />
       <div className="pagination__buttons">
         {buttons.map((_, index) => (
-          <PaginationButton pageNumber={index} selected={false} />
+          <PaginationButton pageNumber={index + 1} selected={false} />
         ))}
       </div>
       <SliderButton left={false} />

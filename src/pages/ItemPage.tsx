@@ -1,18 +1,31 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import GoodsSliderCollection from '../components/GoodsSliderCollection/GoodsSliderCollection';
 import ItemAbout from '../components/Item/ItemAbout';
 import ItemTechSpecs from '../components/Item/ItemTechSpecs';
 import ItemCartInfo from '../components/Item/ItemCartInfo';
 import ItemGallery from '../components/Item/ItemGallery';
-import { getNewProducts } from '../api/api';
+import { getNewProducts, getProductsById } from '../api/api';
 import { useProductsAPI } from '../hooks/useFetch';
-import { ProductCollection } from '../Types/products.types';
+import { FullProductInformation, Product, ProductCollection } from '../Types/products.types';
+import { useLocation, useParams } from 'react-router-dom';
 
 const ItemPage: FC = () => {
   const [newProducts, loading, error] = useProductsAPI<ProductCollection>(
     {},
     getNewProducts,
   );
+
+  const [product, setProduct] = useState<FullProductInformation>();
+
+  const { itemId } = useParams();
+
+  useEffect(() => {
+    getProductsById(itemId).then((data) => {
+      console.log(data);
+      setProduct(data);
+    });
+  }, []);
+
   return (
     <main className="item">
       <h2 className="item__name">
