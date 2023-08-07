@@ -1,18 +1,33 @@
 import { FC } from "react";
 import Button from "../UI/Button";
 import LikeButton from "../UI/LikeButton";
+import { Product } from "../../Types/products.types";
 
-const ItemCartInfo: FC = () => {
+interface Props {
+  info: Product; 
+};
+
+const ItemCartInfo: FC<Props> = ({ info }) => {
+  const {
+    id,
+    color,
+    price,
+    fullPrice,
+    screen,
+    description,
+    ram,
+  } = info;
+
   return (
     <section className="cart-info">
       <div className="cart-info__param">
         <div className="cart-info__text">
           <p className="cart-info__title">Available colors</p>
-          <p className="cart-info__id">ID: 802390</p>
+          <p className="cart-info__id">ID: {id}</p>
         </div>
         <div className="cart-info__options">
           <button className="colorButton--selected"></button>
-          <button className="colorButton"></button>
+          <button className="colorButton">{color}</button>
           <button className="colorButton"></button>
           <button className="colorButton"></button>
         </div>
@@ -29,11 +44,11 @@ const ItemCartInfo: FC = () => {
       <div className="cart-info__price-info">
         <div className="cart-info__price">
           <h2 className="cart-info__price-new">
-            $799
+            {`$${price}`}
           </h2>
 
           <p className="cart-info__price-old">
-            $1199
+            {`$${fullPrice}`}
           </p>
         </div>
         
@@ -49,7 +64,7 @@ const ItemCartInfo: FC = () => {
         <div className="cart-info__char">
           <p className="cart-info__char-text ">Screen</p>
 
-          <p className="cart-info__char-number">6.5” OLED</p>
+          <p className="cart-info__char-number">{screen}</p>
         </div>
 
         <div className="cart-info__char">
@@ -67,7 +82,7 @@ const ItemCartInfo: FC = () => {
         <div className="cart-info__char">
           <p className="cart-info__char-text ">RAM</p>
 
-          <p className="cart-info__char-number">3 GB</p>
+          <p className="cart-info__char-number">{ram}</p>
         </div>
       </div>
     </section>
