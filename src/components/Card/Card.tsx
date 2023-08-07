@@ -16,8 +16,8 @@ export const Card: FC<Props> = ({ phone }) => {
 
   const {
     name,
-    priceRegular,
-    priceDiscount,
+    fullPrice,
+    price,
     capacity,
     ram,
     itemId,
@@ -37,15 +37,14 @@ export const Card: FC<Props> = ({ phone }) => {
 
   return (
     <Link to={`/products/${itemId}`}>
-      {' '}
       <div className="card" data-qa="card">
         <img className="card__image" src={image_catalog} alt={name} />
         <p className="card__name">{name}</p>
 
         <div className="card__price">
-          <p className="card__price-new">{priceRegular}$</p>
+          <p className="card__price-new">{price}$</p>
 
-          <p className="card__price-old">{priceDiscount}$</p>
+          <p className="card__price-old">{fullPrice}$</p>
         </div>
 
         <div className="card__line"></div>

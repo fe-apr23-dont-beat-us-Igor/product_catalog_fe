@@ -16,7 +16,7 @@ export const getProductImg = (imgId: string) => {
   return client.get(`/images/${imgId}`);
 };
 
-const setImgUrl = (imgEndpoint: string) =>
+export const setImgUrl = (imgEndpoint: string) =>
   `https://product-catalog-be-1l77.onrender.com/images/${imgEndpoint}`;
 
 export const getProducts = async (params: string = '') => {
