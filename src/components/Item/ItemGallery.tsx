@@ -11,7 +11,7 @@ const ItemGallery: FC<Props> = ({ itemName, photos }) => {
   const photosLinks = Object.values(photos).slice(1);
 
   const [currentPhotoIndex, setcurrentPhotoIndex] = useState<number>(0);
-  const [autoScroll, setAutoScroll] = useState<boolean>(false);
+  const [autoScroll, setAutoScroll] = useState<boolean>(true);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -19,7 +19,7 @@ const ItemGallery: FC<Props> = ({ itemName, photos }) => {
     if (autoScroll) {
       interval = setInterval(() => 
       setcurrentPhotoIndex(current => 
-        current === photosLinks.length - 1 ? 0 : current + 1), 3000);
+        current === photosLinks.length - 1 ? 0 : current + 1), 4000);
     };
 
     return () => {
