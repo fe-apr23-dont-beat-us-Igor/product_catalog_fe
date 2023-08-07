@@ -47,10 +47,7 @@ export const Catalog: FC = () => {
       {isRender && (
         <div className="catalog__item-list">
           {products.rows.map((product) => (
-            <Card
-              key={product.id}
-              phone={product}
-            />
+            <Card key={product.id} phone={product} />
           ))}
         </div>
       )}

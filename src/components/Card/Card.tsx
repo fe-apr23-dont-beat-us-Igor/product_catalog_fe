@@ -14,7 +14,6 @@ type Props = {
 export const Card: FC<Props> = ({ phone }) => {
   const { addProductToCart, addProductToLikeStorage } = useAppContext();
 
-
   const {
     name,
     priceRegular,
@@ -29,10 +28,7 @@ export const Card: FC<Props> = ({ phone }) => {
   return (
     <Link to={`/products/${itemId}`}>
       {' '}
-      <div
-        className="card"
-        data-qa="card"
-      >
+      <div className="card" data-qa="card">
         <img className="card__image" src={image_catalog} alt={name} />
         <p className="card__name">{name}</p>
 
@@ -64,16 +60,24 @@ export const Card: FC<Props> = ({ phone }) => {
           </div>
         </div>
 
-      <div className="card__buttons">
-        <CardButton selected={false} onClick={() => addProductToCart(itemId)} />
-        <LikeButton
-          selected={false}
-          onClick={() => addProductToLikeStorage(itemId)}
-        />
+        <div className="card__buttons">
+          <CardButton
+            selected={false}
+            onClick={(event) => {
+              event.preventDefault();
+              addProductToCart(itemId);
+            }}
+          />
+          <LikeButton
+            selected={false}
+            onClick={(event) => {
+              event.preventDefault();
+              addProductToLikeStorage(itemId);
+            }}
+          />
+        </div>
       </div>
-    </div>
     </Link>
-
   );
 };
 
