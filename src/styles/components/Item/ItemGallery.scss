@@ -1,6 +1,6 @@
 .gallery {
-  @include flex-center;
-  justify-content: space-between;
+  display: flex;
+  align-items: center;
   flex-direction: column-reverse;
   max-height: 100%;
 
@@ -28,7 +28,6 @@
     @include onPortable {
       grid-template-columns: repeat(1, 1fr);
       grid-template-rows: repeat(5, 1fr);
-
     }
 
     @include onDesktop {

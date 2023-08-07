@@ -18,7 +18,8 @@ export interface Product {
 }
 
 export interface ProductLinks {
-  [key: string]: string | null | number;
+  [key: string]: string | undefined;
+  // [key: string]: string | null | number;
 }
 export interface FullProductInformation {
   product: Product;

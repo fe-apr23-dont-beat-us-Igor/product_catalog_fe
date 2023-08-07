@@ -15,7 +15,25 @@ const ItemPage: FC = () => {
     getNewProducts,
   );
 
-  const [product, setProduct] = useState<FullProductInformation>();
+  const [product, setProduct] = useState<FullProductInformation>({
+    product: {
+      id: 0,
+      itemId: "",
+      name: "",
+      category: "",
+      price: 0,
+      fullPrice: 0,
+      screen: "",
+      capacity: "",
+      ram: "",
+      color: "",
+      image_id: 0,
+      image_catalog: "",
+      year: 0,
+      description: "",
+    },
+    productLinks: {},
+  });
 
   const { itemId } = useParams();
 
@@ -29,20 +47,23 @@ const ItemPage: FC = () => {
   return (
     <main className="item">
       <h2 className="item__name">
-        Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+        { product.product.name }
       </h2>
       <div className="item__content">
         <div className="item__gallery container section">
-          <ItemGallery />
+          <ItemGallery 
+            itemName={product.product.name} 
+            photos={product.productLinks}
+          />
         </div>
         <div className="item__cart-info container section">
-          <ItemCartInfo />
+          <ItemCartInfo info={product.product} />
         </div>
         <div className="item__about container section">
-          <ItemAbout />
+          <ItemAbout description={product.product.description}/>
         </div>
         <div className="item__tech container section">
-          <ItemTechSpecs />
+          <ItemTechSpecs tech={product.product}/>
         </div>
       </div>
 

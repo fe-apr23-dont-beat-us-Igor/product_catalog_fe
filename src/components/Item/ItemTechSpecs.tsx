@@ -1,6 +1,16 @@
 import { FC } from "react";
+import { Product } from "../../Types/products.types";
 
-const ItemTechSpecs: FC = () => {
+interface Props {
+  tech: Product; 
+};
+
+const ItemTechSpecs: FC<Props> = ({ tech }) => {
+  const {
+    screen,
+    ram,
+  } = tech;
+
   return (
     <section className="tech">
       <h3 className="tech__title">Tech specs</h3>
@@ -8,7 +18,7 @@ const ItemTechSpecs: FC = () => {
         <div className="tech__char">
           <p className="tech__char-text ">Screen</p>
 
-          <p className="tech__char-number">6.5” OLED</p>
+          <p className="tech__char-number">{screen}</p>
         </div>
 
         <div className="tech__char">
@@ -26,7 +36,7 @@ const ItemTechSpecs: FC = () => {
         <div className="tech__char">
           <p className="tech__char-text ">RAM</p>
 
-          <p className="tech__char-number">3 GB</p>
+          <p className="tech__char-number">{ram}</p>
         </div>
 
         <div className="tech__char">
