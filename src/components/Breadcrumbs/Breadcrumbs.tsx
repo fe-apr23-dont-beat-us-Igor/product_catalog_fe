@@ -8,8 +8,6 @@ export const Breadcrumbs: React.FC = () => {
   const paths = location.pathname.split('/').filter(path => path !== '');
   const searchParams = location.search.toString() || '';
   
-  console.log(location, paths, location.search);
-
   const makeFirstCapitale = (inpString: string) => {
     if (inpString.length < 2) {
       return inpString;
