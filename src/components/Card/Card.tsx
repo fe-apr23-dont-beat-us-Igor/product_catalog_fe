@@ -12,8 +12,20 @@ type Props = {
 };
 
 export const Card: FC<Props> = ({ phone }) => {
-  const { addProductToCart, addProductToLikeStorage } = useAppContext();
+  const { setCartStorage, setLikeStorage, cartStorage, likeStorage } =
+    useAppContext();
 
+  const addProductToCart = (id: string) =>
+    setCartStorage((prev) => {
+      const uniques: string[] = [...prev];
+      return uniques.includes(id) ? uniques : [...uniques, id];
+    });
+
+  const addProductToLikeStorage = (id: string) =>
+    setLikeStorage((prev) => {
+      const uniques: string[] = [...prev];
+      return uniques.includes(id) ? uniques : [...uniques, id];
+    });
 
   const {
     name,
@@ -29,10 +41,7 @@ export const Card: FC<Props> = ({ phone }) => {
   return (
     <Link to={`/products/${itemId}`}>
       {' '}
-      <div
-        className="card"
-        data-qa="card"
-      >
+      <div className="card" data-qa="card">
         <img className="card__image" src={image_catalog} alt={name} />
         <p className="card__name">{name}</p>
 
@@ -64,16 +73,24 @@ export const Card: FC<Props> = ({ phone }) => {
           </div>
         </div>
 
-      <div className="card__buttons">
-        <CardButton selected={false} onClick={() => addProductToCart(itemId)} />
-        <LikeButton
-          selected={false}
-          onClick={() => addProductToLikeStorage(itemId)}
-        />
+        <div className="card__buttons">
+          <CardButton
+            selected={cartStorage.includes(itemId)}
+            onClick={(event) => {
+              event.preventDefault();
+              addProductToCart(itemId);
+            }}
+          />
+          <LikeButton
+            selected={likeStorage.includes(itemId)}
+            onClick={(event) => {
+              event.preventDefault();
+              addProductToLikeStorage(itemId);
+            }}
+          />
+        </div>
       </div>
-    </div>
     </Link>
-
   );
 };
 

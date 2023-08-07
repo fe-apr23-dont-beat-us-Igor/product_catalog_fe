@@ -55,3 +55,7 @@ export const getNewProducts = async (params: string = '') => {
 export const getProductsById = <T>(id: ProductID) => {
   return client.get<T>(`/products/${id}`);
 };
+
+export const getProductCollectionByIds = (ids: string[]) => {
+  return client.post<Product[]>('/cart-items', { ids });
+};

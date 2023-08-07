@@ -7,7 +7,8 @@ import { CartCheckout } from '../../components/CartComponents/CartCheckout';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { CartContext } from '../../context/CartContext';
 import { Product } from '../../Types/products.types';
-import { getProductsById } from '../../api/api';
+import { getProductCollectionByIds, getProductsById } from '../../api/api';
+import { useAppContext } from '../../context/AppContext';
 
 const cartItems = [
   {
@@ -40,7 +41,18 @@ export const CartPage: React.FC = () => {
   const { cartItems, getCount } = useContext(CartContext);
   const [products, setProducts] = useState<Product[]>([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [cart, setCart] = useLocalStorage<string[]>('cart', []);
 
+  // для роботи з cart та like
+  const { setCartStorage, setLikeStorage, cartStorage, likeStorage } =
+    useAppContext();
+
+  useEffect(() => {
+    getProductCollectionByIds(cart).then(setProducts);
+
+    console.log(products);
+  }, []);
+  //
 
   const handleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -48,7 +60,7 @@ export const CartPage: React.FC = () => {
 
   // useEffect(() => {
   //   const fetchData = async (): Promise<void> => {
-  //     const fetchedProducts = await Promise.all(cartItems.map((item) => 
+  //     const fetchedProducts = await Promise.all(cartItems.map((item) =>
   //     getProductsById(item.id)));
 
   //     setProducts(fetchedProducts);
@@ -57,29 +69,31 @@ export const CartPage: React.FC = () => {
   //   fetchData();
   // }, [cartItems]);
 
-  const totalCost = products.reduce((total, product) => 
-  total + product.price * getCount(product.itemId), 0);
-
+  const totalCost = products.reduce(
+    (total, product) => total + product.price * getCount(product.itemId),
+    0,
+  );
 
   return (
     <div>
       <BackButton />
       <h1 className="title">Cart</h1>
 
-        {isModalVisible && totalCost > 0 && 
-          <CartModal handleModal={handleModal} /> }
+      {isModalVisible && totalCost > 0 && (
+        <CartModal handleModal={handleModal} />
+      )}
       <div className="cart__page">
         <div>
           {cartItems.length > 0 ? (
             <>
               <div className="card__items">
-
-              {products.map((product) => 
-                <CartItem 
-                  key={product.id} 
-                  product={product} 
-                  count={getCount(product.itemId)}
-                />)}
+                {products.map((product) => (
+                  <CartItem
+                    key={product.id}
+                    product={product}
+                    count={getCount(product.itemId)}
+                  />
+                ))}
               </div>
             </>
           ) : (
@@ -87,10 +101,7 @@ export const CartPage: React.FC = () => {
           )}
         </div>
 
-        <CartCheckout
-          totalCost={totalCost}
-          handleModal={handleModal}
-        />
+        <CartCheckout totalCost={totalCost} handleModal={handleModal} />
       </div>
     </div>
   );
