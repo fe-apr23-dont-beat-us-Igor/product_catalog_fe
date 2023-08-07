@@ -12,20 +12,7 @@ type Props = {
 };
 
 export const Card: FC<Props> = ({ phone }) => {
-  const { setCartStorage, setLikeStorage, cartStorage, likeStorage } =
-    useAppContext();
-
-  const addProductToCart = (id: string) =>
-    setCartStorage((prev) => {
-      const uniques: string[] = [...prev];
-      return uniques.includes(id) ? uniques : [...uniques, id];
-    });
-
-  const addProductToLikeStorage = (id: string) =>
-    setLikeStorage((prev) => {
-      const uniques: string[] = [...prev];
-      return uniques.includes(id) ? uniques : [...uniques, id];
-    });
+  const { cart, toggleItem } = useAppContext();
 
   const {
     name,
@@ -37,6 +24,16 @@ export const Card: FC<Props> = ({ phone }) => {
     screen,
     image_catalog,
   } = phone;
+
+  const isAddButtonActive = cart.includes(itemId);
+
+  const handleCartButton = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string,
+  ) => {
+    event.preventDefault();
+    toggleItem(id);
+  };
 
   return (
     <Link to={`/products/${itemId}`}>
@@ -75,17 +72,14 @@ export const Card: FC<Props> = ({ phone }) => {
 
         <div className="card__buttons">
           <CardButton
-            selected={cartStorage.includes(itemId)}
-            onClick={(event) => {
-              event.preventDefault();
-              addProductToCart(itemId);
-            }}
+            selected={isAddButtonActive}
+            onClick={(event) => handleCartButton(event, itemId)}
           />
           <LikeButton
-            selected={likeStorage.includes(itemId)}
+            selected={true}
             onClick={(event) => {
               event.preventDefault();
-              addProductToLikeStorage(itemId);
+              // toggleItem(itemId);
             }}
           />
         </div>
