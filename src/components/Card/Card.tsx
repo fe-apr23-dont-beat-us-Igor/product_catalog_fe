@@ -5,26 +5,14 @@ import { img } from '../../images/images';
 import { Link, useNavigation } from 'react-router-dom';
 import { Product } from '../../Types/products.types';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { useAppContext, useCart } from '../../context/AppContext';
+import { useAppContext } from '../../context/AppContext';
 
 type Props = {
   phone: Product | any;
 };
 
 export const Card: FC<Props> = ({ phone }) => {
-  const { setCartStorage, setLikeStorage, cartStorage, likeStorage } =
-    useAppContext();
-
-  // const { addProductToCart, remove } = useCart();
-
-  const toggleItem = (id: string) => {
-    setCartStorage((prev) => {
-      const hasId = prev.includes(id);
-
-      return hasId ? prev.filter((item) => item !== id) : [...prev, id];
-    });
-  };
-
+  const { cart, toggleItem } = useAppContext();
 
   const {
     name,
@@ -36,6 +24,16 @@ export const Card: FC<Props> = ({ phone }) => {
     screen,
     image_catalog,
   } = phone;
+
+  const isAddButtonActive = cart.includes(itemId);
+
+  const handleCartButton = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string,
+  ) => {
+    event.preventDefault();
+    toggleItem(id);
+  };
 
   return (
     <Link to={`/products/${itemId}`}>
@@ -74,17 +72,14 @@ export const Card: FC<Props> = ({ phone }) => {
 
         <div className="card__buttons">
           <CardButton
-            selected={cartStorage.includes(itemId)}
-            onClick={(event) => {
-              event.preventDefault();
-              toggleItem(itemId);
-            }}
+            selected={isAddButtonActive}
+            onClick={(event) => handleCartButton(event, itemId)}
           />
           <LikeButton
-            selected={likeStorage.includes(itemId)}
+            selected={true}
             onClick={(event) => {
               event.preventDefault();
-              toggleItem(itemId);
+              // toggleItem(itemId);
             }}
           />
         </div>

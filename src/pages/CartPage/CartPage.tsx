@@ -37,20 +37,26 @@ const cartItems = [
   },
 ];
 
+interface ProductInCart {
+  quantity: number;
+  product: Product;
+}
+
 export const CartPage: React.FC = () => {
-  const { cartItems, getCount } = useContext(CartContext);
-  const [products, setProducts] = useState<Product[]>([]);
+  // const { cartItems, getCount } = useContext(CartContext);
+  const [products, setProducts] = useState<ProductInCart[]>([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [cart, setCart] = useLocalStorage<string[]>('cart', []);
+  const { cart, removeItem, removeAll } = useAppContext();
 
   // для роботи з cart та like
-  const { setCartStorage, setLikeStorage, cartStorage, likeStorage } =
-    useAppContext();
-
   useEffect(() => {
     getProductCollectionByIds(cart).then((data) => {
+      const cartProducts: ProductInCart[] = data.map((product) => ({
+        quantity: 1,
+        product: product,
+      }));
       console.log(data);
-      setProducts(data);
+      setProducts(cartProducts);
     });
   }, []);
   //
@@ -59,19 +65,19 @@ export const CartPage: React.FC = () => {
     setIsModalVisible(!isModalVisible);
   };
 
-  const totalCost = products.reduce(
-    (total, product) => total + product.price * getCount(product.itemId),
-    0,
-  );
+  // const totalCost = products.reduce(
+  //   (total, product) => total + product.price * getCount(product.itemId),
+  //   0,
+  // );
 
   return (
     <div>
       <BackButton />
       <h1 className="title">Cart</h1>
-
+      {/* 
       {isModalVisible && totalCost > 0 && (
         <CartModal handleModal={handleModal} />
-      )}
+      )} */}
       <div className="cart__page">
         <div>
           {cartItems.length > 0 ? (
@@ -79,9 +85,9 @@ export const CartPage: React.FC = () => {
               <div className="card__items">
                 {products.map((product) => (
                   <CartItem
-                    key={product.id}
-                    product={product}
-                    count={getCount(product.itemId)}
+                    key={product.product.id}
+                    product={product.product}
+                    count={199}
                   />
                 ))}
               </div>
@@ -91,7 +97,7 @@ export const CartPage: React.FC = () => {
           )}
         </div>
 
-        <CartCheckout totalCost={totalCost} handleModal={handleModal} />
+        <CartCheckout totalCost={100} handleModal={handleModal} />
       </div>
     </div>
   );
