@@ -5,7 +5,7 @@ import { img } from '../../images/images';
 import { Link, useNavigation } from 'react-router-dom';
 import { Product } from '../../Types/products.types';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { useAppContext } from '../../context/AppContext';
+import { useAppContext, useCart } from '../../context/AppContext';
 
 type Props = {
   phone: Product | any;
@@ -15,17 +15,16 @@ export const Card: FC<Props> = ({ phone }) => {
   const { setCartStorage, setLikeStorage, cartStorage, likeStorage } =
     useAppContext();
 
-  const addProductToCart = (id: string) =>
-    setCartStorage((prev) => {
-      const uniques: string[] = [...prev];
-      return uniques.includes(id) ? uniques : [...uniques, id];
-    });
+  // const { addProductToCart, remove } = useCart();
 
-  const addProductToLikeStorage = (id: string) =>
-    setLikeStorage((prev) => {
-      const uniques: string[] = [...prev];
-      return uniques.includes(id) ? uniques : [...uniques, id];
+  const toggleItem = (id: string) => {
+    setCartStorage((prev) => {
+      const hasId = prev.includes(id);
+
+      return hasId ? prev.filter((item) => item !== id) : [...prev, id];
     });
+  };
+
 
   const {
     name,
@@ -78,14 +77,14 @@ export const Card: FC<Props> = ({ phone }) => {
             selected={cartStorage.includes(itemId)}
             onClick={(event) => {
               event.preventDefault();
-              addProductToCart(itemId);
+              toggleItem(itemId);
             }}
           />
           <LikeButton
             selected={likeStorage.includes(itemId)}
             onClick={(event) => {
               event.preventDefault();
-              addProductToLikeStorage(itemId);
+              toggleItem(itemId);
             }}
           />
         </div>

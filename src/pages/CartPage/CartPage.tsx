@@ -59,7 +59,6 @@ export const CartPage: React.FC = () => {
     setIsModalVisible(!isModalVisible);
   };
 
-
   const totalCost = products.reduce(
     (total, product) => total + product.price * getCount(product.itemId),
     0,
