@@ -8,6 +8,7 @@ import { getNewProducts, getProductsById } from '../api/api';
 import { useProductsAPI } from '../hooks/useFetch';
 import { FullProductInformation, Product, ProductCollection } from '../Types/products.types';
 import { useLocation, useParams } from 'react-router-dom';
+import Loader from '../components/Loader/Loader';
 
 const ItemPage: FC = () => {
   const [newProducts, loading, error] = useProductsAPI<ProductCollection>(
@@ -60,6 +61,7 @@ const ItemPage: FC = () => {
           <ItemCartInfo info={product.product} />
         </div>
         <div className="item__about container section">
+          <Loader />
           <ItemAbout description={product.product.description}/>
         </div>
         <div className="item__tech container section">
