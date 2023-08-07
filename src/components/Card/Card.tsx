@@ -4,13 +4,17 @@ import LikeButton from '../UI/LikeButton';
 import { img } from '../../images/images';
 import { Link, useNavigation } from 'react-router-dom';
 import { Product } from '../../Types/products.types';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useAppContext } from '../../context/AppContext';
 
 type Props = {
   phone: Product | any;
-  addToCart?: (value: string) => void | undefined;
 };
 
-export const Card: FC<Props> = ({ phone, addToCart }) => {
+export const Card: FC<Props> = ({ phone }) => {
+  const { addProductToCart, addProductToLikeStorage } = useAppContext();
+
+
   const {
     name,
     priceRegular,
@@ -60,15 +64,16 @@ export const Card: FC<Props> = ({ phone, addToCart }) => {
           </div>
         </div>
 
-        <div className="card__buttons">
-          {/* <CardButton selected={false} onClick={() => addToCart(itemId)}/> */}
-          {addToCart && (
-            <CardButton selected={false} onClick={() => addToCart(itemId)} />
-          )}
-          <LikeButton selected={false} />
-        </div>
+      <div className="card__buttons">
+        <CardButton selected={false} onClick={() => addProductToCart(itemId)} />
+        <LikeButton
+          selected={false}
+          onClick={() => addProductToLikeStorage(itemId)}
+        />
       </div>
+    </div>
     </Link>
+
   );
 };
 

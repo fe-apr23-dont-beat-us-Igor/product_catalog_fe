@@ -15,13 +15,6 @@ export const SortingOpgions = ['Newest', 'Oldest', 'Prise'];
 export const PaginationOptions: string[] = ['16', '32', '64'];
 
 export const Catalog: FC = () => {
-  const [cart, setCart] = useLocalStorage<string[]>('cart', []);
-
-  const addProductToCart = (id: string) => setCart((prev) => {
-    const uniques: string[] = [...new Set([...prev, id])];
-    return uniques;
-  });
-
   const [products, loading, error] = useProductsAPI<ProductCollection>(
     {},
     getProducts,
@@ -57,7 +50,6 @@ export const Catalog: FC = () => {
             <Card
               key={product.id}
               phone={product}
-              addToCart={addProductToCart}
             />
           ))}
         </div>
