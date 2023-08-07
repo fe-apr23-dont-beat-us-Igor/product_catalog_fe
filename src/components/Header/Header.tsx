@@ -64,10 +64,14 @@ export const Header: FC = () => {
             <img src={img.cart} alt="cart-icon" />
           </Link>
         </div>
-        <div className="side-button side-button--cart">
-          <button onClick={toggleRegistrationMenu}>
-            Register
-          </button>
+        <div className="side-button side-button--register">
+          <a href="#" onClick={toggleRegistrationMenu}>
+            <img
+              src={img.register}
+              alt="register-icon"
+              className="side-button--img"
+            />
+          </a>
         </div>
       </div>
       {isMenuActive && <BurgerMenu ref={burgerMenu} toggler={toggler} />}

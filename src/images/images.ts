@@ -19,6 +19,8 @@ import phones from './photos/Phones.png';
 import tablets from './photos/Tablets.png';
 import phone from './photos/image 2.png';
 
+import register from './register-user-icon.svg';
+
 export const img = {
   logo,
   arrowDown,
@@ -39,4 +41,5 @@ export const img = {
   tablets,
   phone,
   notFound,
+  register,
 };

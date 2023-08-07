@@ -5,56 +5,102 @@ type Props = {
 }
 
 export const RegistrationForm: React.FC<Props> = ({ onClose }) => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const initialFormData = {
+    username: '',
+    email: '',
+    password: '',
+  };
+  const [formData, setFormData] = useState(initialFormData);
+
+  const { username, email, password } = formData;
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log('Имя пользователя: ', username);
-    console.log('Email: ', email);
-    console.log('Пароль: ', password);
-
+    fetch('/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error('Something went wrong', error);
+      });
     onClose();
   };
 
   return (
     <div className="regform">
       <div className="regform__content">
-        <span className="regform__button" onClick={onClose}>&times;</span>
+        <span className="regform__cross" onClick={onClose}>&times;</span>
+
         <h2>Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="regform__group">
             <label>User name: </label>
+
             <input
               type="text"
+              name="username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </div>
-          <div className="regform__group">
-            <label>Email: </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleChange}
               className='regform__group--input'
               required
             />
           </div>
+
           <div className="regform__group">
-            <label className='regform__group--label'>Password: </label>
+            <label>Email: </label>
             <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              className='regform__group--input'
               required
             />
           </div>
-          .
-          <button type="submit">Sign Up</button>
+
+          <div className="regform__group">
+            <label className='regform__group--label'>Password: </label>
+
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              className='regform__group--input'
+              required
+            />
+          </div>
+
+          <button
+            className='button-primary regform__submit-button'
+            type="submit"
+          >
+            Sign Up
+          </button>
         </form>
+        <div className="regform__login">
+          <p className="regform__login--text">
+            Already signed in?
+          </p>
+          <a
+            href="#"
+            className='regform__login--link'
+          >
+            Login
+          </a>
+        </div>
       </div>
     </div>
   );

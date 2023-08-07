@@ -18,7 +18,7 @@
     width: 80%;
   }
 
-  &__button {
+  &__cross {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -46,20 +46,23 @@
       border-radius: 3px;
     }
   }
-  &__button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
+    &__submit-button {
+      margin: auto;
   }
 
+  &__login {
+    margin-top: 16px;
+    text-align: center;
+
+    &--text {
+      display: inline-block;
+      margin-right: 8px;
+    }
+   
+    &--link {
+      display: inline;
+    }
+  }
 }
 
 
