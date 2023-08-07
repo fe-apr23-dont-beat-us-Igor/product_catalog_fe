@@ -20,11 +20,11 @@ export const RegistrationForm: React.FC<Props> = ({ onClose }) => {
 
   return (
     <div className="regform">
-      <div className="regform-content">
-        <span className="close" onClick={onClose}>&times;</span>
+      <div className="regform__content">
+        <span className="regform__button" onClick={onClose}>&times;</span>
         <h2>Sign Up</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="regform__group">
             <label>User name: </label>
             <input
               type="text"
@@ -33,18 +33,18 @@ export const RegistrationForm: React.FC<Props> = ({ onClose }) => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="regform__group">
             <label>Email: </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className='form-group--input'
+              className='regform__group--input'
               required
             />
           </div>
-          <div className="form-group">
-            <label>Password: </label>
+          <div className="regform__group">
+            <label className='regform__group--label'>Password: </label>
             <input
               type="password"
               value={password}
@@ -52,6 +52,7 @@ export const RegistrationForm: React.FC<Props> = ({ onClose }) => {
               required
             />
           </div>
+          .
           <button type="submit">Sign Up</button>
         </form>
       </div>
