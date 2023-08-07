@@ -48,9 +48,10 @@ export const CartPage: React.FC = () => {
     useAppContext();
 
   useEffect(() => {
-    getProductCollectionByIds(cart).then(setProducts);
-
-    console.log(products);
+    getProductCollectionByIds(cart).then((data) => {
+      console.log(data);
+      setProducts(data);
+    });
   }, []);
   //
 
@@ -58,16 +59,6 @@ export const CartPage: React.FC = () => {
     setIsModalVisible(!isModalVisible);
   };
 
-  // useEffect(() => {
-  //   const fetchData = async (): Promise<void> => {
-  //     const fetchedProducts = await Promise.all(cartItems.map((item) =>
-  //     getProductsById(item.id)));
-
-  //     setProducts(fetchedProducts);
-  //   };
-
-  //   fetchData();
-  // }, [cartItems]);
 
   const totalCost = products.reduce(
     (total, product) => total + product.price * getCount(product.itemId),
