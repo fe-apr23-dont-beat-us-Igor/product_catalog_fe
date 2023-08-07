@@ -1,88 +1,73 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CartPage.scss';
 import { BackButton } from '../../components/UI/BackButton';
 import { CartModal } from '../../components/CartComponents/CartModal';
 import { CartItem } from '../../components/CartComponents/CartItem';
 import { CartCheckout } from '../../components/CartComponents/CartCheckout';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { CartContext } from '../../context/CartContext';
-import { Product } from '../../Types/products.types';
-import { getProductCollectionByIds, getProductsById } from '../../api/api';
+import { getProductCollectionByIds } from '../../api/api';
 import { useAppContext } from '../../context/AppContext';
-
-const cartItems = [
-  {
-    id: 1,
-    name: 'Apple iPhone 11 128GB Black',
-    capacity: '128GB',
-    priceRegular: 1100,
-    priceDiscount: 1050,
-    count: 2,
-  },
-  {
-    id: 2,
-    name: 'Apple iPhone 11 128GB Black',
-    capacity: '128GB',
-    priceRegular: 1100,
-    priceDiscount: 1050,
-    count: 1,
-  },
-  {
-    id: 3,
-    name: 'Apple iPhone 12 256GB Pink',
-    capacity: '128GB',
-    priceRegular: 1100,
-    priceDiscount: 1050,
-    count: 3,
-  },
-];
+import { ProductInCart } from '../../Types/cart.types';
 
 export const CartPage: React.FC = () => {
-  const { cartItems, getCount } = useContext(CartContext);
-  const [products, setProducts] = useState<Product[]>([]);
+  const [cartProducts, setCartProducts] = useState<ProductInCart[]>([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [cart, setCart] = useLocalStorage<string[]>('cart', []);
+  const { cart, removeAll } = useAppContext();
 
   // для роботи з cart та like
-  const { setCartStorage, setLikeStorage, cartStorage, likeStorage } =
-    useAppContext();
-
   useEffect(() => {
     getProductCollectionByIds(cart).then((data) => {
+      const cartProducts: ProductInCart[] = data.map((product) => ({
+        quantity: 1,
+        product: product,
+      }));
       console.log(data);
-      setProducts(data);
+      setCartProducts(cartProducts);
     });
-  }, []);
+  }, [cart]);
   //
 
   const handleModal = () => {
     setIsModalVisible(!isModalVisible);
+    removeAll();
   };
 
+  const totalCost = (): number => {
+    const priceList = cartProducts.map(
+      ({ product, quantity }) => product.price * quantity,
+    );
 
-  const totalCost = products.reduce(
-    (total, product) => total + product.price * getCount(product.itemId),
-    0,
-  );
+    return priceList.reduce((acc, item) => acc + item, 0);
+  };
+
+  const changeQuantity = (num: number, id: string) => {
+    setCartProducts((prev) =>
+      prev.map((item) => {
+        const quantity =
+          item.product.itemId === id ? item.quantity + num : item.quantity;
+
+        return { ...item, quantity };
+      }),
+    );
+  };
 
   return (
     <div>
       <BackButton />
       <h1 className="title">Cart</h1>
-
-      {isModalVisible && totalCost > 0 && (
+            
+      {isModalVisible && (
         <CartModal handleModal={handleModal} />
       )}
       <div className="cart__page">
         <div>
-          {cartItems.length > 0 ? (
+          {cartProducts.length > 0 ? (
             <>
               <div className="card__items">
-                {products.map((product) => (
+                {cartProducts.map((product) => (
                   <CartItem
-                    key={product.id}
+                    key={product.product.id}
                     product={product}
-                    count={getCount(product.itemId)}
+                    changeQuantity={changeQuantity}
                   />
                 ))}
               </div>
@@ -92,7 +77,7 @@ export const CartPage: React.FC = () => {
           )}
         </div>
 
-        <CartCheckout totalCost={totalCost} handleModal={handleModal} />
+        <CartCheckout totalCost={totalCost()} handleModal={handleModal} />
       </div>
     </div>
   );

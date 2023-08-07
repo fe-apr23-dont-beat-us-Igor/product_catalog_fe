@@ -12,7 +12,6 @@ export interface Product {
 
   image_id: number;
   image_catalog: string;
-
   year: number;
   description: string;
 }

@@ -12,25 +12,12 @@ type Props = {
 };
 
 export const Card: FC<Props> = ({ phone }) => {
-  const { setCartStorage, setLikeStorage, cartStorage, likeStorage } =
-    useAppContext();
-
-  const addProductToCart = (id: string) =>
-    setCartStorage((prev) => {
-      const uniques: string[] = [...prev];
-      return uniques.includes(id) ? uniques : [...uniques, id];
-    });
-
-  const addProductToLikeStorage = (id: string) =>
-    setLikeStorage((prev) => {
-      const uniques: string[] = [...prev];
-      return uniques.includes(id) ? uniques : [...uniques, id];
-    });
+  const { cart, toggleItem } = useAppContext();
 
   const {
     name,
-    priceRegular,
-    priceDiscount,
+    fullPrice,
+    price,
     capacity,
     ram,
     itemId,
@@ -38,17 +25,26 @@ export const Card: FC<Props> = ({ phone }) => {
     image_catalog,
   } = phone;
 
+  const isAddButtonActive = cart.includes(itemId);
+
+  const handleCartButton = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string,
+  ) => {
+    event.preventDefault();
+    toggleItem(id);
+  };
+
   return (
     <Link to={`/products/${itemId}`}>
-      {' '}
       <div className="card" data-qa="card">
         <img className="card__image" src={image_catalog} alt={name} />
         <p className="card__name">{name}</p>
 
         <div className="card__price">
-          <p className="card__price-new">{priceRegular}$</p>
+          <p className="card__price-new">{price}$</p>
 
-          <p className="card__price-old">{priceDiscount}$</p>
+          <p className="card__price-old">{fullPrice}$</p>
         </div>
 
         <div className="card__line"></div>
@@ -75,17 +71,14 @@ export const Card: FC<Props> = ({ phone }) => {
 
         <div className="card__buttons">
           <CardButton
-            selected={cartStorage.includes(itemId)}
-            onClick={(event) => {
-              event.preventDefault();
-              addProductToCart(itemId);
-            }}
+            selected={isAddButtonActive}
+            onClick={(event) => handleCartButton(event, itemId)}
           />
           <LikeButton
-            selected={likeStorage.includes(itemId)}
+            selected={true}
             onClick={(event) => {
               event.preventDefault();
-              addProductToLikeStorage(itemId);
+              // toggleItem(itemId);
             }}
           />
         </div>
