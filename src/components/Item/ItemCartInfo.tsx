@@ -27,7 +27,7 @@ const ItemCartInfo: FC<Props> = ({ info }) => {
         </div>
         <div className="cart-info__options">
           <button className="colorButton--selected"></button>
-          <button className="colorButton">{color}</button>
+          <button className="colorButton"></button>
           <button className="colorButton"></button>
           <button className="colorButton"></button>
         </div>
