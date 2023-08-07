@@ -57,5 +57,5 @@ export const getProductsById = <T>(id: ProductID) => {
 };
 
 export const getProductCollectionByIds = (ids: string[]) => {
-  return client.post('/products', ids);
+  return client.post<Product[]>('/cart-items', { ids });
 };
