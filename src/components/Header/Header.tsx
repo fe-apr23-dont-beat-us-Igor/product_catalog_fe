@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { img } from '../../images/images';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
+import { RegistrationForm } from '../RegistrationForm/RegistrationForm';
 
 // const pages = ['HOME', 'phones?category=phones', 'tablets?category=tablets', 'accessories?category=accessories'];
 
@@ -17,6 +18,12 @@ export const Header: FC = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const burgerMenu = useRef<MutableRefObject<any> | null>(null);
 
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleRegistrationMenu = (event: any) => {
+    setShowModal((value) => !value);
+  };
+
   const toggler = (event: any) => {
     setIsMenuActive((value) => !value);
   };
@@ -30,7 +37,7 @@ export const Header: FC = () => {
 
         <nav className="nav">
           <ul className="nav__list">
-            {pages.map(({title, to}) => (
+            {pages.map(({ title, to }) => (
               <li className="nav__item" key={title}>
                 <Link className="nav__link" to={to}>
                   {title}
@@ -57,8 +64,14 @@ export const Header: FC = () => {
             <img src={img.cart} alt="cart-icon" />
           </Link>
         </div>
+        <div className="side-button side-button--cart">
+          <button onClick={toggleRegistrationMenu}>
+            Register
+          </button>
+        </div>
       </div>
       {isMenuActive && <BurgerMenu ref={burgerMenu} toggler={toggler} />}
+      {showModal && <RegistrationForm onClose={toggleRegistrationMenu} />}
     </header>
   );
 };
