@@ -5,7 +5,6 @@ import Slider from '../components/Slider/Slider';
 import { useProductsAPI } from '../hooks/useFetch';
 import { Product, ProductCollection } from '../Types/products.types';
 import { getDiscountProducts, getNewProducts } from '../api/api';
-import Slider from '../components/Slider/Slider';
 import { SearchParams } from '../servises/searchParam.servise';
 
 const Home: FC = () => {
