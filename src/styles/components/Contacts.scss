@@ -1,0 +1,89 @@
+$primary-color: #0f0f11;
+$elements-color: #e2e6e9;
+@mixin onPortable {
+    @media (min-width: 640px) {
+      @content;
+    }
+  }
+
+@mixin onDesktop {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  }
+
+.contacts {
+    &__team {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 24px;
+     margin-bottom: 32px;
+    }
+
+    &__title {
+      font-size: 48px;
+      color: $primary-color;
+      margin-bottom: 40px;
+    }
+    
+    &__container {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 260px;
+      border: 1px solid $elements-color;
+      border-radius: 12px;
+      padding: 32px;
+      cursor: pointer;
+      box-shadow: -7px 6px 10px -4px $elements-color;
+    
+      @include onPortable {
+        width: 229px;
+      }
+    
+      @include onDesktop {
+        width: 272px;
+      }
+    }
+    
+    &__image {
+      //display: block;
+      // object-fit: contain;
+
+      width: 180px;
+      height: 180px;
+      margin: 0px auto 16px;
+      transition: all 0.3s;
+    
+      &:hover {
+        transition: all 0.3s;
+        transform: scale(1.1);
+      }
+    }
+    
+    &__name {
+      font-size: 18px;
+      color: $primary-color;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    
+    &__position {
+      font-size: 14px;
+      line-height: 21px;
+      color: $primary-color;
+      margin-bottom: 16px;
+    }
+    
+    &__people_links {
+      display: flex;
+      justify-content: space-around;
+    }
+    
+    &__logo {
+      width: 24px;
+      height: 24px;
+    }
+  }

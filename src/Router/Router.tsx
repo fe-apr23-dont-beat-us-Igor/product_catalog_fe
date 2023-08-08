@@ -9,6 +9,7 @@ import Leyout from "../pages/Leyout";
 import ItemPage from '../pages/ItemPage';
 import { CartPage } from "../pages/CartPage/CartPage";
 import { Favourites } from "../pages/Favourites";
+import { Contacts } from "../pages/Contacts/Contacts";
 
 export const router = CreateRouter([
   {
@@ -44,6 +45,10 @@ export const router = CreateRouter([
       {
         path: "/favourites",
         element: <Favourites />   
+      },
+      {
+        path: "/contacts",
+        element: <Contacts />   
       }
     ],
   },

@@ -1,0 +1,35 @@
+.button-primary {
+    display: block;
+    width: 100px;
+    height: 40px;
+    border-radius: 48px;
+    background-color: $accent-color;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: $white;
+
+    &:hover {
+      box-shadow:
+        rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+  
+    @include onPortable {
+      width: 125px;
+    }
+    @include onDesktop {
+      width: 160px;
+    }
+  
+    &--selected {
+      background: transparent;
+      border: 1px solid $elements-color;
+      color: $accent-color;
+    }
+  }
+  
+
+// <button className="button-primary button-primary--selected">
+//   <p className="button-primary__text">Add to card</p>
+// </button>
