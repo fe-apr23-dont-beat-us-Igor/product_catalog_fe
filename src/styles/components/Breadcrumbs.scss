@@ -1,14 +1,51 @@
 .breadcrumbs {
-  line-height: 12px;
+  display: none;
+
+  gap: 8px;
+
+  &--visible {
+    display: flex;
+  }
 
   &__item {
-    display: inline-block;
     
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 600;
+
+    &--link {
+      color: $primary-color;
+      position: relative;
+      line-height: 20px;
+      bottom: 3px;
+      cursor: pointer;
+      
+
+      &:hover {
+        color: $secondary-color;
+      }
+      
+      &:hover::after {
+        content: "";
+        position: absolute;
+        background-color: $secondary-color;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        height: 2px;
+        border-radius: 8px;
+      }
+  
+    }
+
+    &--title {
+      color: $secondary-color;
+      bottom: 3px;
+      position: relative;
+      line-height: 20px;
+    }
   }
 
   &__arrow {
-    margin: 0 8px 0 8px;
+    height: 16px;
   }
 }

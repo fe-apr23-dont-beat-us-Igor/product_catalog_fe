@@ -1,8 +1,10 @@
 import {
+  FullProductInformation,
   Product,
   ProductCollection,
   ProductID,
   ProductImgId,
+  ProductLinks,
 } from '../Types/products.types';
 import { client } from './axiosClient';
 
@@ -14,7 +16,7 @@ export const getProductImg = (imgId: string) => {
   return client.get(`/images/${imgId}`);
 };
 
-const setImgUrl = (imgEndpoint: string) =>
+export const setImgUrl = (imgEndpoint: string) =>
   `https://product-catalog-be-1l77.onrender.com/images/${imgEndpoint}`;
 
 export const getProducts = async (params: string = '') => {
@@ -52,6 +54,33 @@ export const getNewProducts = async (params: string = '') => {
 //   return client.get<T>(`/products?${params}`);
 // };
 
-export const getProductsById = <T>(id: ProductID) => {
-  return client.get<T>(`/products/${id}`);
+export const getProductsById = async (id: string | undefined) => {
+  if (!id) throw Error();
+
+  try {
+    const { product, productLinks } = await client.get<FullProductInformation>(
+      `/products/${id}`,
+    );
+
+    product.image_catalog = setImgUrl(product.image_catalog);
+
+    const updatedProductLinks: ProductLinks = {};
+
+    Object.entries(productLinks).forEach(([key, value]) => {
+      console.log(typeof value);
+      if (typeof value === 'string' && value !== 'null') {
+        updatedProductLinks[key] = setImgUrl(value);
+      } else {
+        updatedProductLinks[key] = value;
+      }
+    });
+
+    return { product, productLinks: updatedProductLinks };
+  } catch {
+    throw Error();
+  }
+};
+
+export const getProductCollectionByIds = (ids: string[]) => {
+  return client.post<Product[]>('/cart-items', { ids });
 };

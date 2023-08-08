@@ -1,17 +1,17 @@
 import classNames from "classnames";
 import { FC, useEffect, useState } from "react";
+import { ProductLinks } from "../../Types/products.types";
 
-const photos = [
-  'https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/a/p/apple_iphone_11_64gb_red_0_4.jpg/w_600',
-  'https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/a/p/apple_iphone_11_64gb_red_1_1.jpg/w_600',
-  'https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/a/p/apple_iphone_11_64gb_red_3_1.jpg/w_600',
-  'https://files.foxtrot.com.ua/PhotoNew/img_0_60_7766_5.webp',
-  'https://scdn.comfy.ua/89fc351a-22e7-41ee-8321-f8a9356ca351/https://cdn.comfy.ua/media/catalog/product/a/p/apple_iphone_11_64gb_green_0_4.jpg/w_600',
-];
+interface Props {
+  itemName: string,
+  photos: ProductLinks; 
+};
 
-const ItemGallery: FC = () => {
+const ItemGallery: FC<Props> = ({ itemName, photos }) => {
+  const photosLinks = Object.values(photos).slice(1);
+
   const [currentPhotoIndex, setcurrentPhotoIndex] = useState<number>(0);
-  const [autoScroll, setAutoScroll] = useState<boolean>(false);
+  const [autoScroll, setAutoScroll] = useState<boolean>(true);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -19,7 +19,7 @@ const ItemGallery: FC = () => {
     if (autoScroll) {
       interval = setInterval(() => 
       setcurrentPhotoIndex(current => 
-        current === photos.length - 1 ? 0 : current + 1), 3000);
+        current === photosLinks.length - 1 ? 0 : current + 1), 4000);
     };
 
     return () => {
@@ -32,23 +32,23 @@ const ItemGallery: FC = () => {
   return (
     <section className="gallery">
       <div className="gallery__item-photos">
-        {photos.map(photo => 
+        {photosLinks.map(photoLink => 
           <img 
-            src={photo} 
+            src={photoLink}
             className={classNames(
               "gallery__item-photo",
               {"gallery__item-photo--selected": 
-              currentPhotoIndex === photos.indexOf(photo)
+              currentPhotoIndex === photosLinks.indexOf(photoLink)
             })} 
-            alt="pic"
-            onClick={() => setcurrentPhotoIndex(photos.indexOf(photo))}
+            alt={itemName}
+            onClick={() => setcurrentPhotoIndex(photosLinks.indexOf(photoLink))}
             />
             )}
       </div>
       <img 
-        src={photos[currentPhotoIndex]} 
+        src={photosLinks[currentPhotoIndex]} 
         className="gallery__current-photo" 
-        alt="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)" 
+        alt={itemName} 
       />
     </section>
   );

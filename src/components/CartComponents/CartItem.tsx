@@ -5,82 +5,81 @@ import '../../styles/components/CartItem.scss';
 import { img } from '../../images/images';
 import { Product } from '../../Types/products.types';
 import { CartContext } from '../../context/CartContext';
-
+import { ProductInCart } from '../../Types/cart.types';
+import { useAppContext } from '../../context/AppContext';
+import { Link } from 'react-router-dom';
+import { setImgUrl } from '../../api/api';
 
 type Props = {
-  product: Product,
-  count: number,
-}
+  product: ProductInCart;
+  changeQuantity: (num: number, id: string) => void;
+};
 
-export const CartItem: React.FC<Props> = ({ product, count }) => {
-  const { name, price, id, image_id } = product;
-  const { addOne, removeOne, removeItem } = useContext(CartContext);
-  const navigate = useNavigate();
-  
-  const navigateToDetails = () => {
-    navigate(`/phones/${id}`);
-  };
+export const CartItem: React.FC<Props> = ({ product, changeQuantity }) => {
+  const { name, price, itemId, image_catalog } = product.product;
+  const { removeItem } = useAppContext();
 
-  const totalPrice = price * count;
-
-  const isRemovingDisabled = count === 1;
-  const isAddingDisabled = count > 9;
-
+  const totalPrice = price * product.quantity;
+  const isRemovingDisabled = product.quantity === 1;
+  const isAddingDisabled = product.quantity > 9;
 
   return (
-    <div className='cartItem'>
-      <div className='cartItem__info'>
-       <button
-         className='cartItem__delete'
-         onClick={() => {
-            removeItem(product.itemId);
-         }}
-       >
-        <img 
-          className='cartItem__delete-image' 
-          src={img.close} alt="remove item" 
-        />
-       </button>
-       <img 
-         className='cartItem__phone-image'
-         src={img.phone} 
-         alt="item" 
-       />
-       <a 
-         className='cartItem__content'
-         onClick={() => navigateToDetails()}
-         href='/'
-       >
-        {name}
-       </a>
-      </div>
-
-      <div className='cartItem__quantity_and_price'>
-        <div className='cartItem__quantity-btns'>
-           <button
-            className="cartItem__quantity-btns-minus"
-            onClick={() => {
-              removeOne(product.itemId);
-            }}
-            disabled={isRemovingDisabled}
-          >
-          </button> 
-        
-          <p className="cartItem__quantity-btns-number">{count}</p>
-
+    <Link
+      to={`/products/${itemId}`}
+      style={{
+        textDecoration: 'none',
+        color: 'inherit',
+      }}
+    >
+      <div className="cartItem">
+        <div className="cartItem__info">
           <button
-            className="cartItem__quantity-btns-plus"
-            onClick={() => {
-              addOne(product.itemId);
+            className="cartItem__delete"
+            onClick={(event) => {
+              event.preventDefault();
+              removeItem(itemId);
             }}
-            disabled={isAddingDisabled}
           >
+            <img
+              className="cartItem__delete-image"
+              src={img.close}
+              alt="remove item"
+            />
           </button>
+          <img
+            className="cartItem__phone-image"
+            src={setImgUrl(image_catalog)}
+            alt="item"
+          />
+          <p className="cartItem__content">{name}</p>
         </div>
 
-        <h2 className='cartItem__total-price'>${totalPrice}</h2>
-      </div>
-    </div>
-  );
+        <div className="cartItem__quantity_and_price">
+          <div className="cartItem__quantity-btns">
+            <button
+              className="cartItem__quantity-btns-minus"
+              onClick={(event) => {
+                event.preventDefault();
+                changeQuantity(-1, itemId);
+              }}
+              disabled={isRemovingDisabled}
+            ></button>
 
+            <p className="cartItem__quantity-btns-number">{product.quantity}</p>
+
+            <button
+              className="cartItem__quantity-btns-plus"
+              onClick={(event) => {
+                event.preventDefault();
+                changeQuantity(1, itemId);
+              }}
+              disabled={isAddingDisabled}
+            ></button>
+          </div>
+
+          <h2 className="cartItem__total-price">${totalPrice}</h2>
+        </div>
+      </div>
+    </Link>
+  );
 };

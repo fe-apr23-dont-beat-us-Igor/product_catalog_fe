@@ -21,13 +21,13 @@ const PaginationButton: FC<Props> = ({
   const select = page === String(pageNumber);
 
   const className = classNames('paginationButton ', {
-    'paginationButton--selected': select,
+    'paginationButton--selected': select && page ,
   });
 
   return (
     <SearchLink params={{ page: `${pageNumber}` }}>
       <button className={className} {...atributes}>
-        <p className="text">{pageNumber + 1}</p>
+        <p className="text">{pageNumber}</p>
       </button>
     </SearchLink>
   );

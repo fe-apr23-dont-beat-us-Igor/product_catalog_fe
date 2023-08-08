@@ -1,17 +1,3 @@
-// export interface Product {
-//   id: number;
-//   itemId: string;
-//   category: string;
-//   name: string;
-//   capacity: string;
-//   fullPrice: number;
-//   color: string;
-//   price: number;
-//   screen: string;
-//   ram: string;
-//   year: string;
-//   image_id: number;
-// }
 export interface Product {
   id: number;
   itemId: string;
@@ -26,9 +12,17 @@ export interface Product {
 
   image_id: number;
   image_catalog: string;
-
   year: number;
   description: string;
+}
+
+export interface ProductLinks {
+  [key: string]: string | undefined;
+  // [key: string]: string | null | number;
+}
+export interface FullProductInformation {
+  product: Product;
+  productLinks: ProductLinks;
 }
 
 export type ProductID = Pick<Product, 'itemId'>;

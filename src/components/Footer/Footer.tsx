@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { img } from '../../images/images';
 import { moveTop } from '../utils/moveTop';
+import { Link } from 'react-router-dom';
 
 export const Footer: FC = () => {
   return (
@@ -18,9 +19,9 @@ export const Footer: FC = () => {
             <li className='list-item'>
               <a href='/' className='list-link'>GitHub</a>
             </li>
-            <li className='list-item'>
+            <Link className='list-item' to="/contacts">
               <a href='/' className='list-link'>Contacts</a>
-            </li>
+            </Link>
             <li className='list-item'>
               <a href='/' className='list-link'>Rights</a>
             </li>

@@ -2,14 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { img } from "../../images/images";
+import classNames from "classnames";
 
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation();
   const paths = location.pathname.split('/').filter(path => path !== '');
   const searchParams = location.search.toString() || '';
   
-  console.log(location, paths, location.search);
-
   const makeFirstCapitale = (inpString: string) => {
     if (inpString.length < 2) {
       return inpString;
@@ -31,10 +30,15 @@ export const Breadcrumbs: React.FC = () => {
     default:
       secondLinkTitle = 'PHONES';
   };
-
+  console.log(location);
+  const isBreadcrumbsVisible = location.pathname !== '/'
+    && location.pathname !== '/home'
+    && location.pathname !== '/registration';
 
   return (
-    <ul className="breadcrumbs">
+    <ul className={classNames('breadcrumbs', {
+      'breadcrumbs--visible': isBreadcrumbsVisible,
+    })}>
       <li className="breadcrumbs__item">
         <Link to="/home">
           <img
@@ -56,7 +60,7 @@ export const Breadcrumbs: React.FC = () => {
           return (
             <li key={index} className="breadcrumbs__item">
               {separator}
-              <span>
+              <span className="breadcrumbs__item--title">
                 {index === 1
                   ? (path.split('-')
                   .map(titleWord => makeFirstCapitale(titleWord)).join(' '))
@@ -70,7 +74,10 @@ export const Breadcrumbs: React.FC = () => {
           return (
             <li key={index} className="breadcrumbs__item">
               {separator}
-              <Link to={'/products' + searchParams}>
+              <Link
+                to={'/products' + searchParams}
+                className="breadcrumbs__item--link"
+              >
                 {secondLinkTitle}
               </Link>
             </li>

@@ -1,35 +1,71 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import GoodsSliderCollection from '../components/GoodsSliderCollection/GoodsSliderCollection';
 import ItemAbout from '../components/Item/ItemAbout';
 import ItemTechSpecs from '../components/Item/ItemTechSpecs';
 import ItemCartInfo from '../components/Item/ItemCartInfo';
 import ItemGallery from '../components/Item/ItemGallery';
-import { getNewProducts } from '../api/api';
+import { getNewProducts, getProductsById } from '../api/api';
 import { useProductsAPI } from '../hooks/useFetch';
-import { ProductCollection } from '../Types/products.types';
+import { FullProductInformation, Product, ProductCollection } from '../Types/products.types';
+import { useLocation, useParams } from 'react-router-dom';
+import Loader from '../components/Loader/Loader';
 
 const ItemPage: FC = () => {
   const [newProducts, loading, error] = useProductsAPI<ProductCollection>(
     {},
     getNewProducts,
   );
+
+  const [product, setProduct] = useState<FullProductInformation>({
+    product: {
+      id: 0,
+      itemId: "",
+      name: "",
+      category: "",
+      price: 0,
+      fullPrice: 0,
+      screen: "",
+      capacity: "",
+      ram: "",
+      color: "",
+      image_id: 0,
+      image_catalog: "",
+      year: 0,
+      description: "",
+    },
+    productLinks: {},
+  });
+
+  const { itemId } = useParams();
+
+  useEffect(() => {
+    getProductsById(itemId).then((data) => {
+      console.log(data);
+      setProduct(data);
+    });
+  }, []);
+
   return (
     <main className="item">
       <h2 className="item__name">
-        Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+        { product.product.name }
       </h2>
       <div className="item__content">
         <div className="item__gallery container section">
-          <ItemGallery />
+          <ItemGallery 
+            itemName={product.product.name} 
+            photos={product.productLinks}
+          />
         </div>
         <div className="item__cart-info container section">
-          <ItemCartInfo />
+          <ItemCartInfo info={product.product} />
         </div>
         <div className="item__about container section">
-          <ItemAbout />
+          <Loader />
+          <ItemAbout description={product.product.description}/>
         </div>
         <div className="item__tech container section">
-          <ItemTechSpecs />
+          <ItemTechSpecs tech={product.product}/>
         </div>
       </div>
 

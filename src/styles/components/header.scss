@@ -73,15 +73,26 @@
 
 .side-buttons {
   display: flex;
+  align-items: center;
 }
 
 .side-button {
   width: 48px;
-  height: 48px;
+  line-height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: -1px 0px 0px 0px $elements-color;
+  box-sizing: border-box;
+  border-bottom: 3px solid transparent;
+
+  &:hover {
+    border-bottom: 3px solid $primary-color;
+  }
+
+  &:active {
+    border-bottom: 3px solid transparent;
+  }
 
   @include onPortable {
     width: 64px;
@@ -102,11 +113,6 @@
     @include onPortable {
       display: flex;
     }
-  }
-
-  &--img {
-    height: 20px;
-    width: 20px;
   }
 }
 

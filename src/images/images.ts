@@ -12,14 +12,14 @@ import search from './Search.svg';
 import close from './Close.svg';
 import likeFilled from './like-filled.svg';
 import notFound from './not-found.svg';
+import registration from './register-user.svg';
 
 import banner from './photos/Banner.png';
 import accessories from './photos/Accessories.png';
 import phones from './photos/Phones.png';
 import tablets from './photos/Tablets.png';
 import phone from './photos/image 2.png';
-
-import register from './register-user-icon.svg';
+import register_img from './photos/registration-img.jpg';
 
 export const img = {
   logo,
@@ -41,5 +41,6 @@ export const img = {
   tablets,
   phone,
   notFound,
-  register,
+  registration,
+  register_img,
 };
