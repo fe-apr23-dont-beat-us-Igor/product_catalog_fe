@@ -11,7 +11,6 @@ import { useLocation } from 'react-router-dom';
 
 import SkeletonCard from '../Card/SkeletonCard';
 
-
 export type SortOption = [string, SearchParams];
 export const SortingOpgions: SortOption[] = [
   ['A-Z', { sortby: 'name', desc: 'false' }],
@@ -33,18 +32,15 @@ export const Catalog: FC = () => {
     getProducts,
   );
 
-  console.log(products);
-
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const limit = Number(searchParams.get('limit')) || 16;
 
-  const isRender = !loading && !error && products?.rows;
+  // const isRender = !loading && !error && products?.rows;
   const count = products?.count ? Math.ceil(products?.count / limit) : 4;
 
   return (
     <div className="catalog container section">
-      <Breadcrumbs />
       <h1 className="catalog__title">Mobile phones</h1>
       {products ? (
         <p className="catalog__count">{products.count} models</p>
@@ -55,9 +51,16 @@ export const Catalog: FC = () => {
         <Dropdown label={'Sort By'} options={SortingOpgions} />
         <Dropdown label={'Items On Page'} options={PaginationOptions} />
       </div>
-      {isRender && (
+      {loading && (
         <div className="catalog__item-list">
           <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+        </div>
+      )}
+      {!loading && products && (
+        <div className="catalog__item-list">
           {products.rows.map((product) => (
             <Card key={product.id} phone={product} />
           ))}
