@@ -19,8 +19,6 @@ const Home: FC = () => {
   const [discountProducts, loadingDiscount, errorDiscount] =
     useProductsAPI<ProductCollection>({ limit: '16' }, getDiscountProducts);
 
-  console.log(newProducts);
-
   return (
     <main className="">
       <h1 className="header-margin section container">
