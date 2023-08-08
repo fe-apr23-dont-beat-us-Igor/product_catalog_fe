@@ -7,6 +7,7 @@ import { ProductCollection } from '../../Types/products.types';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { useProductsAPI } from '../../hooks/useFetch';
 import { SearchParams } from '../../servises/searchParam.servise';
+import SkeletonCard from '../Card/SkeletonCard';
 
 export type SortOption = [string, SearchParams];
 export const SortingOpgions: SortOption[] = [
@@ -47,6 +48,7 @@ export const Catalog: FC = () => {
       </div>
       {isRender && (
         <div className="catalog__item-list">
+          <SkeletonCard />
           {products.rows.map((product) => (
             <Card key={product.id} phone={product} />
           ))}
