@@ -8,7 +8,7 @@ import { getNewProducts, getProductsById } from '../api/api';
 import { useProductsAPI } from '../hooks/useFetch';
 import { FullProductInformation, Product, ProductCollection } from '../Types/products.types';
 import { useLocation, useParams } from 'react-router-dom';
-import Loader from '../components/Loader/Loader';
+import Loader from '../components/UI/Loader';
 
 const ItemPage: FC = () => {
   const [newProducts, loading, error] = useProductsAPI<ProductCollection>(
