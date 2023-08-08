@@ -82,12 +82,13 @@ export const CartPage: React.FC = () => {
           )}
         </div>
 
-<<<<<<< HEAD
-        <CartCheckout totalCost={totalCost()} totalItem={totalItem()} handleModal={handleModal} />
-=======
+        <CartCheckout
+          totalCost={totalCost()}
+          totalItem={totalItem()}
+          handleModal={handleModal}
+        />
         <SkeletonCartCheckout />
-        <CartCheckout totalCost={totalCost()} handleModal={handleModal} />
->>>>>>> 211933e89bffc029de5b34a97cdd9f28c787d731
+        {/* <CartCheckout totalCost={totalCost()} handleModal={handleModal} /> */}
       </div>
     </div>
   );

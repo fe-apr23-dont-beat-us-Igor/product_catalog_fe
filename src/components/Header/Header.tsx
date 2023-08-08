@@ -4,16 +4,9 @@ import { Link } from 'react-router-dom';
 import { img } from '../../images/images';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { AppContext, useAppContext } from '../../context/AppContext';
-import cn from 'classnames';
+import { navLinks } from '../../config/config';
 
 // const pages = ['HOME', 'phones?category=phones', 'tablets?category=tablets', 'accessories?category=accessories'];
-
-const pages = [
-  { title: 'HOME', to: '/' },
-  { title: 'PHONES', to: 'products?category=phones&page=1' },
-  { title: 'TABLETS', to: 'products?category=tablets&page=1' },
-  { title: 'ACCESSORIES', to: 'products?category=accessories&page=1' },
-];
 
 export const Header: FC = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
@@ -35,7 +28,7 @@ export const Header: FC = () => {
 
         <nav className="nav">
           <ul className="nav__list">
-            {pages.map(({ title, to }) => (
+            {navLinks.map(({ title, to }) => (
               <li className="nav__item" key={title}>
                 <Link className="nav__link" to={to}>
                   {title}
@@ -57,7 +50,7 @@ export const Header: FC = () => {
             <img src={img.like} alt="favourites-icon" />
             {likeProductsCount > 0 && (
               <div className="icon__counter--like">
-                <span className="icon__counter-text" >
+                <span className="icon__counter-text">
                   {likeProductsCount < 100 ? likeProductsCount : '99+'}
                 </span>
               </div>
@@ -69,7 +62,7 @@ export const Header: FC = () => {
             <img src={img.cart} alt="cart-icon" />
             {cartProductsCount > 0 && (
               <div className="icon__counter">
-                <span className="icon__counter-text" >
+                <span className="icon__counter-text">
                   {cartProductsCount < 100 ? cartProductsCount : '99+'}
                 </span>
               </div>

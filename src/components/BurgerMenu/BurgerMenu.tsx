@@ -4,6 +4,7 @@ import logo from '../../images/logo.svg';
 import close from '../../images/Close.svg';
 import like from '../../images/Like.svg';
 import cart from '../../images/Cart.svg';
+import { navLinks } from '../../config/config';
 
 type Props = {
   ref: MutableRefObject<any> | null;
@@ -30,7 +31,6 @@ const pages = [
 ];
 
 export const BurgerMenu: FC<Props> = ({ ref, toggler }) => {
-
   return (
     <nav ref={ref} className="menu">
       <div className="container">
@@ -59,6 +59,13 @@ export const BurgerMenu: FC<Props> = ({ ref, toggler }) => {
         </header>
 
         <ul className="menu__list">
+          {/* {navLinks.map(({ title, to }) => (
+            <li className="menu__list--item" key={title}>
+              <Link className="menu__list--link" to={to}>
+                {title}
+              </Link>
+            </li>
+          ))} */}
           {pages.map(page => (
             <li className="menu__list--item" key={page.id}>
               <a href={`/${page.title}`} className="menu__list--link">
