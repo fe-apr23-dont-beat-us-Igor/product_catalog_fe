@@ -9,6 +9,9 @@ import { useProductsAPI } from '../../hooks/useFetch';
 import { SearchParams } from '../../servises/searchParam.servise';
 import { useLocation } from 'react-router-dom';
 
+import SkeletonCard from '../Card/SkeletonCard';
+
+
 export type SortOption = [string, SearchParams];
 export const SortingOpgions: SortOption[] = [
   ['A-Z', { sortby: 'name', desc: 'false' }],
@@ -54,6 +57,7 @@ export const Catalog: FC = () => {
       </div>
       {isRender && (
         <div className="catalog__item-list">
+          <SkeletonCard />
           {products.rows.map((product) => (
             <Card key={product.id} phone={product} />
           ))}
