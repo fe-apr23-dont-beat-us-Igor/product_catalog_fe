@@ -6,20 +6,20 @@
   position: relative; /* Додали позицію relative для батьківського контейнера */
 
   /* Додали псевдоелемент ::after */
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0; /* Скриваємо 100 пікселів зліва */
-    width: 100px;
-    height: 89%;
-    background: rgb(216, 8, 8);
-    background: linear-gradient(
-      to left,
-      rgb(255, 255, 255),
-      rgba(255, 255, 255, 0.443)
-    ); /* Додаємо тінь зліва */
-  }
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: 0;
+  //   right: 0; /* Скриваємо 100 пікселів зліва */
+  //   width: 100px;
+  //   height: 89%;
+  //   background: rgb(216, 8, 8);
+  //   background: linear-gradient(
+  //     to left,
+  //     rgb(255, 255, 255),
+  //     rgba(255, 255, 255, 0.443)
+  //   ); /* Додаємо тінь зліва */
+  // }
 
   &__head {
     display: flex;

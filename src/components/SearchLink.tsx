@@ -14,12 +14,11 @@ export const SearchLink: React.FC<Props> = ({
   title,
   ...props
 }) => {
-  const [searchParams] = useSearchParams();
 
   return (
     <Link
       to={{
-        search: getSearchWith(searchParams, params),
+        search: getSearchWith( params),
       }}
       {...props}
     >

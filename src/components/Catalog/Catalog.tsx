@@ -6,7 +6,10 @@ import { getProducts } from '../../api/api';
 import { ProductCollection } from '../../Types/products.types';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { useProductsAPI } from '../../hooks/useFetch';
-import { SearchParams } from '../../servises/searchParam.servise';
+import {
+  SearchParams,
+  getSearchWith,
+} from '../../servises/searchParam.servise';
 import { useLocation } from 'react-router-dom';
 
 import SkeletonCard from '../Card/SkeletonCard';
@@ -15,8 +18,8 @@ export type SortOption = [string, SearchParams];
 export const SortingOpgions: SortOption[] = [
   ['A-Z', { sortby: 'name', desc: 'false' }],
   ['Z-A', { sortby: 'name', desc: 'true' }],
-  ['Price Up', { sortby: 'price', desc: 'false' }],
-  ['Price Down', { sortby: 'price', desc: 'true' }],
+  ['Price Up', { sortby: 'fullPrice', desc: 'false' }],
+  ['Price Down', { sortby: 'fullPrice', desc: 'true' }],
   ['Year up', { sortby: 'year', desc: 'false' }],
   ['Year down', { sortby: 'year', desc: 'true' }],
 ];
@@ -36,7 +39,6 @@ export const Catalog: FC = () => {
   const searchParams = new URLSearchParams(location.search);
   const limit = Number(searchParams.get('limit')) || 16;
 
-  // const isRender = !loading && !error && products?.rows;
   const count = products?.count ? Math.ceil(products?.count / limit) : 4;
 
   return (

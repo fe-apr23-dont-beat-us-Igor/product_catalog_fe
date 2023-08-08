@@ -41,17 +41,15 @@ export const getNewProducts = async (params: string = '') => {
   }
 };
 
-// export const getNewProducts = async (params: string = '') => {
-//   try {
-//     const products = await client.get<ProductCollection>(
-//       `/products/new?${params}`,
-//     );
+export const getDiscountProducts = async (params: string = '') => {
+  try {
+    const products = await client.get<ProductCollection>(`/discount?${params}`);
 
-//     return products;
-//   } catch {
-//     throw Error();
-//   }
-// };
+    return products;
+  } catch {
+    throw Error();
+  }
+};
 
 // export const getProducts = <T>(params: string = '') => {
 //   return client.get<T>(`/products?${params}`);
