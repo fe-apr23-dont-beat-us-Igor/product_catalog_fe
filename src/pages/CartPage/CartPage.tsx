@@ -54,10 +54,8 @@ export const CartPage: React.FC = () => {
     <div>
       <BackButton />
       <h1 className="title">Cart</h1>
-            
-      {isModalVisible && (
-        <CartModal handleModal={handleModal} />
-      )}
+
+      {isModalVisible && <CartModal handleModal={handleModal} />}
       <div className="cart__page">
         <div>
           {cartProducts.length > 0 ? (
