@@ -41,6 +41,10 @@ export const CartPage: React.FC = () => {
     return priceList.reduce((acc, item) => acc + item, 0);
   };
 
+  const totalItem = (): number => {
+    return cartProducts.reduce((acc, item) => acc + item.quantity, 0);
+  };
+
   const changeQuantity = (num: number, id: string) => {
     setCartProducts((prev) =>
       prev.map((item) => {
@@ -78,8 +82,12 @@ export const CartPage: React.FC = () => {
           )}
         </div>
 
+<<<<<<< HEAD
+        <CartCheckout totalCost={totalCost()} totalItem={totalItem()} handleModal={handleModal} />
+=======
         <SkeletonCartCheckout />
         <CartCheckout totalCost={totalCost()} handleModal={handleModal} />
+>>>>>>> 211933e89bffc029de5b34a97cdd9f28c787d731
       </div>
     </div>
   );
