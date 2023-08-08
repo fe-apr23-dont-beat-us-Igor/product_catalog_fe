@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import '../../styles/components/CartCheckout.scss';
 
 interface Props {
   totalCost: number;

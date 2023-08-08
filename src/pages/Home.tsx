@@ -1,6 +1,10 @@
 import { FC } from 'react';
 import GoodsSliderCollection from '../components/GoodsSliderCollection/GoodsSliderCollection';
 import Categories from '../components/Categories/Categories';
+<<<<<<< HEAD
+=======
+import Slider from '../components/Slider/Slider';
+>>>>>>> 211933e89bffc029de5b34a97cdd9f28c787d731
 import { useProductsAPI } from '../hooks/useFetch';
 import { Product, ProductCollection } from '../Types/products.types';
 import { getDiscountProducts, getNewProducts } from '../api/api';
@@ -9,12 +13,12 @@ import { SearchParams } from '../servises/searchParam.servise';
 
 const Home: FC = () => {
   const [newProducts, loadingNew, errorNew] = useProductsAPI<ProductCollection>(
-    {},
+    { limit: '16' },
     getNewProducts,
   );
 
   const [discountProducts, loadingDiscount, errorDiscount] =
-    useProductsAPI<ProductCollection>({}, getDiscountProducts);
+    useProductsAPI<ProductCollection>({ limit: '16' }, getDiscountProducts);
 
   console.log(newProducts);
 
