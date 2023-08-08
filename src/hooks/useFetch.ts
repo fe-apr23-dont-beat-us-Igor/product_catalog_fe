@@ -7,14 +7,12 @@ import { ProductImgId } from '../Types/products.types';
 export const useProductsAPI = <T>(
   searchParams: SearchParams,
   callback: (params: string) => Promise<T>,
-  
 ): [T | null, boolean, boolean] => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [data, setData] = useState<T | null>(null);
 
-  const [currentParams] = useSearchParams();
-  const params = getSearchWith(currentParams, searchParams);
+  const params = getSearchWith(searchParams);
 
   const loadData = async () => {
     try {

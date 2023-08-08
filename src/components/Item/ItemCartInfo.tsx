@@ -1,22 +1,39 @@
-import { FC } from "react";
-import Button from "../UI/Button";
-import LikeButton from "../UI/LikeButton";
-import { Product } from "../../Types/products.types";
+import { FC } from 'react';
+import Button from '../UI/Button';
+import LikeButton from '../UI/LikeButton';
+import { Product } from '../../Types/products.types';
+import { useAppContext } from '../../context/AppContext';
 
 interface Props {
-  info: Product; 
-};
+  info: Product;
+}
 
 const ItemCartInfo: FC<Props> = ({ info }) => {
-  const {
-    id,
-    color,
-    price,
-    fullPrice,
-    screen,
-    description,
-    ram,
-  } = info;
+  const { id, itemId, color, price, fullPrice, screen, description, ram } =
+    info;
+
+  // Add product to cart and likePage
+  const { toggleItem, toggleLike, cart, likeStorage } = useAppContext();
+
+  const handleCartButton = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string,
+  ) => {
+    event.preventDefault();
+    toggleItem(id);
+  };
+
+  const isAddButtonActive = cart.includes(itemId);
+  const isLikeButtonActive = likeStorage.includes(itemId);
+
+  const handleLikeButton = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string,
+  ) => {
+    event.preventDefault();
+    toggleLike(id);
+  };
+  // Add product to cart and likePage end
 
   return (
     <section className="cart-info">
@@ -43,23 +60,25 @@ const ItemCartInfo: FC<Props> = ({ info }) => {
 
       <div className="cart-info__price-info">
         <div className="cart-info__price">
-          <h2 className="cart-info__price-new">
-            {`$${price}`}
-          </h2>
+          <h2 className="cart-info__price-new">{`$${price}`}</h2>
 
-          <p className="cart-info__price-old">
-            {`$${fullPrice}`}
-          </p>
+          <p className="cart-info__price-old">{`$${fullPrice}`}</p>
         </div>
-        
+
         <div className="cart-info__buttons">
           <div className="cart-info__add-to-cart">
-            <Button selected={false} />
+            <Button
+              selected={isAddButtonActive}
+              onClick={(event) => handleCartButton(event, itemId)}
+            />
           </div>
-          <LikeButton selected={false} />
+          <LikeButton
+            selected={isLikeButtonActive}
+            onClick={(event) => handleLikeButton(event, itemId)}
+          />
         </div>
       </div>
-      
+
       <div className="cart-info__characteristics">
         <div className="cart-info__char">
           <p className="cart-info__char-text ">Screen</p>
