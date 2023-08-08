@@ -9,12 +9,12 @@ import { SearchParams } from '../servises/searchParam.servise';
 
 const Home: FC = () => {
   const [newProducts, loadingNew, errorNew] = useProductsAPI<ProductCollection>(
-    {},
+    { limit: '16' },
     getNewProducts,
   );
 
   const [discountProducts, loadingDiscount, errorDiscount] =
-    useProductsAPI<ProductCollection>({}, getDiscountProducts);
+    useProductsAPI<ProductCollection>({ limit: '16' }, getDiscountProducts);
 
   console.log(newProducts);
 

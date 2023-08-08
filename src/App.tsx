@@ -6,7 +6,6 @@ import { Header } from './components/Header/Header';
 import { Outlet } from 'react-router-dom';
 
 const App: FC = () => {
-
   return (
     <div className="App">
       <Header />

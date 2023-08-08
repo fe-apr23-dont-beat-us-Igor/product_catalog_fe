@@ -50,6 +50,15 @@ export const getDiscountProducts = async (params: string = '') => {
     throw Error();
   }
 };
+export const getRecommendedProducts = async (params: string = '') => {
+  try {
+    const products = await client.get<ProductCollection>(`/discount?${params}`);
+
+    return products;
+  } catch {
+    throw Error();
+  }
+};
 
 // export const getProducts = <T>(params: string = '') => {
 //   return client.get<T>(`/products?${params}`);

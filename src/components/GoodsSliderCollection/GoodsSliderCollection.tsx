@@ -30,6 +30,8 @@ type Props = {
 };
 
 const GoodsSliderCollection: FC<Props> = ({ products = [], title }) => {
+  const slidesInit = new Array(products.length - 1).fill(0);
+
   const {
     slideListRef,
     slides,
@@ -38,7 +40,7 @@ const GoodsSliderCollection: FC<Props> = ({ products = [], title }) => {
     goToSlide,
     handleTouchStart,
     handleTouchMove,
-  } = useSlider(products, false, products.length, 16);
+  } = useSlider(slidesInit, false, products.length, 16);
 
   return (
     <section className="section container goodsSliderCollection">
@@ -51,7 +53,7 @@ const GoodsSliderCollection: FC<Props> = ({ products = [], title }) => {
       </div>
       <div className="goodsSliderCollection__slides-container">
         <div className="goodsSliderCollection__slides" ref={slideListRef}>
-          {slides.map((slide) => (
+          {products.map((slide) => (
             <div className="goodsSliderCollection__slide">
               <Card phone={slide} />
             </div>
