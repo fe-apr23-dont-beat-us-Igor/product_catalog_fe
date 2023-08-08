@@ -8,9 +8,9 @@ import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 
 const pages = [
   { title: 'HOME', to: '/' },
-  { title: 'PHONES', to: 'products?category=phones' },
-  { title: 'TABLETS', to: 'products?category=tablets' },
-  { title: 'ACCESSORIES', to: 'products?category=accessories' },
+  { title: 'PHONES', to: 'products?category=phones&page=1' },
+  { title: 'TABLETS', to: 'products?category=tablets&page=1' },
+  { title: 'ACCESSORIES', to: 'products?category=accessories&page=1' },
 ];
 
 export const Header: FC = () => {
@@ -30,7 +30,7 @@ export const Header: FC = () => {
 
         <nav className="nav">
           <ul className="nav__list">
-            {pages.map(({title, to}) => (
+            {pages.map(({ title, to }) => (
               <li className="nav__item" key={title}>
                 <Link className="nav__link" to={to}>
                   {title}

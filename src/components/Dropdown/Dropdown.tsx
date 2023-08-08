@@ -13,7 +13,6 @@ export const Dropdown: FC<Props> = ({ label, options }) => {
   const [currentOption, setcurrentOption] = useState<SortOption>(options[0]);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [title] = currentOption;
-  console.log(options);
 
   const handleOptionChange = (event: any, option: SortOption) => {
     event.preventDefault();

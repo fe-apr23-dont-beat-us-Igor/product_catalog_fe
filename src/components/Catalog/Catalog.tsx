@@ -10,11 +10,11 @@ import { SearchParams } from '../../servises/searchParam.servise';
 
 export type SortOption = [string, SearchParams];
 export const SortingOpgions: SortOption[] = [
-  ['A-Z', { sortby: 'name'}],
+  ['A-Z', { sortby: 'name', desc: 'false' }],
   ['Z-A', { sortby: 'name', desc: 'true' }],
-  ['Price Up', { sortby: 'price' }],
+  ['Price Up', { sortby: 'price', desc: 'false' }],
   ['Price Down', { sortby: 'price', desc: 'true' }],
-  ['Year up', { sortby: 'year' }],
+  ['Year up', { sortby: 'year', desc: 'false' }],
   ['Year down', { sortby: 'year', desc: 'true' }],
 ];
 export const PaginationOptions: SortOption[] = [
