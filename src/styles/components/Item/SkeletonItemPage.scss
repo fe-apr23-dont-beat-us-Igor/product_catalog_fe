@@ -1,0 +1,89 @@
+.skeleton-item {
+  &__name {
+    @include skeleton-round;
+    height: 31px;
+    width: 50%;
+
+    @include onPortable {
+      height: 41px;
+    }
+  }
+
+  &__gallery {
+    @include flex-center;
+    @include skeleton;
+    height: 355px;
+  
+    @include onDesktop {
+      height: 470px;
+    }
+  }
+
+  &__color-button {
+    @include flex-center;
+    @include draw-Circle(32px, 32px);
+    border: 2px solid $white;
+    outline: 1px solid $elements-color;
+    background-color: $elements-color;
+  }
+
+  &__capacity-button {
+    display: block;
+    width: 60px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: $elements-color;
+  }
+
+  &__price {
+    @include skeleton-round;
+    height: 31px;
+    width: 30%;
+
+    @include onPortable {
+      height: 41px;
+    }
+  }
+
+  &__card-button {
+    display: block;
+    width: 100px;
+    height: 40px;
+    border-radius: 48px;
+    background-color: $elements-color;
+  
+    @include onPortable {
+      width: 125px;
+    }
+    @include onDesktop {
+      width: 160px;
+    }
+  }
+
+  &__like-button {
+    @include flex-center;
+    @include draw-Circle(40px, 40px);
+    background-color: $elements-color;
+  }
+
+  &__char {
+    height: 15px;
+    @include skeleton;
+  }
+
+  &__additional-title {
+    @include skeleton-round;
+    width: 30%;
+    height: 31px;
+  }
+
+  &__additional-article {
+    @include skeleton;
+    @include flex-center;
+    width: 100%;
+    height: 150px;
+  }
+}
+
+
+
