@@ -76,6 +76,11 @@ export const Header: FC = () => {
             )}
           </Link>
         </div>
+        <div className="side-button side-button--registration">
+          <Link to="/registration">
+            <img src={img.registration} alt="cart-icon" />
+          </Link>
+        </div>
       </div>
       {isMenuActive && <BurgerMenu ref={burgerMenu} toggler={toggler} />}
     </header>

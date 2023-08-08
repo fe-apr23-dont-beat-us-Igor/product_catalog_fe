@@ -60,7 +60,6 @@ export const CartPage: React.FC = () => {
     <div>
       <BackButton />
       <h1 className="title">Cart</h1>
-
       {isModalVisible && <CartModal handleModal={handleModal} />}
       <div className="cart__page">
         <div>
@@ -82,12 +81,7 @@ export const CartPage: React.FC = () => {
           )}
         </div>
 
-<<<<<<< HEAD
         <CartCheckout totalCost={totalCost()} totalItem={totalItem()} handleModal={handleModal} />
-=======
-        <SkeletonCartCheckout />
-        <CartCheckout totalCost={totalCost()} handleModal={handleModal} />
->>>>>>> 211933e89bffc029de5b34a97cdd9f28c787d731
       </div>
     </div>
   );
