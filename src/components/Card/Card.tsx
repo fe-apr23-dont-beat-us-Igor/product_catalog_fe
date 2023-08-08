@@ -6,13 +6,14 @@ import { Link, useNavigation } from 'react-router-dom';
 import { Product } from '../../Types/products.types';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useAppContext } from '../../context/AppContext';
+import { setImgUrl } from '../../api/api';
 
 type Props = {
   phone: Product | any;
 };
 
 export const Card: FC<Props> = ({ phone }) => {
-  const { cart, toggleItem } = useAppContext();
+  const { cart, toggleItem, likeStorage, toggleLike } = useAppContext();
 
   const {
     name,
@@ -35,16 +36,35 @@ export const Card: FC<Props> = ({ phone }) => {
     toggleItem(id);
   };
 
+  const isLikeButtonActive = likeStorage.includes(itemId);
+
+  const handleLikeButton = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string,
+  ) => {
+    event.preventDefault();
+    toggleLike(id);
+  };
+
   return (
     <Link to={`/products/${itemId}`}>
       <div className="card" data-qa="card">
-        <img className="card__image" src={image_catalog} alt={name} />
+        <img
+          className="card__image"
+          src={setImgUrl(image_catalog)}
+          alt={name}
+        />
         <p className="card__name">{name}</p>
 
         <div className="card__price">
-          <p className="card__price-new">{price}$</p>
-
-          <p className="card__price-old">{fullPrice}$</p>
+          {price ? (
+            <>
+              <h4 className="card__price-new">{price}$</h4>
+              <h4 className="card__price-old">{fullPrice}$</h4>
+            </>
+          ) : (
+            <h4 className="card__price-new">{fullPrice}$</h4>
+          )}
         </div>
 
         <div className="card__line"></div>
@@ -75,11 +95,8 @@ export const Card: FC<Props> = ({ phone }) => {
             onClick={(event) => handleCartButton(event, itemId)}
           />
           <LikeButton
-            selected={true}
-            onClick={(event) => {
-              event.preventDefault();
-              // toggleItem(itemId);
-            }}
+            selected={isLikeButtonActive}
+            onClick={(event) => handleLikeButton(event, itemId)}
           />
         </div>
       </div>

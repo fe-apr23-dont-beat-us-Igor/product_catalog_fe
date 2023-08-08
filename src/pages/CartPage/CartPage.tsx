@@ -39,6 +39,10 @@ export const CartPage: React.FC = () => {
     return priceList.reduce((acc, item) => acc + item, 0);
   };
 
+  const totalItem = (): number => {
+    return cartProducts.reduce((acc, item) => acc + item.quantity, 0);
+  };
+
   const changeQuantity = (num: number, id: string) => {
     setCartProducts((prev) =>
       prev.map((item) => {
@@ -54,10 +58,8 @@ export const CartPage: React.FC = () => {
     <div>
       <BackButton />
       <h1 className="title">Cart</h1>
-            
-      {isModalVisible && (
-        <CartModal handleModal={handleModal} />
-      )}
+
+      {isModalVisible && <CartModal handleModal={handleModal} />}
       <div className="cart__page">
         <div>
           {cartProducts.length > 0 ? (
@@ -77,7 +79,7 @@ export const CartPage: React.FC = () => {
           )}
         </div>
 
-        <CartCheckout totalCost={totalCost()} handleModal={handleModal} />
+        <CartCheckout totalCost={totalCost()} totalItem={totalItem()} handleModal={handleModal} />
       </div>
     </div>
   );

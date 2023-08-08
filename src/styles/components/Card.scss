@@ -26,7 +26,7 @@
   }
 
   &__image {
-    width: 208px;
+    box-sizing: border-box;
     height: 196px;
     margin: 0 0 24px;
   }
@@ -95,6 +95,5 @@
   &__buttons {
     display: flex;
     justify-content: space-between;
-    z-index: 10;
   }
 }

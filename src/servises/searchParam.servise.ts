@@ -1,11 +1,17 @@
+import { useSearchParams } from "react-router-dom";
+
 export type SearchParams = {
   [key: string]: string | string[] | null;
 };
 
 export function getSearchWith(
-  currentParams: URLSearchParams,
-  paramsToUpdate: SearchParams,
+  paramsToUpdate: SearchParams | null,
 ): string {
+
+  if (!paramsToUpdate) return ''
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [currentParams] = useSearchParams();
+
   const newParams = new URLSearchParams(currentParams.toString());
 
   Object.entries(paramsToUpdate).forEach(([key, value]) => {
