@@ -20,7 +20,11 @@ const Home: FC = () => {
         Welcome to Nice Gadgets store!
       </h1>
       <Slider />
-      {newProducts && <GoodsSliderCollection products={[...newProducts.rows, ...newProducts.rows]} />}
+      {newProducts && (
+        <GoodsSliderCollection
+          products={[...newProducts.rows, ...newProducts.rows]}
+        />
+      )}
       <Categories />
       {newProducts && <GoodsSliderCollection products={newProducts.rows} />}
     </main>

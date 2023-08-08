@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const Card: FC<Props> = ({ phone }) => {
-  const { cart, toggleItem } = useAppContext();
+  const { cart, toggleItem, likeStorage, toggleLike } = useAppContext();
 
   const {
     name,
@@ -33,6 +33,16 @@ export const Card: FC<Props> = ({ phone }) => {
   ) => {
     event.preventDefault();
     toggleItem(id);
+  };
+
+  const isLikeButtonActive = likeStorage.includes(itemId);
+
+  const handleLikeButton = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string,
+  ) => {
+    event.preventDefault();
+    toggleLike(id);
   };
 
   return (
@@ -75,11 +85,8 @@ export const Card: FC<Props> = ({ phone }) => {
             onClick={(event) => handleCartButton(event, itemId)}
           />
           <LikeButton
-            selected={true}
-            onClick={(event) => {
-              event.preventDefault();
-              // toggleItem(itemId);
-            }}
+            selected={isLikeButtonActive}
+            onClick={(event) => handleLikeButton(event, itemId)}
           />
         </div>
       </div>
