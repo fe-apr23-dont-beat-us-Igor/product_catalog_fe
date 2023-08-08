@@ -14,7 +14,7 @@ const Button: FC<Props> = ({ selected, ...atributes }) => {
 
   return (
     <button className={className} {...atributes} >
-      <p className="button-primary__text text">Add to card</p>
+      <p className="button-primary__text text">{selected ? 'Added to card' : 'Add to card'} </p>
     </button>
   );
 };

@@ -13,8 +13,7 @@ export const useProductsAPI = <T>(
   const [error, setError] = useState<boolean>(false);
   const [data, setData] = useState<T | null>(null);
 
-  const [currentParams] = useSearchParams();
-  const params = getSearchWith(currentParams, searchParams);
+  const params = getSearchWith(searchParams);
 
   const loadData = async () => {
     try {

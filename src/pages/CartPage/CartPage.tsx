@@ -7,6 +7,8 @@ import { CartCheckout } from '../../components/CartComponents/CartCheckout';
 import { getProductCollectionByIds } from '../../api/api';
 import { useAppContext } from '../../context/AppContext';
 import { ProductInCart } from '../../Types/cart.types';
+import SkeletonCartItem from '../../components/CartComponents/SkeletonCartItem';
+import { SkeletonCartCheckout } from '../../components/CartComponents/SkeletonCartCheckout';
 
 export const CartPage: React.FC = () => {
   const [cartProducts, setCartProducts] = useState<ProductInCart[]>([]);
@@ -39,6 +41,10 @@ export const CartPage: React.FC = () => {
     return priceList.reduce((acc, item) => acc + item, 0);
   };
 
+  const totalItem = (): number => {
+    return cartProducts.reduce((acc, item) => acc + item.quantity, 0);
+  };
+
   const changeQuantity = (num: number, id: string) => {
     setCartProducts((prev) =>
       prev.map((item) => {
@@ -54,15 +60,13 @@ export const CartPage: React.FC = () => {
     <div>
       <BackButton />
       <h1 className="title">Cart</h1>
-            
-      {isModalVisible && (
-        <CartModal handleModal={handleModal} />
-      )}
+      {isModalVisible && <CartModal handleModal={handleModal} />}
       <div className="cart__page">
         <div>
           {cartProducts.length > 0 ? (
             <>
               <div className="card__items">
+                <SkeletonCartItem />
                 {cartProducts.map((product) => (
                   <CartItem
                     key={product.product.id}
@@ -77,7 +81,7 @@ export const CartPage: React.FC = () => {
           )}
         </div>
 
-        <CartCheckout totalCost={totalCost()} handleModal={handleModal} />
+        <CartCheckout totalCost={totalCost()} totalItem={totalItem()} handleModal={handleModal} />
       </div>
     </div>
   );

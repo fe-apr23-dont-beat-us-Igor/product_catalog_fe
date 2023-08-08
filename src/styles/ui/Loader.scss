@@ -1,0 +1,4 @@
+.loader {
+  border: 7px solid $elements-color;
+  @include loader;
+}

@@ -23,10 +23,6 @@ export const getProducts = async (params: string = '') => {
   try {
     const products = await client.get<ProductCollection>(`/products?${params}`);
 
-    products.rows.map(
-      (product) => (product.image_catalog = setImgUrl(product.image_catalog)),
-    );
-
     return products;
   } catch {
     throw Error();
@@ -39,10 +35,24 @@ export const getNewProducts = async (params: string = '') => {
       `/products/new?${params}`,
     );
 
-    products.rows.map(
-      (product) => (product.image_catalog = setImgUrl(product.image_catalog)),
-    );
-    console.log(products);
+    return products;
+  } catch {
+    throw Error();
+  }
+};
+
+export const getDiscountProducts = async (params: string = '') => {
+  try {
+    const products = await client.get<ProductCollection>(`/discount?${params}`);
+
+    return products;
+  } catch {
+    throw Error();
+  }
+};
+export const getRecommendedProducts = async (params: string = '') => {
+  try {
+    const products = await client.get<ProductCollection>(`/discount?${params}`);
 
     return products;
   } catch {

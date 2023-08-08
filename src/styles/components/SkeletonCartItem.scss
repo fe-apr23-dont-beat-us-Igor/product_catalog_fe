@@ -1,0 +1,47 @@
+@import '../utils/mixins.scss';
+@import '../utils/vars.scss';
+
+.skeleton {
+  &__info {
+    @include skeleton;
+    @include flex-center;
+    height: 76.22px;
+    padding-right: 10px;
+
+    @include onPortable {
+      padding-right: 0;
+      margin-right: 34px;
+    }
+  }
+
+  &__quantity_and_price {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @include onPortable {
+      @include skeleton-round;
+      height: 41px;
+    }
+  }
+
+  &__quantity {
+    width: 110px;
+    height: 32px;
+    @include skeleton-round;
+
+    @include onPortable {
+      display: none;
+    }
+  }
+
+  &__total-price {
+    width: 53px;
+    height: 32px;
+    @include skeleton-round;
+
+    @include onPortable {
+      display: none;
+    }
+  }
+}

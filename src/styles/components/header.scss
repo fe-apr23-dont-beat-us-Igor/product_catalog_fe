@@ -49,8 +49,31 @@
     &:hover {
       color: $primary-color;
     }
+
+    &:focus {
+      color: $primary-color;
+    }
     
     &:hover::after {
+      content: "";
+      position: absolute;
+      background-color: $primary-color;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+      height: 3px;
+      border-radius: 8px;
+
+      @include onPortable {
+        bottom: -8px;
+      };
+
+      @include onDesktop {
+        bottom: 0px;
+      }
+    }
+
+    &:focus::after {
       content: "";
       position: absolute;
       background-color: $primary-color;
@@ -77,6 +100,7 @@
 }
 
 .side-button {
+  position: relative;
   width: 48px;
   line-height: 48px;
   display: flex;
@@ -98,6 +122,25 @@
     width: 64px;
     height: 64px;
   }
+
+  &:focus::after {
+    content: "";
+    position: absolute;
+    background-color: $primary-color;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    height: 3px;
+    border-radius: 8px;
+
+    @include onPortable {
+      bottom: -8px;
+    };
+
+    @include onDesktop {
+      bottom: 0px;
+    }
+  }
   
   &--cart {
     display: none;
@@ -105,6 +148,8 @@
     @include onPortable {
       display: flex;
     }
+
+    
   }
 
   &--favourites {
@@ -119,5 +164,35 @@
 @include onPortable {
   .side-button--burger {
     display: none;
+  }
+}
+
+.icon__counter {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: $accent-color;
+  color: $white;
+  font-size: 9px;
+  font-weight: 700;
+  text-align: center;
+  align-items: center;
+
+  &--like {
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: $accent-color;
+    color: $white;
+    font-size: 9px;
+    font-weight: 700;
+    text-align: center;
+    align-items: center;
   }
 }

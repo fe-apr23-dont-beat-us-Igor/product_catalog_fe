@@ -6,15 +6,21 @@ import { getProducts } from '../../api/api';
 import { ProductCollection } from '../../Types/products.types';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { useProductsAPI } from '../../hooks/useFetch';
-import { SearchParams } from '../../servises/searchParam.servise';
+import {
+  SearchParams,
+  getSearchWith,
+} from '../../servises/searchParam.servise';
+import { useLocation } from 'react-router-dom';
+
+import SkeletonCard from '../Card/SkeletonCard';
 
 export type SortOption = [string, SearchParams];
 export const SortingOpgions: SortOption[] = [
-  ['A-Z', { sortby: 'name'}],
+  ['A-Z', { sortby: 'name', desc: 'false' }],
   ['Z-A', { sortby: 'name', desc: 'true' }],
-  ['Price Up', { sortby: 'price' }],
-  ['Price Down', { sortby: 'price', desc: 'true' }],
-  ['Year up', { sortby: 'year' }],
+  ['Price Up', { sortby: 'fullPrice', desc: 'false' }],
+  ['Price Down', { sortby: 'fullPrice', desc: 'true' }],
+  ['Year up', { sortby: 'year', desc: 'false' }],
   ['Year down', { sortby: 'year', desc: 'true' }],
 ];
 export const PaginationOptions: SortOption[] = [
@@ -28,8 +34,11 @@ export const Catalog: FC = () => {
     {},
     getProducts,
   );
-  const isRender = !loading && !error && products?.rows;
-  const limit = 16;
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const limit = Number(searchParams.get('limit')) || 16;
+
   const count = products?.count ? Math.ceil(products?.count / limit) : 4;
 
   return (
@@ -44,7 +53,15 @@ export const Catalog: FC = () => {
         <Dropdown label={'Sort By'} options={SortingOpgions} />
         <Dropdown label={'Items On Page'} options={PaginationOptions} />
       </div>
-      {isRender && (
+      {loading && (
+        <div className="catalog__item-list">
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+        </div>
+      )}
+      {!loading && products && (
         <div className="catalog__item-list">
           {products.rows.map((product) => (
             <Card key={product.id} phone={product} />

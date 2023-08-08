@@ -7,7 +7,6 @@ import { Outlet } from 'react-router-dom';
 import { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
 
 const App: FC = () => {
-
   return (
     <div className="App">
       <Header />

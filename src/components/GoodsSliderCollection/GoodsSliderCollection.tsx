@@ -26,9 +26,12 @@ import { Product, ProductCollection } from '../../Types/products.types';
 
 type Props = {
   products: Product[];
+  title: string;
 };
 
-const GoodsSliderCollection: FC<Props> = ({ products = [] }) => {
+const GoodsSliderCollection: FC<Props> = ({ products = [], title }) => {
+  const slidesInit = new Array(products.length - 1).fill(0);
+
   const {
     slideListRef,
     slides,
@@ -37,23 +40,20 @@ const GoodsSliderCollection: FC<Props> = ({ products = [] }) => {
     goToSlide,
     handleTouchStart,
     handleTouchMove,
-  } = useSlider(products, false, products.length, 16);
+  } = useSlider(slidesInit, false, products.length, 16);
 
   return (
     <section className="section container goodsSliderCollection">
       <div className="goodsSliderCollection__head">
-        <h2>Brand new models</h2>
+        <h2>{title}</h2>
         <div className="goodsSliderCollection__buttons">
           <SliderButton left={true} onClick={() => changeSlide(-1)} />
           <SliderButton left={false} onClick={() => changeSlide(1)} />
         </div>
       </div>
       <div className="goodsSliderCollection__slides-container">
-        <div
-          className="goodsSliderCollection__slides"
-          ref={slideListRef}
-        >
-          {slides.map((slide) => (
+        <div className="goodsSliderCollection__slides" ref={slideListRef}>
+          {products.map((slide) => (
             <div className="goodsSliderCollection__slide">
               <Card phone={slide} />
             </div>

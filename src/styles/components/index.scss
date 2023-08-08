@@ -1,6 +1,11 @@
 @import './slider.scss';
 @import './GoodsSliderCollection.scss';
 @import './Card.scss';
+@import './SkeletonCard.scss';
+@import './CartItem.scss';
+@import './CartCheckout.scss';
+@import './SkeletonCartItem.scss';
+@import './SkeletonCartCheckout.scss';
 @import './header.scss';
 @import './Footer.scss';
 @import './Categories.scss';
@@ -12,8 +17,9 @@
 @import './Item/ItemPage.scss';
 @import './Item/ItemAbout.scss';
 @import './Item/ItemTechSpecs.scss';
-@import './Item//ItemCartInfo.scss';
-@import './Item//ItemGallery.scss';
-@import './Favourites.scss';
 @import './Loader.scss';
 @import './RegistrationForm';
+@import './Item/ItemCartInfo.scss';
+@import './Item/ItemGallery.scss';
+@import './Item/SkeletonItemPage.scss';
+@import './Favourites.scss';
