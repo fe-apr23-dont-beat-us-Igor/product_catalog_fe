@@ -31,6 +31,28 @@
   border-radius: 4px;
 }
 
+@mixin skeleton-round {
+  background-color: $elements-color;
+  border-radius: 48px;
+}
+
+@mixin loader {
+  border-top: 7px solid $secondaryAccent-color;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
 @mixin bg-svg( $w, $h) {
   // background-size: 100% 100%;
 }

@@ -1,0 +1,25 @@
+@import '../utils/mixins.scss';
+@import '../utils/vars.scss';
+
+.skeleton {
+  &__sum-info {
+    @include skeleton;
+    height: 56px;
+    width: 100%;
+    margin-bottom: 16px;
+    
+    @include onPortable {
+      height: 72px;
+    }
+    
+    @include onDesktop {
+      height: 80px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__button {
+    @include skeleton-round;
+    border: none;
+  }
+}
