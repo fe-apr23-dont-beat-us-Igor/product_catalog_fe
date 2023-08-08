@@ -1,0 +1,41 @@
+.skeleton {
+  &__loader {
+    @include flex-center;
+  }
+
+  &__name {
+    height: 38px;
+    @include skeleton;
+  }
+
+  &__price {
+    height: 19px;
+    @include skeleton;
+  }
+
+  &__char {
+    height: 15px;
+    @include skeleton;
+  }
+
+  &__card-button {
+    display: block;
+    width: 100px;
+    height: 40px;
+    border-radius: 48px;
+    background-color: $elements-color;
+  
+    @include onPortable {
+      width: 125px;
+    }
+    @include onDesktop {
+      width: 160px;
+    }
+  }
+
+  &__like-button {
+    @include flex-center;
+    @include draw-Circle(40px, 40px);
+    background-color: $elements-color;
+  }
+}

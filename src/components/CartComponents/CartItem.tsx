@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import '../../styles/components/CartItem.scss';
 import { img } from '../../images/images';
 import { Product } from '../../Types/products.types';
-import { CartContext } from '../../context/CartContext';
 import { ProductInCart } from '../../Types/cart.types';
 import { useAppContext } from '../../context/AppContext';
 import { Link } from 'react-router-dom';

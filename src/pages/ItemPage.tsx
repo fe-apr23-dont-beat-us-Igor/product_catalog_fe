@@ -6,11 +6,16 @@ import ItemCartInfo from '../components/Item/ItemCartInfo';
 import ItemGallery from '../components/Item/ItemGallery';
 import { getNewProducts, getProductsById } from '../api/api';
 import { useProductsAPI } from '../hooks/useFetch';
-import { FullProductInformation, Product, ProductCollection } from '../Types/products.types';
+import {
+  FullProductInformation,
+  Product,
+  ProductCollection,
+} from '../Types/products.types';
 import { useLocation, useParams } from 'react-router-dom';
-import Loader from '../components/Loader/Loader';
+import Loader from '../components/UI/Loader';
 
 const ItemPage: FC = () => {
+
   const [newProducts, loading, error] = useProductsAPI<ProductCollection>(
     {},
     getNewProducts,
@@ -19,19 +24,19 @@ const ItemPage: FC = () => {
   const [product, setProduct] = useState<FullProductInformation>({
     product: {
       id: 0,
-      itemId: "",
-      name: "",
-      category: "",
+      itemId: '',
+      name: '',
+      category: '',
       price: 0,
       fullPrice: 0,
-      screen: "",
-      capacity: "",
-      ram: "",
-      color: "",
+      screen: '',
+      capacity: '',
+      ram: '',
+      color: '',
       image_id: 0,
-      image_catalog: "",
+      image_catalog: '',
       year: 0,
-      description: "",
+      description: '',
     },
     productLinks: {},
   });
@@ -47,13 +52,11 @@ const ItemPage: FC = () => {
 
   return (
     <main className="item">
-      <h2 className="item__name">
-        { product.product.name }
-      </h2>
+      <h2 className="item__name">{product.product.name}</h2>
       <div className="item__content">
         <div className="item__gallery container section">
-          <ItemGallery 
-            itemName={product.product.name} 
+          <ItemGallery
+            itemName={product.product.name}
             photos={product.productLinks}
           />
         </div>
@@ -62,14 +65,14 @@ const ItemPage: FC = () => {
         </div>
         <div className="item__about container section">
           <Loader />
-          <ItemAbout description={product.product.description}/>
+          <ItemAbout description={product.product.description} />
         </div>
         <div className="item__tech container section">
-          <ItemTechSpecs tech={product.product}/>
+          <ItemTechSpecs tech={product.product} />
         </div>
       </div>
 
-      {newProducts && <GoodsSliderCollection products={newProducts.rows} />}
+      {/* {newProducts && <GoodsSliderCollection products={newProducts.rows} />} */}
     </main>
   );
 };
