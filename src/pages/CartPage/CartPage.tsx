@@ -7,6 +7,8 @@ import { CartCheckout } from '../../components/CartComponents/CartCheckout';
 import { getProductCollectionByIds } from '../../api/api';
 import { useAppContext } from '../../context/AppContext';
 import { ProductInCart } from '../../Types/cart.types';
+import SkeletonCartItem from '../../components/CartComponents/SkeletonCartItem';
+import { SkeletonCartCheckout } from '../../components/CartComponents/SkeletonCartCheckout';
 
 export const CartPage: React.FC = () => {
   const [cartProducts, setCartProducts] = useState<ProductInCart[]>([]);
@@ -61,6 +63,7 @@ export const CartPage: React.FC = () => {
           {cartProducts.length > 0 ? (
             <>
               <div className="card__items">
+                <SkeletonCartItem />
                 {cartProducts.map((product) => (
                   <CartItem
                     key={product.product.id}
@@ -75,6 +78,7 @@ export const CartPage: React.FC = () => {
           )}
         </div>
 
+        <SkeletonCartCheckout />
         <CartCheckout totalCost={totalCost()} handleModal={handleModal} />
       </div>
     </div>

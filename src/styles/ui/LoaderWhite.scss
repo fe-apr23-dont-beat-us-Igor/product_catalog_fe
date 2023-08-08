@@ -1,0 +1,4 @@
+.loader-white {
+  border: 7px solid $white;
+  @include loader;
+}
