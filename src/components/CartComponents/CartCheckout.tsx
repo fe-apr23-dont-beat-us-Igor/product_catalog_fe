@@ -17,7 +17,7 @@ export const CartCheckout: React.FC<Props> = ({ handleModal, totalCost } ) => {
       <div className="checkout__container">
         <div className="checkout__info">
           <h1 className="checkout__total-price">
-            {totalCost}
+            ${totalCost}
           </h1>
           <p className="checkout__text">
           {`Total for ${totalItem} items`} 
