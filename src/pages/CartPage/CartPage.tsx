@@ -81,13 +81,8 @@ export const CartPage: React.FC = () => {
             <h4>Cart is empty</h4>
           )}
         </div>
-
-<<<<<<< HEAD
-        <CartCheckout totalCost={totalCost()} totalItem={totalItem()} handleModal={handleModal} />
-=======
         <SkeletonCartCheckout />
-        <CartCheckout totalCost={totalCost()} handleModal={handleModal} />
->>>>>>> 211933e89bffc029de5b34a97cdd9f28c787d731
+        <CartCheckout totalCost={totalCost()} totalItem={totalItem()} handleModal={handleModal} />
       </div>
     </div>
   );

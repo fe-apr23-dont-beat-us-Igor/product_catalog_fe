@@ -1,10 +1,6 @@
 import { FC } from 'react';
 import GoodsSliderCollection from '../components/GoodsSliderCollection/GoodsSliderCollection';
 import Categories from '../components/Categories/Categories';
-<<<<<<< HEAD
-=======
-import Slider from '../components/Slider/Slider';
->>>>>>> 211933e89bffc029de5b34a97cdd9f28c787d731
 import { useProductsAPI } from '../hooks/useFetch';
 import { Product, ProductCollection } from '../Types/products.types';
 import { getDiscountProducts, getNewProducts } from '../api/api';
