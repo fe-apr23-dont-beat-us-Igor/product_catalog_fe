@@ -12,14 +12,15 @@ import {
   ProductCollection,
 } from '../Types/products.types';
 import { useLocation, useParams } from 'react-router-dom';
-import Loader from '../components/UI/Loader';
+import SkeletonItemGallery from '../components/Item/SkeletonItemGallery';
+import SkeletonItemCartInfo from '../components/Item/SkeletonItemCartInfo';
+import SkeletonItemAdditional from '../components/Item/SkeletonItemAdditional';
 
 const ItemPage: FC = () => {
-
-  const [newProducts, loading, error] = useProductsAPI<ProductCollection>(
-    {},
-    getNewProducts,
-  );
+  // const [newProducts, loading, error] = useProductsAPI<ProductCollection>(
+  //   {},
+  //   getNewProducts,
+  // );
 
   const [product, setProduct] = useState<FullProductInformation>({
     product: {
@@ -51,29 +52,47 @@ const ItemPage: FC = () => {
   }, []);
 
   return (
-    <main className="item">
-      <h2 className="item__name">{product.product.name}</h2>
-      <div className="item__content">
-        <div className="item__gallery container section">
-          <ItemGallery
-            itemName={product.product.name}
-            photos={product.productLinks}
-          />
+    <>
+      <main className="item">
+        <h2 className="item__name">{product.product.name}</h2>
+        <div className="item__content">
+          <div className="item__gallery container section">
+            <ItemGallery
+              itemName={product.product.name}
+              photos={product.productLinks}
+            />
+          </div>
+          <div className="item__cart-info container section">
+            <ItemCartInfo info={product.product} />
+          </div>
+          <div className="item__about container section">
+            <ItemAbout description={product.product.description} />
+          </div>
+          <div className="item__tech container section">
+            <ItemTechSpecs tech={product.product} />
+          </div>
         </div>
-        <div className="item__cart-info container section">
-          <ItemCartInfo info={product.product} />
-        </div>
-        <div className="item__about container section">
-          <Loader />
-          <ItemAbout description={product.product.description} />
-        </div>
-        <div className="item__tech container section">
-          <ItemTechSpecs tech={product.product} />
-        </div>
-      </div>
+        {/* {newProducts && <GoodsSliderCollection products={newProducts.rows} />} */}
+      </main>
 
-      {/* {newProducts && <GoodsSliderCollection products={newProducts.rows} />} */}
-    </main>
+      {/* <main className="item skeleton-item">
+        <div className="item__name skeleton-item__name"></div>
+        <div className="item__content">
+          <div className="item__gallery container section">
+            <SkeletonItemGallery/>
+          </div>
+          <div className="item__cart-info container section">
+            <SkeletonItemCartInfo/>
+          </div>
+          <div className="item__about container section">
+            <SkeletonItemAdditional/>
+          </div>
+          <div className="item__tech container section">
+            <SkeletonItemAdditional/>
+          </div>
+        </div>
+      </main> */}
+    </>
   );
 };
 
