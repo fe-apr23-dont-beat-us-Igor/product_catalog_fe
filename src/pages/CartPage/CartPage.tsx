@@ -81,6 +81,7 @@ export const CartPage: React.FC = () => {
           )}
         </div>
 
+
         <CartCheckout
           totalCost={totalCost()}
           totalItem={totalItem()}
