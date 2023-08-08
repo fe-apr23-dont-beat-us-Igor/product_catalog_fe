@@ -7,7 +7,10 @@ import { ProductCollection } from '../../Types/products.types';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { useProductsAPI } from '../../hooks/useFetch';
 import { SearchParams } from '../../servises/searchParam.servise';
+import { useLocation } from 'react-router-dom';
+
 import SkeletonCard from '../Card/SkeletonCard';
+
 
 export type SortOption = [string, SearchParams];
 export const SortingOpgions: SortOption[] = [
@@ -29,8 +32,14 @@ export const Catalog: FC = () => {
     {},
     getProducts,
   );
+
+  console.log(products);
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const limit = Number(searchParams.get('limit')) || 16;
+
   const isRender = !loading && !error && products?.rows;
-  const limit = 16;
   const count = products?.count ? Math.ceil(products?.count / limit) : 4;
 
   return (
