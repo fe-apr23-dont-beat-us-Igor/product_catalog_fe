@@ -81,7 +81,12 @@ export const CartPage: React.FC = () => {
           )}
         </div>
 
-        <CartCheckout totalCost={totalCost()} totalItem={totalItem()} handleModal={handleModal} />
+        <CartCheckout
+          totalCost={totalCost()}
+          totalItem={totalItem()}
+          handleModal={handleModal}
+        />
+        <SkeletonCartCheckout />
       </div>
     </div>
   );
