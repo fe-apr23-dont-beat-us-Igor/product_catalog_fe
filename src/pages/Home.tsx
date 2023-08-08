@@ -5,7 +5,6 @@ import Slider from '../components/Slider/Slider';
 import { useProductsAPI } from '../hooks/useFetch';
 import { Product, ProductCollection } from '../Types/products.types';
 import { getDiscountProducts, getNewProducts } from '../api/api';
-import Slider from '../components/Slider/Slider';
 import { SearchParams } from '../servises/searchParam.servise';
 
 const Home: FC = () => {
@@ -16,8 +15,6 @@ const Home: FC = () => {
 
   const [discountProducts, loadingDiscount, errorDiscount] =
     useProductsAPI<ProductCollection>({ limit: '16' }, getDiscountProducts);
-
-  console.log(newProducts);
 
   return (
     <main className="">
