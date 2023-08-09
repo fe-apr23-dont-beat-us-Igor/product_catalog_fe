@@ -21,7 +21,7 @@ export const Header: FC = () => {
     setIsMenuActive((value) => !value);
   };
 
-  console.log(cartProductsCount, likeProductsCount);
+  console.log(isMenuActive);
   
 
   return (
