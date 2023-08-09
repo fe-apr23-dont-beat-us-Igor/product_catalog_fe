@@ -102,14 +102,14 @@ const ItemCartInfo: FC<Props> = ({ info }) => {
 
       <div className="cart-info__price-info">
         <div className="cart-info__price">
-          {price &&
-            <>
-              <h2 className="cart-info__price-new">{`$${price}`}</h2>
-              <p className="cart-info__price-old">{`$${fullPrice}`}</p>
-            </>
+          {price 
+            ?
+              <>
+                <h2 className="cart-info__price-new">{`$${price}`}</h2>
+                <p className="cart-info__price-old">{`$${fullPrice}`}</p>
+              </>
+            : <h2 className="cart-info__price-new">{`$${fullPrice}`}</h2>
           }
-
-          <h2 className="cart-info__price-new">{`$${fullPrice}`}</h2>
         </div>
 
         <div className="cart-info__buttons">
