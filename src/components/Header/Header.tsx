@@ -6,15 +6,9 @@ import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { AppContext, useAppContext } from '../../context/AppContext';
 import cn from 'classnames';
 import { HeaderCounter } from './HeaderCounter';
+import { navLinks } from '../../config/config';
 
 // const pages = ['HOME', 'phones?category=phones', 'tablets?category=tablets', 'accessories?category=accessories'];
-
-const pages = [
-  { title: 'HOME', to: '/' },
-  { title: 'PHONES', to: 'products?category=phones&page=1' },
-  { title: 'TABLETS', to: 'products?category=tablets&page=1' },
-  { title: 'ACCESSORIES', to: 'products?category=accessories&page=1' },
-];
 
 export const Header: FC = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
@@ -39,7 +33,7 @@ export const Header: FC = () => {
 
         <nav className="nav">
           <ul className="nav__list">
-            {pages.map(({ title, to }) => (
+            {navLinks.map(({ title, to }) => (
               <li className="nav__item" key={title}>
                 <Link className="nav__link" to={to}>
                   {title}
@@ -62,14 +56,16 @@ export const Header: FC = () => {
         <div className="side-button side-button--favourites">
           <Link to="/favourites" className="side-button">
             <img src={img.like} alt="favourites-icon" />
+
             {likeProductsCount > 0 && 
               <HeaderCounter productsCount={likeProductsCount} />}
+
           </Link>
         </div>
         <div className="side-button side-button--cart">
           <Link to="/cart" className="side-button">
             <img src={img.cart} alt="cart-icon" />
-            {cartProductsCount > 0 &&  
+            {cartProductsCount > 0 &&
             <HeaderCounter productsCount={cartProductsCount} />}
           </Link>
         </div>

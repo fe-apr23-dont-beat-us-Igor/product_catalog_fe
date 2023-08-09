@@ -17,11 +17,10 @@ import SkeletonItemCartInfo from '../components/Item/SkeletonItemCartInfo';
 import SkeletonItemAdditional from '../components/Item/SkeletonItemAdditional';
 
 const ItemPage: FC = () => {
-
-  const [newProducts, loading, error] = useProductsAPI<ProductCollection>(
-    {},
-    getNewProducts,
-  );
+  // const [newProducts, loading, error] = useProductsAPI<ProductCollection>(
+  //   {},
+  //   getNewProducts,
+  // );
 
   const [product, setProduct] = useState<FullProductInformation>({
     product: {
