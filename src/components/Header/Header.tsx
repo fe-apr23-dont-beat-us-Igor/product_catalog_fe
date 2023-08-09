@@ -48,7 +48,7 @@ export const Header: FC = () => {
         <div className="side-button side-button--burger">
           <a href="#"
             onClick={toggler}
-            // className='side-button'
+            className='side-button'
           >
             <img src={img.menu} alt="burger-icon" />
           </a>
