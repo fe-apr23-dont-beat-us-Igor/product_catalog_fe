@@ -30,8 +30,8 @@ export const PaginationOptions: SortOption[] = [
 ];
 
 export const Catalog: FC = () => {
-  const [products, loading, error] = useProductsAPI<ProductCollection>(
-    {},
+  const [products, loading, error] = useProductsAPI<ProductCollection, string>(
+    getSearchWith({}),
     getProducts,
   );
 

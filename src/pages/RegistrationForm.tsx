@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { img } from '../images/images';
 import { Link } from 'react-router-dom';
 
-type Props = {
-}
+type Props = {};
 
 export const Registration: React.FC<Props> = () => {
   const [username, setUsername] = useState('');
@@ -15,7 +14,6 @@ export const Registration: React.FC<Props> = () => {
     console.log('Имя пользователя: ', username);
     console.log('Email: ', email);
     console.log('Пароль: ', password);
-
   };
 
   return (
@@ -23,21 +21,14 @@ export const Registration: React.FC<Props> = () => {
       <img
         src={img.register_img}
         alt="registration"
-        className='registration__img'
+        className="registration__img"
       />
 
-
-      <form onSubmit={handleSubmit} className='registration__form'>
-        <h2 className='registration--title'>Sign Up</h2>
+      <form onSubmit={handleSubmit} className="registration__form">
+        <h2 className="registration--title">Sign Up</h2>
 
         <div className="registration__group">
-          <label
-            htmlFor='username'
-            className='registration__group--label'
-          >
-            User name:
-          </label>
-
+          <label htmlFor='username'>User name: </label>
           <input
             type="text"
             value={username}
@@ -86,18 +77,6 @@ export const Registration: React.FC<Props> = () => {
           />
         </div>
 
-        <div className="registration__group">
-          <label
-            htmlFor='log-in'
-            className='registration__group--label'
-          >
-            Already have ann account?
-          </label>
-          <Link to='/login' className='registration__group--link'>
-            Log-in
-          </Link>
-
-        </div>
         <button className='button-primary' type="submit">
           Sign Up
         </button>

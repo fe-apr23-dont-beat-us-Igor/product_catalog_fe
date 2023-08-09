@@ -50,9 +50,9 @@ export const getDiscountProducts = async (params: string = '') => {
     throw Error();
   }
 };
-export const getRecommendedProducts = async (params: string = '') => {
+export const getRecommendedProducts = async (id: string) => {
   try {
-    const products = await client.get<ProductCollection>(`/discount?${params}`);
+    const products = await client.get<ProductCollection>(`/products/${id}/recommended`);
 
     return products;
   } catch {
@@ -60,11 +60,7 @@ export const getRecommendedProducts = async (params: string = '') => {
   }
 };
 
-// export const getProducts = <T>(params: string = '') => {
-//   return client.get<T>(`/products?${params}`);
-// };
-
-export const getProductsById = async (id: string | undefined) => {
+export const getProductsById = async (id: string = '') => {
   if (!id) throw Error();
 
   try {
@@ -91,6 +87,6 @@ export const getProductsById = async (id: string | undefined) => {
   }
 };
 
-export const getProductCollectionByIds = (ids: string[]) => {
+export const getProductCollectionByIds = async (ids: string[]) => {
   return client.post<Product[]>('/cart-items', { ids });
 };

@@ -4,20 +4,19 @@ import { SearchParams, getSearchWith } from '../servises/searchParam.servise';
 import { getProductImg } from '../api/api';
 import { ProductImgId } from '../Types/products.types';
 
-export const useProductsAPI = <T>(
-  searchParams: SearchParams,
+export const useProductsAPI = <T, R>(
+  args: R,
   callback: (params: string) => Promise<T>,
 ): [T | null, boolean, boolean] => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [data, setData] = useState<T | null>(null);
 
-  const params = getSearchWith(searchParams);
-
   const loadData = async () => {
     try {
       setLoading(true);
-      const result: T = await callback(params);
+      // @ts-ignore
+      const result: T = await callback(args);
 
       console.log(result);
 
@@ -31,7 +30,7 @@ export const useProductsAPI = <T>(
 
   useEffect(() => {
     loadData();
-  }, [params]);
+  }, [args]);
 
   return [data, loading, error];
 };
