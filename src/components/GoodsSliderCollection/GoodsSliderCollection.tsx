@@ -3,6 +3,7 @@ import Card from '../Card/Card';
 import SliderButton from '../UI/SliderButton';
 import { useSlider } from '../../hooks/useSlider';
 import { Product, ProductCollection } from '../../Types/products.types';
+import '../../styles/components/animations.scss';
 
 // const mockCard = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
 

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { img } from '../../images/images';
+import '../../styles/components/animations.scss';
 
 interface Category {
   title: string;

@@ -6,6 +6,8 @@ import { useProductsAPI } from '../hooks/useFetch';
 import { Product, ProductCollection } from '../Types/products.types';
 import { getDiscountProducts, getNewProducts } from '../api/api';
 import { SearchParams, getSearchWith } from '../servises/searchParam.servise';
+import '../styles/components/home.scss';
+import '../styles/components/animations.scss';
 
 const Home: FC = () => {
   const [newProducts, loadingNew, errorNew] = useProductsAPI<ProductCollection, string>(
@@ -21,7 +23,7 @@ const Home: FC = () => {
 
   return (
     <main className="">
-      <h1 className="header-margin section container">
+      <h1 className="header-margin home-title section container">
         Welcome to Nice Gadgets store!
       </h1>
       <Slider />

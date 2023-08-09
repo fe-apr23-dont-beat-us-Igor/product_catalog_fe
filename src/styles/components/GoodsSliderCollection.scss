@@ -3,7 +3,8 @@
   flex-direction: column;
   overflow: hidden;
 
-  position: relative; /* Додали позицію relative для батьківського контейнера */
+  position: relative; 
+  animation: show-from-left 0.8s forwards linear;/* Додали позицію relative для батьківського контейнера */
 
   /* Додали псевдоелемент ::after */
   // &::after {
