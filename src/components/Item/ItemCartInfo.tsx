@@ -4,6 +4,7 @@ import LikeButton from '../UI/LikeButton';
 import { Product } from '../../Types/products.types';
 import { useAppContext } from '../../context/AppContext';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 interface Props {
   info: Product;
@@ -56,7 +57,13 @@ const ItemCartInfo: FC<Props> = ({ info }) => {
     event.preventDefault();
     toggleLike(id);
   };
-  // Add product to cart and likePage end
+
+  const linkChangeColor = itemId.slice(0, itemId.lastIndexOf('-'));
+  const changedCapacityTO = itemId.lastIndexOf('-');
+  const linkChangeCapacityAfter = itemId.slice(changedCapacityTO + 1);
+  const changedCapacityFROM = itemId.slice(0, changedCapacityTO).lastIndexOf('-');
+  const linkChangeCapacityBefore = itemId.slice(0, changedCapacityFROM);
+
 
   return (
     <section className="cart-info">
@@ -71,12 +78,14 @@ const ItemCartInfo: FC<Props> = ({ info }) => {
             const isSelected = preparedC === color.toLowerCase().trim();
 
             return (
-              <button 
-                className={classNames('colorButton',
+              <Link to={`/products/${linkChangeColor}-${c}`}>
+                <button
+                  className={classNames('colorButton',
                   { 'colorButton--selected': isSelected })}
-                style={{ background: colorsList[c] }}
-              >
-              </button>
+                  style={{ background: colorsList[c] }}
+                >
+                </button>
+              </Link>
             );
           })}
         </div>
@@ -89,12 +98,14 @@ const ItemCartInfo: FC<Props> = ({ info }) => {
             const isSelected = preparedC === capacity.toLowerCase().trim();
 
             return (
-              <button 
+              <Link to={`/products/${linkChangeCapacityBefore}-${c}-${linkChangeCapacityAfter}`}>
+                <button 
                 className={classNames('capacityButton',
                   { 'capacityButton--selected': isSelected })}
-              >
-                {c}
-              </button>
+                >
+                  {c}
+                </button>
+              </Link>
             );
           })}
         </div>
