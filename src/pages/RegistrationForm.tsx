@@ -77,6 +77,21 @@ export const Registration: React.FC<Props> = () => {
           />
         </div>
 
+        <div className="registration__group">
+          <label
+            htmlFor='login'
+            className='registration__group--label'
+          >
+            Already have an acount? 
+          </label>
+          <Link
+            to="/authorization"
+            className='registration__group--link'
+          >
+            Log-in
+          </Link>
+        </div>
+
         <button className='button-primary' type="submit">
           Sign Up
         </button>
