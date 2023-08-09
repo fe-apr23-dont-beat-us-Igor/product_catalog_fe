@@ -24,7 +24,11 @@
   }
 
   &__item {
-    margin-left: 32px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1 1 100%;
+    margin-left: 24px;
     position: relative;
     height: 48px;
   

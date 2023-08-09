@@ -59,7 +59,6 @@ export const Header: FC = () => {
 
             {likeProductsCount > 0 && 
               <HeaderCounter productsCount={likeProductsCount} />}
-
           </Link>
         </div>
         <div className="side-button side-button--cart">
