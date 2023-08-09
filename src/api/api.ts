@@ -6,6 +6,7 @@ import {
   ProductImgId,
   ProductLinks,
 } from '../Types/products.types';
+import { RegistrationCredentials } from '../pages/RegistrationForm';
 import { client } from './axiosClient';
 
 interface Phone {
@@ -98,7 +99,15 @@ export const getProductCollectionByIds = async (ids: string[]) => {
 export const getInfo = async () => {
   type Info = { [key: string]: number };
 
-  const data = await client.get<Info>('https://product-catalog-be-1l77.onrender.com/info');
+  const data = await client.get<Info>(
+    'https://product-catalog-be-1l77.onrender.com/info',
+  );
 
   return data;
+};
+
+export const sendRegistrationCred = (
+  data: Omit<RegistrationCredentials, 'checkPassword'>,
+) => {
+  return client.post('/registration', data);
 };

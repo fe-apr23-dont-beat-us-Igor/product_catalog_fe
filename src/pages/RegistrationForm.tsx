@@ -1,19 +1,67 @@
-import React, { useState } from 'react';
+import { useState, FC } from 'react';
 import { img } from '../images/images';
 import { Link } from 'react-router-dom';
+import { sendRegistrationCred } from '../api/api';
 
-type Props = {};
+export interface RegistrationCredentials {
+  username: string;
+  password: string;
+  checkPassword: string;
+}
 
-export const Registration: React.FC<Props> = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const initialRegistrationCred: RegistrationCredentials = {
+  username: '',
+  password: '',
+  checkPassword: '',
+};
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log('Имя пользователя: ', username);
-    console.log('Email: ', email);
-    console.log('Пароль: ', password);
+export const Registration: FC = () => {
+  const [regError, setRegError] = useState(false);
+  const [successfulReg, setSuccessfulReg] = useState(false);
+  const [regCredentials, setRegCredentials] = useState<RegistrationCredentials>(
+    initialRegistrationCred,
+  );
+
+  const handleRegCredentials = (
+    key: keyof RegistrationCredentials,
+    value: string,
+  ) => {
+    setRegCredentials((prev) => {
+      return { ...prev, [key]: value };
+    });
+
+    console.log(regCredentials);
+  };
+
+  const validateCredentials = () => {
+    setRegCredentials(({ username, password, checkPassword }) => {
+      if (password.length < 6 || password !== checkPassword) {
+        setRegError(true);
+        return { username, password: '', checkPassword: '' };
+      }
+
+      if (username.length < 6) {
+        setRegError(true);
+        return initialRegistrationCred;
+      }
+      setRegError(false);
+      return { username, password, checkPassword };
+    });
+  };
+
+  const registretionSubmit = async () => {
+    validateCredentials();
+    if (regError) {
+      return;
+    }
+
+    const username = regCredentials.username;
+    const password = regCredentials.password;
+
+    const res = await sendRegistrationCred({ username, password });
+
+    console.log(res);
+    setSuccessfulReg(true);
   };
 
   return (
@@ -24,75 +72,65 @@ export const Registration: React.FC<Props> = () => {
         className="registration__img"
       />
 
-      <form onSubmit={handleSubmit} className="registration__form">
+      <form onSubmit={registretionSubmit} className="registration__form">
         <h2 className="registration--title">Sign Up</h2>
 
         <div className="registration__group">
-          <label htmlFor='username'>User name: </label>
+          <label htmlFor="username">Email: </label>
           <input
-            type="text"
-            value={username}
+            type="email"
+            value={regCredentials.username}
             id="username"
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder='Enter your username'
-            className='registration__group--input'
+            onChange={(e) => handleRegCredentials('username', e.target.value)}
+            placeholder="Enter your username"
+            className="registration__group--input"
             required
           />
         </div>
 
         <div className="registration__group">
-          <label
-            htmlFor='email'
-            className='registration__group--label'
-          >
-            Email: 
+          <label htmlFor="email" className="registration__group--label">
+            Password:
           </label>
 
           <input
-            type="email"
-            value={email}
+            type="password"
+            value={regCredentials.password}
             id="email"
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder='Enter your email'
-            className='registration__group--input'
+            onChange={(e) => handleRegCredentials('password', e.target.value)}
+            placeholder="Enter your email"
+            className="registration__group--input"
             required
           />
         </div>
 
         <div className="registration__group">
-          <label
-            htmlFor='password'
-            className='registration__group--label'
-          >
-            Password: 
+          <label htmlFor="password" className="registration__group--label">
+            Check yout Password:
           </label>
           <input
             type="password"
-            value={password}
+            value={regCredentials.checkPassword}
             id="password"
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder='Enter your password'
-            className='registration__group--input'
+            onChange={(e) =>
+              handleRegCredentials('checkPassword', e.target.value)
+            }
+            placeholder="Enter your password"
+            className="registration__group--input"
             required
           />
         </div>
 
         <div className="registration__group">
-          <label
-            htmlFor='login'
-            className='registration__group--label'
-          >
-            Already have an acount? 
+          <label htmlFor="login" className="registration__group--label">
+            Already have an acount?
           </label>
-          <Link
-            to="/authorization"
-            className='registration__group--link'
-          >
+          <Link to="/authorization" className="registration__group--link">
             Log-in
           </Link>
         </div>
 
-        <button className='button-primary' type="submit">
+        <button className="button-primary" type="submit">
           Sign Up
         </button>
       </form>
