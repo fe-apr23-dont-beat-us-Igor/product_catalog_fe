@@ -4,7 +4,7 @@ import { img } from '../../images/images';
 import { CategoryType } from './Categories';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import '../../styles/components/animations.scss';
+import '../../styles/components/animation.scss';
 
 interface Category {
   title: string;

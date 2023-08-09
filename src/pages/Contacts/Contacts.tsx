@@ -57,7 +57,6 @@ export const Contacts: React.FC = () => {
 
   return (
     <div className="contacts__main">
-      <Breadcrumbs />
       <h1 className="title">Let's develop together</h1>
 
       <div className="contacts__team">
