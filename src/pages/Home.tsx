@@ -7,8 +7,8 @@ import { Product, ProductCollection } from '../Types/products.types';
 import { getDiscountProducts, getNewProducts } from '../api/api';
 import { SearchParams, getSearchWith } from '../servises/searchParam.servise';
 import { GoodSliderSkeleton } from '../components/GoodsSliderCollection/GoodSliderSkeleton';
-import '../styles/components/home.scss';
-import '../styles/components/animations.scss';
+import '../styles/components/Home.scss';
+import '../styles/components/animation.scss';
 
 const Home: FC = () => {
   const [newProducts, loadingNew, errorNew] = useProductsAPI<
@@ -22,8 +22,8 @@ const Home: FC = () => {
   >(getSearchWith({ limit: '16' }), getDiscountProducts);
 
   return (
-    <main className="">
-      <h1 className="header-margin section container">
+    <main className="Home">
+      <h1 className="header-margin home-title section container">
         Welcome to Nice Gadgets store!
       </h1>
       <Slider />
