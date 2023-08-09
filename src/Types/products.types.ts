@@ -7,8 +7,10 @@ export interface Product {
   fullPrice: number;
   screen: string;
   capacity: string;
+  available_capacity: string,
   ram: string;
   color: string;
+  available_colors: string,
 
   image_id: number;
   image_catalog: string;
