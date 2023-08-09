@@ -3,13 +3,36 @@ import Button from '../UI/Button';
 import LikeButton from '../UI/LikeButton';
 import { Product } from '../../Types/products.types';
 import { useAppContext } from '../../context/AppContext';
+import classNames from 'classnames';
 
 interface Props {
   info: Product;
 }
 
+const colorsList: { [key: string]: string } = {
+  'space-gray': '#65737e',
+  'spacegray': '#65737e',
+  'gold': '#f2cd5c',
+  'silver': '#dddddd',
+  'black': '#000',
+  'rose-gold': '#ffeadd',
+  'rosegold': '#ffeadd',
+  'red': '#d71313',
+  'white': '#fff',
+  'coral': ' #ff7f50',
+  'yellow': '#ffea00',
+  'purple': '#d7b4f3',
+  'green': '#40e0d0',
+  'midnightgreen': '#4d5c2b',
+  'starlight': '#f6f6f6',
+  'pink': '#ff90bb',
+  'sky-blue': '#9999ff',
+  'blue': '#0047ab',
+};
+
 const ItemCartInfo: FC<Props> = ({ info }) => {
-  const { id, itemId, color, price, fullPrice, screen, description, ram } =
+  const { id, itemId, color, available_colors, available_capacity,
+    price, fullPrice, screen, description, ram, capacity } =
     info;
 
   // Add product to cart and likePage
@@ -43,18 +66,37 @@ const ItemCartInfo: FC<Props> = ({ info }) => {
           <p className="cart-info__id">ID: {id}</p>
         </div>
         <div className="cart-info__options">
-          <button className="colorButton--selected"></button>
-          <button className="colorButton"></button>
-          <button className="colorButton"></button>
-          <button className="colorButton"></button>
+          {available_colors.split(' ').map(c => {
+            const preparedC = c.toLowerCase().trim();
+            const isSelected = preparedC === color.toLowerCase().trim();
+
+            return (
+              <button 
+                className={classNames('colorButton',
+                  { 'colorButton--selected': isSelected })}
+                style={{ background: colorsList[c] }}
+              >
+              </button>
+            );
+          })}
         </div>
       </div>
       <div className="cart-info__param">
         <p className="cart-info__title">Select capacity</p>
         <div className="cart-info__options">
-          <button className="capacityButton--selected">64 GB</button>
-          <button className="capacityButton">256 GB</button>
-          <button className="capacityButton">512 GB</button>
+          {available_capacity.split(' ').map(c => {
+            const preparedC = c.toLowerCase().trim();
+            const isSelected = preparedC === capacity.toLowerCase().trim();
+
+            return (
+              <button 
+                className={classNames('capacityButton',
+                  { 'capacityButton--selected': isSelected })}
+              >
+                {c}
+              </button>
+            );
+          })}
         </div>
       </div>
 

@@ -32,6 +32,8 @@ const ItemPage: FC = () => {
       fullPrice: 0,
       screen: '',
       capacity: '',
+      available_capacity: '',
+      available_colors: '',
       ram: '',
       color: '',
       image_id: 0,
