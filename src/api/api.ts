@@ -6,7 +6,7 @@ import {
   ProductImgId,
   ProductLinks,
 } from '../Types/products.types';
-import { RegistrationCredentials } from '../pages/RegistrationForm';
+import { RegistrationCredentials } from '../components/Auth/RegistrationForm';
 import { client } from './axiosClient';
 
 interface Phone {
