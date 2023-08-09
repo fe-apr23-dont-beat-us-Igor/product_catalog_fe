@@ -59,18 +59,11 @@ export const BurgerMenu: FC<Props> = ({ ref, toggler }) => {
         </header>
 
         <ul className="menu__list">
-          {/* {navLinks.map(({ title, to }) => (
+          {navLinks.map(({ title, to }) => (
             <li className="menu__list--item" key={title}>
               <Link className="menu__list--link" to={to}>
                 {title}
               </Link>
-            </li>
-          ))} */}
-          {pages.map(page => (
-            <li className="menu__list--item" key={page.id}>
-              <a href={`/${page.title}`} className="menu__list--link">
-                {page.title}
-              </a>
             </li>
           ))}
         </ul>
