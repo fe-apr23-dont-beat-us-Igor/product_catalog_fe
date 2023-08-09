@@ -1,17 +1,15 @@
-
-import { createHashRouter as CreateRouter } from "react-router-dom";
-import App from "../App";
-import { Catalog } from "../components/Catalog/Catalog";
-import { NotFoundRedirect } from "../components/NotFoundPage/NotFoundRedirect";
-import { NotFoundPage } from "../components/NotFoundPage/NotFoundPage";
-import Home from "../pages/Home";
-import Leyout from "../pages/Leyout";
+import { createHashRouter as CreateRouter } from 'react-router-dom';
+import App from '../App';
+import { Catalog } from '../components/Catalog/Catalog';
+import { NotFoundRedirect } from '../components/NotFoundPage/NotFoundRedirect';
+import { NotFoundPage } from '../components/NotFoundPage/NotFoundPage';
+import Home from '../pages/Home';
+import Leyout from '../pages/Leyout';
 import ItemPage from '../pages/ItemPage';
-import { CartPage } from "../pages/CartPage/CartPage";
-import { Favourites } from "../pages/Favourites";
-import { Contacts } from "../pages/Contacts/Contacts";
-import { Registration } from "../pages/RegistrationForm";
-import { Authorization } from "../pages/Authorization";
+import { CartPage } from '../pages/CartPage/CartPage';
+import { Favourites } from '../pages/Favourites';
+import { Contacts } from '../pages/Contacts/Contacts';
+import { AuthPage } from '../pages/Auth';
 
 export const router = CreateRouter([
   {
@@ -40,25 +38,24 @@ export const router = CreateRouter([
         element: <ItemPage />,
       },
       {
-
-        path: "/cart",
-        element: <CartPage />   
+        path: '/cart',
+        element: <CartPage />,
       },
       {
-        path: "/favourites",
-        element: <Favourites />   
+        path: '/favourites',
+        element: <Favourites />,
       },
       {
-        path: "/contacts",
-        element: <Contacts />   
+        path: '/contacts',
+        element: <Contacts />,
       },
       {
-        path: "/registration",
-        element: <Registration />   
+        path: '/registration',
+        element: <AuthPage />,
       },
       {
-        path: "/authorization",
-        element: <Authorization />   
+        path: '/authorization',
+        element: <AuthPage />,
       },
     ],
   },
