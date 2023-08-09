@@ -69,7 +69,7 @@
       };
 
       @include onDesktop {
-        bottom: 0px;
+        bottom: -8px;
       }
     }
 
@@ -88,7 +88,7 @@
       };
 
       @include onDesktop {
-        bottom: 0px;
+        bottom: -8px;
       }
     }
   }
@@ -120,18 +120,18 @@
     content: "";
     position: absolute;
     background-color: $primary-color;
-    bottom: 0;
+    bottom: -5px;
     width: 100%;
     left: 0;
     height: 3px;
     border-radius: 8px;
 
     @include onPortable {
-      bottom: -8px;
+      bottom: -4px;
     };
 
     @include onDesktop {
-      bottom: 0px;
+      bottom: -4px;
     }
   }
   
