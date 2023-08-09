@@ -21,6 +21,9 @@ export const Header: FC = () => {
     setIsMenuActive((value) => !value);
   };
 
+  console.log(cartProductsCount, likeProductsCount);
+  
+
   return (
     <header className="header header-margin">
       <div className="nav-and-logo">
@@ -43,7 +46,10 @@ export const Header: FC = () => {
 
       <div className="side-buttons">
         <div className="side-button side-button--burger">
-          <a href="#" onClick={toggler}>
+          <a href="#"
+            onClick={toggler}
+            // className='side-button'
+          >
             <img src={img.menu} alt="burger-icon" />
           </a>
         </div>
@@ -59,18 +65,21 @@ export const Header: FC = () => {
         <div className="side-button side-button--cart">
           <Link to="/cart" className="side-button">
             <img src={img.cart} alt="cart-icon" />
-            {cartProductsCount > 0 &&  
+            {cartProductsCount > 0 &&
             <HeaderCounter productsCount={cartProductsCount} />}
-
           </Link>
         </div>
         <div className="side-button side-button--registration">
-          <Link to="/registration">
+          <Link to="/registration" className='side-button'>
             <img src={img.registration} alt="cart-icon" />
           </Link>
         </div>
       </div>
-      {isMenuActive && <BurgerMenu ref={burgerMenu} toggler={toggler} />}
+      {isMenuActive && 
+      <BurgerMenu
+        ref={burgerMenu}
+        toggler={toggler}
+      />}
     </header>
   );
 };

@@ -31,7 +31,7 @@ type Props = {
 };
 
 export const AppContext: FC<Props> = ({ children }) => {
-  const { cart, toggleItem, removeItem, removeAll } = useCart()
+  const { cart, toggleItem, removeItem, removeAll } = useCart();
   const { likeStorage, toggleLike } = useLike();
 
   const value: AppContext = {

@@ -15,7 +15,7 @@ const PaginationButton: FC<Props> = ({ pageNumber, ...atributes }) => {
   const select = page === String(pageNumber) || (!page && pageNumber === 1);
 
   const className = classNames('paginationButton ', {
-    'paginationButton--selected': select && page ,
+    'paginationButton--selected': select,
   });
 
   return (
