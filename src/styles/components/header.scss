@@ -26,7 +26,7 @@
   &__item {
     margin-left: 32px;
     position: relative;
-    line-height: 48px;
+    height: 48px;
   
     &:first-child {
       margin-left: 0;
@@ -102,7 +102,7 @@
 .side-button {
   position: relative;
   width: 48px;
-  line-height: 48px;
+  height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,13 +110,6 @@
   box-sizing: border-box;
   border-bottom: 3px solid transparent;
 
-  &:hover {
-    border-bottom: 3px solid $primary-color;
-  }
-
-  &:active {
-    border-bottom: 3px solid transparent;
-  }
 
   @include onPortable {
     width: 64px;

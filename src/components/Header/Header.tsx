@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { img } from '../../images/images';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { AppContext, useAppContext } from '../../context/AppContext';
+import cn from 'classnames';
+import { HeaderCounter } from './HeaderCounter';
 import { navLinks } from '../../config/config';
 
 // const pages = ['HOME', 'phones?category=phones', 'tablets?category=tablets', 'accessories?category=accessories'];
@@ -18,6 +20,9 @@ export const Header: FC = () => {
   const toggler = (event: any) => {
     setIsMenuActive((value) => !value);
   };
+
+  console.log(cartProductsCount, likeProductsCount);
+  
 
   return (
     <header className="header header-margin">
@@ -41,41 +46,40 @@ export const Header: FC = () => {
 
       <div className="side-buttons">
         <div className="side-button side-button--burger">
-          <a href="#" onClick={toggler}>
+          <a href="#"
+            onClick={toggler}
+            // className='side-button'
+          >
             <img src={img.menu} alt="burger-icon" />
           </a>
         </div>
         <div className="side-button side-button--favourites">
           <Link to="/favourites" className="side-button">
             <img src={img.like} alt="favourites-icon" />
-            {likeProductsCount > 0 && (
-              <div className="icon__counter--like">
-                <span className="icon__counter-text">
-                  {likeProductsCount < 100 ? likeProductsCount : '99+'}
-                </span>
-              </div>
-            )}
+
+            {likeProductsCount > 0 && 
+              <HeaderCounter productsCount={likeProductsCount} />}
+
           </Link>
         </div>
         <div className="side-button side-button--cart">
           <Link to="/cart" className="side-button">
             <img src={img.cart} alt="cart-icon" />
-            {cartProductsCount > 0 && (
-              <div className="icon__counter">
-                <span className="icon__counter-text">
-                  {cartProductsCount < 100 ? cartProductsCount : '99+'}
-                </span>
-              </div>
-            )}
+            {cartProductsCount > 0 &&
+            <HeaderCounter productsCount={cartProductsCount} />}
           </Link>
         </div>
         <div className="side-button side-button--registration">
-          <Link to="/registration">
+          <Link to="/registration" className='side-button'>
             <img src={img.registration} alt="cart-icon" />
           </Link>
         </div>
       </div>
-      {isMenuActive && <BurgerMenu ref={burgerMenu} toggler={toggler} />}
+      {isMenuActive && 
+      <BurgerMenu
+        ref={burgerMenu}
+        toggler={toggler}
+      />}
     </header>
   );
 };

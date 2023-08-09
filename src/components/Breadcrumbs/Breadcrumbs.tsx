@@ -30,7 +30,6 @@ export const Breadcrumbs: React.FC = () => {
     default:
       secondLinkTitle = 'PHONES';
   };
-  console.log(location);
   const isBreadcrumbsVisible = location.pathname !== '/'
     && location.pathname !== '/home'
     && location.pathname !== '/registration';

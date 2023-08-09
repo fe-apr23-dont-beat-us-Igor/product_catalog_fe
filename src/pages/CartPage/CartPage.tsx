@@ -86,7 +86,6 @@ export const CartPage: React.FC = () => {
           </div>
           {!cartProducts.length && <h4>Cart is empty</h4>}
         </div>
-
         {isLoading ? (
           <SkeletonCartCheckout />
         ) : (
@@ -96,7 +95,7 @@ export const CartPage: React.FC = () => {
             handleModal={handleModal}
           />
         )}
-        {/* <SkeletonCartCheckout /> */}
+
       </div>
     </div>
   );
