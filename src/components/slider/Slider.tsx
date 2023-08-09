@@ -38,15 +38,13 @@ const Slider = () => {
           onTouchMove={handleTouchMove}
         >
           <div className="slider__slides" ref={slideListRef}>
-            {slides.map((img) => (
+            {bannerAccets.map((img) => (
               <div
                 className="slider__slide"
-                style={
-                  {
-                    backgroundImage: `url(${img})`,
-                    backgroundSize: 'cover',
-                  }
-                }
+                style={{
+                  backgroundImage: `url(${img})`,
+                  backgroundSize: 'cover',
+                }}
               >
                 {/* <img src={img} alt="" style={{ backgroundSize: 'cover' }} /> */}
               </div>

@@ -9,19 +9,18 @@ import { SearchParams, getSearchWith } from '../servises/searchParam.servise';
 import { GoodSliderSkeleton } from '../components/GoodsSliderCollection/GoodSliderSkeleton';
 
 const Home: FC = () => {
-  const [newProducts, loadingNew, errorNew] = useProductsAPI<ProductCollection, string>(
-    getSearchWith({ limit: '16' }),
-    getNewProducts,
-  );
+  const [newProducts, loadingNew, errorNew] = useProductsAPI<
+    ProductCollection,
+    string
+  >(getSearchWith({ limit: '16' }), getNewProducts);
 
-  const [discountProducts, loadingDiscount, errorDiscount] =
-    useProductsAPI<ProductCollection, string>(
-      getSearchWith({ limit: '16' }),
-      getDiscountProducts,
-    );
+  const [discountProducts, loadingDiscount, errorDiscount] = useProductsAPI<
+    ProductCollection,
+    string
+  >(getSearchWith({ limit: '16' }), getDiscountProducts);
 
   return (
-    <main className="">
+    <main className="Home">
       <h1 className="header-margin section container">
         Welcome to Nice Gadgets store!
       </h1>
@@ -33,7 +32,7 @@ const Home: FC = () => {
           title="Brand new models"
         />
       )}
-      
+
       <Categories />
 
       {loadingDiscount && <GoodSliderSkeleton />}

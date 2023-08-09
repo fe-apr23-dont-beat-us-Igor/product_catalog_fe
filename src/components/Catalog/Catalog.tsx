@@ -42,7 +42,7 @@ export const Catalog: FC = () => {
   const count = products?.count ? Math.ceil(products?.count / limit) : 4;
 
   return (
-    <div className="catalog container section">
+    <div className="catalog">
       <h1 className="catalog__title">Mobile phones</h1>
       {products ? (
         <p className="catalog__count">{products.count} models</p>
