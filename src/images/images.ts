@@ -21,6 +21,14 @@ import tablets from './photos/Tablets.png';
 import phone from './photos/image 2.png';
 import register_img from './photos/registration-img.jpg';
 
+import banner_1 from './photos/banner1.jpg';
+import banner_2 from './photos/banner2.jpg';
+import banner_3 from './photos/banner3.jpg';
+import banner_4 from './photos/banner4.jpg';
+import banner_5 from './photos/banner5.jpg';
+
+export const bannerAccets = [banner_1, banner_2, banner_3, banner_4, banner_5];
+
 export const img = {
   logo,
   arrowDown,

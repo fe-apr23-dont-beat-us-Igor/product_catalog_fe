@@ -7,8 +7,36 @@ import classNames from "classnames";
 export const Breadcrumbs: React.FC = () => {
   const location = useLocation();
   const paths = location.pathname.split('/').filter(path => path !== '');
-  const searchParams = location.search.toString() || '';
-  
+  const searchParams = location.search;
+
+
+  const getCategory = (pathname: string): string => {
+    if (pathname.includes('favourites')) {
+
+      return 'FAVOURITES';
+    } else if (pathname.includes('cart')) {
+
+      return 'CART';
+    }
+    if (searchParams.includes('tablets')) {
+
+      return 'TABLETS';
+    } else if (searchParams.includes('accessories')) {
+
+      return 'ACCESSORIES';
+    }
+    return 'PHONES';
+  };
+
+  const getItemCategory = (path: string): string => {
+    if (path.includes('ipad')) {
+      return 'TABLETS';
+    } else if (path.includes('watch')) {
+      return 'ACCESSORIES';
+    }
+    return 'PHONES';
+  };
+
   const makeFirstCapitale = (inpString: string) => {
     if (inpString.length < 2) {
       return inpString;
@@ -17,19 +45,6 @@ export const Breadcrumbs: React.FC = () => {
     return inpString.slice(0, 1).toUpperCase() + inpString.slice(1);
   };
 
-  let secondLinkTitle = '';
-  switch (searchParams) {
-    case '?category=tablets':
-      secondLinkTitle = 'TABLETS';
-      break;
-
-    case '?category=accessories':
-      secondLinkTitle = 'ACCESSORIES';
-      break;
-
-    default:
-      secondLinkTitle = 'PHONES';
-  };
   const isBreadcrumbsVisible = location.pathname !== '/'
     && location.pathname !== '/home'
     && location.pathname !== '/registration';
@@ -55,33 +70,39 @@ export const Breadcrumbs: React.FC = () => {
             className="breadcrumbs__arrow"
           />
         );
-        if (index === paths.length - 1) {
-          return (
+        const breadcrumbsItem = paths.length === 1
+          ? (
             <li key={index} className="breadcrumbs__item">
               {separator}
               <span className="breadcrumbs__item--title">
-                {index === 1
-                  ? (path.split('-')
-                  .map(titleWord => makeFirstCapitale(titleWord)).join(' '))
-                  : (secondLinkTitle)
-                }
+                {getCategory(paths[0])}
               </span>
             </li>
-          );
-        }
+          ) : (
+            index === paths.length - 1 ? (
+              <li key={index} className="breadcrumbs__item">
+                {separator}
+                <span className="breadcrumbs__item--title">
+                  {path.split('-')
+                    .map(titleWord => makeFirstCapitale(titleWord)).join(' ')
+                  }
+                </span>
+              </li>
+            ) : (
+              <li key={index} className="breadcrumbs__item">
+                {separator}
+                <Link
+                  to={'/products' + searchParams}
+                  className="breadcrumbs__item--link"
+                >
+                  {getItemCategory(paths[1])}
+                </Link>
+              </li>
+            ));
 
-          return (
-            <li key={index} className="breadcrumbs__item">
-              {separator}
-              <Link
-                to={'/products' + searchParams}
-                className="breadcrumbs__item--link"
-              >
-                {secondLinkTitle}
-              </Link>
-            </li>
-          );
+        return breadcrumbsItem;
       })}
     </ul>
   );
 };
+

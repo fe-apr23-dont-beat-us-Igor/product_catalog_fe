@@ -1,21 +1,46 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 
 import { img } from '../../images/images';
 import Category from './Category';
+import { getInfo } from '../../api/api';
 
-const categories = [
-  { title: 'Mobile phones', counter: '95 models', img: img.phones },
-  { title: 'Tablets', counter: '24 models', img: img.tablets },
-  { title: 'Accessories', counter: '100 models', img: img.accessories },
+export interface CategoryType {
+  title: string;
+  counter: number;
+  img: string;
+  link: string;
+}
+
+const categoriesList: CategoryType[] = [
+  {
+    title: 'Tablets',
+    counter: 36,
+    img: img.tablets,
+    link: 'products?category=tablets&page=1',
+  },
+  {
+    title: 'Mobile phones',
+    counter: 54,
+    img: img.phones,
+    link: 'products?category=phones&page=1',
+  },
+  {
+    title: 'Accessories',
+    counter: 34,
+    img: img.accessories,
+    link: 'products?category=accessories&page=1',
+  },
 ];
 
 const Categories = () => {
+  const [categories, setCategories] = useState<CategoryType[]>(categoriesList);
+
   return (
     <section className="container section categories">
       <h2 className="categories__title">Shop by category</h2>
       <div className="categories__content">
-        {categories.map((category) => (
-          <Category category={category} />
+        {categories.map((categoryItem) => (
+          <Category category={categoryItem} />
         ))}
       </div>
     </section>

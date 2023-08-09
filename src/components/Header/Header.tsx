@@ -48,7 +48,7 @@ export const Header: FC = () => {
         <div className="side-button side-button--burger">
           <a href="#"
             onClick={toggler}
-            // className='side-button'
+            className='side-button'
           >
             <img src={img.menu} alt="burger-icon" />
           </a>
@@ -59,7 +59,6 @@ export const Header: FC = () => {
 
             {likeProductsCount > 0 && 
               <HeaderCounter productsCount={likeProductsCount} />}
-
           </Link>
         </div>
         <div className="side-button side-button--cart">
@@ -72,6 +71,8 @@ export const Header: FC = () => {
         <div className="side-button side-button--registration">
           <Link to="/registration" className='side-button'>
             <img src={img.registration} alt="cart-icon" />
+            {cartProductsCount > 0 &&
+            <HeaderCounter productsCount={cartProductsCount} />}
           </Link>
         </div>
       </div>

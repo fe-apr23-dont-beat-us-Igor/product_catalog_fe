@@ -21,6 +21,7 @@
 
   &__img {
     max-width: 300px;
+    object-fit: contain;
     display: none;
     flex-grow: 1;
 
@@ -48,16 +49,44 @@
   &__group {
     margin-bottom: 15px;
     display: flex;
-    // max-width: 500px;
-    min-width: 200px;
     flex-direction: column;
+
+    &:nth-child(5) {
+      flex-direction: row;
+      line-height: 18px;
+      align-items: baseline;
+    }
+
+    
+    &--label {
+      @include small-text;
+      margin-right: 10px;
+      margin-bottom: 5px;
+    }
 
     &--input {
       width: 100%;
-      padding: 5px;
+      padding: 10px 20px;
       box-sizing: border-box;
       border: 1px solid #ccc;
       border-radius: 48px;
+
+      @include text;
+
+      &::placeholder{
+        letter-spacing: 0.5px;
+        color: $secondary-color;
+      }
+    }
+
+    &--link {
+      font-weight: bold;
+      color: $secondary-color;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $primary-color;
+      }
     }
   }
 }

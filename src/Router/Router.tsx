@@ -11,6 +11,7 @@ import { CartPage } from "../pages/CartPage/CartPage";
 import { Favourites } from "../pages/Favourites";
 import { Contacts } from "../pages/Contacts/Contacts";
 import { Registration } from "../pages/RegistrationForm";
+import { Authorization } from "../pages/Authorization";
 
 export const router = CreateRouter([
   {
@@ -54,7 +55,11 @@ export const router = CreateRouter([
       {
         path: "/registration",
         element: <Registration />   
-      }
+      },
+      {
+        path: "/authorization",
+        element: <Authorization />   
+      },
     ],
   },
 ]);

@@ -50,9 +50,11 @@ export const getDiscountProducts = async (params: string = '') => {
     throw Error();
   }
 };
-export const getRecommendedProducts = async (params: string = '') => {
+export const getRecommendedProducts = async (id: string) => {
   try {
-    const products = await client.get<ProductCollection>(`/discount?${params}`);
+    const products = await client.get<ProductCollection>(
+      `/products/${id}/recommended`,
+    );
 
     return products;
   } catch {
@@ -60,11 +62,7 @@ export const getRecommendedProducts = async (params: string = '') => {
   }
 };
 
-// export const getProducts = <T>(params: string = '') => {
-//   return client.get<T>(`/products?${params}`);
-// };
-
-export const getProductsById = async (id: string | undefined) => {
+export const getProductsById = async (id: string = '') => {
   if (!id) throw Error();
 
   try {
@@ -76,14 +74,16 @@ export const getProductsById = async (id: string | undefined) => {
 
     const updatedProductLinks: ProductLinks = {};
 
-    Object.entries(productLinks).forEach(([key, value]) => {
-      console.log(typeof value);
-      if (typeof value === 'string' && value !== 'null') {
-        updatedProductLinks[key] = setImgUrl(value);
-      } else {
-        updatedProductLinks[key] = value;
-      }
-    });
+    Object.entries(productLinks)
+      .filter(([ket, value]) => value !== 'null')
+      .forEach(([key, value]) => {
+        console.log(typeof value);
+        if (typeof value === 'string' && value !== 'null') {
+          updatedProductLinks[key] = setImgUrl(value);
+        } else {
+          updatedProductLinks[key] = value;
+        }
+      });
 
     return { product, productLinks: updatedProductLinks };
   } catch {
@@ -93,4 +93,12 @@ export const getProductsById = async (id: string | undefined) => {
 
 export const getProductCollectionByIds = async (ids: string[]) => {
   return client.post<Product[]>('/cart-items', { ids });
+};
+
+export const getInfo = async () => {
+  type Info = { [key: string]: number };
+
+  const data = await client.get<Info>('https://product-catalog-be-1l77.onrender.com/info');
+
+  return data;
 };

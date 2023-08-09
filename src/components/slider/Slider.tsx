@@ -1,11 +1,9 @@
 import classNames from 'classnames';
 import { useSlider } from '../../hooks/useSlider';
 
-import { img } from '../../images/images';
+import { bannerAccets, img } from '../../images/images';
 import banner from '../../images/photos/Banner.png';
 import SliderButton from '../UI/SliderButton';
-
-const slideList = ['black', 'blue', 'green', 'blue', 'yellow'];
 
 const Slider = () => {
   const {
@@ -16,7 +14,7 @@ const Slider = () => {
     goToSlide,
     handleTouchStart,
     handleTouchMove,
-  } = useSlider<string>(slideList, true, 1);
+  } = useSlider<string>(bannerAccets, true, 1);
 
   const dotClassList = (index: number) =>
     classNames('slider__dot', {
@@ -40,15 +38,15 @@ const Slider = () => {
           onTouchMove={handleTouchMove}
         >
           <div className="slider__slides" ref={slideListRef}>
-            {slides.map((color) => (
+            {bannerAccets.map((img) => (
               <div
                 className="slider__slide"
                 style={{
-                  backgroundImage: `url(${banner})`,
+                  backgroundImage: `url(${img})`,
                   backgroundSize: 'cover',
                 }}
               >
-                {/* <img src={img.banner} alt="" /> */}
+                {/* <img src={img} alt="" style={{ backgroundSize: 'cover' }} /> */}
               </div>
             ))}
           </div>
