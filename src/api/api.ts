@@ -91,6 +91,6 @@ export const getProductsById = async (id: string | undefined) => {
   }
 };
 
-export const getProductCollectionByIds = (ids: string[]) => {
+export const getProductCollectionByIds = async (ids: string[]) => {
   return client.post<Product[]>('/cart-items', { ids });
 };
