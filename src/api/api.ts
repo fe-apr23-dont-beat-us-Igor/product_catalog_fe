@@ -52,7 +52,9 @@ export const getDiscountProducts = async (params: string = '') => {
 };
 export const getRecommendedProducts = async (id: string) => {
   try {
-    const products = await client.get<ProductCollection>(`/products/${id}/recommended`);
+    const products = await client.get<ProductCollection>(
+      `/products/${id}/recommended`,
+    );
 
     return products;
   } catch {
@@ -72,14 +74,16 @@ export const getProductsById = async (id: string = '') => {
 
     const updatedProductLinks: ProductLinks = {};
 
-    Object.entries(productLinks).forEach(([key, value]) => {
-      console.log(typeof value);
-      if (typeof value === 'string' && value !== 'null') {
-        updatedProductLinks[key] = setImgUrl(value);
-      } else {
-        updatedProductLinks[key] = value;
-      }
-    });
+    Object.entries(productLinks)
+      .filter(([ket, value]) => value !== 'null')
+      .forEach(([key, value]) => {
+        console.log(typeof value);
+        if (typeof value === 'string' && value !== 'null') {
+          updatedProductLinks[key] = setImgUrl(value);
+        } else {
+          updatedProductLinks[key] = value;
+        }
+      });
 
     return { product, productLinks: updatedProductLinks };
   } catch {
