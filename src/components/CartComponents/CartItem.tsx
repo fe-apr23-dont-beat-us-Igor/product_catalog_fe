@@ -15,10 +15,10 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ product, changeQuantity }) => {
-  const { name, price, itemId, image_catalog } = product.product;
+  const { name, price, itemId, image_catalog, fullPrice } = product.product;
   const { removeItem } = useAppContext();
 
-  const totalPrice = price * product.quantity;
+  const totalPrice = price ? price * product.quantity : fullPrice * product.quantity;
   const isRemovingDisabled = product.quantity === 1;
   const isAddingDisabled = product.quantity > 9;
 

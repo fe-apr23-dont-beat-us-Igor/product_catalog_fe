@@ -40,7 +40,9 @@ export const CartPage: React.FC = () => {
 
   const totalCost = (): number => {
     const priceList = cartProducts.map(
-      ({ product, quantity }) => product.price * quantity,
+      ({ product, quantity }) => product.price 
+      ? product.price * quantity 
+      : product.fullPrice * quantity
     );
 
     return priceList.reduce((acc, item) => acc + item, 0);
