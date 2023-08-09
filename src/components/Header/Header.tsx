@@ -72,6 +72,8 @@ export const Header: FC = () => {
         <div className="side-button side-button--registration">
           <Link to="/registration" className='side-button'>
             <img src={img.registration} alt="cart-icon" />
+            {cartProductsCount > 0 &&
+            <HeaderCounter productsCount={cartProductsCount} />}
           </Link>
         </div>
       </div>
