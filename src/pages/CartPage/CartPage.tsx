@@ -11,20 +11,25 @@ import SkeletonCartItem from '../../components/CartComponents/SkeletonCartItem';
 import { SkeletonCartCheckout } from '../../components/CartComponents/SkeletonCartCheckout';
 
 export const CartPage: React.FC = () => {
-  const [cartProducts, setCartProducts] = useState<ProductInCart[]>([]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
   const { cart, removeAll } = useAppContext();
+  const [cartProducts, setCartProducts] = useState<ProductInCart[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   // для роботи з cart та like
   useEffect(() => {
-    getProductCollectionByIds(cart).then((data) => {
-      const cartProducts: ProductInCart[] = data.map((product) => ({
-        quantity: 1,
-        product: product,
-      }));
-      console.log(data);
-      setCartProducts(cartProducts);
-    });
+    console.log(isLoading);
+    getProductCollectionByIds(cart)
+      .then((data) => {
+        const cartProducts: ProductInCart[] = data.map((product) => ({
+          quantity: 1,
+          product: product,
+        }));
+        setCartProducts(cartProducts);
+      })
+      .finally(() => setIsLoading(false));
+
+    console.log(isLoading);
   }, [cart]);
   //
 
@@ -63,30 +68,35 @@ export const CartPage: React.FC = () => {
       {isModalVisible && <CartModal handleModal={handleModal} />}
       <div className="cart__page">
         <div>
-          {cartProducts.length > 0 ? (
-            <>
-              <div className="card__items">
+          <div className="card__items">
+            {isLoading && (
+              <>
                 <SkeletonCartItem />
-                {cartProducts.map((product) => (
-                  <CartItem
-                    key={product.product.id}
-                    product={product}
-                    changeQuantity={changeQuantity}
-                  />
-                ))}
-              </div>
-            </>
-          ) : (
-            <h4>Cart is empty</h4>
-          )}
+                <SkeletonCartItem />
+                <SkeletonCartItem />
+              </>
+            )}
+            {cartProducts.map((product) => (
+              <CartItem
+                key={product.product.id}
+                product={product}
+                changeQuantity={changeQuantity}
+              />
+            ))}
+          </div>
+          {!cartProducts.length && <h4>Cart is empty</h4>}
         </div>
 
-        <CartCheckout
-          totalCost={totalCost()}
-          totalItem={totalItem()}
-          handleModal={handleModal}
-        />
-        <SkeletonCartCheckout />
+        {isLoading ? (
+          <SkeletonCartCheckout />
+        ) : (
+          <CartCheckout
+            totalCost={totalCost()}
+            totalItem={totalItem()}
+            handleModal={handleModal}
+          />
+        )}
+        {/* <SkeletonCartCheckout /> */}
       </div>
     </div>
   );

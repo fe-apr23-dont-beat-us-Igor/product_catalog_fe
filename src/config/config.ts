@@ -1,5 +1,3 @@
-export const x = [];
-
 export const navLinks = [
   { title: 'HOME', to: '/' },
   { title: 'PHONES', to: 'products?category=phones&page=1' },

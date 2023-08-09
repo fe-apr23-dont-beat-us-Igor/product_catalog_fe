@@ -6,16 +6,19 @@ import Slider from '../components/Slider/Slider';
 import { useProductsAPI } from '../hooks/useFetch';
 import { Product, ProductCollection } from '../Types/products.types';
 import { getDiscountProducts, getNewProducts } from '../api/api';
-import { SearchParams } from '../servises/searchParam.servise';
+import { SearchParams, getSearchWith } from '../servises/searchParam.servise';
 
 const Home: FC = () => {
-  const [newProducts, loadingNew, errorNew] = useProductsAPI<ProductCollection>(
-    { limit: '16' },
+  const [newProducts, loadingNew, errorNew] = useProductsAPI<ProductCollection, string>(
+    getSearchWith({ limit: '16' }),
     getNewProducts,
   );
 
   const [discountProducts, loadingDiscount, errorDiscount] =
-    useProductsAPI<ProductCollection>({ limit: '16' }, getDiscountProducts);
+    useProductsAPI<ProductCollection, string>(
+      getSearchWith({ limit: '16' }),
+      getDiscountProducts,
+    );
 
   return (
     <main className="">
