@@ -7,7 +7,6 @@ import { ProductImgId } from '../Types/products.types';
 export const useProductsAPI = <T>(
   searchParams: SearchParams,
   callback: (params: string) => Promise<T>,
-  
 ): [T | null, boolean, boolean] => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
