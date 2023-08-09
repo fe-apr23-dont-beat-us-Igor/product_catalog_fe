@@ -94,3 +94,11 @@ export const getProductsById = async (id: string = '') => {
 export const getProductCollectionByIds = async (ids: string[]) => {
   return client.post<Product[]>('/cart-items', { ids });
 };
+
+export const getInfo = async () => {
+  type Info = { [key: string]: number };
+
+  const data = await client.get<Info>('https://product-catalog-be-1l77.onrender.com/info');
+
+  return data;
+};

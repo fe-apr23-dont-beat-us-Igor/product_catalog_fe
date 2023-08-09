@@ -1,30 +1,28 @@
 import { FC } from 'react';
 
 import { img } from '../../images/images';
-
-interface Category {
-  title: string;
-  counter: string;
-  img: string;
-}
+import { CategoryType } from './Categories';
+import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 type Props = {
-  category: Category;
+  category: CategoryType;
 };
 
 const Category: FC<Props> = ({ category }) => {
-  const { title, counter, img } = category;
+  const { title, counter, img, link } = category;
 
   return (
-    <article className="category">
-      <img className="category__img" src={img} alt="" />
+    <Link to={link}>
+      <article className="category">
+        <img className="category__img" src={img} alt="" />
 
-      <div className="category__text-container">
-        <h4 className="category__heading">{title}</h4>
-        <p className="category__text">{counter}</p>
-      </div>
-
-    </article>
+        <div className="category__text-container">
+          <h4 className="category__heading">{title}</h4>
+          <p className="category__text">{counter} models</p>
+        </div>
+      </article>
+    </Link>
   );
 };
 
