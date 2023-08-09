@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { img } from '../images/images';
+import { Link } from 'react-router-dom';
 
 type Props = {
 }
@@ -30,41 +31,73 @@ export const Registration: React.FC<Props> = () => {
         <h2 className='registration--title'>Sign Up</h2>
 
         <div className="registration__group">
-          <label htmlFor='username'>User name: </label>
+          <label
+            htmlFor='username'
+            className='registration__group--label'
+          >
+            User name:
+          </label>
+
           <input
             type="text"
             value={username}
             id="username"
             onChange={(e) => setUsername(e.target.value)}
+            placeholder='Enter your username'
             className='registration__group--input'
             required
           />
         </div>
 
         <div className="registration__group">
-          <label>Email: </label>
+          <label
+            htmlFor='email'
+            className='registration__group--label'
+          >
+            Email: 
+          </label>
+
           <input
             type="email"
             value={email}
             id="email"
             onChange={(e) => setEmail(e.target.value)}
+            placeholder='Enter your email'
             className='registration__group--input'
             required
           />
         </div>
 
         <div className="registration__group">
-          <label>Password: </label>
+          <label
+            htmlFor='password'
+            className='registration__group--label'
+          >
+            Password: 
+          </label>
           <input
             type="password"
             value={password}
             id="password"
             onChange={(e) => setPassword(e.target.value)}
+            placeholder='Enter your password'
             className='registration__group--input'
             required
           />
         </div>
 
+        <div className="registration__group">
+          <label
+            htmlFor='log-in'
+            className='registration__group--label'
+          >
+            Already have ann account?
+          </label>
+          <Link to='/login' className='registration__group--link'>
+            Log-in
+          </Link>
+
+        </div>
         <button className='button-primary' type="submit">
           Sign Up
         </button>
