@@ -9,7 +9,7 @@
     // align-self: flex-start;
 
     @include onPortable {
-        align-self: flex-start;
+      align-self: flex-start;
     }
   }
 
@@ -24,6 +24,18 @@
 .category {
   box-sizing: border-box;
   padding-bottom: 32px;
+  transition:
+    border 1s,
+    border-radius 1s;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 20px;
+
+  &:hover {
+    border-radius: 40px;
+    border: 1px solid $primary-color;
+    // background: rgb(249, 248, 248);
+  }
   &__img {
     max-width: 100%;
     width: auto;
@@ -33,6 +45,7 @@
       max-width: 100%;
       width: 187px;
       height: 187px;
+      margin-bottom: 0;
     }
 
     @include onDesktop {
@@ -42,7 +55,7 @@
   }
   &__text-container {
     max-width: 288px;
-    // word-wrap: break-word;
+    padding: 10px 10px;
   }
 
   &__heading {
