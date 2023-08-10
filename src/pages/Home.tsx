@@ -7,6 +7,8 @@ import { Product, ProductCollection } from '../Types/products.types';
 import { getDiscountProducts, getNewProducts } from '../api/api';
 import { SearchParams, getSearchWith } from '../servises/searchParam.servise';
 import { GoodSliderSkeleton } from '../components/GoodsSliderCollection/GoodSliderSkeleton';
+import '../styles/components/home.scss';
+import '../styles/components/animation.scss';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

@@ -40,8 +40,8 @@ export const AuthForm = () => {
     <form onSubmit={authSubmit} className="registration__form">
       <h2 className="registration--title">Sign In</h2>
 
-      <div className="registration__group">
-        <label htmlFor="username">Email: </label>
+      <div className="registration__group ">
+        <label htmlFor="username" className="registration__group--label">Email: </label>
         <input
           type="text"
           value={authCred.username}
@@ -78,7 +78,8 @@ export const AuthForm = () => {
           Sign Up!
         </Link>
       </div>
-      <button className="button-primary" type="submit">
+
+      <button className="button-primary registration__sumit" type="submit">
         Sign In
       </button>
     </form>

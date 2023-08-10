@@ -54,7 +54,8 @@ const Slider = () => {
         <button
           className="slider__button slider__button--right"
           onClick={() => changeSlide(1)}
-        ></button>
+        >
+        </button>
         {/* button */}
       </div>
 

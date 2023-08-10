@@ -1,4 +1,4 @@
-import { FC, MutableRefObject, useContext, useRef, useState } from 'react';
+import { FC, MutableRefObject, useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { img } from '../../images/images';
@@ -19,6 +19,27 @@ export const Header: FC = () => {
   const toggler = (event: any) => {
     setIsMenuActive((value) => !value);
   };
+
+  console.log(cartProductsCount, likeProductsCount);
+
+
+  const [themeState, setThemeState] = useState(false);
+
+  const handleChange = () => {
+    setThemeState(!themeState);
+    if (themeState) {
+      localStorage.setItem('Theme', 'dark');
+      document.body.classList.add('dark-mode');
+    } else {
+      localStorage.setItem('Theme', 'light');
+      document.body.classList.remove('dark-mode');
+    }
+  };
+
+  useEffect(() => {
+    const getTheme = localStorage.getItem('Theme');
+    if (getTheme === 'dark') return document.body.classList.add('dark-mode');
+  });
 
   return (
     <header className="header header-margin">
@@ -41,27 +62,42 @@ export const Header: FC = () => {
       </div>
 
       <div className="side-buttons">
+        <div className="side-button side-button--theme">
+          <a 
+            onClick={() => handleChange()}
+            className='side-button'
+          >
+            <img src={img.darkTheme} alt="burger-icon" className='side-button--theme-pic side-button--color'/>
+          </a>
+        </div>
         <div className="side-button side-button--burger">
-          <a href="#" onClick={toggler} className="side-button">
-            <img src={img.menu} alt="burger-icon" />
+          <a href="#"
+            onClick={toggler}
+            className='side-button'
+          >
+            <img src={img.menu} alt="burger-icon" className='side-button--color'/>
           </a>
         </div>
         <div className="side-button side-button--favourites">
-          <Link to="/favourites" className="side-button">
+          <Link to="/favourites" className="side-button side-button--color">
             <img src={img.like} alt="favourites-icon" />
-
-            {likeProductsCount > 0 && (
-              <HeaderCounter productsCount={likeProductsCount} />
-            )}
           </Link>
+            {likeProductsCount > 0 && 
+              <HeaderCounter productsCount={likeProductsCount} />}
         </div>
         <div className="side-button side-button--cart">
-          <Link to="/cart" className="side-button">
+          <Link to="/cart" className="side-button side-button--color">
             <img src={img.cart} alt="cart-icon" />
-            {cartProductsCount > 0 && (
-              <HeaderCounter productsCount={cartProductsCount} />
-            )}
           </Link>
+            {cartProductsCount > 0 &&
+            <HeaderCounter productsCount={cartProductsCount} />}
+        </div>
+        <div className="side-button side-button--registration">
+          <Link to="/registration" className='side-button side-button--color'>
+            <img src={img.registration} alt="cart-icon" />
+          </Link>
+            {cartProductsCount > 0 &&
+            <HeaderCounter productsCount={cartProductsCount} />}
         </div>
 
         {isAuthenticated ? (
