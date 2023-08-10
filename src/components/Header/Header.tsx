@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { img } from '../../images/images';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { AppContext, useAppContext } from '../../context/AppContext';
-import cn from 'classnames';
 import { HeaderCounter } from './HeaderCounter';
 import { navLinks } from '../../config/config';
 
@@ -82,7 +81,11 @@ export const Header: FC = () => {
           </div>
         )}
       </div>
-      {isMenuActive && <BurgerMenu ref={burgerMenu} toggler={toggler} />}
+      <BurgerMenu
+        ref={burgerMenu}
+        toggler={toggler}
+        isMenuActive={isMenuActive}
+      />
     </header>
   );
 };

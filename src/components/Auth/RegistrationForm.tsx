@@ -1,6 +1,7 @@
 import { useState, FC, FormEventHandler } from 'react';
 import { sendRegistrationCred } from '../../api/api';
 import { Link } from 'react-router-dom';
+import { UserMessage } from '../UserMessage/UserMessage';
 
 export interface RegistrationCredentials {
   username: string;
@@ -88,7 +89,7 @@ export const RegistrationForm: FC = () => {
         <label htmlFor="email" className="registration__group--label">
           Password:
         </label>
-
+        
         <input
           type="password"
           value={regCredentials.password}

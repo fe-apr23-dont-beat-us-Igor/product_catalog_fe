@@ -1,0 +1,46 @@
+.userMessage {
+  position: absolute;
+  display: none;
+  top: 96px;
+  right: 20px;
+  padding: 10px 15px;
+  border-radius: 24px;
+  background-color: $elements-color;
+
+  @include text;
+
+  &--visible {
+    display: flex;
+  }
+
+  &--success {
+    background-color: $green;;
+  }
+
+  &--fail {
+    background-color: $red;
+  }
+
+  &__text {
+
+  }
+
+  &__button {
+    position: relative;
+    bottom: 12px;
+    left: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+
+    &::before {
+      content: 'X';
+
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 5px;
+    }
+  }
+}
