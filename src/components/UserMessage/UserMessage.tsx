@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, useRef } from 'react';
 import { useAppContext } from '../../context/AppContext';
 
 // export type Props = {
@@ -36,9 +36,17 @@ type Props = {
 };
 
 export const UserMessage: FC<Props> = ({ message }) => {
+  const ref = useRef(null);
   const { setMessage } = useAppContext();
 
   const { type, title, text } = message;
+
+  useEffect(() => {
+    if (ref !== null) {
+      // @ts-ignore
+      ref.current.classList.add('userMessage--appiar');
+    }
+  }, [ref]);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -50,21 +58,14 @@ export const UserMessage: FC<Props> = ({ message }) => {
 
   return (
     <div
+      ref={ref}
       className={cn('userMessage', {
         'userMessage--success': type === 'success',
         'userMessage--error': type === 'error',
-        // 'userMessage--visible': true,
-        // 'userMessage--success': isMessageSuccess,
-        // 'userMessage--fail': !isMessageSuccess,
       })}
     >
       <h4 className="userMessage__title">{title}</h4>
       <p className="userMessage__text">{text}</p>
-      {/* <button
-        type="button"
-        className="userMessage__button"
-        // onClick={removeError}
-      /> */}
     </div>
   );
 };
