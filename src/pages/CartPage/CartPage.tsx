@@ -63,7 +63,7 @@ export const CartPage: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className='container section'>
       <BackButton />
       <h1 className="title">Cart</h1>
       {isModalVisible && <CartModal handleModal={handleModal} />}
@@ -87,16 +87,17 @@ export const CartPage: React.FC = () => {
           </div>
           {!cartProducts.length && <h4>Cart is empty</h4>}
         </div>
-        {isLoading ? (
-          <SkeletonCartCheckout />
-        ) : (cartProducts.length > 0 &&
-          <CartCheckout
-            totalCost={totalCost()}
-            totalItem={totalItem()}
-            handleModal={handleModal}
-          />
-        )}
-
+        <div>
+          {isLoading ? (
+            <SkeletonCartCheckout />
+          ) : (cartProducts.length > 0 &&
+            <CartCheckout
+              totalCost={totalCost()}
+              totalItem={totalItem()}
+              handleModal={handleModal}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
