@@ -54,7 +54,14 @@ export const Catalog: FC = () => {
 
   return (
     <div className="catalog">
-      <h1 className="catalog__title">{getCategory(searchParams.toString())}</h1>
+      <h1  
+        data-aos="zoom-in"
+        data-aos-easing="linear"
+        data-aos-duration="600" 
+        className="catalog__title"
+      >
+        {getCategory(searchParams.toString())}
+      </h1>
       {products ? (
         <p className="catalog__count">{products.count} models</p>
       ) : (

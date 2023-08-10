@@ -57,11 +57,22 @@ export const Contacts: React.FC = () => {
 
   return (
     <div className="contacts__main">
-      <h1 className="title">Let's develop together</h1>
+      <h1 
+        data-aos="zoom-in"
+        data-aos-easing="linear"
+        data-aos-duration="500" 
+        className="title"
+      >
+        Let's develop together
+      </h1>
 
       <div className="contacts__team">
         {team.map((player) => (
-          <div>
+          <div 
+            data-aos="zoom-in"
+            data-aos-easing="linear"
+            data-aos-duration="500"
+          >
             <div className="contacts__container">
               <img src={require(`./${player.image}`)} alt={player.name} className="contacts__image" />
               <h3 className="contacts__name">{player.name}</h3>

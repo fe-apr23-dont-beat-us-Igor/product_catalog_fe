@@ -43,12 +43,7 @@ const GoodsSliderCollection: FC<Props> = ({ products = [], title }) => {
   } = useSlider(slidesInit, false, products.length, 16);
 
   return (
-    <section 
-      data-aos="fade-right"
-      data-aos-easing="linear"
-      data-aos-duration="600"   
-      className="section container goodsSliderCollection"
-    >
+    <section className="section container goodsSliderCollection">
       <div className="goodsSliderCollection__head">
         <h2>{title}</h2>
         <div className="goodsSliderCollection__buttons">

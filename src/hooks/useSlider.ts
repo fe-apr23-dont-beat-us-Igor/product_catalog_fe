@@ -1,4 +1,10 @@
-import { TouchEventHandler, useEffect, useRef, useState } from 'react';
+import {
+  TouchEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 export const useSlider = <T>(
   slideList: T[],
@@ -11,17 +17,7 @@ export const useSlider = <T>(
   const [touchPosition, setTouchPosition] = useState<null | number>(null);
   const slideListRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-
-    if (autoPlay) {
-      interval = setInterval(() => changeSlide(1), 5000);
-    }
-
-    return () => clearInterval(interval);
-  }, [slides, currentSlide, autoPlay]);
-
-  const moveSlider = () => {
+  const moveSlider = useCallback(() => {
     if (slideListRef.current) {
       const translateValue =
         (slideListRef.current?.clientWidth * currentSlide) / itemsPerSlide +
@@ -31,50 +27,72 @@ export const useSlider = <T>(
         transform: `translateX(-${translateValue}px)`,
       };
     }
-  };
+  }, [currentSlide, itemsPerSlide, offset]);
 
   useEffect(() => {
     if (slideListRef.current) {
       Object.assign(slideListRef.current.style, moveSlider());
     }
-  }, [slideListRef, currentSlide]);
+  }, [slideListRef, currentSlide, moveSlider]);
 
-  const changeSlide = (direction: number = 1): void => {
-    let slideNumber = (currentSlide + direction) % slides.length;
+  const changeSlide = useCallback(
+    (direction: number = 1): void => {
+      let slideNumber = (currentSlide + direction) % slides.length;
 
-    if (slideNumber < 0) {
-      slideNumber = slides.length - 1;
+      if (slideNumber < 0) {
+        slideNumber = slides.length - 1;
+      }
+
+      setCurrentSlide(slideNumber);
+    },
+    [currentSlide, slides],
+  );
+
+  const goToSlide = useCallback(
+    (number: number): void => {
+      setCurrentSlide(number % slides.length);
+    },
+    [slides],
+  );
+
+  const handleTouchStart: TouchEventHandler<HTMLDivElement> = useCallback(
+    (event): void => {
+      const touchDown = event.touches[0].clientX;
+
+      setTouchPosition(touchDown);
+    },
+    [],
+  );
+
+  const handleTouchMove: TouchEventHandler<HTMLDivElement> = useCallback(
+    (event): void => {
+      if (!touchPosition) return;
+
+      const currentPosition = event.touches[0].clientX;
+      const direction = touchPosition - currentPosition;
+
+      if (direction > 10) {
+        changeSlide(1);
+      }
+
+      if (direction < -10) {
+        changeSlide(-1);
+      }
+
+      setTouchPosition(null);
+    },
+    [changeSlide, touchPosition],
+  );
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+
+    if (autoPlay) {
+      interval = setInterval(() => changeSlide(1), 5000);
     }
 
-    setCurrentSlide(slideNumber);
-  };
-
-  const goToSlide = (number: number): void => {
-    setCurrentSlide(number % slides.length);
-  };
-
-  const handleTouchStart: TouchEventHandler<HTMLDivElement> = (event): void => {
-    const touchDown = event.touches[0].clientX;
-
-    setTouchPosition(touchDown);
-  };
-
-  const handleTouchMove: TouchEventHandler<HTMLDivElement> = (event): void => {
-    if (!touchPosition) return;
-
-    const currentPosition = event.touches[0].clientX;
-    const direction = touchPosition - currentPosition;
-
-    if (direction > 10) {
-      changeSlide(1);
-    }
-
-    if (direction < -10) {
-      changeSlide(-1);
-    }
-
-    setTouchPosition(null);
-  };
+    return () => clearInterval(interval);
+  }, [slides, currentSlide, autoPlay, changeSlide]);
 
   return {
     slideListRef,

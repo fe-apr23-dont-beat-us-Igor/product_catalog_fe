@@ -90,7 +90,7 @@ export const CartPage: React.FC = () => {
         </div>
         {isLoading ? (
           <SkeletonCartCheckout />
-        ) : (
+        ) : (cartProducts.length > 0 &&
           <CartCheckout
             totalCost={totalCost()}
             totalItem={totalItem()}

@@ -21,7 +21,12 @@ const Category: FC<Props> = ({ category }) => {
 
   return (
     <Link to={link}>
-      <article className="category">
+      <article 
+        data-aos="zoom-in"
+        data-aos-easing="linear"
+        data-aos-duration="500" 
+        className="category"
+      >
         <img className="category__img" src={img} alt="" />
 
         <div className="category__text-container">

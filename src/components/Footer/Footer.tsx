@@ -16,9 +16,9 @@ export const Footer: FC = () => {
         </a>
         <nav className='footer__links'>
           <ul className='list'>
-            <li className='list-item'>
-              <a href='/' className='list-link'>GitHub</a>
-            </li>
+            <Link className='list-item list-link' to="https://github.com/fe-apr23-dont-beat-us-Igor" target="_blank">
+              GitHub
+            </Link>
             <Link className='list-item' to="/contacts">
               <a href='/' className='list-link'>Contacts</a>
             </Link>
