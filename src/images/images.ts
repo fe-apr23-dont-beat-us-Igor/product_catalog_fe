@@ -20,6 +20,7 @@ import arrowLeftDark from './arrow-left-dark.svg';
 import arrowRightDark from './arrow-right-dark.svg';
 import minusDark from './minus-dark.svg';
 import plusDark from './plus-dark.svg';
+import likeFilledDark from './like-filled-dark.svg';
 
 import banner from './photos/Banner.png';
 import accessories from './photos/Accessories.png';
@@ -64,5 +65,6 @@ export const img = {
   arrowLeftDark,
   arrowRightDark,
   minusDark,
-  plusDark
+  plusDark,
+  likeFilledDark,
 };
