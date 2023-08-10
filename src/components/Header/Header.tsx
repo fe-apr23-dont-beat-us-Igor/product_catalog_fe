@@ -13,7 +13,7 @@ import { navLinks } from '../../config/config';
 export const Header: FC = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const burgerMenu = useRef<MutableRefObject<any> | null>(null);
-  const { cart, likeStorage } = useAppContext();
+  const { cart, likeStorage, logout, isAuthenticated } = useAppContext();
   const cartProductsCount = cart.length;
   const likeProductsCount = likeStorage.length;
 
@@ -22,7 +22,6 @@ export const Header: FC = () => {
   };
 
   console.log(cartProductsCount, likeProductsCount);
-  
 
   return (
     <header className="header header-margin">
@@ -46,10 +45,7 @@ export const Header: FC = () => {
 
       <div className="side-buttons">
         <div className="side-button side-button--burger">
-          <a href="#"
-            onClick={toggler}
-            className='side-button'
-          >
+          <a href="#" onClick={toggler} className="side-button">
             <img src={img.menu} alt="burger-icon" />
           </a>
         </div>
@@ -57,30 +53,38 @@ export const Header: FC = () => {
           <Link to="/favourites" className="side-button">
             <img src={img.like} alt="favourites-icon" />
 
-            {likeProductsCount > 0 && 
-              <HeaderCounter productsCount={likeProductsCount} />}
+            {likeProductsCount > 0 && (
+              <HeaderCounter productsCount={likeProductsCount} />
+            )}
           </Link>
         </div>
         <div className="side-button side-button--cart">
           <Link to="/cart" className="side-button">
             <img src={img.cart} alt="cart-icon" />
-            {cartProductsCount > 0 &&
-            <HeaderCounter productsCount={cartProductsCount} />}
+            {cartProductsCount > 0 && (
+              <HeaderCounter productsCount={cartProductsCount} />
+            )}
           </Link>
         </div>
-        <div className="side-button side-button--registration">
-          <Link to="/registration" className='side-button'>
-            <img src={img.registration} alt="cart-icon" />
-            {cartProductsCount > 0 &&
-            <HeaderCounter productsCount={cartProductsCount} />}
-          </Link>
-        </div>
+
+        {isAuthenticated ? (
+          <div
+            onClick={logout}
+            className="side-button side-button--registration"
+          >
+            <Link to="/home" className="side-button">
+              <h6>Log Out</h6>
+            </Link>
+          </div>
+        ) : (
+          <div className="side-button side-button--registration">
+            <Link to="/registration" className="side-button">
+              <img src={img.registration} alt="cart-icon" />
+            </Link>
+          </div>
+        )}
       </div>
-      {isMenuActive && 
-      <BurgerMenu
-        ref={burgerMenu}
-        toggler={toggler}
-      />}
+      {isMenuActive && <BurgerMenu ref={burgerMenu} toggler={toggler} />}
     </header>
   );
 };

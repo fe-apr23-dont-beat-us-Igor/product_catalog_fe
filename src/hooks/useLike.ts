@@ -1,7 +1,16 @@
+import { useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
-export const useLike = () => {
+export const useLike = (isAuthenticated: boolean) => {
   const [likeStorage, setLikeStorage] = useLocalStorage<string[]>('like', []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      //завантаження даних з сервера;
+    } else {
+      setLikeStorage([]);
+    }
+  }, [isAuthenticated]);
 
   const toggleLike = (id: string) => {
     setLikeStorage((prev) => {

@@ -8,6 +8,8 @@ export interface RegistrationCredentials {
   checkPassword: string;
 }
 
+export type AuthCredentials = Omit<RegistrationCredentials, 'checkPassword'>;
+
 const initialRegistrationCred: RegistrationCredentials = {
   username: '',
   password: '',
