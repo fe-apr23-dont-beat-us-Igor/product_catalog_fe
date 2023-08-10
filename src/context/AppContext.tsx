@@ -12,6 +12,7 @@ import { useLike } from '../hooks/useLike';
 import { UseAuth, useAuth } from '../hooks/useAuthToken';
 import { Message } from '../components/UserMessage/UserMessage';
 import { getUsersData, setUsersData } from '../api/api';
+import { useAOS } from '../hooks/useAOS';
 
 interface AppContext extends UseAuth {
   cart: string[];
@@ -58,6 +59,7 @@ export interface UsersData {
 }
 
 export const AppContext: FC<Props> = ({ children }) => {
+  useAOS();
   const { login, logout, isAuthenticated, setIsAuthenticated } = useAuth();
 
   const { cart, toggleItem, removeItem, removeAll, setCart } =

@@ -48,13 +48,6 @@ export const Card: FC<Props> = ({ phone }) => {
     toggleLike(id);
   };
 
-  useEffect(() => {
-    AOS.init({
-      duration: 500,
-      easing: 'linear',
-    });
-  }, []);
-
   return (
     <Link
       className="card"

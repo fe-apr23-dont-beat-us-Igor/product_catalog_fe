@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import GoodsSliderCollection from '../components/GoodsSliderCollection/GoodsSliderCollection';
 import Categories from '../components/Categories/Categories';
 import { useProductsAPI } from '../hooks/useFetch';
-import { Product, ProductCollection } from '../Types/products.types';
+import { ProductCollection } from '../Types/products.types';
 import { getDiscountProducts, getNewProducts } from '../api/api';
 import { SearchParams, getSearchWith } from '../servises/searchParam.servise';
 import { GoodSliderSkeleton } from '../components/GoodsSliderCollection/GoodSliderSkeleton';
@@ -10,6 +10,7 @@ import '../styles/components/home.scss';
 import '../styles/components/animation.scss';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Slider from '../components/Slider/Slider';
 
 const Home: FC = () => {
   const [newProducts, loadingNew, errorNew] = useProductsAPI<
@@ -22,9 +23,7 @@ const Home: FC = () => {
     string
   >(getSearchWith({ limit: '16' }), getDiscountProducts);
 
-  useEffect(() => {
-    AOS.init();
-  }, []);
+
 
   return (
     <main className="Home">
