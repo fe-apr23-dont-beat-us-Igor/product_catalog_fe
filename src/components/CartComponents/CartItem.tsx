@@ -30,7 +30,12 @@ export const CartItem: React.FC<Props> = ({ product, changeQuantity }) => {
         color: 'inherit',
       }}
     >
-      <div className="cartItem">
+      <div 
+        data-aos="zoom-in"
+        data-aos-easing="linear"
+        data-aos-duration="500" 
+        className="cartItem"
+      >
         <div className="cartItem__info">
           <button
             className="cartItem__delete"
