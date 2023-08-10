@@ -1,7 +1,6 @@
 import { FC, useEffect } from 'react';
 import GoodsSliderCollection from '../components/GoodsSliderCollection/GoodsSliderCollection';
 import Categories from '../components/Categories/Categories';
-import Slider from '../components/Slider/Slider';
 import { useProductsAPI } from '../hooks/useFetch';
 import { Product, ProductCollection } from '../Types/products.types';
 import { getDiscountProducts, getNewProducts } from '../api/api';
