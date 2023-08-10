@@ -110,13 +110,7 @@ body.dark-mode {
   }
 
   .gallery {
-    &__item-photo {
-      border-color: $secondary-color-dark;
-
-      &--selected {
-        border-color: $white-dark;
-      }
-    }
+    background-color: $white;
   }
 
   /// CART ///
@@ -364,6 +358,13 @@ body.dark-mode {
   .skeleton {
     &__name, &__price, &__char, &__card-button, &__like-button, &__sum-info, &__button, &__info, &__quantity_and_price, &__quantity, &__total-price{
       background-color: $elements-color-dark;
+    }
+  }
+
+  /// CONTACTS ///
+  .contacts {
+    &__name, &__position {
+      color: $white-dark
     }
   }
 
