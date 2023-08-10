@@ -41,9 +41,22 @@ export const Catalog: FC = () => {
 
   const count = products?.count ? Math.ceil(products?.count / limit) : 4;
 
+  console.log(location, searchParams.toString());
+
+  const getCategory = (pathname: string): string => {
+    if (pathname.includes('tablets')) {
+
+      return 'Tablets';
+    } else if (pathname.includes('accessories')) {
+
+      return 'Accessories';
+    }
+    return 'Mobile phones';
+  };
+
   return (
     <div className="catalog">
-      <h1 className="catalog__title">Mobile phones</h1>
+      <h1 className="catalog__title">{getCategory(searchParams.toString())}</h1>
       {products ? (
         <p className="catalog__count">{products.count} models</p>
       ) : (
