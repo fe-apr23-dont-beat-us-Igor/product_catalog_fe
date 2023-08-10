@@ -1,15 +1,3 @@
-@mixin onPortable {
-  @media (min-width: 640px) {
-    @content;
-  }
-}
-
-@mixin onDesktop {
-  @media (min-width: 1440px) {
-    @content;
-  }
-}
-
 .registration {
 
   &__container {

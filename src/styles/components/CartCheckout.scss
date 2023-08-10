@@ -1,18 +1,5 @@
-$elements-color: #e2e6e9;
-$primary-color: #0f0f11;
-$accent-color: #4219d0;
-$white: #ffffff;
-$secondary-color: #89939a;
-@mixin onPortable {
-  @media (min-width: 640px) {
-    @content;
-  }
-}
-@mixin onDesktop {
-  @media (min-width: 1440px) {
-    @content;
-  }
-}
+@import '../utils/mixins.scss';
+@import '../utils/_vars.scss';
 
 .checkout {
   &__container {

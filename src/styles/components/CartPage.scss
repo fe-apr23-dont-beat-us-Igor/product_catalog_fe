@@ -1,16 +1,3 @@
-$primary-color: #0f0f11;
-$white: #ffffff;
-@mixin onDesktop {
-  @media (min-width: 1440px) {
-    @content;
-  }
-}
-@mixin onPortable {
-  @media (min-width: 640px) {
-    @content;
-  }
-}
-
 .title {
   margin-top: 24px;
   color: $primary-color;

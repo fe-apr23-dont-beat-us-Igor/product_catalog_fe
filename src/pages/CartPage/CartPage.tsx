@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './CartPage.scss';
 import { BackButton } from '../../components/UI/BackButton';
 import { CartModal } from '../../components/CartComponents/CartModal';
 import { CartItem } from '../../components/CartComponents/CartItem';

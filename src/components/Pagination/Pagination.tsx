@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { useLocation } from 'react-router-dom';
 import { visiblePageLinks } from '../utils/visiblePageLinks';
 import { getNewSearchParams } from '../utils/getNewSearchParams';
-import './Pagination.scss';
 import SliderButton from '../UI/SliderButton';
 import PaginationButton from '../UI/PaginationButton';
 import { SearchLink } from '../SearchLink';

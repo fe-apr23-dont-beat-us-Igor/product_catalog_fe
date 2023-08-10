@@ -2,7 +2,11 @@
     display: flex;
     gap: 24px;
     align-self: center;
-    // margin-bottom: ;
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
     
     &__buttons {
         display: flex;

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import '../../styles/components/CartModal.scss';
 import { NavLink } from 'react-router-dom';
- 
+
 type Props = {
     handleModal: () => void,
 }
@@ -20,7 +20,6 @@ export const CartModal: React.FC<Props> = ({ handleModal }) => {
               Return to main page
             </button>
           </NavLink>
-         
         </div>
       </div>
     </div>

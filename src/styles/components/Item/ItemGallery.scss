@@ -5,9 +5,17 @@
   max-height: 100%;
 
   @keyframes jump {
-    0% { transform: translateY(5%); }
+    0% { transform: translateY(3%); }
     50% {transform: translateY(0%)}
-    100% { transform: translateY(5%); }
+    100% { transform: translateY(3%); }
+  }
+
+  @include onPortable {
+    @keyframes jump {
+      0% { transform: translateY(5%); }
+      50% {transform: translateY(0%)}
+      100% { transform: translateY(5%); }
+    }
   }
 
   &__current-photo {
