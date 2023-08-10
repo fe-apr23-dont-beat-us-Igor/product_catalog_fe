@@ -23,9 +23,9 @@ const Slider = () => {
 
   return (
     <div 
-      data-aos="fade-left"
-      data-aos-easing="linear"
-      data-aos-duration="600"  
+      // data-aos="fade-left"
+      // data-aos-easing="linear"
+      // data-aos-duration="600"  
       className="slider"
     >
       <div className="slider__body">
