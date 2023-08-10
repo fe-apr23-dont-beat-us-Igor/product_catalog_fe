@@ -1,15 +1,14 @@
 $secondary-color: #89939a;
+@mixin onDesktop {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
 @mixin onPortable {
-    @media (min-width: 640px) {
-      @content;
-    }
+  @media (min-width: 640px) {
+    @content;
   }
-  @mixin onDesktop {
-    @media (min-width: 1440px) {
-      @content;
-    }
-  }
-
+}
 .favourites {
     display: flex;
     flex-direction: column;

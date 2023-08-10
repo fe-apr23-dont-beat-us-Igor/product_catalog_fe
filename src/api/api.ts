@@ -6,7 +6,11 @@ import {
   ProductImgId,
   ProductLinks,
 } from '../Types/products.types';
-import { RegistrationCredentials } from '../components/Auth/RegistrationForm';
+import { AuthToken } from '../components/Auth/AuthForm';
+import {
+  AuthCredentials,
+  RegistrationCredentials,
+} from '../components/Auth/RegistrationForm';
 import { client } from './axiosClient';
 
 interface Phone {
@@ -106,8 +110,21 @@ export const getInfo = async () => {
   return data;
 };
 
-export const sendRegistrationCred = (
-  data: Omit<RegistrationCredentials, 'checkPassword'>,
-) => {
+export const sendRegistrationCred = (data: AuthCredentials) => {
   return client.post('/registration', data);
+};
+
+export const sendAuthCred = (data: AuthCredentials) => {
+  return client.post<AuthToken>('/login', data);
+};
+
+export const getUsersFavourites = () => {
+  return client
+    .get(`/data?username=${window.localStorage.getItem('username')}`)
+    .then();
+};
+export const getUsersOrder = () => {
+  return client.get(
+    `/order?username=${window.localStorage.getItem('username')}`,
+  );
 };

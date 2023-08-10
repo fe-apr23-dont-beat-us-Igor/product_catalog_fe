@@ -1,0 +1,72 @@
+.userMessage {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 110px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  max-width: 190px;
+  transition: all 1s ease;
+  opacity: 0;
+  z-index: 3;
+
+  @media (min-width: 800px) {
+    top: 96px;
+    right: 20px;
+    padding: 10px 15px;
+    min-width: 250px;
+  }
+
+  @include onDesktop {
+    min-width: 400px;
+  }
+  &--appiar {
+    opacity: 1;
+  }
+
+  @include text;
+
+  // &--visible {
+  //   display: flex;
+  // }
+
+  &--success {
+    border: 1px solid $green;
+    background-color: rgba(116, 243, 116, 0.346);
+    color: green;
+  }
+
+  &--error {
+    border: 1px solid $red;
+    background-color: rgba(243, 139, 116, 0.346);
+    color: rgb(128, 23, 0);
+  }
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    font-size: 14px;
+  }
+
+  &__button {
+    position: relative;
+    bottom: 12px;
+    left: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+
+    &::before {
+      content: 'X';
+
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 5px;
+    }
+  }
+}

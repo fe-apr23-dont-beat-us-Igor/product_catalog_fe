@@ -24,6 +24,9 @@ export const Breadcrumbs: React.FC = () => {
     } else if (searchParams.includes('accessories')) {
 
       return 'ACCESSORIES';
+    } else if (pathname.includes('contacts')) {
+
+      return 'CONTACTS';
     }
     return 'PHONES';
   };
@@ -37,6 +40,15 @@ export const Breadcrumbs: React.FC = () => {
     return 'PHONES';
   };
 
+  const getItemLink = (path: string): string => {
+    if (path.includes('ipad')) {
+      return '?category=tablets&page=1';
+    } else if (path.includes('watch')) {
+      return '?category=accessories&page=1';
+    }
+    return '?category=phones&page=1';
+  };
+
   const makeFirstCapitale = (inpString: string) => {
     if (inpString.length < 2) {
       return inpString;
@@ -47,7 +59,8 @@ export const Breadcrumbs: React.FC = () => {
 
   const isBreadcrumbsVisible = location.pathname !== '/'
     && location.pathname !== '/home'
-    && location.pathname !== '/registration';
+    && location.pathname !== '/registration'
+    && location.pathname !== '/authorization';
 
   return (
     <ul className={classNames('breadcrumbs', {
@@ -92,7 +105,7 @@ export const Breadcrumbs: React.FC = () => {
               <li key={index} className="breadcrumbs__item">
                 {separator}
                 <Link
-                  to={'/products' + searchParams}
+                  to={`/products${getItemLink(paths[1])}`}
                   className="breadcrumbs__item--link"
                 >
                   {getItemCategory(paths[1])}

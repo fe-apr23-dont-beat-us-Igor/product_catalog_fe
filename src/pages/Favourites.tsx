@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from '../components/Card/Card';
 import { Product } from '../Types/products.types';
-import '../styles/components/Favourites.scss';
 import { getProductCollectionByIds } from '../api/api';
 import { useAppContext } from '../context/AppContext';
 import { ProductInCart } from '../Types/cart.types';

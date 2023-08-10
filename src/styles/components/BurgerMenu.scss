@@ -3,22 +3,27 @@
   flex-direction: column;
   justify-content: space-between;
   z-index: 10;
+  transition: opacity 0.3s ease-out;
 
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-
+  width: 100%;
   height: 100vh;
+
   background-color: $white;
   
+  &--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 48px;
-    box-sizing: border-box;
-    border: 1px solid $elements-color;
+    padding-left: 16px;
+    box-shadow: 0px 1px 0px 0px $elements-color;
 
     &--logo {
       padding: 0 16px 0 16px;
@@ -30,8 +35,9 @@
     }
 
     &--close-icon {
+      position: relative;
       width: 48px;
-      height: 100%;
+      height: 48px;
       border-left: 1px solid $elements-color;
       display: flex;
       align-items: center;

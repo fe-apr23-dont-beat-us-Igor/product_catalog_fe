@@ -1,7 +1,16 @@
+import { useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
-export const useCart = ()  => {
+export const useCart = (isAuthenticated: boolean) => {
   const [cart, setCart] = useLocalStorage<string[]>('cart', []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      //завантаження даних з сервера;
+    } else {
+      setCart([]);
+    }
+  }, [isAuthenticated]);
 
   const toggleItem = (id: string) => {
     setCart((prev) => {

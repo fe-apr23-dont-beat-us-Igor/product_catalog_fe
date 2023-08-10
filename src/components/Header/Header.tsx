@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { img } from '../../images/images';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { AppContext, useAppContext } from '../../context/AppContext';
-import cn from 'classnames';
 import { HeaderCounter } from './HeaderCounter';
 import { navLinks } from '../../config/config';
 
@@ -13,7 +12,7 @@ import { navLinks } from '../../config/config';
 export const Header: FC = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const burgerMenu = useRef<MutableRefObject<any> | null>(null);
-  const { cart, likeStorage } = useAppContext();
+  const { cart, likeStorage, logout, isAuthenticated } = useAppContext();
   const cartProductsCount = cart.length;
   const likeProductsCount = likeStorage.length;
 
@@ -100,12 +99,29 @@ export const Header: FC = () => {
             {cartProductsCount > 0 &&
             <HeaderCounter productsCount={cartProductsCount} />}
         </div>
+
+        {isAuthenticated ? (
+          <div
+            onClick={logout}
+            className="side-button side-button--registration"
+          >
+            <Link to="/home" className="side-button">
+              <h6>Log Out</h6>
+            </Link>
+          </div>
+        ) : (
+          <div className="side-button side-button--registration">
+            <Link to="/authorization" className="side-button">
+              <img src={img.registration} alt="cart-icon" />
+            </Link>
+          </div>
+        )}
       </div>
-      {isMenuActive && 
       <BurgerMenu
         ref={burgerMenu}
         toggler={toggler}
-      />}
+        isMenuActive={isMenuActive}
+      />
     </header>
   );
 };

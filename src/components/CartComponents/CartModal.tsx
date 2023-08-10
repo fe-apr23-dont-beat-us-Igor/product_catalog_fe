@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import '../../styles/components/CartModal.scss';
+// import '../../styles/components/CartModal.scss';
 import { NavLink } from 'react-router-dom';
 
 type Props = {

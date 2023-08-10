@@ -5,10 +5,12 @@ import close from '../../images/Close.svg';
 import like from '../../images/Like.svg';
 import cart from '../../images/Cart.svg';
 import { navLinks } from '../../config/config';
+import cn from 'classnames';
 
 type Props = {
   ref: MutableRefObject<any> | null;
   toggler: (value: any) => void;
+  isMenuActive: boolean;
 };
 
 const pages = [
@@ -30,10 +32,10 @@ const pages = [
   },
 ];
 
-export const BurgerMenu: FC<Props> = ({ ref, toggler }) => {
+export const BurgerMenu: FC<Props> = ({ ref, toggler, isMenuActive }) => {
   return (
-    <nav ref={ref} className="menu">
-      <div className="container">
+    <nav ref={ref} className={cn('menu', { 'menu--hidden': !isMenuActive })}>
+      <div className="">
         <header className="menu__header">
           <div className="menu__header__container">
             <Link to="/home" className="logo menu__header--logo">
@@ -41,12 +43,13 @@ export const BurgerMenu: FC<Props> = ({ ref, toggler }) => {
                 src={logo}
                 alt="Nice Gadgets logo"
                 className="logo-img menu__header--logo--img"
+                onClick={toggler}
               />
             </Link>
           </div>
 
           <Link
-            to="/home"
+            to="#"
             className="logo menu__header--close-icon"
             onClick={toggler}
           >
@@ -61,7 +64,11 @@ export const BurgerMenu: FC<Props> = ({ ref, toggler }) => {
         <ul className="menu__list">
           {navLinks.map(({ title, to }) => (
             <li className="menu__list--item" key={title}>
-              <Link className="menu__list--link" to={to}>
+              <Link
+                className="menu__list--link"
+                to={to}
+                onClick={toggler}
+              >
                 {title}
               </Link>
             </li>
