@@ -48,7 +48,10 @@ export const Card: FC<Props> = ({ phone }) => {
 
   return (
     <Link to={`/products/${itemId}`}>
-      <div className="card" data-qa="card">
+      <div className="card"  
+      data-aos="zoom-in"
+      data-aos-easing="linear"
+      data-aos-duration="500"   data-qa="card">
         <img
           className="card__image"
           src={setImgUrl(image_catalog)}
