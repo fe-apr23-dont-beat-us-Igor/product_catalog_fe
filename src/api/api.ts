@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   FullProductInformation,
   Product,
@@ -11,7 +12,9 @@ import {
   AuthCredentials,
   RegistrationCredentials,
 } from '../components/Auth/RegistrationForm';
+import { UsersData } from '../context/AppContext';
 import { client } from './axiosClient';
+import { getAuthTokenFromCookie } from '../hooks/useAuthToken';
 
 interface Phone {
   id: number;
@@ -118,13 +121,33 @@ export const sendAuthCred = (data: AuthCredentials) => {
   return client.post<AuthToken>('/login', data);
 };
 
-export const getUsersFavourites = () => {
-  return client
-    .get(`/data?username=${window.localStorage.getItem('username')}`)
-    .then();
+export const getUsersData = () => {
+  const username = window.localStorage.getItem('username');
+
+  return client.get<UsersData>(`/data/${username}`);
 };
-export const getUsersOrder = () => {
-  return client.get(
-    `/order?username=${window.localStorage.getItem('username')}`,
+
+export const setUsersData = (key: keyof UsersData, ids: string[]) => {
+  const username = window.localStorage.getItem('username');
+  const authToken = getAuthTokenFromCookie();
+
+  // return client.patch(`/data/${username}`, {
+  return axios.patch(
+    `https://product-catalog-be-1l77.onrender.com/data/${username}`,
+    { [key]: ids },
+    {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    },
   );
 };
+// export const setUsersData = (favourites: string[], cart: string[]) => {
+//   const username = window.localStorage.getItem('username');
+
+//   // return client.patch(`/data/${username}`, {
+//   return client.patch(`/data/newUser@gmail.com`, {
+//     favourites: favourites,
+//     cart: cart,
+//   });
+// };

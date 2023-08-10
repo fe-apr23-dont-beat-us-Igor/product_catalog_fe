@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage';
+import { UsersData } from '../context/AppContext';
+import { setUsersData } from '../api/api';
 
 export const useCart = (isAuthenticated: boolean) => {
   const [cart, setCart] = useLocalStorage<string[]>('cart', []);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      //завантаження даних з сервера;
-    } else {
-      setCart([]);
-    }
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     setUsersData('cart', cart);
+  //   }
+  // }, [isAuthenticated, cart]);
 
   const toggleItem = (id: string) => {
     setCart((prev) => {
@@ -26,5 +26,5 @@ export const useCart = (isAuthenticated: boolean) => {
 
   const removeAll = () => setCart([]);
 
-  return { cart, toggleItem, removeItem, removeAll };
+  return { cart, toggleItem, removeItem, removeAll, setCart };
 };
