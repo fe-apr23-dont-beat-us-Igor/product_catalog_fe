@@ -41,12 +41,13 @@ export const BurgerMenu: FC<Props> = ({ ref, toggler }) => {
                 src={logo}
                 alt="Nice Gadgets logo"
                 className="logo-img menu__header--logo--img"
+                onClick={toggler}
               />
             </Link>
           </div>
 
           <Link
-            to="/home"
+            to="#"
             className="logo menu__header--close-icon"
             onClick={toggler}
           >
@@ -61,7 +62,11 @@ export const BurgerMenu: FC<Props> = ({ ref, toggler }) => {
         <ul className="menu__list">
           {navLinks.map(({ title, to }) => (
             <li className="menu__list--item" key={title}>
-              <Link className="menu__list--link" to={to}>
+              <Link
+                className="menu__list--link"
+                to={to}
+                onClick={toggler}
+              >
                 {title}
               </Link>
             </li>

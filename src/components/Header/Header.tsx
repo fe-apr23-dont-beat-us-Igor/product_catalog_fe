@@ -21,8 +21,6 @@ export const Header: FC = () => {
     setIsMenuActive((value) => !value);
   };
 
-  console.log(cartProductsCount, likeProductsCount);
-
   return (
     <header className="header header-margin">
       <div className="nav-and-logo">
