@@ -46,6 +46,10 @@ body.dark-mode {
     background-color: $accent-color-dark;
   }
 
+  .icon__counter {
+    background-color: #935cfb;
+  }
+
   /// HOME ///
   .category {
     &__heading {
@@ -280,7 +284,7 @@ body.dark-mode {
     background-image: $like-dark;
 
     &--selected {
-      background-image: $like-filled-icon;
+      background-image: $like-filled-dark;
     }
 
     &:hover {
@@ -289,6 +293,8 @@ body.dark-mode {
   }
 
   .button-primary {
+    background-color: $accent-color-dark;
+
     &--selected {
       background: $surface-2-dark;
       border-color: transparent;
