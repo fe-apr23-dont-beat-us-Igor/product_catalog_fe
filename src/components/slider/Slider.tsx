@@ -7,7 +7,7 @@ import { SlideList } from './SlideList';
 
 const Slider = () => {
   const arrConfig = new Array(5).fill('0');
-  
+
   const {
     slideListRef,
     slides,
@@ -18,7 +18,6 @@ const Slider = () => {
     handleTouchMove,
   } = useSlider<string>(arrConfig, true, 1);
 
-
   const dotClassList = (index: number) =>
     classNames('slider__dot', {
       'slider__dot--active': currentSlide === index,
@@ -26,9 +25,9 @@ const Slider = () => {
 
   return (
     <div
-      // data-aos="fade-left"
-      // data-aos-easing="linear"
-      // data-aos-duration="600"
+      data-aos="fade-left"
+      data-aos-easing="linear"
+      data-aos-duration="600"
       className="slider"
     >
       <div className="slider__body">
@@ -47,17 +46,6 @@ const Slider = () => {
         >
           <div className="slider__slides" ref={slideListRef}>
             <SlideList />
-            {/* {bannerAccets.map((img) => (
-              <div
-                className="slider__slide"
-                style={{
-                  backgroundImage: `url(${img})`,
-                  backgroundSize: 'cover',
-                }}
-              >
-                <img src={img} alt="" style={{ backgroundSize: 'cover' }} />
-              </div>
-            ))} */}
           </div>
         </div>
 
