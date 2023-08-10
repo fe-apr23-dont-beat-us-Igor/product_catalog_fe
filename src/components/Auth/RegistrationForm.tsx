@@ -73,13 +73,13 @@ export const RegistrationForm: FC = () => {
       <h2 className="registration--title">Sign Up</h2>
 
       <div className="registration__group">
-        <label htmlFor="username" className="registration__group--label">Email: </label>
+        <label htmlFor="username" className="registration__group--label">Email: </label
         <input
           type="email"
           value={regCredentials.username}
           id="username"
           onChange={(e) => handleRegCredentials('username', e.target.value)}
-          placeholder="Enter your username"
+          placeholder="Enter your email"
           className="registration__group--input"
           required
         />
@@ -95,7 +95,7 @@ export const RegistrationForm: FC = () => {
           value={regCredentials.password}
           id="email"
           onChange={(e) => handleRegCredentials('password', e.target.value)}
-          placeholder="Enter your email"
+          placeholder="Enter your password"
           className="registration__group--input"
           required
         />

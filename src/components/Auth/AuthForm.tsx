@@ -42,12 +42,13 @@ export const AuthForm = () => {
 
       <div className="registration__group ">
         <label htmlFor="username" className="registration__group--label">Email: </label>
+
         <input
           type="text"
           value={authCred.username}
           id="username"
           onChange={(e) => handleAuthCredentials('username', e.target.value)}
-          placeholder="Enter your username"
+          placeholder="Enter your email"
           className="registration__group--input"
           required
         />
@@ -64,7 +65,7 @@ export const AuthForm = () => {
           value={authCred.password}
           id="email"
           onChange={(e) => handleAuthCredentials('password', e.target.value)}
-          placeholder="Enter your email"
+          placeholder="Enter your password"
           className="registration__group--input"
           required
         />
