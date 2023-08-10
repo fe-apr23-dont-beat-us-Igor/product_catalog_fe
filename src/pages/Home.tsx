@@ -7,6 +7,8 @@ import { Product, ProductCollection } from '../Types/products.types';
 import { getDiscountProducts, getNewProducts } from '../api/api';
 import { SearchParams, getSearchWith } from '../servises/searchParam.servise';
 import { GoodSliderSkeleton } from '../components/GoodsSliderCollection/GoodSliderSkeleton';
+import '../styles/components/home.scss';
+import '../styles/components/animation.scss';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -27,10 +29,10 @@ const Home: FC = () => {
 
   return (
     <main className="Home">
-      <h1 
-        data-aos="fade-down" 
+      <h1
+        data-aos="fade-down"
         data-aos-easing="linear"
-        data-aos-duration="600" 
+        data-aos-duration="600"
         className="header-margin section container"
       >
         Welcome to Nice Gadgets store!

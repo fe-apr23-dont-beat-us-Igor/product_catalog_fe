@@ -13,6 +13,13 @@ import close from './Close.svg';
 import likeFilled from './like-filled.svg';
 import notFound from './not-found.svg';
 import registration from './register-user.svg';
+import lightTheme from './light-mode.svg';
+import darkTheme from './dark-mode.svg';
+import likeDark from './like-dark.svg';
+import arrowLeftDark from './arrow-left-dark.svg';
+import arrowRightDark from './arrow-right-dark.svg';
+import minusDark from './minus-dark.svg';
+import plusDark from './plus-dark.svg';
 
 import banner from './photos/Banner.png';
 import accessories from './photos/Accessories.png';
@@ -21,11 +28,11 @@ import tablets from './photos/Tablets.png';
 import phone from './photos/image 2.png';
 import register_img from './photos/registration-img.jpg';
 
-import banner_1 from './photos/banner1.jpg';
-import banner_2 from './photos/banner2.jpg';
-import banner_3 from './photos/banner3.jpg';
-import banner_4 from './photos/banner4.jpg';
-import banner_5 from './photos/banner5.jpg';
+import banner_1 from './photos/banner-1.jpg';
+import banner_2 from './photos/banner-2.jpg';
+import banner_3 from './photos/banner-3.jpg';
+import banner_4 from './photos/banner-4.jpg';
+import banner_5 from './photos/banner-5.jpg';
 
 export const bannerAccets = [banner_1, banner_2, banner_3, banner_4, banner_5];
 
@@ -51,4 +58,11 @@ export const img = {
   notFound,
   registration,
   register_img,
+  lightTheme,
+  darkTheme,
+  likeDark,
+  arrowLeftDark,
+  arrowRightDark,
+  minusDark,
+  plusDark
 };

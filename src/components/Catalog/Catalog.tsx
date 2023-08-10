@@ -41,8 +41,6 @@ export const Catalog: FC = () => {
 
   const count = products?.count ? Math.ceil(products?.count / limit) : 4;
 
-  console.log(location, searchParams.toString());
-
   const getCategory = (pathname: string): string => {
     if (pathname.includes('tablets')) {
 

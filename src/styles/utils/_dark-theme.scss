@@ -1,0 +1,386 @@
+body.dark-mode {
+  background-color: $black-dark;
+  color: $white-dark;
+
+  /// HEADER ///
+  .logo-img,
+  .footer__logo-pic,
+  .back-to-top__pic,
+  .breadcrumbs__home-icon,
+  .historyIcon,
+  .cartItem__delete-image:hover {
+    filter: brightness(0) saturate(100%) invert(96%) sepia(6%) saturate(213%) hue-rotate(196deg) brightness(99%) contrast(97%);
+  }
+
+  .side-button {
+    &--color {
+      filter: brightness(0) saturate(100%) invert(96%) sepia(6%) saturate(213%) hue-rotate(196deg) brightness(99%) contrast(97%);
+    }
+
+    &:focus::after {
+      background-color: $white-dark;
+    }
+  }
+
+  .nav__link, .menu__list--link {
+    color: $secondary-color-dark;
+
+    &:hover {
+      color: $white-dark;
+    }
+
+    &:hover::after, &:focus::after {
+      background-color: $white-dark;
+    }
+  }
+
+  .menu {
+    background-color: $black-dark;
+
+    &__list--item:hover {
+      border-color: $white-dark;
+    }
+  }
+
+  .slider__dot--active {
+    background-color: $accent-color-dark;
+  }
+
+  /// HOME ///
+  .category {
+    &__heading {
+      color: $white-dark;
+    }
+    &__text {
+      color: $secondary-color-dark;
+    }
+  }
+
+  /// CARD ///
+  .card {
+    background-color: $surface-1-dark;
+    border-color: transparent;
+    color: $white-dark;
+
+    &__name, &__char-number {
+      color: $white-dark;
+    }
+
+    &__char-text {
+      color: $secondary-color-dark;
+    }
+
+    &__price {
+      &-new {
+        color: $white-dark;
+      }
+      &-old {
+        color: $secondary-color-dark;
+      }
+    }
+  }
+
+  /// ITEMPAGE ///
+  .cart-info {
+    &__char-number {
+      color: $white-dark;
+    }
+
+    &__price {
+      &-new {
+        color: $white-dark;
+      }
+  
+      &-old {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  .article {
+    &__text {
+      color: $secondary-color-dark;
+    }
+  }
+
+  .tech {
+    &__char-number {
+      color: $white-dark;
+    }
+  }
+
+  .gallery {
+    background-color: $white;
+  }
+
+  /// CART ///
+  .cartItem {
+    background-color: $surface-1-dark;
+    border-color: transparent;
+
+    &__delete {
+      background-color: $surface-1-dark;
+
+      &-image {
+        filter: brightness(0) saturate(100%) invert(30%) sepia(7%) saturate(844%) hue-rotate(190deg) brightness(92%) contrast(91%);
+      }
+    }
+
+    &__content {
+      color: $white-dark;
+    }
+
+    &__quantity-btns-minus {
+      border-color: transparent;
+      background-color: $surface-2-dark;
+      background-image: $minus-dark;
+  
+      &:hover {
+        border-color: $white-dark;
+      }
+  
+      &:disabled {
+        border-color: transparent;
+        background-image: $minus-icon;
+      }
+  }
+  
+    &__quantity-btns-plus {
+      border-color: transparent;
+      background-color: $surface-2-dark;
+      background-image: $plus-dark;
+
+      &:hover {
+        border-color: $white-dark;
+      }
+  
+      &:disabled {
+        border-color: transparent;
+        background-image: $plus-icon;
+      }
+    }
+  }
+
+  .checkout {
+    &__container {
+      border-color: $elements-color-dark;
+    }
+
+    &__total-price {
+      color: $white-dark;
+    }
+
+    &__line {
+      border-color: $elements-color-dark;
+    }
+  }
+
+  .modal {
+    &__content {
+      background-color: $black-dark;
+    }
+  }
+
+  /// BREADCRUMBS ///
+  .breadcrumbs {
+    &__item {
+      &--link {
+        color: $white-dark;
+
+        &:hover {
+          color: $accent-color-dark;
+        }
+        
+        &:hover::after {
+          background-color: $accent-color-dark;
+        }
+      }
+    }
+  }
+
+  /// REGISTRATION ///
+  .registration {
+    &__group {
+      &--input {
+        background-color: $surface-2-dark;
+        border-color: transparent;
+        color: $white-dark;
+      }
+
+      &--link {
+        &:hover {
+          color: $white-dark;
+        }
+      }
+    }
+
+    &__submit {
+      font-weight: 700;
+    }
+  }
+
+  /// DROPDOWN ///
+  .dropdown {
+    background-color: $surface-2-dark;
+    border-color: transparent;
+    color: $white-dark;
+
+    &:hover,
+    &--active {
+      border-color: $white-dark;
+    }
+
+    &__content {
+      background-color: $surface-2-dark;
+      border-color: transparent;
+      color: $white-dark;
+    }
+
+    &--link {
+      color: $white-dark;
+    }
+  }
+
+  /// UI ///
+  .slider {
+    &__button {
+      background-color: $surface-2-dark;
+      border-color: transparent;
+
+      &:hover {
+        border-color: $white-dark;
+      }
+
+      &--left {
+        background-image: $arrow-left-dark;
+      }
+      &--right {
+        background-image: $arrow-right-dark;
+      }
+    }
+  }
+
+  .sliderButton {
+    background-color: $surface-2-dark;
+    border-color: transparent;
+    background-image: $arrow-right-dark;
+
+    &--left {
+      background-image: $arrow-left-dark;
+    }
+
+    &:hover {
+      border-color: $white-dark;
+    }
+  }
+
+  .likeButton {
+    background-color: $surface-2-dark;
+    border-color: transparent;
+    background-image: $like-dark;
+
+    &--selected {
+      background-image: $like-filled-icon;
+    }
+
+    &:hover {
+      border-color: $white-dark;
+    }
+  }
+
+  .button-primary {
+    &--selected {
+      background: $surface-2-dark;
+      border-color: transparent;
+      color: $white-dark;
+    }
+  }
+
+  .paginationButton {
+    background-color: $surface-1-dark;
+    border-color: transparent;
+    color: $white-dark;
+
+    &:hover {
+      border-color: $white-dark;
+    }
+
+    &--selected {
+      background-color: $accent-color-dark;
+    }
+  }
+
+  .colorButton {
+    border-color: $black-dark;
+    outline-color: $elements-color-dark;
+
+    &:hover {
+      outline-color: $secondary-color-dark;
+    }
+
+    &--selected {
+      outline-color: $white-dark;
+    }
+  }
+
+  .capacityButton {
+    color: $white-dark;
+    border-color: $icons-color-dark;
+
+    &:hover {
+      border-color: $white-dark; 
+    }
+    
+    &--selected {
+      background: $white-dark;
+      border-color: transparent;
+      color: $black-dark;
+    }
+  }
+
+  .historyTitle {
+    background-color: $black-dark;
+  }
+
+  /// SKELETON ///
+  .skeleton-item  { 
+    &__color-button {
+      border-color: $elements-color-dark;
+      outline-color: $elements-color-dark;
+      background-color: $elements-color-dark;
+    }
+    
+    &__capacity-button, &__card-button, &__like-button, &__gallery, &__name, &__price, &__card-button, &__like-button, &__char, &__additional-title, &__additional-article {
+      background-color: $elements-color-dark;
+    }
+  }
+
+  .skeleton {
+    &__name, &__price, &__char, &__card-button, &__like-button, &__sum-info, &__button, &__info, &__quantity_and_price, &__quantity, &__total-price{
+      background-color: $elements-color-dark;
+    }
+  }
+
+  /// CONTACTS ///
+  .contacts {
+    &__name, &__position {
+      color: $white-dark
+    }
+  }
+
+  /// FOOTER ///
+  .list-link {
+    color: $white-dark;
+  }
+
+  .back-to-top {
+    &__button {
+      background-color: $surface-2-dark;
+      border-color: transparent;
+
+      &:hover {
+        border-color: $white-dark;
+      }
+    }
+  }
+}

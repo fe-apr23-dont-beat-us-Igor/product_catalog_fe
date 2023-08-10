@@ -63,7 +63,7 @@ export const Breadcrumbs: React.FC = () => {
     && location.pathname !== '/authorization';
 
   return (
-    <ul className={classNames('breadcrumbs', {
+      <ul className={classNames('breadcrumbs', {
       'breadcrumbs--visible': isBreadcrumbsVisible,
     })}>
       <li className="breadcrumbs__item">

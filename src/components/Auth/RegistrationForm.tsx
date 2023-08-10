@@ -73,9 +73,7 @@ export const RegistrationForm: FC = () => {
       <h2 className="registration--title">Sign Up</h2>
 
       <div className="registration__group">
-        <label htmlFor="username" className="registration__group--label">
-          Email: 
-        </label>
+        <label htmlFor="username" className="registration__group--label">Email: </label
         <input
           type="email"
           value={regCredentials.username}
@@ -129,7 +127,7 @@ export const RegistrationForm: FC = () => {
         </Link>
       </div>
 
-      <button className="button-primary" type="submit">
+      <button className="button-primary registration__submit" type="submit">
         Sign Up
       </button>
     </form>

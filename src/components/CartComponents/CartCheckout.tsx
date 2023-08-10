@@ -13,7 +13,7 @@ export const CartCheckout: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <div className="checkout__container">
+      <div className="checkout__container section">
         <div className="checkout__info">
           <h1 className="checkout__total-price">${totalCost}</h1>
           <p className="checkout__text">{`Total for ${totalItem} items`}</p>

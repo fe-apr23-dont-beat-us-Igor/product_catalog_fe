@@ -18,8 +18,6 @@ export const useProductsAPI = <T, R>(
       // @ts-ignore
       const result: T = await callback(args);
 
-      console.log(result);
-
       setData(result);
     } catch {
       setError(true);

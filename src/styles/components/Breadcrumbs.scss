@@ -1,7 +1,13 @@
 .breadcrumbs {
   display: none;
-
+  margin-bottom: 24px;
   gap: 8px;
+  padding: 0 16px;
+
+  @include onPortable {
+    padding: 0;
+    margin-bottom: 40px;
+  }
 
   &--visible {
     display: flex;

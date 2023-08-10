@@ -12,17 +12,15 @@ function request<T>(
 ): Promise<T> {
   const authToken = getAuthTokenFromCookie();
 
+  console.log(authToken);
+
   const config: AxiosRequestConfig = {
     url: BASE_URL + url,
     method,
-    // withCredentials: true,
     headers: {
       Authorization: `Bearer ${authToken}`,
     },
   };
-
-  console.log(authToken);
-  // config.headers.Authorization = `Bearer ${authToken}`;
 
   if (data) {
     config.data = data;
