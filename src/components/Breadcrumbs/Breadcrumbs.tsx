@@ -24,6 +24,9 @@ export const Breadcrumbs: React.FC = () => {
     } else if (searchParams.includes('accessories')) {
 
       return 'ACCESSORIES';
+    } else if (pathname.includes('contacts')) {
+
+      return 'CONTACTS';
     }
     return 'PHONES';
   };
