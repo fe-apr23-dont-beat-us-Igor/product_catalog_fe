@@ -3,15 +3,15 @@ import {
   createContext,
   FC,
   useContext,
-  Dispatch,
-  SetStateAction,
+  useEffect,
   useState,
+  useCallback,
 } from 'react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useCart } from '../hooks/useCart';
 import { useLike } from '../hooks/useLike';
 import { UseAuth, useAuth } from '../hooks/useAuthToken';
 import { Message } from '../components/UserMessage/UserMessage';
+import { getUsersData, setUsersData } from '../api/api';
 
 interface AppContext extends UseAuth {
   cart: string[];
@@ -40,6 +40,7 @@ const initialContext = {
   logout: () => {},
   isAuthenticated: false,
   setIsAuthenticated: () => {},
+  //alerts
   message: null,
   setMessage: () => {},
 };
@@ -50,12 +51,40 @@ type Props = {
   children: React.ReactNode;
 };
 
+export interface UsersData {
+  id: number;
+  favourites: string | null;
+  cart: string | null;
+}
+
 export const AppContext: FC<Props> = ({ children }) => {
   const { login, logout, isAuthenticated, setIsAuthenticated } = useAuth();
-  const { cart, toggleItem, removeItem, removeAll } = useCart(isAuthenticated);
-  const { likeStorage, toggleLike } = useLike(isAuthenticated);
 
+  const { cart, toggleItem, removeItem, removeAll, setCart } =
+    useCart(isAuthenticated);
+  const { likeStorage, toggleLike, setLikeStorage } = useLike(isAuthenticated);
   const [message, setMessage] = useState<Message | null>(null);
+
+  // const loadUsersData = useCallback(async () => {
+  //   console.log(isAuthenticated)
+  //   if (isAuthenticated) {
+  //     getUsersData().then((data) => {
+  //       console.log(data);
+  //       if (data.cart) {
+  //         const cartData = data.cart.split(' ');
+  //         setCart(cartData);
+  //       }
+  //       if (data.favourites) {
+  //         const favorData = data.favourites.split(' ');
+  //         setLikeStorage(favorData);
+  //       }
+  //     });
+  //   }
+  // }, [isAuthenticated, setCart, setLikeStorage]);
+
+  // useEffect(() => {
+  //   loadUsersData();
+  // }, [isAuthenticated, loadUsersData]);
 
   const value: AppContext = {
     cart,
