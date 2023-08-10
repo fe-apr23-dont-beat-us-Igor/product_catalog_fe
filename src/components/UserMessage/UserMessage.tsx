@@ -13,7 +13,7 @@ export const UserMessage: FC = () => {
     };
 
   const [userMessage, setUserMessage] =
-  useState<string | null>(userMessages.fail);
+  useState<string | null>(userMessages.success);
   
   const isMessageSuccess = userMessage === userMessages.success;
   
@@ -22,13 +22,13 @@ export const UserMessage: FC = () => {
     setUserMessage(null);
   };
 
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      removeError();
-    }, 3000);
+  // useEffect(() => {
+  //   const timerId = setTimeout(() => {
+  //     removeError();
+  //   }, 3000);
 
-    return () => clearTimeout(timerId);
-  }, []);
+  //   return () => clearTimeout(timerId);
+  // }, []);
 
   return(
     <div className={cn('userMessage', {
