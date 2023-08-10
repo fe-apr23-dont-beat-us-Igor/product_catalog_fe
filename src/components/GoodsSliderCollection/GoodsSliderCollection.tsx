@@ -3,7 +3,6 @@ import Card from '../Card/Card';
 import SliderButton from '../UI/SliderButton';
 import { useSlider } from '../../hooks/useSlider';
 import { Product, ProductCollection } from '../../Types/products.types';
-import '../../styles/components/animation.scss';
 
 // const mockCard = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -44,7 +43,12 @@ const GoodsSliderCollection: FC<Props> = ({ products = [], title }) => {
   } = useSlider(slidesInit, false, products.length, 16);
 
   return (
-    <section className="section container goodsSliderCollection">
+    <section 
+      data-aos="fade-right"
+      data-aos-easing="linear"
+      data-aos-duration="600"   
+      className="section container goodsSliderCollection"
+    >
       <div className="goodsSliderCollection__head">
         <h2>{title}</h2>
         <div className="goodsSliderCollection__buttons">
