@@ -1,28 +1,36 @@
 .userMessage {
   position: absolute;
-  display: none;
+  display: flex;
+  flex-direction: column;
   top: 96px;
   right: 20px;
   padding: 10px 15px;
-  border-radius: 24px;
-  background-color: $elements-color;
+  border-radius: 5px;
+  min-width: 400px;
 
   @include text;
 
-  &--visible {
-    display: flex;
-  }
+  // &--visible {
+  //   display: flex;
+  // }
 
   &--success {
-    background-color: $green;;
+    border: 1px solid $green;
+    background-color: rgba(116, 243, 116, 0.346);
+    color: green;
   }
 
-  &--fail {
-    background-color: $red;
+  &--error {
+    border: 1px solid $red;
+    background-color: rgba(243, 139, 116, 0.346);
+    color: rgb(128, 23, 0);
+  }
+
+  &__title {
+    margin-bottom: 10px;
   }
 
   &__text {
-
   }
 
   &__button {

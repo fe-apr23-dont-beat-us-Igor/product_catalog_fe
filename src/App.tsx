@@ -5,9 +5,12 @@ import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
-import { UserMessage } from './components/UserMessage/UserMessage';
+import { UserMessage, massageList } from './components/UserMessage/UserMessage';
+import { useAppContext } from './context/AppContext';
 
 const App: FC = () => {
+  const { message } = useAppContext();
+
   const location = useLocation();
 
   useEffect(() => {
@@ -29,7 +32,7 @@ const App: FC = () => {
     <div className="App">
       <Header />
       <div className="container">
-        <UserMessage />
+        {message && <UserMessage message={message} />}
         <Breadcrumbs />
         <Outlet />
       </div>

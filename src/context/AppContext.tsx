@@ -1,9 +1,17 @@
 import React from 'react';
-import { createContext, FC, useContext, Dispatch, SetStateAction } from 'react';
+import {
+  createContext,
+  FC,
+  useContext,
+  Dispatch,
+  SetStateAction,
+  useState,
+} from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useCart } from '../hooks/useCart';
 import { useLike } from '../hooks/useLike';
 import { UseAuth, useAuth } from '../hooks/useAuthToken';
+import { Message } from '../components/UserMessage/UserMessage';
 
 interface AppContext extends UseAuth {
   cart: string[];
@@ -13,6 +21,9 @@ interface AppContext extends UseAuth {
 
   likeStorage: string[];
   toggleLike: (value: string) => void;
+
+  message: Message | null;
+  setMessage: (value: Message | null) => void;
 }
 
 const initialContext = {
@@ -29,6 +40,8 @@ const initialContext = {
   logout: () => {},
   isAuthenticated: false,
   setIsAuthenticated: () => {},
+  message: null,
+  setMessage: () => {},
 };
 
 const Context = createContext<AppContext>(initialContext);
@@ -42,6 +55,8 @@ export const AppContext: FC<Props> = ({ children }) => {
   const { cart, toggleItem, removeItem, removeAll } = useCart(isAuthenticated);
   const { likeStorage, toggleLike } = useLike(isAuthenticated);
 
+  const [message, setMessage] = useState<Message | null>(null);
+
   const value: AppContext = {
     cart,
     toggleItem,
@@ -54,6 +69,8 @@ export const AppContext: FC<Props> = ({ children }) => {
     logout,
     isAuthenticated,
     setIsAuthenticated,
+    message,
+    setMessage,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
