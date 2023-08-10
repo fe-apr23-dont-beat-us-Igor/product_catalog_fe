@@ -22,7 +22,12 @@ const Slider = () => {
     });
 
   return (
-    <div className="slider">
+    <div 
+      data-aos="fade-left"
+      data-aos-easing="linear"
+      data-aos-duration="600"  
+      className="slider"
+    >
       <div className="slider__body">
         {/* button */}
         <button
