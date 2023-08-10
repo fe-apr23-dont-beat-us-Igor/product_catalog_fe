@@ -1,49 +1,71 @@
-import cn from "classnames";
-import { FC, useState, useEffect } from "react";
+import cn from 'classnames';
+import { FC, useState, useEffect, useRef } from 'react';
+import { useAppContext } from '../../context/AppContext';
 
 // export type Props = {
 //   isErrorSuccess: boolean;
 // }
 
+type MassegeType = 'success' | 'error';
 
-export const UserMessage: FC = () => {
-  const userMessages = {
-    success: 'You did it!',
-    fail: 'You failed!'
-    };
+export interface Message {
+  type: MassegeType;
+  title: string;
+  text: string;
+}
 
-  const [userMessage, setUserMessage] =
-  useState<string | null>(userMessages.success);
-  
-  const isMessageSuccess = userMessage === userMessages.success;
-  
+export interface MassageList {
+  [key: string]: Message;
+}
 
-  const removeError = () => {
-    setUserMessage(null);
-  };
+export const massageList: MassageList = {
+  loginSuccess: {
+    type: 'success',
+    title: 'login',
+    text: `Welcome, ${window.localStorage.getItem('username')}`,
+  },
+  registerError: {
+    type: 'error',
+    title: 'register',
+    text: `You are stupid`,
+  },
+};
 
-  // useEffect(() => {
-  //   const timerId = setTimeout(() => {
-  //     removeError();
-  //   }, 3000);
+type Props = {
+  message: Message;
+};
 
-  //   return () => clearTimeout(timerId);
-  // }, []);
+export const UserMessage: FC<Props> = ({ message }) => {
+  const ref = useRef(null);
+  const { setMessage } = useAppContext();
 
-  return(
-    <div className={cn('userMessage', {
-      'userMessage--visible': userMessage,
-      'userMessage--success': isMessageSuccess,
-      'userMessage--fail': !isMessageSuccess,
-    })}>
-      <p className="userMessage__text">
-      {userMessage}
-      </p>
-      <button
-        type="button"
-        className="userMessage__button"
-        onClick={removeError}
-      />
+  const { type, title, text } = message;
+
+  useEffect(() => {
+    if (ref !== null) {
+      // @ts-ignore
+      ref.current.classList.add('userMessage--appiar');
+    }
+  }, [ref]);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setMessage(null);
+    }, 3000);
+
+    return () => clearTimeout(timerId);
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={cn('userMessage', {
+        'userMessage--success': type === 'success',
+        'userMessage--error': type === 'error',
+      })}
+    >
+      <h4 className="userMessage__title">{title}</h4>
+      <p className="userMessage__text">{text}</p>
     </div>
   );
-}
+};

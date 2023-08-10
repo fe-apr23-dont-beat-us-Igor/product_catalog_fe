@@ -5,6 +5,7 @@ import { AuthCredentials } from './RegistrationForm';
 import { useAppContext } from '../../context/AppContext';
 import { NavLink } from 'react-router-dom';
 import Home from '../../pages/Home';
+import { massageList } from '../UserMessage/UserMessage';
 
 const initialAuthCred: AuthCredentials = {
   username: 'newUser@gmail.com',
@@ -16,7 +17,8 @@ export interface AuthToken {
 }
 
 export const AuthForm = () => {
-  const { login, isAuthenticated, setIsAuthenticated } = useAppContext();
+  const { login, isAuthenticated, setIsAuthenticated, setMessage } =
+    useAppContext();
   const [authCred, setAuthCred] = useState<AuthCredentials>(initialAuthCred);
   const [authError, setAuthError] = useState(false);
 
@@ -30,9 +32,9 @@ export const AuthForm = () => {
     event.preventDefault();
     const res = await login(authCred);
 
+    setMessage(massageList.loginSuccess);
     return redirect('/authorization');
   };
-
 
   return (
     <form onSubmit={authSubmit} className="registration__form">
