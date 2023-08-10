@@ -30,7 +30,12 @@ const ItemGallery: FC<Props> = ({ itemName, photos }) => {
   });
 
   return (
-    <section className="gallery">
+    <section
+      data-aos="fade-down-right"
+      data-aos-easing="linear"
+      data-aos-duration="500"   
+      className="gallery"
+    >
       <div className="gallery__item-photos">
         {photosLinks.map(photoLink => 
           <img 
