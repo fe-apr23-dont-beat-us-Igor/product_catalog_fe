@@ -67,7 +67,11 @@ export const Header: FC = () => {
             onClick={() => handleChange()}
             className='side-button'
           >
-            <img src={img.darkTheme} alt="burger-icon" className='side-button--theme-pic side-button--color'/>
+            <img 
+              src={img.darkTheme}
+              alt="burger-icon" 
+              className='side-button--theme-pic side-button--color'
+            />
           </a>
         </div>
         <div className="side-button side-button--burger">
@@ -75,7 +79,11 @@ export const Header: FC = () => {
             onClick={toggler}
             className='side-button'
           >
-            <img src={img.menu} alt="burger-icon" className='side-button--color'/>
+            <img 
+              src={img.menu} 
+              alt="burger-icon" 
+              className='side-button--color'
+            />
           </a>
         </div>
         <div className="side-button side-button--favourites">
