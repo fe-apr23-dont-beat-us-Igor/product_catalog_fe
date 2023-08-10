@@ -7,10 +7,10 @@
   background-color: transparent;
 
   &:hover {
-    border: 1px solid $primary-color;
+    border: 1px solid $secondaryAccent-color;
   }
   &--selected {
-    background: $primary-color;
+    background: $secondaryAccent-color;
     color: $white;
     border: none;
     &:hover {
