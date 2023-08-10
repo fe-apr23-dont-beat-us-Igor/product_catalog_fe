@@ -17,23 +17,8 @@ export const Favourites: React.FC = () => {
 
   console.log(favourites);
 
-  // const [favouritesProducts, setFavouritesProducts] = useState<ProductInCart[]>(
-  //   [],
-  // );
-
-  // useEffect(() => {
-  //   getProductCollectionByIds(likeStorage).then((data) => {
-  //     const cartProducts: ProductInCart[] = data.map((product) => ({
-  //       quantity: 1,
-  //       product: product,
-  //     }));
-  //     console.log(data);
-  //     setFavouritesProducts(cartProducts);
-  //   });
-  // }, [likeStorage]);
-
   return (
-    <div className="favourites container section">
+    <div className="favourites container section catalog__container">
       <h1 className="favourites__title">Favourites</h1>
       {favourites ? (
         <p className="favourites__count">{favourites.length} models</p>

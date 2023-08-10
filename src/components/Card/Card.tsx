@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import CardButton from '../UI/Button';
 import LikeButton from '../UI/LikeButton';
 import { img } from '../../images/images';
@@ -7,6 +7,8 @@ import { Product } from '../../Types/products.types';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useAppContext } from '../../context/AppContext';
 import { setImgUrl } from '../../api/api';
+// import Aos from 'aos';
+import AOS from 'aos';
 
 type Props = {
   phone: Product | any;
@@ -46,12 +48,22 @@ export const Card: FC<Props> = ({ phone }) => {
     toggleLike(id);
   };
 
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+      easing: 'linear',
+    });
+  }, []);
+
   return (
-    <Link to={`/products/${itemId}`}>
-      <div className="card"  
+    <Link
+      className="card"
       data-aos="zoom-in"
       data-aos-easing="linear"
-      data-aos-duration="500"   data-qa="card">
+      data-aos-duration="500"
+      to={`/products/${itemId}`}
+    >
+      <div data-qa="card">
         <img
           className="card__image"
           src={setImgUrl(image_catalog)}
