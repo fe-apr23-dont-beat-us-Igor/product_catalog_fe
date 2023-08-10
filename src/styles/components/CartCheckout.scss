@@ -2,48 +2,64 @@
 @import '../utils/_vars.scss';
 
 .checkout {
+  //   display: flex;
+  //   flex: 1 0 100%;
+  //   &__container {
+  //     flex-direction: column;
+  //     align-items: center;
+  //     width: 288px;
+  //     padding: 24px;
+  //     border: 1px solid $elements-color;
+  //     border-radius: 16px;
+
+  //     @include onPortable {
+  //       width: 592px;
+  //       height: 190px;
+  //       padding: 24px;
+  //     }
+
+  //     @include onDesktop {
+  //       width: 368px;
+  //     }
+  //   }
+
+  //   &__total-price {
+  //     color: $primary-color;
+  //   }
+
+  //   &__text {
+  //     margin-bottom: 16px;
+  //     color: $secondary-color;
+
+  //     @include onDesktop {
+  //       margin-bottom: 24px;
+  //     }
+  //   }
+
+  //   &__line {
+  //     border: 1px solid $elements-color;
+  //     margin-bottom: 16px;
+  //     width: 100%;
+
+  //     @include onDesktop {
+  //       margin-bottom: 24px;
+  //     }
+  //   }
+
   &__container {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    width: 288px;
-    padding: 24px;
-    border: 1px solid $elements-color;
-    border-radius: 16px;
+    justify-content: center;
+    // align-items: stretch;
 
-    @include onPortable {
-      width: 592px;
-      height: 190px;
-      padding: 24px;
-    }
-
-    @include onDesktop {
-      width: 368px;
-    } 
-  }  
-
-  &__total-price {
-    color: $primary-color;
-  }
-
-  &__text {
-    margin-bottom: 16px;
-    color: $secondary-color;
-
-    @include onDesktop {
-      margin-bottom: 24px;
-    }
-  }
-
-  &__line {
-    border: 1px solid $elements-color;
-    margin-bottom: 16px;
+    flex-direction: column;
+    flex: 1 1 100%;
+    gap: 16px;
     width: 100%;
-
-    @include onDesktop {
-      margin-bottom: 24px;
-    }
+    border: 1px solid $primary-color;
+    border-radius: 5px;
+    padding: 16px;
+    max-height: 240px;
   }
 
   &__button {

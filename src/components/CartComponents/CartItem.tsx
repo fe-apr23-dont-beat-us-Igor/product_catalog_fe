@@ -1,9 +1,7 @@
-import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 import '../../styles/components/CartItem.scss';
 import { img } from '../../images/images';
-import { Product } from '../../Types/products.types';
 import { ProductInCart } from '../../Types/cart.types';
 import { useAppContext } from '../../context/AppContext';
 import { Link } from 'react-router-dom';
@@ -18,7 +16,9 @@ export const CartItem: React.FC<Props> = ({ product, changeQuantity }) => {
   const { name, price, itemId, image_catalog, fullPrice } = product.product;
   const { removeItem } = useAppContext();
 
-  const totalPrice = price ? price * product.quantity : fullPrice * product.quantity;
+  const totalPrice = price
+    ? price * product.quantity
+    : fullPrice * product.quantity;
   const isRemovingDisabled = product.quantity === 1;
   const isAddingDisabled = product.quantity > 9;
 
@@ -29,13 +29,11 @@ export const CartItem: React.FC<Props> = ({ product, changeQuantity }) => {
         textDecoration: 'none',
         color: 'inherit',
       }}
+      data-aos="zoom-in"
+      data-aos-easing="linear"
+      data-aos-duration="500"
     >
-      <div 
-        data-aos="zoom-in"
-        data-aos-easing="linear"
-        data-aos-duration="500" 
-        className="cartItem"
-      >
+      <div className="cartItem">
         <div className="cartItem__info">
           <button
             className="cartItem__delete"

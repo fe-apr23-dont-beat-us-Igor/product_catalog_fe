@@ -49,13 +49,7 @@ export const Card: FC<Props> = ({ phone }) => {
   };
 
   return (
-    <Link
-      className="card"
-      data-aos="zoom-in"
-      data-aos-easing="linear"
-      data-aos-duration="500"
-      to={`/products/${itemId}`}
-    >
+    <Link className="card" data-aos="zoom-in" to={`/products/${itemId}`}>
       <div data-qa="card">
         <img
           className="card__image"
