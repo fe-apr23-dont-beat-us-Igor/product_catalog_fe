@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { getAuthTokenFromCookie } from '../hooks/useAuthToken';
 
 const BASE_URL = 'https://product-catalog-be-1l77.onrender.com';
 
@@ -12,15 +13,16 @@ function request<T>(
   const config: AxiosRequestConfig = {
     url: BASE_URL + url,
     method,
-    // withCredentials: true,
   };
+
+  const authToken = getAuthTokenFromCookie();
 
   if (data) {
     config.data = data;
     config.headers = {
       'Content-Type': 'application/json; charset=UTF-8',
+      Authorization: `Basic ${authToken}`,
     };
-    
   }
 
   return axios(config).then((response: AxiosResponse) => response.data);
