@@ -28,7 +28,9 @@ export interface UseAuth {
 }
 
 export const useAuth = (): UseAuth => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    Boolean(getAuthTokenFromCookie),
+  );
 
   const login = async (authCred: AuthCredentials) => {
     const res = sendAuthCred(authCred)

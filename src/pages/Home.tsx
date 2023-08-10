@@ -1,7 +1,6 @@
 import { FC, useEffect } from 'react';
 import GoodsSliderCollection from '../components/GoodsSliderCollection/GoodsSliderCollection';
 import Categories from '../components/Categories/Categories';
-import Slider from '../components/slider/Slider';
 import { useProductsAPI } from '../hooks/useFetch';
 import { Product, ProductCollection } from '../Types/products.types';
 import { getDiscountProducts, getNewProducts } from '../api/api';
@@ -9,6 +8,7 @@ import { SearchParams, getSearchWith } from '../servises/searchParam.servise';
 import { GoodSliderSkeleton } from '../components/GoodsSliderCollection/GoodSliderSkeleton';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Slider from '../components/Slider/Slider';
 
 const Home: FC = () => {
   const [newProducts, loadingNew, errorNew] = useProductsAPI<
@@ -27,10 +27,10 @@ const Home: FC = () => {
 
   return (
     <main className="Home">
-      <h1 
-        data-aos="fade-down" 
+      <h1
+        data-aos="fade-down"
         data-aos-easing="linear"
-        data-aos-duration="600" 
+        data-aos-duration="600"
         className="header-margin section container"
       >
         Welcome to Nice Gadgets store!
