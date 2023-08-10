@@ -119,9 +119,9 @@ export const sendAuthCred = (data: AuthCredentials) => {
 };
 
 export const getUsersFavourites = () => {
-  return client.get(
-    `/favourites?username=${window.localStorage.getItem('username')}`,
-  );
+  return client
+    .get(`/data?username=${window.localStorage.getItem('username')}`)
+    .then();
 };
 export const getUsersOrder = () => {
   return client.get(
