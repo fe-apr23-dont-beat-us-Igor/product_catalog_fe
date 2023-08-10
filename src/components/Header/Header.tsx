@@ -78,7 +78,7 @@ export const Header: FC = () => {
           </div>
         ) : (
           <div className="side-button side-button--registration">
-            <Link to="/registration" className="side-button">
+            <Link to="/authorization" className="side-button">
               <img src={img.registration} alt="cart-icon" />
             </Link>
           </div>

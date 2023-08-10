@@ -1,15 +1,13 @@
 import { useState, FormEventHandler } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 import { AuthCredentials } from './RegistrationForm';
-import { sendAuthCred } from '../../api/api';
-import {
-  getAuthTokenFromCookie,
-  setAuthTokenCookie,
-} from '../../hooks/useAuthToken';
+
 import { useAppContext } from '../../context/AppContext';
+import { NavLink } from 'react-router-dom';
+import Home from '../../pages/Home';
 
 const initialAuthCred: AuthCredentials = {
-  username: 'asdfasdfasddfasf',
+  username: 'newUser@gmail.com',
   password: '123456',
 };
 
@@ -18,7 +16,7 @@ export interface AuthToken {
 }
 
 export const AuthForm = () => {
-  const { login } = useAppContext();
+  const { login, isAuthenticated, setIsAuthenticated } = useAppContext();
   const [authCred, setAuthCred] = useState<AuthCredentials>(initialAuthCred);
   const [authError, setAuthError] = useState(false);
 
@@ -30,10 +28,11 @@ export const AuthForm = () => {
 
   const authSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
-    
     const res = await login(authCred);
 
+    return redirect('/authorization');
   };
+
 
   return (
     <form onSubmit={authSubmit} className="registration__form">
@@ -77,7 +76,6 @@ export const AuthForm = () => {
           Sign Up!
         </Link>
       </div>
-
       <button className="button-primary" type="submit">
         Sign In
       </button>
