@@ -3,21 +3,27 @@
   flex-direction: column;
   justify-content: space-between;
   z-index: 10;
-  transition: opacity 0,3s ease-out;
+  transition: opacity 0.3s ease-out;
 
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-
+  width: 100vh;
   height: 100vh;
+
   background-color: $white;
   
+  &--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 48px;
+    width: 100%;
     box-sizing: border-box;
     border: 1px solid $elements-color;
 
