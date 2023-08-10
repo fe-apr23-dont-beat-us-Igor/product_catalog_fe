@@ -10,7 +10,6 @@ import '../styles/components/home.scss';
 import '../styles/components/animation.scss';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Slider from '../components/Slider/Slider';
 
 const Home: FC = () => {
   const [newProducts, loadingNew, errorNew] = useProductsAPI<
