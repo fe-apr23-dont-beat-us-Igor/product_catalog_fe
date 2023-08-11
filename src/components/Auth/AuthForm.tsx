@@ -17,8 +17,7 @@ export interface AuthToken {
 }
 
 export const AuthForm = () => {
-  const { login, isAuthenticated, setIsAuthenticated, setMessage, message } =
-    useAppContext();
+  const { login, isAuthenticated } = useAppContext();
   const [authCred, setAuthCred] = useState<AuthCredentials>(initialAuthCred);
   const [authError, setAuthError] = useState(false);
 
@@ -31,15 +30,12 @@ export const AuthForm = () => {
   const authSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     const res = await login(authCred);
-
-    setMessage(massageList.loginSuccess);
     setAuthCred(initialAuthCred);
-    window.location.href = '/home';
   };
 
   useEffect(() => {
     if (isAuthenticated) {
-    window.location.href = '/home';
+      window.location.href = '/home';
     }
   }, [isAuthenticated]);
 

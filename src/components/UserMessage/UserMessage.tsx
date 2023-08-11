@@ -18,17 +18,17 @@ export const massageList: MassageList = {
   loginSuccess: {
     type: 'success',
     title: 'login',
-    text: `Welcome, ${window.localStorage.getItem('username')}`,
+    text: `Welcome!}`,
   },
   registerError: {
     type: 'error',
     title: 'register',
     text: `You are stupid`,
   },
-  failPasswordCompare: {
-    type: 'error',
-    title: 'register',
-    text: `Passwords do not match`,
+  goodbye: {
+    type: 'success',
+    title: 'lohout',
+    text: `goodbye`,
   },
 };
 
