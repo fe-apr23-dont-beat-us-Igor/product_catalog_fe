@@ -5,7 +5,7 @@ export const NotFoundRedirect: FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // navigate('/not-found-page');
+    navigate('/not-found-page');
   });
 
   return null;

@@ -57,6 +57,10 @@ export const router = CreateRouter([
         path: '/authorization',
         element: <AuthPage />,
       },
+      {
+        path: '/not-found-page',
+        element: <NotFoundPage />,
+      },
     ],
   },
 ]);
