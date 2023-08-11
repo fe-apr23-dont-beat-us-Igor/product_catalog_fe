@@ -206,6 +206,13 @@ body.dark-mode {
     }
   }
 
+  /// NOT-FOUND ///
+  .not-found  {
+    &__info--h4 {
+      color: $white-dark;
+    }
+  }
+
   /// BREADCRUMBS ///
   .breadcrumbs {
     &__item {
