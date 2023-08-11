@@ -13,8 +13,19 @@
     right: 0;
     top: 0;
     z-index: 1;
+
+    transition: opacity 0.3s ease-out;
+
+    &--active {
+      opacity: 1;
+    }
+
+    &--hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
-  
+
   &__content {
     background-color: $white;
     height: 200px;
@@ -24,7 +35,7 @@
     display: block;
     text-align: center;
     padding: 36px;
-  
+
     @include onPortable {
       width: 400px;
     }
@@ -33,47 +44,71 @@
       width: 600px;
     }
   }
-  
+
   &__text {
     margin-bottom: 32px;
   }
-  
+
   &__line {
     height: 0;
     border: 1px solid $elements-color;
     margin-bottom: 32px;
   }
-  
+
   &__buttons_container {
     display: flex;
     justify-content: space-evenly;
   }
-  
+
   &__button {
-    height: 48px;
-    width: 160px;
+    display: block;
+
+    min-width: 200px;
+    height: 40px;
     border-radius: 48px;
     background-color: $accent-color;
-    color: $white;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
+    border: none;
     cursor: pointer;
-    border: 1px solid transparent;
-    transition: box-shadow 0.5s;
+    transition: all 0.3s ease;
+    color: $white;
 
     &:hover {
-      box-shadow: 0px 3px 13px rgba(21, 25, 31, 0.4);
-    }
-  
-    @include onPortable {
-      width: 160px;
+      box-shadow:
+        rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     }
 
-    @include onDesktop {
-      width: 300px;
-    }
+    // @include onPortable {
+    //   width: 125px;
+    // }
+    // @include onDesktop {
+    //   width: 160px;
+    // }
   }
 
+  //     height: 48px;
+  //     width: 160px;
+  //     border-radius: 48px;
+  //     background-color: $accent-color;
+  //     color: $white;
+  //     font-weight: 700;
+  //     font-size: 14px;
+  //     line-height: 21px;
+  //     text-align: center;
+  //     cursor: pointer;
+  //     border: 1px solid transparent;
+  //     transition: box-shadow 0.5s;
+
+  //     &:hover {
+  //       box-shadow: 0px 3px 13px rgba(21, 25, 31, 0.4);
+  //     }
+
+  //     @include onPortable {
+  //       width: 160px;
+  //     }
+
+  //     @include onDesktop {
+  //       width: 300px;
+  //     }
+  //   }
 }
