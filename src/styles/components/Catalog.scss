@@ -13,8 +13,6 @@
     justify-content: flex-start;
   }
 
-  &__title {
-  }
   &__count {
     color: $secondary-color;
     margin-bottom: 32px;
@@ -31,10 +29,7 @@
     flex-direction: column;
     grid-template-columns: repeat(1, 1fr);
     gap: 16px;
-    // justify-content: center;
-    // align-items: center;
-
-    margin-bottom: 40px;
+    margin: 0 auto 40px;
 
     @include onPortable {
       display: grid;
@@ -42,9 +37,6 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
-    // @media (min-width: 1120px) {
-    //   grid-template-columns: repeat(3, 1fr)
-    // }
     @include onDesktop {
       grid-template-columns: repeat(4, 1fr);
     }
