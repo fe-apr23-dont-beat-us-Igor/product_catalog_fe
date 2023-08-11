@@ -64,7 +64,11 @@ export const CartPage: React.FC = () => {
     <div className="container section">
       <BackButton />
       <h1 className="">Cart</h1>
-      {isModalVisible && <CartModal handleModal={handleModal} />}
+      <CartModal
+        handleModal={handleModal}
+        isModalVisible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+      />
       <div className="cart__page">
         <div>
           <div className="card__items">
@@ -96,6 +100,8 @@ export const CartPage: React.FC = () => {
             />
           )
         )}
+
+        
       </div>
     </div>
   );
