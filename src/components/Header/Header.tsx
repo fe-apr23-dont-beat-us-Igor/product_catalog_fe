@@ -27,8 +27,6 @@ export const Header: FC = () => {
     setIsMenuActive((value) => !value);
   };
 
-  console.log(cartProductsCount, likeProductsCount);
-
   const [themeState, setThemeState] = useState(false);
 
   const handleChange = () => {
@@ -108,12 +106,12 @@ export const Header: FC = () => {
             onClick={logout}
             className="side-button side-button--registration"
           >
-            <Link to="/home" className="side-button">
+            <Link to="/home" className="side-button side-button--color">
               <h6>Log Out</h6>
             </Link>
           </div>
         ) : (
-          <div className="side-button side-button--registration">
+          <div className="side-button side-button--registration side-button--color">
             <Link
               to="/authorization"
               className="side-button"

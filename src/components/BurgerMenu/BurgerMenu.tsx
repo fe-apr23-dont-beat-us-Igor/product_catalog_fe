@@ -78,22 +78,25 @@ export const BurgerMenu: FC<Props> = ({ ref, toggler, isMenuActive }) => {
 
       <footer className="menu__footer">
         <div className="side-button side-button--favourites menu__footer--item">
-          <a href="#">
+          <Link to="/favourites">
             <img 
               src={like} 
               alt="favourites-icon" 
               className="side-button--color"
+              onClick={toggler}
+              
             />
-          </a>
+          </Link>
         </div>
         <div className="side-button side-button--cart menu__footer--item">
-          <a href="#">
+          <Link to="/cart">
             <img 
               src={cart} 
               alt="cart-icon" 
               className="side-button--color"
+              onClick={toggler}
             />
-          </a>
+          </Link>
         </div>
       </footer>
     </nav>
