@@ -16,12 +16,16 @@ export const Footer: FC = () => {
         </a>
         <nav className='footer__links'>
           <ul className='list'>
-            <Link className='list-item list-link' to="https://github.com/fe-apr23-dont-beat-us-Igor" target="_blank">
-              GitHub
-            </Link>
-            <Link className='list-item' to="/contacts">
-              <a href='/' className='list-link'>Contacts</a>
-            </Link>
+            <li className='list-item'>
+              <Link className='list-item list-link' to="https://github.com/fe-apr23-dont-beat-us-Igor" target="_blank">
+                GitHub
+              </Link>
+            </li>
+            <li className='list-item'>
+              <Link className='list-link' to="/contacts">
+                Contacts
+              </Link>
+            </li>
             <li className='list-item'>
               <a href='/' className='list-link'>Rights</a>
             </li>
