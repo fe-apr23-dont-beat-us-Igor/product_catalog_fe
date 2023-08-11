@@ -72,7 +72,7 @@ export const RegistrationForm: FC = () => {
   useEffect(() => {
     if (successfulReg) {
       setRegCredentials(initialRegistrationCred);
-      window.location.href = '/authorization';
+      window.location.href = '/home';
     }
   }, [successfulReg]);
 

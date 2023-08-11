@@ -25,6 +25,11 @@ export const massageList: MassageList = {
     title: 'register',
     text: `You are stupid`,
   },
+  failPasswordCompare: {
+    type: 'error',
+    title: 'register',
+    text: `Passwords do not match`,
+  },
 };
 
 type Props = {
@@ -55,7 +60,7 @@ export const UserMessage: FC<Props> = ({ message }) => {
   return (
     <div
       ref={ref}
-      className={cn('userMessage', {
+      className={cn('userMessage userMessage--appiar', {
         'userMessage--success': type === 'success',
         'userMessage--error': type === 'error',
       })}
