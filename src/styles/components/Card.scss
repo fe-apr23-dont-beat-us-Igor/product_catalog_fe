@@ -30,6 +30,7 @@
     box-sizing: border-box;
     height: 196px;
     margin: 0 0 24px;
+    width: -webkit-fill-available;
   }
 
   &__name {
