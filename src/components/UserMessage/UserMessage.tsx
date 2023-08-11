@@ -20,11 +20,6 @@ export const massageList: MassageList = {
     title: 'login',
     text: `Welcome!}`,
   },
-  registerError: {
-    type: 'error',
-    title: 'register',
-    text: `You are stupid`,
-  },
   goodbye: {
     type: 'success',
     title: 'lohout',

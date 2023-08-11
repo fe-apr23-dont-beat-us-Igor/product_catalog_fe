@@ -30,9 +30,7 @@ export interface UseAuth {
 }
 
 export const useAuth = (): UseAuth => {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    Boolean(getAuthTokenFromCookie),
-  );
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = async (authCred: AuthCredentials) => {
     const res = sendAuthCred(authCred)
@@ -50,7 +48,6 @@ export const useAuth = (): UseAuth => {
   };
 
   const logout = () => {
-
     document.cookie =
       'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     setIsAuthenticated(false);

@@ -17,7 +17,7 @@ export interface AuthToken {
 }
 
 export const AuthForm = () => {
-  const { login, isAuthenticated } = useAppContext();
+  const { login, isAuthenticated, setMessage } = useAppContext();
   const [authCred, setAuthCred] = useState<AuthCredentials>(initialAuthCred);
   const [authError, setAuthError] = useState(false);
 
@@ -40,7 +40,13 @@ export const AuthForm = () => {
   }, [isAuthenticated]);
 
   return (
-    <form onSubmit={authSubmit} className="registration__form">
+    <form
+      onSubmit={(event) => {
+        setMessage(massageList.loginSuccess);
+        authSubmit(event);
+      }}
+      className="registration__form"
+    >
       <h2 className="registration--title">Sign In</h2>
 
       <div className="registration__group ">
