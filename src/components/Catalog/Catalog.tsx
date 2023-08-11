@@ -43,27 +43,26 @@ export const Catalog: FC = () => {
 
   const getCategory = (pathname: string): string => {
     if (pathname.includes('tablets')) {
-
       return 'Tablets';
     } else if (pathname.includes('accessories')) {
-
       return 'Accessories';
     }
     return 'Mobile phones';
   };
 
   return (
-    <div className="catalog">
-      <h1  
+    <div className="catalog section container catalog__container">
+      {/* <div className="section contaienr"> */}
+      <h1
         data-aos="zoom-in"
         data-aos-easing="linear"
-        data-aos-duration="600" 
-        className="catalog__title"
+        data-aos-duration="600"
+        className="catalog__title "
       >
         {getCategory(searchParams.toString())}
       </h1>
       {products ? (
-        <p className="catalog__count">{products.count} models</p>
+        <p className="catalog__count ">{products.count} models</p>
       ) : (
         <p className="catalog__count">0 models</p>
       )}
@@ -89,5 +88,6 @@ export const Catalog: FC = () => {
 
       {count && <Pagination count={count} />}
     </div>
+    // </div>
   );
 };

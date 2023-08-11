@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './CartPage.scss';
 import { BackButton } from '../../components/UI/BackButton';
 import { CartModal } from '../../components/CartComponents/CartModal';
 import { CartItem } from '../../components/CartComponents/CartItem';
@@ -39,10 +38,8 @@ export const CartPage: React.FC = () => {
   };
 
   const totalCost = (): number => {
-    const priceList = cartProducts.map(
-      ({ product, quantity }) => product.price 
-      ? product.price * quantity 
-      : product.fullPrice * quantity
+    const priceList = cartProducts.map(({ product, quantity }) =>
+      product.price ? product.price * quantity : product.fullPrice * quantity,
     );
 
     return priceList.reduce((acc, item) => acc + item, 0);
@@ -64,9 +61,9 @@ export const CartPage: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="container section">
       <BackButton />
-      <h1 className="title">Cart</h1>
+      <h1 className="">Cart</h1>
       {isModalVisible && <CartModal handleModal={handleModal} />}
       <div className="cart__page">
         <div>
@@ -90,14 +87,15 @@ export const CartPage: React.FC = () => {
         </div>
         {isLoading ? (
           <SkeletonCartCheckout />
-        ) : (cartProducts.length > 0 &&
-          <CartCheckout
-            totalCost={totalCost()}
-            totalItem={totalItem()}
-            handleModal={handleModal}
-          />
+        ) : (
+          cartProducts.length > 0 && (
+            <CartCheckout
+              totalCost={totalCost()}
+              totalItem={totalItem()}
+              handleModal={handleModal}
+            />
+          )
         )}
-
       </div>
     </div>
   );

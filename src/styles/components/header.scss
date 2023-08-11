@@ -42,6 +42,7 @@
   }
 
   &__link {
+    padding: 24px 0;
     @include uppercase;
     color: $secondary-color;
 
@@ -109,13 +110,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: -1px 0px 0px 0px $elements-color;
   box-sizing: border-box;
   border-bottom: 3px solid transparent;
 
   @include onPortable {
     width: 64px;
     height: 64px;
+  }
+
+  &:not(:first-child) {
+    box-shadow: -1px 0px 0px 0px $elements-color;
   }
 
   &:focus::after {
@@ -135,6 +139,11 @@
     @include onDesktop {
       bottom: -4px;
     }
+  }
+
+  &--theme-pic {
+    width: 25px;
+    height: 25px;
   }
 
   &--cart {

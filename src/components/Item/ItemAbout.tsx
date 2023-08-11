@@ -9,7 +9,12 @@ const ItemAbout: FC<Props> = ({ description }) => {
   const title = description.slice(0, firstPoint);
 
   return (
-    <section className="about">
+    <section 
+      data-aos="fade-up-right"
+      data-aos-easing="linear"
+      data-aos-duration="500"  
+      className="about"
+    >
       <h3 className="about__title">About</h3>
       <div className="about__articles">
         <article className="article">

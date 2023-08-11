@@ -12,7 +12,12 @@ const ItemTechSpecs: FC<Props> = ({ tech }) => {
   } = tech;
 
   return (
-    <section className="tech">
+    <section
+      data-aos="fade-up-right"
+      data-aos-easing="linear"
+      data-aos-duration="500"  
+      className="tech"
+    >
       <h3 className="tech__title">Tech specs</h3>
       <div className="tech__characteristics">
         <div className="tech__char">

@@ -32,34 +32,7 @@ const ItemPage: FC = () => {
     string
   >(queryId, getRecommendedProducts);
 
-  // const [product, setProduct] = useState<FullProductInformation>({
-  //   product: {
-  //     id: 0,
-  //     itemId: '',
-  //     name: '',
-  //     category: '',
-  //     price: 0,
-  //     fullPrice: 0,
-  //     screen: '',
-  //     capacity: '',
-  //     available_capacity: '',
-  //     available_colors: '',
-  //     ram: '',
-  //     color: '',
-  //     image_id: 0,
-  //     image_catalog: '',
-  //     year: 0,
-  //     description: '',
-  //   },
-  //   productLinks: {},
-  // });
-
-  // useEffect(() => {
-  //   getProductsById(itemId).then((data) => {
-  //     console.log(data);
-  //     setProduct(data);
-  //   });
-  // }, []);
+  console.log(product?.product.itemId);
 
   return (
     <>

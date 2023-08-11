@@ -1,16 +1,5 @@
-$white: #ffffff;
-$elements-color: #e2e6e9;
-$accent-color: #4219d0;
-@mixin onPortable {
-  @media (min-width: 640px) {
-    @content;
-  }
-}
-@mixin onDesktop {
-  @media (min-width: 1440px) {
-    @content;
-  }
-}
+@import '../utils/mixins.scss';
+@import '../utils/_vars.scss';
 
 .modal {
   &__container {

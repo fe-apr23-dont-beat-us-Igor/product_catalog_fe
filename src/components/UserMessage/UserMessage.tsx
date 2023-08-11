@@ -1,10 +1,6 @@
 import cn from 'classnames';
-import { FC, useState, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { useAppContext } from '../../context/AppContext';
-
-// export type Props = {
-//   isErrorSuccess: boolean;
-// }
 
 type MassegeType = 'success' | 'error';
 

@@ -13,6 +13,14 @@ import close from './Close.svg';
 import likeFilled from './like-filled.svg';
 import notFound from './not-found.svg';
 import registration from './register-user.svg';
+import lightTheme from './light-mode.svg';
+import darkTheme from './dark-mode.svg';
+import likeDark from './like-dark.svg';
+import arrowLeftDark from './arrow-left-dark.svg';
+import arrowRightDark from './arrow-right-dark.svg';
+import minusDark from './minus-dark.svg';
+import plusDark from './plus-dark.svg';
+import likeFilledDark from './like-filled-dark.svg';
 
 import banner from './photos/Banner.png';
 import accessories from './photos/Accessories.png';
@@ -51,4 +59,12 @@ export const img = {
   notFound,
   registration,
   register_img,
+  lightTheme,
+  darkTheme,
+  likeDark,
+  arrowLeftDark,
+  arrowRightDark,
+  minusDark,
+  plusDark,
+  likeFilledDark,
 };

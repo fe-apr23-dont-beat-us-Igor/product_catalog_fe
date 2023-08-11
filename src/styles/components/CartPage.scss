@@ -1,25 +1,6 @@
-$primary-color: #0f0f11;
-$white: #ffffff;
-@mixin onDesktop {
-  @media (min-width: 1440px) {
-    @content;
-  }
-}
-@mixin onPortable {
-  @media (min-width: 640px) {
-    @content;
-  }
-}
-
 .title {
-  margin-top: 24px;
   color: $primary-color;
-  margin-bottom: 16px;
   width: 100%;
-
-  @include onPortable {
-    margin-top: 16px;
-  }
 }
 
 .cart__page {
@@ -30,9 +11,33 @@ $white: #ffffff;
   margin-bottom: 64px;
 
   @include onDesktop {
+    display: flex;
     gap: 16px;
     flex-direction: row;
     align-items: stretch;
     justify-content: space-between;
+  }
+}
+
+.cartItem {
+  &__delete {
+  }
+
+  &__delete-image {
+  }
+
+  &__phone-image {
+  }
+
+  &__content {
+
+  }
+
+  &__quantity_and_price {
+
+  }
+
+  &__quantity-btns{
+    
   }
 }

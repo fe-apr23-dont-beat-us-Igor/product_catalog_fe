@@ -40,14 +40,15 @@ export const AuthForm = () => {
     <form onSubmit={authSubmit} className="registration__form">
       <h2 className="registration--title">Sign In</h2>
 
-      <div className="registration__group">
-        <label htmlFor="username">Email: </label>
+      <div className="registration__group ">
+        <label htmlFor="username" className="registration__group--label">Email: </label>
+
         <input
           type="text"
           value={authCred.username}
           id="username"
           onChange={(e) => handleAuthCredentials('username', e.target.value)}
-          placeholder="Enter your username"
+          placeholder="Enter your email"
           className="registration__group--input"
           required
         />
@@ -64,7 +65,7 @@ export const AuthForm = () => {
           value={authCred.password}
           id="email"
           onChange={(e) => handleAuthCredentials('password', e.target.value)}
-          placeholder="Enter your email"
+          placeholder="Enter your password"
           className="registration__group--input"
           required
         />
@@ -78,7 +79,8 @@ export const AuthForm = () => {
           Sign Up!
         </Link>
       </div>
-      <button className="button-primary" type="submit">
+
+      <button className="button-primary registration__sumit" type="submit">
         Sign In
       </button>
     </form>

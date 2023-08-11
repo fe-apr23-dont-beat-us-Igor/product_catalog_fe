@@ -1,35 +1,10 @@
-// $elements-color: #e2e6e9;
-// $white: #ffffff;
-// $primary-color: #0f0f11;
-// $icons-color: #b4bdc3;
-// @mixin onPortable {
-//   @media (min-width: 640px) {
-//     @content;
-//   }
-// }
-// @mixin onDesktop {
-//   @media (min-width: 1440px) {
-//     @content;
-//   }
-// }
-// @mixin flex-center {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-// @mixin draw-Circle($w, $h) {
-//   width: $w;
-//   height: $h;
-//   border-radius: 100%;
-// }
 @import '../utils/mixins.scss';
-@import '../utils/vars.scss';
+@import '../utils/_vars.scss';
 
 .cartItem {
   display: flex;
   flex-direction: column;
-  width: 288px;
+  // width: 288px;
   border: 1px solid $elements-color;
   border-radius: 16px;
   margin-bottom: 16px;
