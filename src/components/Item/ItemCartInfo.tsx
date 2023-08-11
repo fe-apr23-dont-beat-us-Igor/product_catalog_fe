@@ -67,7 +67,7 @@ const ItemCartInfo: FC<Props> = ({ info }) => {
 
   return (
     <section 
-      data-aos="fade-down-left"
+      data-aos="zoom-in"
       data-aos-easing="linear"
       data-aos-duration="500"  
       className="cart-info"

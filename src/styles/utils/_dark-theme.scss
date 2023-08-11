@@ -75,7 +75,7 @@ body.dark-mode {
   /// CARD ///
   .card {
     background-color: $surface-1-dark;
-    border-color: transparent;
+    border-color: $surface-2-dark;
     color: $white-dark;
 
     &__name,
@@ -133,7 +133,7 @@ body.dark-mode {
   /// CART ///
   .cartItem {
     background-color: $surface-1-dark;
-    border-color: transparent;
+    border-color: $surface-2-dark;
 
     &__delete {
       background-color: $surface-1-dark;
@@ -196,6 +196,20 @@ body.dark-mode {
   .modal {
     &__content {
       background-color: $black-dark;
+    }
+  }
+
+  /// CATEGORY ///
+  .category {
+    &:hover {
+      border-color: $surface-2-dark;
+    }
+  }
+
+  /// NOT-FOUND ///
+  .not-found  {
+    &__info--h4 {
+      color: $white-dark;
     }
   }
 

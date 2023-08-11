@@ -31,7 +31,7 @@ const ItemGallery: FC<Props> = ({ itemName, photos }) => {
 
   return (
     <section
-      data-aos="fade-down-right"
+      data-aos="zoom-in"
       data-aos-easing="linear"
       data-aos-duration="500"   
       className="gallery"
