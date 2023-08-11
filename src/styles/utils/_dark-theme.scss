@@ -438,4 +438,18 @@ body.dark-mode {
       }
     }
   }
+
+  .userMessage {
+    &--success {
+      border: 1px solid $green;
+      background-color: rgba(178, 247, 178, 0.857);
+      color: rgb(3, 156, 3);
+    }
+
+    &--error {
+      border: 1px solid $red;
+      background-color: rgb(247, 178, 178);
+      color: rgb(156, 3, 3);
+    }
+  }
 }

@@ -13,13 +13,13 @@ import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { AppContext, useAppContext } from '../../context/AppContext';
 import { HeaderCounter } from './HeaderCounter';
 import { navLinks } from '../../config/config';
-
-// const pages = ['HOME', 'phones?category=phones', 'tablets?category=tablets', 'accessories?category=accessories'];
+import { massageList } from '../UserMessage/UserMessage';
 
 export const Header: FC = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const burgerMenu = useRef<MutableRefObject<any> | null>(null);
-  const { cart, likeStorage, logout, isAuthenticated } = useAppContext();
+  const { cart, likeStorage, logout, isAuthenticated, setMessage } =
+    useAppContext();
   const cartProductsCount = cart.length;
   const likeProductsCount = likeStorage.length;
 
@@ -103,7 +103,11 @@ export const Header: FC = () => {
 
         {isAuthenticated ? (
           <div
-            onClick={logout}
+            onClick={() => {
+              setMessage(massageList.goodbye);
+
+              logout();
+            }}
             className="side-button side-button--registration"
           >
             <Link to="/home" className="side-button side-button--color">

@@ -1,4 +1,4 @@
-import { useState, FormEventHandler } from 'react';
+import { useState, FormEventHandler, useEffect } from 'react';
 import { Link, redirect } from 'react-router-dom';
 import { AuthCredentials } from './RegistrationForm';
 
@@ -17,8 +17,7 @@ export interface AuthToken {
 }
 
 export const AuthForm = () => {
-  const { login, isAuthenticated, setIsAuthenticated, setMessage } =
-    useAppContext();
+  const { login, isAuthenticated } = useAppContext();
   const [authCred, setAuthCred] = useState<AuthCredentials>(initialAuthCred);
   const [authError, setAuthError] = useState(false);
 
@@ -31,10 +30,14 @@ export const AuthForm = () => {
   const authSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     const res = await login(authCred);
-
-    setMessage(massageList.loginSuccess);
-    return redirect('/authorization');
+    setAuthCred(initialAuthCred);
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      window.location.href = '/home';
+    }
+  }, [isAuthenticated]);
 
   return (
     <form onSubmit={authSubmit} className="registration__form">
