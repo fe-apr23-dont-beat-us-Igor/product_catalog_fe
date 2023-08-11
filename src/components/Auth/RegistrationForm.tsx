@@ -1,4 +1,4 @@
-import { useState, FC, FormEventHandler } from 'react';
+import { useState, FC, FormEventHandler, useEffect } from 'react';
 import { sendRegistrationCred } from '../../api/api';
 import { Link } from 'react-router-dom';
 import { UserMessage } from '../UserMessage/UserMessage';
@@ -68,6 +68,14 @@ export const RegistrationForm: FC = () => {
     console.log(res);
     setSuccessfulReg(true);
   };
+
+  useEffect(() => {
+    if (successfulReg) {
+      setRegCredentials(initialRegistrationCred);
+      window.location.href = '/authorization';
+    }
+  }, [successfulReg]);
+
   return (
     <form onSubmit={registretionSubmit} className="registration__form">
       <h2 className="registration--title">Sign Up</h2>
@@ -76,7 +84,7 @@ export const RegistrationForm: FC = () => {
         <label htmlFor="username" className="registration__group--label">
           <p>Email:</p>
         </label>
-        
+
         <input
           type="email"
           value={regCredentials.username}

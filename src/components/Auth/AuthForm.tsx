@@ -1,4 +1,4 @@
-import { useState, FormEventHandler } from 'react';
+import { useState, FormEventHandler, useEffect } from 'react';
 import { Link, redirect } from 'react-router-dom';
 import { AuthCredentials } from './RegistrationForm';
 
@@ -33,8 +33,15 @@ export const AuthForm = () => {
     const res = await login(authCred);
 
     setMessage(massageList.loginSuccess);
-    return redirect('/authorization');
+
+    window.location.href = '/home';
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      window.location.href = '/home';
+    }
+  }, [isAuthenticated]);
 
   return (
     <form onSubmit={authSubmit} className="registration__form">
