@@ -27,7 +27,7 @@ import accessories from './photos/Accessories.png';
 import phones from './photos/Phones.png';
 import tablets from './photos/Tablets.png';
 import phone from './photos/image 2.png';
-import register_img from './photos/registration-img.jpg';
+import register_img from './photos/registration-img.png';
 
 import banner_1 from './photos/banner-1.jpg';
 import banner_2 from './photos/banner-2.jpg';
