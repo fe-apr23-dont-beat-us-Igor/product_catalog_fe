@@ -71,9 +71,12 @@ export const RegistrationForm: FC = () => {
   return (
     <form onSubmit={registretionSubmit} className="registration__form">
       <h2 className="registration--title">Sign Up</h2>
-
+      {/* registration__group--label */}
       <div className="registration__group">
-        <label htmlFor="username" className="registration__group--label">Email: </label>
+        <label htmlFor="username" className="registration__group--label">
+          <p>Email:</p>
+        </label>
+        
         <input
           type="email"
           value={regCredentials.username}
@@ -86,10 +89,12 @@ export const RegistrationForm: FC = () => {
       </div>
 
       <div className="registration__group">
-        <label htmlFor="email" className="registration__group--label">
+        {/* <label htmlFor="email" className="registration__group--label">
           Password:
+        </label> */}
+        <label htmlFor="username" className="registration__group--label">
+          <p>Password:</p>
         </label>
-        
         <input
           type="password"
           value={regCredentials.password}
@@ -102,8 +107,11 @@ export const RegistrationForm: FC = () => {
       </div>
 
       <div className="registration__group">
-        <label htmlFor="password" className="registration__group--label">
+        {/* <label htmlFor="password" className="registration__group--label">
           Check yout Password:
+        </label> */}
+        <label htmlFor="username" className="registration__group--label">
+          <p>Repeat Password:</p>
         </label>
         <input
           type="password"
@@ -112,19 +120,19 @@ export const RegistrationForm: FC = () => {
           onChange={(e) =>
             handleRegCredentials('checkPassword', e.target.value)
           }
-          placeholder="Enter your password"
+          placeholder="Repeat Password"
           className="registration__group--input"
           required
         />
       </div>
 
       <div className="registration__group">
-        <label htmlFor="login" className="registration__group--label">
+        <h5 className="registration__group--label">
           Already have an acount?
-        </label>
-        <Link to="/authorization" className="registration__group--link">
-          Log-in
-        </Link>
+          <Link to="/authorization" className="registration__group--link">
+            <span> Log-in</span>
+          </Link>
+        </h5>
       </div>
 
       <button className="button-primary registration__submit" type="submit">

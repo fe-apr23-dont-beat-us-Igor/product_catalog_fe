@@ -15,7 +15,7 @@ export const AuthPage: FC = () => {
   if (isAuthenticated) return <Home />;
 
   return (
-    <div className="registration__container">
+    <div className="registration">
       <img
         src={img.register_img}
         alt="registration"

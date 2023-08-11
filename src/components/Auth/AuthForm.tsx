@@ -8,8 +8,8 @@ import Home from '../../pages/Home';
 import { massageList } from '../UserMessage/UserMessage';
 
 const initialAuthCred: AuthCredentials = {
-  username: 'newUser@gmail.com',
-  password: '123456',
+  username: '',
+  password: '',
 };
 
 export interface AuthToken {
@@ -41,7 +41,9 @@ export const AuthForm = () => {
       <h2 className="registration--title">Sign In</h2>
 
       <div className="registration__group ">
-        <label htmlFor="username" className="registration__group--label">Email: </label>
+        <label htmlFor="username" className="registration__group--label">
+          <p>Email:</p>
+        </label>
 
         <input
           type="text"
@@ -55,8 +57,8 @@ export const AuthForm = () => {
       </div>
 
       <div className="registration__group">
-        <label htmlFor="email" className="registration__group--label">
-          Password:
+        <label htmlFor="username" className="registration__group--label">
+          <p>Password:</p>
         </label>
 
         <input
@@ -72,12 +74,12 @@ export const AuthForm = () => {
       </div>
 
       <div className="registration__group">
-        <label htmlFor="login" className="registration__group--label">
+        <h5 className="registration__group--label">
           Don't have an account yet?
-        </label>
-        <Link to="/registration" className="registration__group--link">
-          Sign Up!
-        </Link>
+          <Link to="/registration" className="registration__group--link">
+            <span> Sign Up!</span>
+          </Link>
+        </h5>
       </div>
 
       <button className="button-primary registration__sumit" type="submit">

@@ -36,12 +36,11 @@ const Categories = () => {
   const [categories, setCategories] = useState<CategoryType[]>(categoriesList);
 
   return (
-    <section className="container section right-modal categories"
-    >
+    <section className="container section right-modal categories">
       <h2 className="categories__title">Shop by category</h2>
       <div className="categories__content">
-        {categories.map((categoryItem) => (
-          <Category category={categoryItem} />
+        {categories.map((categoryItem, id) => (
+          <Category key={id} category={categoryItem} />
         ))}
       </div>
     </section>
