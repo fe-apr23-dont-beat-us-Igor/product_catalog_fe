@@ -13,7 +13,7 @@ const ItemTechSpecs: FC<Props> = ({ tech }) => {
 
   return (
     <section
-      data-aos="fade-up-right"
+      data-aos="zoom-in"
       data-aos-easing="linear"
       data-aos-duration="500"  
       className="tech"
