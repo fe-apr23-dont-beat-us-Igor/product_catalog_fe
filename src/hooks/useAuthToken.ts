@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { sendAuthCred } from '../api/api';
 import { AuthCredentials } from '../components/Auth/RegistrationForm';
+import { useAppContext } from '../context/AppContext';
+import { massageList } from '../components/UserMessage/UserMessage';
 
 export const setAuthTokenCookie = (authToken: string) => {
   const expirationDate = new Date();
@@ -48,6 +50,7 @@ export const useAuth = (): UseAuth => {
   };
 
   const logout = () => {
+
     document.cookie =
       'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     setIsAuthenticated(false);

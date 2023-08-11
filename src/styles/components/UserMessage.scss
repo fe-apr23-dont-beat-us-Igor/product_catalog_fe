@@ -27,10 +27,6 @@
 
   @include text;
 
-  // &--visible {
-  //   display: flex;
-  // }
-
   &--success {
     border: 1px solid $green;
     background-color: rgba(116, 243, 116, 0.346);
@@ -42,6 +38,8 @@
     background-color: rgba(243, 139, 116, 0.346);
     color: rgb(128, 23, 0);
   }
+
+
 
   &__title {
     margin-bottom: 10px;

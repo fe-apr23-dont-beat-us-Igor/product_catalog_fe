@@ -8,7 +8,6 @@ import { SearchParams, getSearchWith } from '../servises/searchParam.servise';
 import { GoodSliderSkeleton } from '../components/GoodsSliderCollection/GoodSliderSkeleton';
 import '../styles/components/home.scss';
 import '../styles/components/animation.scss';
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Slider from '../components/slider/Slider';
 
@@ -22,8 +21,6 @@ const Home: FC = () => {
     ProductCollection,
     string
   >(getSearchWith({ limit: '16' }), getDiscountProducts);
-
-
 
   return (
     <main className="Home">

@@ -18,12 +18,17 @@ export const massageList: MassageList = {
   loginSuccess: {
     type: 'success',
     title: 'login',
-    text: `Welcome, ${window.localStorage.getItem('username')}`,
+    text: `Welcome!}`,
   },
   registerError: {
     type: 'error',
     title: 'register',
     text: `You are stupid`,
+  },
+  goodbye: {
+    type: 'success',
+    title: 'lohout',
+    text: `goodbye`,
   },
 };
 
@@ -55,7 +60,7 @@ export const UserMessage: FC<Props> = ({ message }) => {
   return (
     <div
       ref={ref}
-      className={cn('userMessage', {
+      className={cn('userMessage userMessage--appiar', {
         'userMessage--success': type === 'success',
         'userMessage--error': type === 'error',
       })}

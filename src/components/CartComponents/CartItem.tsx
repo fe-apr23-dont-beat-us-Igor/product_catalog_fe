@@ -29,11 +29,13 @@ export const CartItem: React.FC<Props> = ({ product, changeQuantity }) => {
         textDecoration: 'none',
         color: 'inherit',
       }}
-      data-aos="zoom-in"
-      data-aos-easing="linear"
-      data-aos-duration="500"
     >
-      <div className="cartItem">
+      <div 
+        className="cartItem" 
+        data-aos="zoom-in"
+        data-aos-easing="linear"
+        data-aos-duration="500"
+      >
         <div className="cartItem__info">
           <button
             className="cartItem__delete"

@@ -31,8 +31,8 @@ const App: FC = () => {
   return (
     <div className="App">
       <Header />
+      {message && <UserMessage message={message} />}
       <div className="container">
-        {message && <UserMessage message={message} />}
         <Breadcrumbs />
         <Outlet />
       </div>
